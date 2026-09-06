@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion, type Variants } from 'framer-motion'
-import { HiArrowRight } from 'react-icons/hi2'
+import { HiArrowUpRight } from 'react-icons/hi2'
 import { serviceCategories } from '../data/content'
 
 const container: Variants = {
@@ -42,9 +42,16 @@ export default function ServicesCards() {
                 <p className="mt-2 flex-1 text-sm text-pale-blue-text">
                   {category.description}
                 </p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-gold">
-                  Explore
-                  <HiArrowRight className="transition-transform duration-200 group-hover:translate-x-1" />
+                <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-navy">
+                  <span className="flex items-center gap-2 transition-transform duration-200 ease-out group-hover:translate-x-1">
+                    Explore
+                    <span className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-tl-md rounded-tr-none rounded-br-md rounded-bl-md bg-gold text-navy">
+                      <HiArrowUpRight
+                        size={14}
+                        className="transition-transform duration-200 ease-out group-hover:-translate-y-1"
+                      />
+                    </span>
+                  </span>
                 </span>
               </Link>
             </motion.div>

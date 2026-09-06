@@ -41,7 +41,7 @@ export default function Contact() {
           </div>
           <a
             href="#contact-form"
-            className="shrink-0 rounded-full bg-gold px-6 py-3 text-sm font-semibold text-navy transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+            className="shrink-0 rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-navy transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-lg"
           >
             Get In Touch
           </a>

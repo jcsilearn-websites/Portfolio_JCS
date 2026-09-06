@@ -1,6 +1,7 @@
 import { motion, type Variants } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { HiArrowRight, HiChevronDown } from 'react-icons/hi'
+import { HiChevronDown } from 'react-icons/hi'
+import { HiArrowUpRight } from 'react-icons/hi2'
 import { homeHero } from '../data/content'
 import heroVideo from '../assets/front-page-vid.mp4'
 
@@ -63,16 +64,23 @@ export default function Hero() {
           >
             <Link
               to="/contact"
-              className="rounded-full bg-gold px-8 py-3.5 text-center text-base font-semibold text-navy transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-xl"
+              className="rounded-xl bg-gold px-8 py-3.5 text-center text-base font-semibold text-navy transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-xl"
             >
               Get Started
             </Link>
             <Link
               to="/programs"
-              className="group inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/60 px-8 py-3 text-base font-semibold text-white transition-colors duration-200 hover:border-white hover:bg-white/10"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white bg-navy px-8 py-3 text-base font-semibold text-white transition-colors duration-200 ease-out hover:border-navy hover:bg-white hover:text-navy"
             >
-              Explore Our Programs
-              <HiArrowRight className="transition-transform duration-200 group-hover:translate-x-1" />
+              <span className="flex items-center gap-2 transition-transform duration-200 ease-out group-hover:translate-x-1">
+                Explore Our Programs
+                <span className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-tl-md rounded-tr-none rounded-br-md rounded-bl-md bg-white text-navy transition-colors duration-200 ease-out group-hover:bg-navy group-hover:text-white">
+                  <HiArrowUpRight
+                    size={14}
+                    className="transition-transform duration-200 ease-out group-hover:-translate-y-1"
+                  />
+                </span>
+              </span>
             </Link>
           </motion.div>
 

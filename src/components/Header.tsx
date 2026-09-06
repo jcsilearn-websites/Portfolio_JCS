@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { HiMenu, HiX, HiChevronDown } from 'react-icons/hi'
+import { HiArrowUpRight } from 'react-icons/hi2'
 import jcsLogo from '../assets/logos/jcs-ilearn-logo.svg'
 
 const aboutLinks = [
@@ -133,9 +134,17 @@ export default function Header() {
 
           <Link
             to="/contact"
-            className="rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-navy transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+            className="group inline-flex items-center gap-2 rounded-xl border border-navy/10 bg-white px-5 py-2.5 text-sm font-semibold text-navy transition-colors duration-200 ease-out hover:bg-navy hover:text-white"
           >
-            Get Started
+            <span className="flex items-center gap-2 transition-transform duration-200 ease-out group-hover:translate-x-1">
+              Get Started
+              <span className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-tl-md rounded-tr-none rounded-br-md rounded-bl-md bg-gold text-navy">
+                <HiArrowUpRight
+                  size={14}
+                  className="transition-transform duration-200 ease-out group-hover:-translate-y-1"
+                />
+              </span>
+            </span>
           </Link>
         </nav>
 
@@ -198,9 +207,17 @@ export default function Header() {
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="mt-3 rounded-full bg-gold px-5 py-2.5 text-center text-sm font-semibold text-navy"
+                className="group mt-3 inline-flex items-center justify-center gap-2 rounded-xl border border-navy/10 bg-white px-5 py-2.5 text-sm font-semibold text-navy transition-colors duration-200 ease-out hover:bg-navy hover:text-white"
               >
-                Get Started
+                <span className="flex items-center gap-2 transition-transform duration-200 ease-out group-hover:translate-x-1">
+                  Get Started
+                  <span className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-tl-md rounded-tr-none rounded-br-md rounded-bl-md bg-gold text-navy">
+                    <HiArrowUpRight
+                      size={14}
+                      className="transition-transform duration-200 ease-out group-hover:-translate-y-1"
+                    />
+                  </span>
+                </span>
               </Link>
             </div>
           </motion.nav>
