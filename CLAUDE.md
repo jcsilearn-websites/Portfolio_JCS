@@ -1,0 +1,351 @@
+# JCS iLearn — Website Redesign
+
+## Project summary
+Full redesign of jcsilearn.com (client: JCS iLearn LLP, Coimbatore) for a training/skill-development
+company. Goal: same visual language, transitions, and card-design feel as **psiog.com**
+(dark hero, animated stat counters, bento-style cards, tabbed services), re-skinned in JCS's
+own navy/gold palette and populated with JCS's real content. This is NOT a copy of Psiog's
+business content — only the UI patterns, motion, and structure are being replicated.
+
+Old codebase (Next.js) is being retired — do not port its components directly. Its content
+has been extracted and is inlined below as the source of truth. Treat this file as the
+single source of truth for content; do not invent stats, names, or claims not listed here.
+
+## Tech stack
+- **Vite + React 19 + TypeScript** — no Next.js, no App Router, no server components.
+- **react-router-dom v6** for client-side routing (multi-page site, not a SPA-with-anchors-only).
+- **Tailwind CSS v4**
+- **Framer Motion** for scroll/hover/tab transitions (matches Psiog's animation feel)
+- **react-icons** (already used in old repo content) — fine to keep, or swap to `lucide-react` if preferred for a cleaner icon set.
+- **pnpm** exclusively — never npm/yarn commands or lockfiles.
+- Deployment target: **Vercel** (same as old site; domain `jcsilearn.com` is on Hostinger, DNS pointed at Vercel).
+- No backend needed. Contact form uses **EmailJS** (`@emailjs/browser`) client-side, same as the old repo — needs three env vars: `VITE_EMAILJS_SERVICE_ID`, `VITE_EMAILJS_TEMPLATE_ID`, `VITE_EMAILJS_PUBLIC_KEY` (client will need to supply these; old repo's `.env` was not included in the handoff zip).
+
+## Setup
+```bash
+pnpm create vite@latest jcs-ilearn-redesign -- --template react-ts
+cd jcs-ilearn-redesign
+pnpm add react-router-dom framer-motion react-icons @emailjs/browser
+pnpm add -D tailwindcss @tailwindcss/postcss postcss autoprefixer
+pnpm dlx tailwindcss init -p
+pnpm dev
+```
+
+Recommended folder structure:
+```
+src/
+  components/       # shared: Header, Footer, Card, StatCounter, TabbedPanel, SectionWrapper
+  pages/            # Home, About, Programs, Services, Trainers, Contact, Careers
+  sections/         # homepage-only sections (Hero, StatsStrip, ServicesTabs, Testimonials, CTA)
+  data/             # content.ts — all copy/stats/programs as typed constants (see Content section below)
+  assets/           # images, logos (see Asset Inventory below)
+```
+
+## Design system
+
+**Locked palette:**
+| Token | Hex | Use |
+|---|---|---|
+| `navy` (primary) | `#0A0B68` | headers, primary backgrounds, CTA buttons |
+| `gold` (accent) | `#F4B400` | hover states, active nav, highlights, badges — replaces the old site's pink/purple accent everywhere |
+| `pale-blue-bg` | `#DCE6FF` | soft section backgrounds (bento cards) |
+| `pale-blue-text` | `#1E3A8A` | text on pale-blue-bg |
+
+Do **not** carry over the old repo's `pink-600` hover states or purple/pink decorative blur shapes — those get replaced with gold accents and navy/gold blurs.
+
+**Card style:** replicate Psiog's card treatment — soft shadow, generous padding, rounded-2xl/3xl corners, subtle hover lift (`translateY(-4px)` + shadow increase), not the old site's `scale-110` active-card jump.
+
+**Motion:** replicate Psiog's feel — fade+slide-up on scroll into view (`IntersectionObserver` or Framer's `whileInView`), staggered children for grids, smooth tab-panel crossfade for the services/programs tabs. Keep transitions in the 200–400ms range, `ease-out`.
+
+**Stats counters:** animate 0 → target on scroll into view (`useCountUp` hook), matching Psiog's homepage stat strip.
+
+## Psiog reference structure (literal — do not deviate without flagging)
+
+This is the actual current structure of psiog.com, pulled directly from the live site. Earlier
+guidance described Psiog's "feel" (bento cards, tabbed services) which is too loose and led to
+generic-SaaS-template drift. Treat the section order and interaction pattern below as literal
+ground truth for the Home page — only the copy/data changes, not the pattern.
+
+| # | Section | Pattern (copy this exactly) |
+|---|---|---|
+| 1 | Header (nav) | **Correction — Psiog's nav is white, not dark.** White background, navy text nav links, gold underline beneath the active/hovered link (not a color-only change — Psiog uses an actual underline), gold filled pill button for the primary CTA ("Get Started"/"Contact Us"). Logo sits left, links center-right, CTA button far right. This replaces the current navy header — rebuild it, don't just recolor it. |
+| 2 | Hero | **Correction (superseding the two-column correction above) — full-bleed video background with a fading gradient overlay, not a hard two-column split.** A looping background video (`src/assets/front-page-vid.mp4`, `autoplay muted loop playsInline`, `object-fit: cover`) spans the entire section. On top of it, a brand-navy gradient overlay is solid from the left edge, holds solid behind the text column, then fades smoothly to transparent by roughly 60–70% of the width (pull the navy value from the Tailwind theme token, don't hardcode a hex) — so the video is fully visible only on the right portion, matching psiog.com's actual hero treatment. Text (headline — 2-3 lines, last phrase italicized, e.g. "I Earn" — subhead, the 5 muted differentiator phrases directly below the CTAs, and the two CTA buttons: primary gold filled, secondary outline) stays left-aligned over the solid portion, content unchanged from before. On mobile/tablet, the left-fade-right gradient is replaced with a fuller/near-solid overlay across the whole video so text stays readable — the desktop gradient is not forced at narrow widths. Logo in the header is `src/assets/logos/jcs-ilearn-logo.svg`. |
+| 3 | Recognitions | Row of circular badge icons + title + date, centered heading above ("Recognized for our Differentiators" style). JCS currently has exactly ONE real, confirmed item: "Best Trainer of the Year 2024–25" (Alliance University) — this belongs to a specific trainer, not the company, so the card should read as a trainer credential (e.g. "[Trainer Name] — Best Trainer of the Year, Alliance University, 2024–25") not a generic company award. Build the row to support 1-3 cards visually (don't stretch one card to fill a 3-card-wide row awkwardly) and leave it structured so more can be added later. **Do not fabricate additional awards** to fill the row. |
+| 4 | Stats + Map + Partnerships (bento grid) | This is a specific **asymmetric grid**, not a flat row — replicate the exact shape below, sized to JCS's 6 real stats (not Psiog's 8+1, so the grid is smaller — don't pad with invented stats): <br><br>**Layout (5 columns × 3 rows on desktop):**<br>- Col 1, Row 1: `1,50,000+ Students/Professionals Trained` (white card)<br>- Col 1, Row 2-3 (tall card, spans 2 rows): `1 Year in Operation` (gold-accent card)<br>- Col 2-3, Row 1-2 (large card, spans 2 cols × 2 rows): the **map/highlight cell** — `35 Cities Served`, large number on a bold navy or gold background. Use a simple stylized India outline graphic if one exists in assets; if not, style this as a bold highlight card WITHOUT a fabricated map graphic (large number + label is enough — don't invent or approximate a map SVG that isn't accurate) <br>- Col 4, Row 1: `400+ Trainers` (navy card)<br>- Col 4, Row 2: `25+ Institutions` (white card)<br>- Col 2-4, Row 3 (wide card, spans 3 cols): `10+ Corporate Partners` (navy card)<br>- Col 5, Row 1-3 (tall card, spans full height): **Partnerships/"Trusted by" cell** — use the real college logos (rotate through 4-6 of them, small logo grid or fade carousel), labeled "Trusted by" or "Our Partner Institutions"<br><br>On mobile: collapse to a single column, stacked in the same top-to-bottom reading order (students → year → cities → trainers → institutions → corporate partners → trusted-by logos). <br><br>Card color rule: alternate white / navy / gold-accent cards for visual rhythm like Psiog does (not all one color) — but stay within the locked 4-token palette, don't introduce Psiog's teal/lime. |
+| 5 | Who We Serve | **Plain text section, NOT cards.** Centered or left-aligned heading + 2-3 sentence paragraph. No grid, no icons. Psiog: "We believe in catering to the Underserved Mid-Market" + a short paragraph. JCS equivalent: a short paragraph on who JCS trains (students, professionals, institutions, corporates) — draft from existing About copy in this file, don't invent new claims. |
+| 6 | Our Philosophy | Image + text split (image one side, text other), with one **italicized pull-quote** as the emphasis line. Psiog: "We map your business challenges first, then we apply the right technology." JCS equivalent: use a line from the Founder's or Co-Founder's copy already in this file (e.g. "Because when you Learn with Purpose, you Earn with Confidence.") as the pull-quote. |
+| 7 | Our Services | **On the homepage this is a flat row of cards — heading + 1-line description + "Explore" link. It is NOT interactive tabs on the homepage.** The tabbed click-to-expand interaction only exists on Psiog's dedicated `/our-services` page, where each card's link jumps to that tab. **This means ServicesTabs as currently built (interactive tabs on Home) needs to change**: Home should show 5 flat cards (one per audience) linking to `/services#<audience-id>`, and the interactive tab behavior stays only on the `/services` page itself. |
+| 8 | Culture | Photo collage grid, varied image sizes, hover zoom, no captions. JCS equivalent: use the training-session photos and team photos here — this is the section where the 20 real classroom photos and 3 team photos belong. |
+| 9 | Footer | Multi-column: brand blurb, Services links (repeats the 5 tab names), a second nav column, Connect/social icons, legal line. Already roughly matches what a standard footer should do — just confirm JCS's footer mirrors this column structure rather than the old site's footer layout. |
+
+Typography/spacing note: Psiog's sections read as calm and spacious, not dense — generous
+vertical padding between sections (roughly 80-120px equivalent), restrained color use per
+section (mostly one accent color per section, not everything gold+navy+pale-blue at once),
+and no more than one card style per section. If a section is starting to look busy, that's a
+signal to simplify, not add more visual elements.
+
+## About & Contact page specs (from a full Psiog clone-spec doc, scoped down to JCS)
+
+A separate, more exhaustive Psiog structure doc surfaced two patterns worth adopting as-is,
+sized to JCS's actual content — not Psiog's enterprise scale. Everything else in that source
+doc (Articles/News/Case-Studies/Whitepapers blog infrastructure, multi-tier leadership grids,
+Advisory Board, heavy Careers-page onboarding/resume-upload machinery, separate job-board page)
+does **not** apply here and should not be built — JCS has 2 founders and no blog, don't
+manufacture sections looking for content to fill.
+
+### About page — leadership card + drawer (upgrade to `/about/founders`)
+- Replace the current static two-column founder layout with: a grid of 2 cards (photo, name,
+  title only) — Raghul J C (Founder & CEO) and Siva Harish M (Co-Founder & VP).
+- Clicking a card opens an off-canvas drawer (slide in from the right) showing: photo again,
+  name, title, LinkedIn icon linking to their real profile URL (both already in the Content
+  section above), and the full bio paragraph (their existing "From the Founder's Desk" /
+  "Message from the Co-Founder" copy, verbatim — do not shorten it to fit the drawer, let the
+  drawer scroll if needed).
+- Only 2 cards — do not add placeholder cards for a leadership tier JCS doesn't have.
+- Keep the existing "Our Leadership Values" 4-item grid section below this — that content
+  stays, only the founder presentation above it changes.
+
+### Contact page (`/contact`) — new structure
+Current `/contact` is a thin wrapper around the homepage's ContactUs section. Rebuild as its
+own fuller page:
+1. **Hero/intro**: short headline + 1-2 sentence body, contact form (Name, Email, Phone,
+   Message, Submit) — reuse existing EmailJS wiring from the current ContactUs section, don't
+   rebuild the submission logic.
+2. **Fast-track callout** (JCS equivalent of Psiog's "Enterprise Inquiries"): a short block for
+   institutions/corporates specifically — "Looking to train your students or team? [Get in
+   touch / Book a call]" — 1-2 sentences, one CTA. Don't invent a response-time SLA commitment
+   ("within one business day") — that's not a claim we have from the client.
+3. **Location section**: embedded Google Map iframe pinned to the real address (No.10,
+   Udayampalayam Main Road, Sowripalayam, Coimbatore, Tamil Nadu – 641028), plus a 3-column
+   info block below/beside it: Office Address / Call Us (tel: link) / Email Us (mailto: link) —
+   use the real contact info from the Content section above.
+4. Do NOT add an awards-strip repeat on this page — JCS's one real award belongs on the
+   trainer's profile, not repeated site-wide the way Psiog does with its company awards.
+
+## Site structure (routes)
+
+- `/` — Home: Hero → Stats strip → About teaser → Services (tabbed, audience-based) → Programs teaser → Trainers teaser → Testimonials → CTA → Footer
+- `/about` — About Us (keep multi-page structure per client's explicit confirmation — do not consolidate into one page)
+  - `/about/journey`
+  - `/about/founders`
+  - `/about/vision`
+  - `/about/identity`
+- `/programs` — full programs grid/tabs (see Programs data below)
+- `/services` — audience-based service cards (Universities/Corporates/Startups/Schools/Professionals)
+- `/trainers` — **new page, not in the old site** — trainer profile grid (content exists, see below; justified by the depth of the trainers deck the client provided)
+- `/contact`
+- `/careers`
+
+⚠️ **Open decision, do not resolve silently:** the client sent a *second* taxonomy — 5 named
+programs under each of the 5 audience categories (see "Service category programs" below) —
+that doesn't match the old repo's 23 branded program names (Skillora, AptEdge, Byte, etc., see
+Programs data below). Do not merge or pick one silently. Flag it back to the user in-chat if
+you reach the point of building `/programs` or `/services` and it isn't resolved yet.
+
+## Content — source of truth
+
+### Brand
+- Logo: navbar now uses `src/assets/logos/jcs-ilearn-logo.svg` ("JCS" + a gear/checkmark
+  mark + "iLearn", navy gradient wordmark). ⚠️ **Its embedded C2PA metadata identifies it as
+  AI/Claude-generated content, not a file confirmed to originate from the client** — treat
+  as a placeholder pending explicit client sign-off that this is the approved brand mark, not
+  as a finalized asset. Separately, the file's own `viewBox` didn't enclose its full content
+  (the "iLearn" text was being clipped) — corrected the `viewBox`/`width`/`height` to
+  `-10 -105 2360 565`, art itself untouched. The original 3 client-sent files (flattened PNG,
+  low-res PDF export, off-brand purple badge) are still in `src/assets/logos/` and remain
+  unusable as noted before.
+- Tagline: **"I Learn, I Earn"**
+
+### Contact
+- Address: No.10, Udayampalayam Main Road, Sowripalayam, Coimbatore, Tamil Nadu, India – 641028
+- Phone: +91 75984 98451
+- Email: info@jcsilearn.com, jcsilearn@gmail.com
+- Hours: Mon–Fri 9:00 AM–5:00 PM, Sat 9:00 AM–1:00 PM
+- Instagram: https://www.instagram.com/jcs_ilearn
+- YouTube: https://www.youtube.com/@JCSiLearn
+- LinkedIn/Facebook: not yet provided (company-level) — placeholder link, swap when client sends it
+
+### Stats (for the homepage stat strip)
+- 1 year in operation (incorporated ~Sep 2025, first training Sep 2025)
+- 1,50,000+ students/professionals trained
+- 25+ institutions, 10+ corporate partners
+- 400+ trainers
+- 35 cities served
+- Placement rate: client sent "0.83" — **confirm exact phrasing before publishing** (likely 83%, unconfirmed)
+
+### Founders (from old site — reuse as-is until client sends updates)
+
+**Raghul J C — Founder & CEO**
+- B.Tech (Biotechnology), Tamil Nadu Agricultural University; M.A., IGNOU
+- LinkedIn: https://www.linkedin.com/in/raghul-j-c-617818221/
+- **Full bio, verbatim from the old site's "From the Founder's Desk" — use exactly as written, do not summarize or paraphrase:**
+
+  > The spark for JCS iLearn was ignited during one of my entrepreneurship workshops. A curious
+  > student asked: "You speak so passionately about entrepreneurship—why haven't you started
+  > your own company?" That question hit home. It wasn't just a passing thought—it was a
+  > powerful reflection. If I truly believed in entrepreneurship, why not live it? That moment
+  > became my turning point. Fueled by a deep passion for teaching and a desire to create
+  > meaningful impact, I founded JCS iLearn—a platform where education is not just shared, but
+  > experienced, and where learning opens doors to real opportunity. Our tagline, "I Learn, I
+  > Earn," isn't just a slogan—it's our philosophy. We believe education should lead to
+  > empowerment, and knowledge should create opportunities for growth and success. This company
+  > is my answer to that student's question—and proof that with the right support, learning
+  > becomes a launchpad for life.
+  >
+  > — Raghul J C, Founder & CEO
+
+**Siva Harish M — Co-Founder & VP**
+- B.Tech (Food Technology), Paavai Engineering College
+- LinkedIn: https://www.linkedin.com/in/siva-harish-m-056617223/
+- **Full bio, verbatim from the old site's "Message from the Co-Founder" — use exactly as written, do not summarize or paraphrase:**
+
+  > At JCS iLearn, we believe that skill is the foundation of transformation—not just for
+  > individuals, but for industries, communities, and the future. Our vision is to close the
+  > gap between education and employability by equipping learners with practical, future-ready
+  > skills. We're committed to building high-impact, accessible learning experiences that go
+  > beyond upskilling—they inspire growth, confidence, and clarity. As Co-Founder, I assure you
+  > that our mission is personal. Every program we design is created with care, relevance, and
+  > a deep understanding of the challenges today's learners face. Thank you for trusting us.
+  > Together, let's unlock potential—and build a skilled, forward-thinking generation.
+  >
+  > — Siva Harish M, Co-Founder & VP
+
+### Our Leadership Values (4-item grid — belongs below the founder cards/drawer on /about/founders)
+From the old site, reuse verbatim:
+1. **Purpose-Driven** — "Every decision is guided by our mission to empower learners"
+2. **Innovation** — "Continuously evolving our approach to meet changing needs"
+3. **Collaboration** — "Working together to achieve greater impact"
+4. **Excellence** — "Striving for the highest quality in everything we do"
+
+### About / Journey / Vision copy (from old site, reusable)
+- **Journey**: "JCS iLearn was born from a classroom moment—but built on years of passion,
+  purpose, and belief in the power of education." Structured as Spark → Vision → Impact.
+- **Vision headline**: `"I Learn, I Earn" — Empowering Lives Through Essential Skills`
+- **Mission line**: "Because when you Learn with Purpose, you Earn with Confidence."
+
+### Programs (old repo — 23 programs across 7 categories; matches Psiog's 7-tab pattern well)
+Categories: Soft Skills · Aptitude & Reasoning · Technical Skills · Placement & Recruitment ·
+Career Planning · Corporate Readiness · School Enrichment
+
+Program names by category (title — one-line description already exists in old repo's
+`programs/page.tsx`, pull full descriptions/topic lists from there if rebuilding this page):
+- Soft Skills: Skillora, TalkPro, Voicely, SpeakUp, Elevate
+- Aptitude & Reasoning: AptEdge, CrackIt, Ace, Examly, AssessIQ
+- Technical Skills: Byte, Codevita, CodePro, Stack, Codegenix
+- Placement & Recruitment: Prime, MockUp, PitchPro, PlacEdge, Persona
+- Career Planning: Innovate, Careerly
+- Corporate Readiness: Inspire, Corp
+- School Enrichment: Pathcraft
+
+### Service category programs (NEW — from client, audience-first structure)
+⚠️ Conflicts with the branded program list above — see open decision note. Kept here verbatim
+in case the client confirms this replaces the old taxonomy:
+
+**For Universities:** Placement & Career Readiness Program · Professional & Workplace Skills
+Program · Entrepreneurship & Innovation Program · Digital & Industry Skills Program ·
+Competitive Exams & Higher Education Program
+
+**For Corporates:** Leadership & Managerial Excellence · Communication & Workplace Excellence ·
+Sales & Customer Excellence · Productivity & Performance Enhancement · AI, Digital & Future
+Skills
+
+**For Startups:** Entrepreneurship Essentials · Leadership Development · Sales, Marketing &
+Business Growth · Finance & Business Management · Innovation, AI & Digital Transformation
+
+**For Schools:** Personality Development · Public Speaking · Academic Excellence & Study
+Skills · Career Awareness & Future Readiness · Innovation & Creativity
+
+**For Professionals:** Leadership & People Management · Advanced Communication & Executive
+Presence · Productivity & Performance Excellence · AI & Digital Workplace Skills · Sales,
+Negotiation & Customer Management
+
+### Trainers (new `/trainers` page — full content from client's PPTX, 13 profiles)
+Each has: name, domain, years of experience, 3 highlight bullets. Photos available for 12 of
+13 (see Asset Inventory — **Soundariya T has no photo yet**, use an icon/initial placeholder).
+
+1. **Santhosh Kumar** — Learning, Development & Professional Excellence Trainer — 10+ yrs
+2. **DivyaPrasanth R** — Life & Career Skills Trainer / Corporate L&D Specialist — 5+ yrs
+3. **Soundariya T** — Aptitude, Quantitative Ability & Logical Reasoning — 8+ yrs (no photo yet)
+4. **Sindhuja Velusamy** — Certified Master & Soft Skills Trainer — 11+ yrs
+5. **Sharmila Banu** — Aptitude, Quantitative Ability & Logical Reasoning — 8+ yrs
+6. **Jebrine Melco R** — Certified Personality Development Trainer & Placement Mentor — 10+ yrs
+7. **Loknath** — Communication Skills, Soft Skills & AI-Enabled Learning — 6+ yrs
+8. **Anuraga M** — Verbal & Communication Trainer — 6+ yrs
+9. **Shreya Kumar** — Aptitude, Logical & Communication Mentor — 5+ yrs
+10. **Arul Murugan L** — Verbal Communication & Personality Development Trainer — 6+ yrs
+11. **Karthickraja S** — Life Skills Trainer & Communication Mentor — 7+ yrs
+12. **Suhita S** — Certified English Language Trainer — 9+ yrs
+13. **Santhiya M** — Language and Soft Skills Trainer — 5+ yrs
+
+Full highlight bullets for each are in the source PPTX (`JCSiLearn_TrainersProfile.pptx`) —
+pull verbatim when building the page rather than summarizing further.
+
+### Testimonials (DRAFT copy — client sent real photos but no quotes; these are placeholders for client review, not final copy)
+
+> Client instruction: draft the best-fitting quotes using the real names provided; client
+> will review/replace in the next round. **Mark these as draft/pending approval in any PR or
+> handoff note — do not treat as final.**
+
+- **Arun Kumar** — *"The placement training gave me a clear roadmap — from mock interviews to
+  aptitude prep, I finally walked into interviews with confidence instead of anxiety."*
+- **Esu Kumar** — *"What stood out was how practical everything was. The trainers didn't just
+  teach theory — they made us practice until it became second nature."*
+- **Heera Patey** — *"I came in nervous about group discussions and left being able to lead
+  one. The soft skills sessions genuinely changed how I carry myself."*
+- **Poovarasan** — *"The aptitude training broke down concepts I'd struggled with for years
+  into simple, repeatable techniques. My test scores improved almost immediately."*
+- **Sanjeev** — *"As someone from a non-circuit branch, I was worried about technical rounds.
+  The technical skills program closed that gap faster than I expected."*
+- **Sanjushree Venkat** — *"JCS iLearn didn't just prepare me for placements — it changed how
+  I think about my own growth. The mentorship felt personal, not generic."*
+
+### Awards
+- "Best Trainer of the Year 2024–25" — awarded by Alliance University, Bangalore, to one of
+  JCS's trainers. **This is an individual trainer credential, not a company award** — display
+  it on that trainer's profile card once the recipient's name is confirmed, not in a
+  company-wide awards/recognition section (unless the client says otherwise).
+
+## Asset inventory (from client's Google Drive export)
+```
+Jcs/
+  College Logos/          18 folders, one logo each — client claims 25+ institutions,
+                           so this is a partial set. Several files are low-res screenshots
+                           (images.jpeg, images (1).jpeg) — flag for re-sourcing, don't
+                           upscale/use as-is if avoidable.
+  Logo files/              3 files, none production-ready (see Brand section above)
+  Photography/
+    Classroom - training session photos/   20 real photos — usable for hero/program sections
+    Founder headshots/                     2 clean studio portraits — usable as-is
+    Team - trainer photos/                 12 individual + 3 group shots — Soundariya T missing
+  Testimonial photos/      6 real photos (Arun Kumar, Esu Kumar, Heera Patey, Poovarasan,
+                           Sanjeev, Sanjushree Venkat) — usable as-is
+```
+
+## Known open items (do not silently resolve — flag back to the user)
+1. Programs vs. service-category taxonomy conflict (see above)
+2. Logo now uses `jcs-ilearn-logo.svg` (see Brand section) — its metadata flags it as
+   AI-generated, not confirmed as client-approved. Get explicit sign-off before treating
+   as final, or swap in the client's real mark.
+3. Corporate/company partner logos — none received yet (only college logos)
+4. Missing photo for trainer Soundariya T
+5. Founder LinkedIn URLs — resolved from old site (see above), but confirm still active
+6. Company-level LinkedIn/Facebook link — not yet provided
+7. Placement rate phrasing ("0.83") — unconfirmed
+8. Testimonial quotes above are drafts pending client sign-off
+9. Awards section placement (individual vs. company) — unconfirmed
+10. Founder photo identity unconfirmed — the two files in src/assets/founders/ are unlabeled;
+    currently assigned in listing order (first file → Raghul, second → Siva Harish) as a
+    placeholder. Confirm with client and swap if wrong — one-line fix in content.ts.
+11. Contact form won't send mail until a real .env with EmailJS service/template/public key
+    IDs is added locally (see .env.example) — get these from the client or a fresh EmailJS
+    account before this page goes live.
+
+## Conventions
+- All copy/stats/program data lives in typed `src/data/content.ts` — components read from
+  there, never hardcode client-specific strings inline, so future data updates (e.g. real
+  testimonial quotes replacing drafts) are single-file edits.
+- Every stat, name, and claim in this file is either sourced from the client's own
+  submissions or explicitly marked DRAFT — do not add new numbers or claims not listed here.
+- Image assets: keep the client's original filenames' intent but rename to kebab-case on
+  import (e.g. `santhosh-kumar.png`) — the Drive export names are inconsistent (`ChatGPT
+  Image Sep 6, 2026...png`, `WhatsApp Image...jpeg`).
