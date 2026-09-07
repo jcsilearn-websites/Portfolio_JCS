@@ -41,7 +41,7 @@ const sizeStyles: Record<
     icon: 'h-7 w-7 rounded-tr-[4px] rounded-bl-[4px] rounded-tl-none rounded-br-none',
     inset: 'top-1.5 right-1.5',
     travel: 'group-hover:translate-x-1.5 group-hover:-translate-y-1.5',
-    arrow: 12,
+    arrow: 18,
   },
   md: {
     button:
@@ -49,18 +49,19 @@ const sizeStyles: Record<
     icon: 'h-10 w-10 rounded-tr-[6px] rounded-bl-[6px] rounded-tl-none rounded-br-none',
     inset: 'top-2 right-2',
     travel: 'group-hover:translate-x-2 group-hover:-translate-y-2',
-    arrow: 16,
+    arrow: 26,
   },
 }
 
 const variantStyles: Record<ButtonVariant, { button: string; icon: string }> = {
   primary: {
-    button: 'bg-gold text-navy',
-    icon: 'bg-navy text-gold',
+    button: 'bg-gold text-navy hover:bg-navy hover:text-white',
+    icon: 'bg-navy text-gold group-hover:bg-gold group-hover:text-navy',
   },
   secondary: {
-    button: 'bg-navy text-white border border-white/25',
-    icon: 'bg-gold text-navy',
+    button:
+      'bg-navy text-white border border-white/25 hover:bg-gold hover:text-navy',
+    icon: 'bg-gold text-navy group-hover:bg-navy group-hover:text-gold',
   },
 }
 
@@ -109,13 +110,13 @@ export default function Button({
   const s = sizeStyles[size]
   const v = variantStyles[variant]
 
-  const rootClassName = `group relative inline-flex items-center font-bold transition-colors duration-200 ease-out ${s.button} ${v.button} ${className}`
+  const rootClassName = `group relative inline-flex items-center cursor-pointer font-bold shadow-sm transition-[background-color,color,transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg ${s.button} ${v.button} ${className}`
 
   const content = (
     <>
       {children}
       <span
-        className={`absolute ${s.inset} flex items-center justify-center transition-transform duration-300 ease-out ${s.travel} ${s.icon} ${v.icon}`}
+        className={`absolute ${s.inset} flex items-center justify-center transition-[background-color,color,transform] duration-300 ease-out ${s.travel} ${s.icon} ${v.icon}`}
       >
         <ArrowGlyph size={s.arrow} />
       </span>
