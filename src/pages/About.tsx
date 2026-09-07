@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import { motion, type Variants } from 'framer-motion'
+import { AnimatePresence, motion, type Variants } from 'framer-motion'
 import { FaLinkedin } from 'react-icons/fa'
-import { HiFlag, HiLightBulb, HiHandRaised, HiStar } from 'react-icons/hi2'
-import Drawer from '../components/Drawer'
+import { HiFlag, HiLightBulb, HiHandRaised, HiStar, HiPlus, HiXMark } from 'react-icons/hi2'
 import Container from '../components/Container'
 import aboutHeroImage from '../assets/About-page/header.png'
 import ourStoryImage from '../assets/About-page/ChatGPT Image Sep 7, 2026, 11_12_22 PM.png'
@@ -29,8 +28,48 @@ const item: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 }
 
+interface FounderCardProps {
+  founder: Founder
+  isOpen: boolean
+  onToggle: () => void
+}
+
+function FounderCard({ founder, isOpen, onToggle }: FounderCardProps) {
+  return (
+    <div className="relative flex flex-col items-center rounded-2xl bg-white p-8 text-center shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        aria-controls={`founder-panel-${founder.id}`}
+        aria-label={isOpen ? `Collapse ${founder.name}'s bio` : `Expand ${founder.name}'s bio`}
+        className={`absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-300 ${
+          isOpen ? 'bg-gold text-navy' : 'bg-navy text-white'
+        }`}
+      >
+        <motion.span
+          animate={{ rotate: isOpen ? 45 : 0 }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+          className="flex"
+        >
+          <HiPlus size={18} />
+        </motion.span>
+      </button>
+
+      <img
+        src={founder.photo}
+        alt={founder.name}
+        className="h-40 w-40 rounded-full object-cover object-top shadow-sm"
+      />
+      <p className="mt-5 text-lg font-semibold text-navy">{founder.name}</p>
+      <p className="mt-1 text-sm text-pale-blue-text">{founder.title}</p>
+    </div>
+  )
+}
+
 export default function About() {
-  const [activeFounder, setActiveFounder] = useState<Founder | null>(null)
+  const [activeFounderId, setActiveFounderId] = useState<string | null>(null)
+  const activeFounder = founders.find((founder) => founder.id === activeFounderId) ?? null
 
   return (
     <main>
@@ -147,64 +186,81 @@ export default function About() {
 
           <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-2">
             {founders.map((founder) => (
-              <button
+              <FounderCard
                 key={founder.id}
-                type="button"
-                onClick={() => setActiveFounder(founder)}
-                className="group flex flex-col items-center rounded-2xl bg-white p-8 text-center shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
-              >
-                <img
-                  src={founder.photo}
-                  alt={founder.name}
-                  className="h-40 w-40 rounded-full object-cover object-top shadow-sm"
-                />
-                <p className="mt-5 text-lg font-semibold text-navy">
-                  {founder.name}
-                </p>
-                <p className="mt-1 text-sm text-pale-blue-text">
-                  {founder.title}
-                </p>
-              </button>
+                founder={founder}
+                isOpen={activeFounderId === founder.id}
+                onToggle={() =>
+                  setActiveFounderId((current) =>
+                    current === founder.id ? null : founder.id,
+                  )
+                }
+              />
             ))}
           </div>
 
-        <Drawer open={activeFounder !== null} onClose={() => setActiveFounder(null)}>
-          {activeFounder && (
-            <div className="px-8 py-16">
-              <img
-                src={activeFounder.photo}
-                alt={activeFounder.name}
-                className="h-32 w-32 rounded-full object-cover object-top shadow-sm"
-              />
-              <h2 className="mt-5 text-2xl font-bold text-navy">
-                {activeFounder.name}
-              </h2>
-              <p className="mt-1 text-sm font-medium text-pale-blue-text">
-                {activeFounder.title}
-              </p>
-              <p className="mt-1 text-xs text-navy/50">
-                {activeFounder.credentials}
-              </p>
-
-              <a
-                href={activeFounder.linkedIn}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`${activeFounder.name} on LinkedIn`}
-                className="mt-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-navy text-white transition-colors duration-200 hover:bg-gold hover:text-navy"
+          <AnimatePresence mode="wait" initial={false}>
+            {activeFounder && (
+              <motion.div
+                key={activeFounder.id}
+                id={`founder-panel-${activeFounder.id}`}
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.35, ease: 'easeOut' }}
+                className="mt-8 overflow-hidden rounded-2xl"
               >
-                <FaLinkedin size={18} />
-              </a>
+                <div className="relative bg-navy px-8 py-10 sm:px-12 sm:py-12">
+                  <button
+                    type="button"
+                    onClick={() => setActiveFounderId(null)}
+                    aria-label="Close"
+                    className="absolute top-6 right-6 flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-200 hover:bg-gold hover:text-navy"
+                  >
+                    <HiXMark size={20} />
+                  </button>
 
-              <p className="mt-8 text-base leading-relaxed text-navy/80">
-                {activeFounder.bio}
-              </p>
-              <p className="mt-4 text-right text-sm font-medium text-navy/50 italic">
-                {activeFounder.signOff}
-              </p>
-            </div>
-          )}
-        </Drawer>
+                  <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[auto_1fr]">
+                    <img
+                      src={activeFounder.photo}
+                      alt={activeFounder.name}
+                      className="mx-auto h-48 w-48 rounded-full object-cover object-top shadow-lg md:mx-0"
+                    />
+                    <div>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <h3 className="text-2xl font-bold text-white">
+                          {activeFounder.name}
+                        </h3>
+                        <a
+                          href={activeFounder.linkedIn}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${activeFounder.name} on LinkedIn`}
+                          className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-200 hover:bg-gold hover:text-navy"
+                        >
+                          <FaLinkedin size={16} />
+                        </a>
+                      </div>
+                      <p className="mt-1 text-sm font-medium text-gold">
+                        {activeFounder.title}
+                      </p>
+
+                      <div className="mt-6 space-y-4">
+                        {activeFounder.bio.map((paragraph, index) => (
+                          <p
+                            key={index}
+                            className="text-base leading-relaxed text-white/85"
+                          >
+                            {paragraph}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <div className="mx-auto mt-20 max-w-5xl">
             <h3 className="text-center text-2xl font-bold text-navy sm:text-3xl">

@@ -155,12 +155,70 @@ content's Spark → Vision → Impact narrative arc as the section's story struc
 where JCS's approach/methodology lives, matching what Psiog's "Our Model" section does for
 their business.
 
-**3. Leadership section** (already built — the card + drawer pattern): 2 cards (Raghul J C,
-Siva Harish M), off-canvas drawer with photo, name, title, LinkedIn (both URLs confirmed
-current: `raghul-j-c-617818221`, `siva-harish-m-056617223`), full verbatim bio. Followed by
-the "Our Leadership Values" 4-item grid (Purpose-Driven / Innovation / Collaboration /
-Excellence) — this part is unchanged from what's already built, just relocate it from
-`/about/founders` into this section of the single `/about` page.
+**3. Leadership section — CORRECTED interaction pattern** (supersedes the earlier off-canvas
+drawer version, now that real Psiog screenshots show the actual mechanism): a grid of cards
+(photo, name, title), each with a circular "+" icon in the top-right corner. On click:
+- The "+" icon rotates (becomes visually an "×") and its circular background fills gold
+  (JCS's equivalent of Psiog's yellow-green fill).
+- A full-width bio panel expands (inline, pushing content below it down — NOT an off-canvas
+  drawer sliding from the side) directly below the row of cards, on a navy background
+  (Psiog uses teal): photo on the left, full bio text on the right, with a close "×" button
+  in the panel's top-right corner.
+- Clicking "×" or the same "+" icon again collapses the panel and un-rotates the icon.
+
+Only 2 cards — Raghul J C, Siva Harish M. Photo assignment now CONFIRMED (resolves the earlier
+open item): `src/assets/founders/WhatsApp Image 2026-09-06 at 11.11.35 PM.jpeg` = Raghul J C;
+`src/assets/founders/WhatsApp Image 2026-09-06 at 11.12.47 PM.jpeg` = Siva Harish M.
+
+**Bios — NEW, supersedes the old "From the Founder's Desk"/"Message from the Co-Founder"
+narrative copy for this card component** (that older copy was written for the earlier
+off-canvas drawer version; the client has now supplied new, more professional/credentials-
+focused bios specifically for this card+expand pattern — use these instead, verbatim,
+preserving each one's own voice exactly as given, including that Raghul's is third-person and
+Siva Harish's is first-person — don't normalize them to match each other):
+
+**Raghul J C — Founder & CEO** (LinkedIn: `raghul-j-c-617818221`, reconfirmed current):
+
+> Raghul J C is the Founder & CEO of JCS iLEARN, an organisation established to bridge the gap
+> between education and industry through practical, industry-aligned learning and career
+> development. With over 5 years of corporate experience, he brings expertise in
+> institutional engagement, professional development, and operational leadership. He holds a
+> B.Tech in Biotechnology from Tamil Nadu Agricultural University and has completed his M.A.
+> in Public Administration from Indira Gandhi National Open University.
+>
+> Raghul has personally delivered 500+ training programs and trained over 1,00,000 students
+> across 50+ universities and colleges, schools, and corporate organisations. His portfolio
+> encompasses employability, communication, placement readiness, interview preparation,
+> leadership, entrepreneurship, and workplace skills.
+>
+> Under his leadership, JCS iLEARN delivers customised learning solutions aligned with
+> institutional and corporate requirements. His responsibilities span strategic direction,
+> client delivery, operations, finance, and talent acquisition, ensuring engagements are
+> supported by structured planning, capable trainers, and consistent execution.
+>
+> His leadership philosophy combines strategic vision, operational discipline, and a
+> learner-centric approach, strengthening JCS iLEARN's mission of empowering students and
+> professionals with the competencies required for long-term career success.
+
+**Siva Harish M — Co-Founder & Vice President** (LinkedIn: `siva-harish-m-056617223`,
+reconfirmed current):
+
+> With experience in Aptitude, Skill Development, Communication, and Interpersonal Skills, I
+> have trained 70,000+ students across 35+ institutions throughout India and have been part of
+> 350+ training programs, gaining exposure to diverse students, institutions, and learning
+> environments. I served as a Senior Aptitude Mentor at Alliance University, where I was
+> involved in academic training, content creation, and content delivery. With a vision to
+> create a greater impact in the education and employability sector, I co-founded JCS iLearn,
+> where I currently serve as Co-Founder & Vice President – Business Development & Human
+> Resources, handling institutional partnerships, business development, client relationships,
+> talent acquisition, team management, HR operations, and organizational growth. I also
+> continue to contribute to training, skill development, and employability initiatives. I
+> hold a Bachelor of Technology (B.Tech) degree from Paavai Engineering College, Namakkal,
+> which has strengthened my foundation in analytical thinking, problem-solving, and
+> technology-driven learning.
+
+Followed by the "Our Leadership Values" 4-item grid (Purpose-Driven / Innovation /
+Collaboration / Excellence) — unchanged, stays below this card+expand section.
 
 **Identity page content**: never actually sourced/extracted (it existed in the old repo but
 wasn't linked in the old site's own nav either) — do not fabricate content for it. If nothing
@@ -231,7 +289,10 @@ you reach the point of building `/programs` or `/services` and it isn't resolved
 - 35 cities served
 - Placement rate: client sent "0.83" — **confirm exact phrasing before publishing** (likely 83%, unconfirmed)
 
-### Founders (from old site — reuse as-is until client sends updates)
+### Founders (from old site — SUPERSEDED for the Leadership card+expand component, see the
+new professional bios in the "About & Contact page specs" section above. These older personal-
+narrative bios are kept here for reference only, in case a future "founder's letter" style
+feature wants them — not currently used anywhere in the live site)
 
 **Raghul J C — Founder & CEO**
 - B.Tech (Biotechnology), Tamil Nadu Agricultural University; M.A., IGNOU
@@ -384,14 +445,15 @@ Jcs/
 2. Final logo asset (transparent PNG or SVG) — using placeholder raster for now
 3. Corporate/company partner logos — none received yet (only college logos)
 4. Missing photo for trainer Soundariya T
-5. Founder LinkedIn URLs — resolved from old site (see above), but confirm still active
+5. ~~Founder LinkedIn URLs~~ — RESOLVED: client resent both, they match what was already on
+   file, confirmed current.
 6. Company-level LinkedIn/Facebook link — not yet provided
 7. Placement rate phrasing ("0.83") — unconfirmed
 8. Testimonial quotes above are drafts pending client sign-off
 9. Awards section placement (individual vs. company) — unconfirmed
-10. Founder photo identity unconfirmed — the two files in src/assets/founders/ are unlabeled;
-    currently assigned in listing order (first file → Raghul, second → Siva Harish) as a
-    placeholder. Confirm with client and swap if wrong — one-line fix in content.ts.
+10. ~~Founder photo identity unconfirmed~~ — RESOLVED: client confirmed exact filenames —
+    `WhatsApp Image 2026-09-06 at 11.11.35 PM.jpeg` = Raghul J C, `WhatsApp Image 2026-09-06
+    at 11.12.47 PM.jpeg` = Siva Harish M.
 11. Contact form won't send mail until a real .env with EmailJS service/template/public key
     IDs is added locally (see .env.example) — get these from the client or a fresh EmailJS
     account before this page goes live.

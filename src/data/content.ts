@@ -18,8 +18,7 @@ import takshashilaUniversityLogo from '../assets/college-logos/Takshashila Unive
 import tamilNaduCollegeLogo from '../assets/college-logos/Tamil Nadu College of Engineering, Coimbatore/TN.jpg'
 import velsUniversityLogo from '../assets/college-logos/VELS University, Chennai/VELS.png'
 import vsbCollegeLogo from '../assets/college-logos/VSB College of Engineering, Coimbatore/images (3).jpeg'
-// Photo-to-name mapping is an assumption (see Founder type below) — both files are generic,
-// unlabeled WhatsApp exports with no way to confirm identity from the image itself.
+// Photo-to-name mapping is client-confirmed (see Founder type below / CLAUDE.md).
 import raghulPhoto from '../assets/founders/WhatsApp Image 2026-09-06 at 11.11.35 PM.jpeg'
 import sivaPhoto from '../assets/founders/WhatsApp Image 2026-09-06 at 11.12.47 PM.jpeg'
 
@@ -436,37 +435,37 @@ export interface Founder {
   id: string
   name: string
   title: string
-  credentials: string
   linkedIn: string
-  bio: string
-  signOff: string
+  bio: string[]
   photo: string
 }
 
-// Bios are verbatim from CLAUDE.md's "From the Founder's Desk" / "Message from the
-// Co-Founder" copy — do not summarize, paraphrase, or edit the wording.
-// Photo assignment is still an open item pending client confirmation (see CLAUDE.md) —
-// left exactly as-is, do not change which photo maps to which founder.
+// Bios are verbatim from CLAUDE.md's new professional/credentials-focused copy, written
+// specifically for the card+expand Leadership component — preserve each one's own voice
+// exactly as given (Raghul's is third-person, Siva Harish's is first-person); don't
+// normalize them to match each other. Photo assignment is client-confirmed (see CLAUDE.md).
 export const founders: Founder[] = [
   {
     id: 'raghul-j-c',
     name: 'Raghul J C',
     title: 'Founder & CEO',
-    credentials:
-      'B.Tech (Biotechnology), Tamil Nadu Agricultural University · M.A., IGNOU',
     linkedIn: 'https://www.linkedin.com/in/raghul-j-c-617818221/',
-    bio: `The spark for JCS iLearn was ignited during one of my entrepreneurship workshops. A curious student asked: "You speak so passionately about entrepreneurship—why haven't you started your own company?" That question hit home. It wasn't just a passing thought—it was a powerful reflection. If I truly believed in entrepreneurship, why not live it? That moment became my turning point. Fueled by a deep passion for teaching and a desire to create meaningful impact, I founded JCS iLearn—a platform where education is not just shared, but experienced, and where learning opens doors to real opportunity. Our tagline, "I Learn, I Earn," isn't just a slogan—it's our philosophy. We believe education should lead to empowerment, and knowledge should create opportunities for growth and success. This company is my answer to that student's question—and proof that with the right support, learning becomes a launchpad for life.`,
-    signOff: '— Raghul J C, Founder & CEO',
+    bio: [
+      "Raghul J C is the Founder & CEO of JCS iLEARN, an organisation established to bridge the gap between education and industry through practical, industry-aligned learning and career development. With over 5 years of corporate experience, he brings expertise in institutional engagement, professional development, and operational leadership. He holds a B.Tech in Biotechnology from Tamil Nadu Agricultural University and has completed his M.A. in Public Administration from Indira Gandhi National Open University.",
+      'Raghul has personally delivered 500+ training programs and trained over 1,00,000 students across 50+ universities and colleges, schools, and corporate organisations. His portfolio encompasses employability, communication, placement readiness, interview preparation, leadership, entrepreneurship, and workplace skills.',
+      'Under his leadership, JCS iLEARN delivers customised learning solutions aligned with institutional and corporate requirements. His responsibilities span strategic direction, client delivery, operations, finance, and talent acquisition, ensuring engagements are supported by structured planning, capable trainers, and consistent execution.',
+      "His leadership philosophy combines strategic vision, operational discipline, and a learner-centric approach, strengthening JCS iLEARN's mission of empowering students and professionals with the competencies required for long-term career success.",
+    ],
     photo: raghulPhoto,
   },
   {
     id: 'siva-harish-m',
     name: 'Siva Harish M',
-    title: 'Co-Founder & VP',
-    credentials: 'B.Tech (Food Technology), Paavai Engineering College',
+    title: 'Co-Founder & Vice President',
     linkedIn: 'https://www.linkedin.com/in/siva-harish-m-056617223/',
-    bio: `At JCS iLearn, we believe that skill is the foundation of transformation—not just for individuals, but for industries, communities, and the future. Our vision is to close the gap between education and employability by equipping learners with practical, future-ready skills. We're committed to building high-impact, accessible learning experiences that go beyond upskilling—they inspire growth, confidence, and clarity. As Co-Founder, I assure you that our mission is personal. Every program we design is created with care, relevance, and a deep understanding of the challenges today's learners face. Thank you for trusting us. Together, let's unlock potential—and build a skilled, forward-thinking generation.`,
-    signOff: '— Siva Harish M, Co-Founder & VP',
+    bio: [
+      'With experience in Aptitude, Skill Development, Communication, and Interpersonal Skills, I have trained 70,000+ students across 35+ institutions throughout India and have been part of 350+ training programs, gaining exposure to diverse students, institutions, and learning environments. I served as a Senior Aptitude Mentor at Alliance University, where I was involved in academic training, content creation, and content delivery. With a vision to create a greater impact in the education and employability sector, I co-founded JCS iLearn, where I currently serve as Co-Founder & Vice President – Business Development & Human Resources, handling institutional partnerships, business development, client relationships, talent acquisition, team management, HR operations, and organizational growth. I also continue to contribute to training, skill development, and employability initiatives. I hold a Bachelor of Technology (B.Tech) degree from Paavai Engineering College, Namakkal, which has strengthened my foundation in analytical thinking, problem-solving, and technology-driven learning.',
+    ],
     photo: sivaPhoto,
   },
 ]
