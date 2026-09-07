@@ -71,19 +71,19 @@ export default function StatsStrip() {
         initial={{ opacity: 0 }}
         animate={trustedByInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="bg-white py-14"
+        className="bg-white py-16"
       >
-        <p className="px-6 text-center text-xs font-semibold tracking-wide text-pale-blue-text/70 uppercase">
+        <p className="px-6 text-center text-lg font-bold tracking-wide text-gold uppercase sm:text-xl">
           Trusted By
         </p>
-        <div className="mt-8 overflow-hidden">
-          <div className="flex w-max items-center gap-x-8 animate-[marquee_34s_linear_infinite] hover:[animation-play-state:paused] sm:gap-x-10">
+        <div className="mt-10 overflow-hidden">
+          <div className="flex w-max items-center gap-x-10 animate-[marquee_50s_linear_infinite] hover:[animation-play-state:paused] sm:gap-x-14">
             {[...collegeLogos, ...collegeLogos].map((logo, index) => (
               <img
                 key={`${logo.name}-${index}`}
                 src={logo.src}
                 alt={logo.name}
-                className="h-9 w-auto shrink-0 object-contain opacity-70 grayscale transition-all duration-200 hover:opacity-100 hover:grayscale-0 sm:h-10"
+                className="h-14 w-auto shrink-0 object-contain drop-shadow-[0_4px_8px_rgba(10,11,104,0.12)] sm:h-16"
               />
             ))}
           </div>
