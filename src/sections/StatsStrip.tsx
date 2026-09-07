@@ -16,7 +16,7 @@ export default function StatsStrip() {
       className="bg-white py-16"
     >
       <Container className="flex flex-col items-center">
-        <p className="text-center text-lg font-bold tracking-wide text-navy uppercase sm:text-xl">
+        <p className="text-center text-lg font-bold tracking-wide text-black uppercase sm:text-xl">
           Trusted By
         </p>
         <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />

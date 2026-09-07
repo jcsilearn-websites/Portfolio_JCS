@@ -15,23 +15,23 @@ export default function WhoWeServe() {
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <span className="inline-flex flex-col items-start">
-            <span className="text-sm font-semibold tracking-wide text-navy uppercase">
+            <span className="text-sm font-semibold tracking-wide text-black uppercase">
               {whoWeServe.label}
             </span>
             <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
           </span>
 
-          <h2 className="mt-6 text-3xl font-bold text-navy sm:text-4xl">
+          <h2 className="mt-6 text-3xl font-bold text-black sm:text-4xl">
             {whoWeServe.headline.lead}
             <em className="font-normal italic">{whoWeServe.headline.emphasis}</em>
             {whoWeServe.headline.trail}
           </h2>
 
-          <p className="mt-6 text-left text-lg text-navy/70">
+          <p className="mt-6 text-left text-lg text-black/70">
             {whoWeServe.paragraph}
           </p>
 
-          <p className="mt-6 text-base font-light text-navy/60 italic">
+          <p className="mt-6 text-base font-light text-black/60 italic">
             {whoWeServe.closingLine}
           </p>
         </div>
