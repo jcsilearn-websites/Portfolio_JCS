@@ -42,18 +42,151 @@ export const homeHero = {
 }
 
 export interface StatItem {
+  id: string
   target: number
   suffix: string
   label: string
 }
 
 export const homeStats: StatItem[] = [
-  { target: 1, suffix: '', label: 'Year in Operation' },
-  { target: 150000, suffix: '+', label: 'Students/Professionals Trained' },
-  { target: 25, suffix: '+', label: 'Institutions' },
-  { target: 10, suffix: '+', label: 'Corporate Partners' },
-  { target: 400, suffix: '+', label: 'Trainers' },
-  { target: 35, suffix: '', label: 'Cities Served' },
+  { id: 'year', target: 1, suffix: '', label: 'Year in Operation' },
+  { id: 'students', target: 150000, suffix: '+', label: 'Students/Professionals Trained' },
+  { id: 'institutions', target: 25, suffix: '+', label: 'Institutions' },
+  { id: 'corporate', target: 10, suffix: '+', label: 'Corporate Partners' },
+  { id: 'trainers', target: 400, suffix: '+', label: 'Trainers' },
+  { id: 'cities', target: 35, suffix: '', label: 'Cities Served' },
+  // TODO: replace with real figure — not in client-sourced content, placeholder for layout only
+  { id: 'courses', target: 50, suffix: '+', label: 'Courses & Programs' },
+  // TODO: replace with real figure — not in client-sourced content, placeholder for layout only
+  { id: 'satisfaction', target: 95, suffix: '%', label: 'Learner Satisfaction' },
+]
+
+export type BentoIcon =
+  | 'academic-cap'
+  | 'building'
+  | 'briefcase'
+  | 'user-group'
+  | 'calendar'
+  | 'book'
+  | 'star'
+
+export interface BentoTile {
+  id: string
+  /** grid-area name, matches the desktop grid-template-areas layout */
+  area: string
+  /** key into homeStats — omit for non-numeric tiles (map, partners) */
+  statId?: string
+  /** static label for non-numeric tiles */
+  label?: string
+  bg: string
+  numberColor: string
+  labelColor: string
+  icon?: BentoIcon
+  iconTreatment: 'corner' | 'watermark' | 'none'
+  rounded: 'tl-br' | 'tr-bl'
+}
+
+// Desktop layout (12-col x 2-row grid-template-areas, see Recognitions.tsx):
+//   trained trained map map map map inst inst partners partners trainers trainers
+//   trained trained map map map map corp corp year year courses satisfaction
+export const bentoTiles: BentoTile[] = [
+  {
+    id: 'trained',
+    area: 'trained',
+    statId: 'students',
+    bg: 'bg-navy',
+    numberColor: 'text-white',
+    labelColor: 'text-white/80',
+    icon: 'academic-cap',
+    iconTreatment: 'watermark',
+    rounded: 'tl-br',
+  },
+  {
+    id: 'map',
+    area: 'map',
+    statId: 'cities',
+    bg: 'bg-gold',
+    numberColor: 'text-navy',
+    labelColor: 'text-navy/70',
+    iconTreatment: 'none',
+    rounded: 'tr-bl',
+  },
+  {
+    id: 'inst',
+    area: 'inst',
+    statId: 'institutions',
+    bg: 'bg-white border border-navy/10 shadow-md',
+    numberColor: 'text-navy',
+    labelColor: 'text-pale-blue-text',
+    icon: 'building',
+    iconTreatment: 'corner',
+    rounded: 'tl-br',
+  },
+  {
+    id: 'partners',
+    area: 'partners',
+    label: 'Our Partners',
+    bg: 'bg-navy',
+    numberColor: 'text-white',
+    labelColor: 'text-white/80',
+    iconTreatment: 'none',
+    rounded: 'tr-bl',
+  },
+  {
+    id: 'trainers',
+    area: 'trainers',
+    statId: 'trainers',
+    bg: 'bg-navy',
+    numberColor: 'text-white',
+    labelColor: 'text-white/80',
+    icon: 'user-group',
+    iconTreatment: 'corner',
+    rounded: 'tl-br',
+  },
+  {
+    id: 'corp',
+    area: 'corp',
+    statId: 'corporate',
+    bg: 'bg-pale-blue-bg',
+    numberColor: 'text-navy',
+    labelColor: 'text-pale-blue-text',
+    icon: 'briefcase',
+    iconTreatment: 'corner',
+    rounded: 'tr-bl',
+  },
+  {
+    id: 'year',
+    area: 'year',
+    statId: 'year',
+    bg: 'bg-gold',
+    numberColor: 'text-navy',
+    labelColor: 'text-navy/70',
+    icon: 'calendar',
+    iconTreatment: 'corner',
+    rounded: 'tl-br',
+  },
+  {
+    id: 'courses',
+    area: 'courses',
+    statId: 'courses',
+    bg: 'bg-white border border-navy/10 shadow-md',
+    numberColor: 'text-navy',
+    labelColor: 'text-pale-blue-text',
+    icon: 'book',
+    iconTreatment: 'corner',
+    rounded: 'tr-bl',
+  },
+  {
+    id: 'satisfaction',
+    area: 'satisfaction',
+    statId: 'satisfaction',
+    bg: 'bg-pale-blue-bg',
+    numberColor: 'text-navy',
+    labelColor: 'text-pale-blue-text',
+    icon: 'star',
+    iconTreatment: 'corner',
+    rounded: 'tl-br',
+  },
 ]
 
 export interface ServiceCategory {
