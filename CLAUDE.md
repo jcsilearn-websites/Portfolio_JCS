@@ -113,13 +113,36 @@ sections in Psiog's exact order — Positioning → Our Model → Leadership. Fo
 Journey/Vision/Identity content into this structure as sections, not routes. Remove the old
 sub-routes.
 
-**1. Positioning section** (Psiog: company identity — who they are, who they serve): use the
-existing Vision headline and mission line as the anchor copy — `"I Learn, I Earn" —
-Empowering Lives Through Essential Skills` as the section heading, "Because when you Learn
-with Purpose, you Earn with Confidence." as a pull-quote line, plus a short paragraph on what
-JCS is and who it trains (can reuse/adapt the "Who We Serve" paragraph already written for
-Home — don't duplicate it verbatim if both sections end up on the same page flow, vary the
-phrasing slightly so it doesn't read as repeated copy).
+**1. Positioning section — "Our Story"** (Psiog: company identity — who they are; matches
+Psiog's two-column layout, text left / image+overlapping-quote-card right). Directly below
+the hero, real final copy from the client (verbatim, not draft):
+
+Left column heading: **"Our Story"**, followed by these paragraphs verbatim:
+
+> Every great journey begins with a belief. Ours began with a belief that education should
+> transform lives, not simply award certificates.
+>
+> JCS iLearn was created to bridge the gap between what people learn and what the world
+> expects, turning knowledge into skills, confidence into capability, and ambition into
+> achievement. We are building a learning ecosystem where every learner is empowered to
+> discover their potential, embrace opportunities, and create a future they can be proud of.
+>
+> **We don't just build skills. We build possibilities.**
+
+Right column: `src/assets/About-page/gear.png` (JCS's gear/checkmark mark, standing in for
+Psiog's bronze plaque image), with a pre-designed quote-card image
+(`src/assets/About-page/quote-card.png` or wherever the client's second image lands — a
+navy card with gold quote marks reading "Empowering learners today for brighter tomorrows. At
+JCS iLEARN, we bridge education and opportunities to help individuals build skills,
+confidence, and successful careers.") overlapping the bottom-left corner of the gear image,
+matching Psiog's exact overlap positioning. This quote card has its own text baked in as an
+image (client-designed asset) — add descriptive alt text since it won't be readable by screen
+readers/SEO otherwise.
+
+**Superseded**: the earlier version of this section (centered single paragraph + a live-text
+"Because when you Learn with Purpose, you Earn with Confidence." pull-quote) is replaced by
+this two-column layout — the pull-quote line is now carried by the quote-card image instead
+of live text.
 
 **2. Our Model section** (Psiog: how they work/their methodology): map the existing "Why
 Choose Our Training Services" content here — Industry-Relevant Curriculum, Expert Trainers,
