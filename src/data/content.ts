@@ -215,13 +215,19 @@ export const philosophy = {
   quote: homeHero.supportingLine,
 }
 
-// Positioning section of the consolidated /about page. Heading + closing pull-quote are the
-// sourced Vision headline / mission line (CLAUDE.md "About / Journey / Vision copy"), used
-// verbatim. The paragraph is draft copy deliberately reworded from whoWeServe's paragraph
-// below (same 5 audiences, no new claims) so the two don't read as duplicated copy when both
-// appear in the same site flow — pending client review, same as whoWeServe.
+// Positioning section of the consolidated /about page. Label/headline/subheading sit on the
+// hero photo (see reference layout — About Us eyebrow, then the Vision headline split into
+// its two halves rather than one combined string, matching the reference's tighter two-line
+// hierarchy instead of the headline wrapping across lines on its own). Sourced verbatim from
+// CLAUDE.md's Vision headline / mission line. The paragraph is draft copy deliberately
+// reworded from whoWeServe's paragraph below (same 5 audiences, no new claims) so the two
+// don't read as duplicated copy when both appear in the same site flow — pending client
+// review, same as whoWeServe. Paragraph + quote now render in their own section below the
+// hero (plain background), not overlaid on the photo.
 export const positioning = {
-  heading: '"I Learn, I Earn" — Empowering Lives Through Essential Skills',
+  label: 'About Us',
+  headline: 'I Learn, I Earn',
+  subheading: 'Empowering Lives Through Essential Skills.',
   paragraph:
     'JCS iLearn is a training and skill-development company built to make learning lead somewhere. We partner with universities, corporates, startups, and schools to turn classroom learning into workplace-ready skill — backed by a growing network of trainers delivering practice-first programs, not one-size-fits-all lectures.',
   quote: homeHero.supportingLine,

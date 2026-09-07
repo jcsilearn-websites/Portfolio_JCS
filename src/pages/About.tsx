@@ -33,7 +33,7 @@ export default function About() {
     <main>
       <section
         id="positioning"
-        className="scroll-mt-24 bg-navy bg-cover bg-center bg-no-repeat px-6 py-20 text-center sm:py-24"
+        className="scroll-mt-24 bg-navy bg-cover bg-center bg-no-repeat px-6 py-16 text-center sm:py-20"
         style={{ backgroundImage: `url(${aboutHeroImage})` }}
       >
         <motion.div
@@ -43,13 +43,32 @@ export default function About() {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="mx-auto max-w-3xl"
         >
-          <h1 className="text-4xl font-bold text-white sm:text-5xl">
-            {positioning.heading}
+          <span className="inline-flex flex-col items-center">
+            <span className="text-sm font-semibold tracking-wide text-white uppercase">
+              {positioning.label}
+            </span>
+            <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
+          </span>
+
+          <h1 className="mt-4 text-4xl leading-tight font-bold text-white sm:text-5xl lg:text-6xl">
+            {positioning.headline}
           </h1>
-          <p className="mt-6 text-lg text-pale-blue-bg sm:text-xl">
-            {positioning.paragraph}
+          <p className="mt-2 text-lg text-white italic sm:text-xl">
+            {positioning.subheading}
           </p>
-          <p className="mt-6 text-base font-light text-white/60 italic">
+        </motion.div>
+      </section>
+
+      <section className="bg-white px-6 py-16 sm:py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="mx-auto max-w-3xl text-center"
+        >
+          <p className="text-lg text-navy/70">{positioning.paragraph}</p>
+          <p className="mt-6 text-base font-light text-navy/60 italic">
             {positioning.quote}
           </p>
         </motion.div>
