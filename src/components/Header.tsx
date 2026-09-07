@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { HiMenu, HiX, HiChevronDown } from 'react-icons/hi'
-import { HiArrowUpRight } from 'react-icons/hi2'
 import jcsLogo from '../assets/logos/jcs-ilearn-logo.svg'
+import Button from './Button'
 
 const aboutLinks = [
   { label: 'About', to: '/about' },
@@ -132,20 +132,9 @@ export default function Header() {
             </Link>
           ))}
 
-          <Link
-            to="/contact"
-            className="group inline-flex items-center gap-2 rounded-xl border border-navy/10 bg-white px-5 py-2.5 text-sm font-semibold text-navy transition-colors duration-200 ease-out hover:bg-navy hover:text-white"
-          >
-            <span className="flex items-center gap-2 transition-transform duration-200 ease-out group-hover:translate-x-1">
-              Get Started
-              <span className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-tl-md rounded-tr-none rounded-br-md rounded-bl-md bg-gold text-navy">
-                <HiArrowUpRight
-                  size={14}
-                  className="transition-transform duration-200 ease-out group-hover:-translate-y-1"
-                />
-              </span>
-            </span>
-          </Link>
+          <Button to="/contact" variant="primary" size="sm">
+            Get Started
+          </Button>
         </nav>
 
         <button
@@ -204,21 +193,15 @@ export default function Header() {
                 </NavLink>
               ))}
 
-              <Link
+              <Button
                 to="/contact"
+                variant="primary"
+                size="sm"
+                className="mt-3"
                 onClick={() => setMobileOpen(false)}
-                className="group mt-3 inline-flex items-center justify-center gap-2 rounded-xl border border-navy/10 bg-white px-5 py-2.5 text-sm font-semibold text-navy transition-colors duration-200 ease-out hover:bg-navy hover:text-white"
               >
-                <span className="flex items-center gap-2 transition-transform duration-200 ease-out group-hover:translate-x-1">
-                  Get Started
-                  <span className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-tl-md rounded-tr-none rounded-br-md rounded-bl-md bg-gold text-navy">
-                    <HiArrowUpRight
-                      size={14}
-                      className="transition-transform duration-200 ease-out group-hover:-translate-y-1"
-                    />
-                  </span>
-                </span>
-              </Link>
+                Get Started
+              </Button>
             </div>
           </motion.nav>
         )}

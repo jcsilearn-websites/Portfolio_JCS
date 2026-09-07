@@ -1,6 +1,7 @@
 import { HiMapPin, HiPhone, HiEnvelope } from 'react-icons/hi2'
 import ContactForm from '../sections/ContactForm'
 import { contactInfo } from '../data/content'
+import Button from '../components/Button'
 
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
   contactInfo.address,
@@ -39,12 +40,9 @@ export default function Contact() {
               organization.
             </p>
           </div>
-          <a
-            href="#contact-form"
-            className="shrink-0 rounded-xl bg-gold px-6 py-3 text-sm font-semibold text-navy transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-          >
+          <Button href="#contact-form" variant="primary" size="md" className="shrink-0">
             Get In Touch
-          </a>
+          </Button>
         </div>
       </section>
 
