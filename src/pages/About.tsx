@@ -33,7 +33,7 @@ export default function About() {
     <main>
       <section
         id="positioning"
-        className="scroll-mt-24 bg-navy bg-cover bg-center bg-no-repeat px-6 py-20 text-center sm:py-28"
+        className="scroll-mt-24 bg-navy bg-cover bg-center bg-no-repeat px-6 py-16 text-center sm:py-20"
         style={{ backgroundImage: `url(${aboutHeroImage})` }}
       >
         <motion.div
@@ -41,22 +41,19 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="mx-auto max-w-4xl"
+          className="mx-auto max-w-3xl"
         >
           <span className="inline-flex flex-col items-center">
-            <span className="text-base font-semibold tracking-wide text-white uppercase sm:text-lg">
+            <span className="text-sm font-semibold tracking-wide text-white uppercase">
               {positioning.label}
             </span>
-            <span className="mt-1.5 h-0.5 w-10 rounded-full bg-gold" />
+            <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
           </span>
 
-          <h1 className="mt-6 text-5xl leading-tight font-bold tracking-tight text-white sm:text-7xl lg:text-8xl">
-            {positioning.headline.lead}
-            <span className="text-gold whitespace-nowrap">
-              {positioning.headline.emphasis}
-            </span>
+          <h1 className="mt-4 text-4xl leading-tight font-bold text-white sm:text-5xl lg:text-6xl">
+            {positioning.headline}
           </h1>
-          <p className="mt-4 text-xl text-white italic sm:text-2xl">
+          <p className="mt-2 text-lg text-white italic sm:text-xl">
             {positioning.subheading}
           </p>
         </motion.div>
