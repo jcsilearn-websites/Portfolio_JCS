@@ -14,6 +14,6 @@ interface ContainerProps {
 // typographic width, not the section's outer alignment boundary.
 export default function Container({ children, className = '' }: ContainerProps) {
   return (
-    <div className={`mx-auto max-w-7xl px-6 ${className}`}>{children}</div>
+    <div className={`mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 ${className}`}>{children}</div>
   )
 }
