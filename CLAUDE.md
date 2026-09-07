@@ -43,6 +43,17 @@ src/
 
 ## Design system
 
+**Typeface:** Plus Jakarta Sans (Google Fonts, variable weight 200-800, italic included). Not
+an arbitrary pick — Psiog's own stylesheet declares `"Google Sans", sans-serif`, but Google
+Sans is Google's proprietary internal font, not licensable/usable outside Google's own
+products; for most visitors without local access to it, Psiog's site silently falls back to
+plain system sans-serif. Plus Jakarta Sans was chosen as a close, actually-usable visual
+substitute (similar geometric structure, rounded terminals) rather than copying a font that
+doesn't really work for outside visitors either. Loaded via Google Fonts `<link>` in
+`index.html`, wired to `--font-sans` in the Tailwind `@theme` block. Headings at weight
+600-700, body/nav at 400-500, matching the weight contrast on the reference site. Do not
+re-investigate "Google Sans" further — this is settled.
+
 **Locked palette:**
 | Token | Hex | Use |
 |---|---|---|
@@ -68,8 +79,8 @@ ground truth for the Home page — only the copy/data changes, not the pattern.
 
 | # | Section | Pattern (copy this exactly) |
 |---|---|---|
-| 1 | Header (nav) | **Correction — Psiog's nav is white, not dark.** White background, navy text nav links, gold underline beneath the active/hovered link (not a color-only change — Psiog uses an actual underline), gold filled pill button for the primary CTA ("Get Started"/"Contact Us"). Logo sits left, links center-right, CTA button far right. This replaces the current navy header — rebuild it, don't just recolor it. |
-| 2 | Hero | **Correction — this is a two-column split layout, not one full-bleed photo with text overlaid on top.** Left column (~45-50% width): solid navy background (no photo here), headline (2-3 lines, with one phrase styled differently — Psiog italicizes its last line, e.g. do the same with a key JCS phrase), 1-sentence subhead, two CTA buttons side by side (primary gold filled, secondary outline), and directly below the buttons: the 5 short differentiator phrases in a single muted inline row separated by "/" (already written, e.g. "Practice-First Training Approach / Experienced, Certified Trainers / ..." — just relocate them here, out of the current full-width bottom-of-hero position). Right column (~50-55% width): the real photo bleeding full-height to the edge of the viewport, no dark overlay needed here since it's not sitting behind text anymore — this is also where the client's eventual video/animated asset drops in later. On mobile: stack the image below the text column (or behind it, dimmed, if that reads better — use judgment, but don't just keep the current single-full-bleed-photo approach at any breakpoint). |
+| 1 | Header (nav) | White background, navy text nav links, gold underline beneath the active/hovered link. **Nav order: Home / About Us / Our Programs / Our Services / Trainers**, then the gold "Get Started" pill button. **About Us is a single plain link to `/about` — NOT a dropdown** (corrected: matches Psiog's real nav, which has no dropdown on About since it's one page with anchors, not sub-pages). Home links to `/`, same font-size/weight/hover treatment as its siblings. Logo sits left, links center-right, CTA button far right. |
+| 2 | Hero | Full-bleed looping video background (`autoplay muted loop playsInline`, `object-cover`), pulling brand navy from the Tailwind theme token, not a hardcoded hex. **Overlay gradient (corrected — softer/longer than the first pass):** left-side navy overlay at ~80-85% opacity (not fully solid — faint video texture should bleed through even behind the text), holding that opacity until roughly 30% width, then fading gradually to transparent by ~85-90% width (not a fast cutoff). Mobile/tablet: flatter near-solid navy wash across the whole video for readability, no gradient at narrow widths. Text content (headline, subhead, two CTAs, differentiator badge row) unchanged — this row only governs the background treatment. Poster frame + `prefers-reduced-motion` fallback to a static image. |
 | 3 | Recognitions | Row of circular badge icons + title + date, centered heading above ("Recognized for our Differentiators" style). JCS currently has exactly ONE real, confirmed item: "Best Trainer of the Year 2024–25" (Alliance University) — this belongs to a specific trainer, not the company, so the card should read as a trainer credential (e.g. "[Trainer Name] — Best Trainer of the Year, Alliance University, 2024–25") not a generic company award. Build the row to support 1-3 cards visually (don't stretch one card to fill a 3-card-wide row awkwardly) and leave it structured so more can be added later. **Do not fabricate additional awards** to fill the row. |
 | 4 | Stats + Map + Partnerships (bento grid) | This is a specific **asymmetric grid**, not a flat row — replicate the exact shape below, sized to JCS's 6 real stats (not Psiog's 8+1, so the grid is smaller — don't pad with invented stats): <br><br>**Layout (5 columns × 3 rows on desktop):**<br>- Col 1, Row 1: `1,50,000+ Students/Professionals Trained` (white card)<br>- Col 1, Row 2-3 (tall card, spans 2 rows): `1 Year in Operation` (gold-accent card)<br>- Col 2-3, Row 1-2 (large card, spans 2 cols × 2 rows): the **map/highlight cell** — `35 Cities Served`, large number on a bold navy or gold background. Use a simple stylized India outline graphic if one exists in assets; if not, style this as a bold highlight card WITHOUT a fabricated map graphic (large number + label is enough — don't invent or approximate a map SVG that isn't accurate) <br>- Col 4, Row 1: `400+ Trainers` (navy card)<br>- Col 4, Row 2: `25+ Institutions` (white card)<br>- Col 2-4, Row 3 (wide card, spans 3 cols): `10+ Corporate Partners` (navy card)<br>- Col 5, Row 1-3 (tall card, spans full height): **Partnerships/"Trusted by" cell** — use the real college logos (rotate through 4-6 of them, small logo grid or fade carousel), labeled "Trusted by" or "Our Partner Institutions"<br><br>On mobile: collapse to a single column, stacked in the same top-to-bottom reading order (students → year → cities → trainers → institutions → corporate partners → trusted-by logos). <br><br>Card color rule: alternate white / navy / gold-accent cards for visual rhythm like Psiog does (not all one color) — but stay within the locked 4-token palette, don't introduce Psiog's teal/lime. |
 | 5 | Who We Serve | **Exact Psiog layout — two-column, not centered plain text (supersedes the current centered version, which needs a full rebuild):**<br><br>**Left column:**<br>- Small label above the headline: "Who We Serve" in gold/navy with a short gold underline beneath it (matches the label+underline treatment used elsewhere already, e.g. "Recognitions").<br>- Headline: 2-3 lines, bold, with ONE key phrase italicized for emphasis (Psiog: "We believe in catering to the *Underserved Mid-Market*."). JCS draft (flagged as draft copy, not sourced verbatim): "We Believe Every Learner Deserves a *Path to Employability*." — replace if the client sends preferred wording.<br>- Body paragraph: reuse the already-written "JCS iLearn trains learners at every stage..." paragraph currently in the centered version — this copy is good, just needs to move into this left column, left-aligned, not centered.<br>- Closing italic pull-quote line, smaller/lighter than the headline (Psiog: "Psiog operates in this white space. We focus where others don't."): use the existing sourced mission line **verbatim** — "Because when you Learn with Purpose, you Earn with Confidence." — do not draft a new one, this is already real content.<br><br>**Right column — floating badge graphic:**<br>- A simple, clean India outline (decorative, not survey-accurate — no accurate asset exists yet, use any clean public-style outline) in a pale/muted tone (pale-blue-bg or navy/10).<br>- Floating circular badges scattered loosely around/above the outline (not pinned to precise real coordinates — Psiog's own placement is loose/decorative too), each containing a **real college logo** (rotate through a subset of the 18 available, e.g. 8-10 at a time). Mix in a few smaller plain colored dots (gold/navy, no logo) between them purely for visual rhythm, matching Psiog's mix of logo-circles and plain accent-color dots.<br>- Thin dashed connector lines from a few badges down toward the map outline, decorative only.<br>- **Animation**: continuous gentle vertical float on each badge (translateY oscillating a few px, 3-4s ease-in-out loop, staggered start delay per badge so they don't move in sync) — this is the "exact Psiog animation" being asked for. No hover-triggered animation needed; it should already be gently moving on load. |
@@ -93,17 +104,45 @@ Advisory Board, heavy Careers-page onboarding/resume-upload machinery, separate 
 does **not** apply here and should not be built — JCS has 2 founders and no blog, don't
 manufacture sections looking for content to fill.
 
-### About page — leadership card + drawer (upgrade to `/about/founders`)
-- Replace the current static two-column founder layout with: a grid of 2 cards (photo, name,
-  title only) — Raghul J C (Founder & CEO) and Siva Harish M (Co-Founder & VP).
-- Clicking a card opens an off-canvas drawer (slide in from the right) showing: photo again,
-  name, title, LinkedIn icon linking to their real profile URL (both already in the Content
-  section above), and the full bio paragraph (their existing "From the Founder's Desk" /
-  "Message from the Co-Founder" copy, verbatim — do not shorten it to fit the drawer, let the
-  drawer scroll if needed).
-- Only 2 cards — do not add placeholder cards for a leadership tier JCS doesn't have.
-- Keep the existing "Our Leadership Values" 4-item grid section below this — that content
-  stays, only the founder presentation above it changes.
+### About page — CONSOLIDATED single page (supersedes the earlier multi-page decision)
+
+**Correction — this was previously locked as 5 separate routes (`/about`, `/about/journey`,
+`/about/founders`, `/about/vision`, `/about/identity`). Client has now explicitly reversed
+that decision** and wants the true Psiog "ditto": one single `/about` page with anchored
+sections in Psiog's exact order — Positioning → Our Model → Leadership. Fold the existing
+Journey/Vision/Identity content into this structure as sections, not routes. Remove the old
+sub-routes.
+
+**1. Positioning section** (Psiog: company identity — who they are, who they serve): use the
+existing Vision headline and mission line as the anchor copy — `"I Learn, I Earn" —
+Empowering Lives Through Essential Skills` as the section heading, "Because when you Learn
+with Purpose, you Earn with Confidence." as a pull-quote line, plus a short paragraph on what
+JCS is and who it trains (can reuse/adapt the "Who We Serve" paragraph already written for
+Home — don't duplicate it verbatim if both sections end up on the same page flow, vary the
+phrasing slightly so it doesn't read as repeated copy).
+
+**2. Our Model section** (Psiog: how they work/their methodology): map the existing "Why
+Choose Our Training Services" content here — Industry-Relevant Curriculum, Expert Trainers,
+Proven Results (already sourced, from the old site's services page) — plus the Journey
+content's Spark → Vision → Impact narrative arc as the section's story structure. This is
+where JCS's approach/methodology lives, matching what Psiog's "Our Model" section does for
+their business.
+
+**3. Leadership section** (already built — the card + drawer pattern): 2 cards (Raghul J C,
+Siva Harish M), off-canvas drawer with photo, name, title, LinkedIn (both URLs confirmed
+current: `raghul-j-c-617818221`, `siva-harish-m-056617223`), full verbatim bio. Followed by
+the "Our Leadership Values" 4-item grid (Purpose-Driven / Innovation / Collaboration /
+Excellence) — this part is unchanged from what's already built, just relocate it from
+`/about/founders` into this section of the single `/about` page.
+
+**Identity page content**: never actually sourced/extracted (it existed in the old repo but
+wasn't linked in the old site's own nav either) — do not fabricate content for it. If nothing
+salvageable exists, it's fine for this page to simply not have an "Identity" section at all.
+
+**Header nav correction**: Psiog's own nav has NO dropdown on "About Us" — it's a single
+plain link, because their About is one page with in-page anchors, not sub-pages. Remove the
+JCS header's About Us dropdown (previously: About/Journey/Founders/Vision) and replace with a
+single "About Us" link pointing to `/about`.
 
 ### Contact page (`/contact`) — new structure
 Current `/contact` is a thin wrapper around the homepage's ContactUs section. Rebuild as its
@@ -125,11 +164,7 @@ own fuller page:
 ## Site structure (routes)
 
 - `/` — Home: Hero → Stats strip → About teaser → Services (tabbed, audience-based) → Programs teaser → Trainers teaser → Testimonials → CTA → Footer
-- `/about` — About Us (keep multi-page structure per client's explicit confirmation — do not consolidate into one page)
-  - `/about/journey`
-  - `/about/founders`
-  - `/about/vision`
-  - `/about/identity`
+- `/about` — **Single consolidated page** (corrected from the earlier multi-page approach): Positioning → Our Model → Leadership (card+drawer) sections, all on one page with anchors, matching Psiog's exact structure. No sub-routes.
 - `/programs` — full programs grid/tabs (see Programs data below)
 - `/services` — audience-based service cards (Universities/Corporates/Startups/Schools/Professionals)
 - `/trainers` — **new page, not in the old site** — trainer profile grid (content exists, see below; justified by the depth of the trainers deck the client provided)
@@ -206,7 +241,7 @@ you reach the point of building `/programs` or `/services` and it isn't resolved
   >
   > — Siva Harish M, Co-Founder & VP
 
-### Our Leadership Values (4-item grid — belongs below the founder cards/drawer on /about/founders)
+### Our Leadership Values (4-item grid — belongs below the founder cards/drawer in the Leadership section of the consolidated /about page)
 From the old site, reuse verbatim:
 1. **Purpose-Driven** — "Every decision is guided by our mission to empower learners"
 2. **Innovation** — "Continuously evolving our approach to meet changing needs"
