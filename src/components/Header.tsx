@@ -55,10 +55,10 @@ export default function Header() {
           >
             <button
               type="button"
-              className={`relative flex items-center gap-1 pb-1.5 text-sm font-medium transition-colors duration-200 ${
+              className={`relative flex items-center gap-1 pb-1.5 text-base font-medium tracking-normal transition-colors duration-200 ${
                 aboutActive || aboutOpen
-                  ? 'text-navy'
-                  : 'text-navy/70 hover:text-navy'
+                  ? 'text-gold'
+                  : 'text-navy hover:text-gold'
               }`}
               onClick={() => setAboutOpen((open) => !open)}
               aria-expanded={aboutOpen}
@@ -72,6 +72,8 @@ export default function Header() {
               {highlightedKey === 'about' && (
                 <motion.span
                   layoutId="nav-underline"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-gold"
                   transition={{ duration: 0.25, ease: 'easeOut' }}
                 />
@@ -115,16 +117,18 @@ export default function Header() {
               to={link.to}
               onMouseEnter={() => setHoveredKey(link.key)}
               onMouseLeave={() => setHoveredKey(null)}
-              className={`relative pb-1.5 text-sm font-medium transition-colors duration-200 ${
+              className={`relative pb-1.5 text-base font-medium tracking-normal transition-colors duration-200 ${
                 highlightedKey === link.key
-                  ? 'text-navy'
-                  : 'text-navy/70 hover:text-navy'
+                  ? 'text-gold'
+                  : 'text-navy hover:text-gold'
               }`}
             >
               {link.label}
               {highlightedKey === link.key && (
                 <motion.span
                   layoutId="nav-underline"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-gold"
                   transition={{ duration: 0.25, ease: 'easeOut' }}
                 />
