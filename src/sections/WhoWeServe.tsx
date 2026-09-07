@@ -14,7 +14,7 @@ export default function WhoWeServe() {
       <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <span className="inline-flex flex-col items-start">
-            <span className="text-sm font-semibold tracking-wide text-gold uppercase">
+            <span className="text-sm font-semibold tracking-wide text-navy uppercase">
               {whoWeServe.label}
             </span>
             <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
