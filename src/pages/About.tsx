@@ -3,6 +3,7 @@ import { motion, type Variants } from 'framer-motion'
 import { FaLinkedin } from 'react-icons/fa'
 import { HiFlag, HiLightBulb, HiHandRaised, HiStar } from 'react-icons/hi2'
 import Drawer from '../components/Drawer'
+import aboutHeroImage from '../assets/About-page/header.png'
 import {
   positioning,
   ourModel,
@@ -32,7 +33,8 @@ export default function About() {
     <main>
       <section
         id="positioning"
-        className="scroll-mt-24 bg-navy px-6 py-20 text-center sm:py-24"
+        className="scroll-mt-24 bg-navy bg-cover bg-center bg-no-repeat px-6 py-20 text-center sm:py-24"
+        style={{ backgroundImage: `url(${aboutHeroImage})` }}
       >
         <motion.div
           initial={{ opacity: 0, y: 24 }}
