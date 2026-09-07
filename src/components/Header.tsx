@@ -27,7 +27,9 @@ export default function Header() {
   const aboutActive = location.pathname.startsWith('/about')
   const activeKey = aboutActive
     ? 'about'
-    : (navLinks.find((link) => location.pathname === link.to)?.key ?? null)
+    : location.pathname === '/'
+      ? 'home'
+      : (navLinks.find((link) => location.pathname === link.to)?.key ?? null)
   const highlightedKey = hoveredKey ?? activeKey
 
   return (
@@ -42,6 +44,28 @@ export default function Header() {
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
+          <Link
+            to="/"
+            onMouseEnter={() => setHoveredKey('home')}
+            onMouseLeave={() => setHoveredKey(null)}
+            className={`relative pb-1.5 text-base font-medium tracking-normal transition-colors duration-200 ${
+              highlightedKey === 'home'
+                ? 'text-gold'
+                : 'text-navy hover:text-gold'
+            }`}
+          >
+            Home
+            {highlightedKey === 'home' && (
+              <motion.span
+                layoutId="nav-underline"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-gold"
+                transition={{ duration: 0.25, ease: 'easeOut' }}
+              />
+            )}
+          </Link>
+
           <div
             className="relative"
             onMouseEnter={() => {
@@ -161,6 +185,19 @@ export default function Header() {
             className="overflow-hidden border-t border-navy/10 bg-white md:hidden"
           >
             <div className="flex flex-col gap-1 px-6 pb-6">
+              <NavLink
+                to="/"
+                end
+                onClick={() => setMobileOpen(false)}
+                className={({ isActive }) =>
+                  `rounded-lg px-3 py-2 text-sm font-medium ${
+                    isActive ? 'text-gold' : 'text-navy/70 hover:text-navy'
+                  }`
+                }
+              >
+                Home
+              </NavLink>
+
               <p className="mt-2 text-xs font-semibold tracking-wide text-navy/40 uppercase">
                 About Us
               </p>
