@@ -31,9 +31,10 @@ export default function Hero() {
 
       {/* Mobile/tablet: near-solid overlay so text stays readable over the video */}
       <div className="absolute inset-0 bg-navy/85 lg:hidden" />
-      {/* Desktop: solid behind the text column, fading to transparent toward the right
-          so the video reads clearly past roughly two-thirds of the width */}
-      <div className="absolute inset-0 hidden bg-gradient-to-r from-navy from-0% via-navy via-45% to-transparent to-[68%] lg:block" />
+      {/* Desktop: near-solid behind the text column, holding through ~30% width then
+          fading gradually to transparent by ~88% so faint video texture bleeds through
+          even behind the text, rather than a hard-edged cutoff */}
+      <div className="absolute inset-0 hidden bg-gradient-to-r from-navy/85 from-0% via-navy/85 via-30% to-transparent to-[88%] lg:block" />
 
       <div className="relative z-10 flex min-h-[92vh] items-center px-6 py-16 sm:px-10 lg:px-16">
         <motion.div
