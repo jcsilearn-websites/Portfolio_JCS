@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { HiMenu, HiX } from 'react-icons/hi'
 import jcsLogo from '../assets/logos/jcs-ilearn-logo.svg'
 import Button from './Button'
+import Container from './Container'
 
 const navLinks = [
   { key: '/about', label: 'About Us', to: '/about' },
@@ -25,7 +26,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-navy/10 bg-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <Container className="flex items-center justify-between py-4">
         <Link
           to="/"
           onClick={() => setMobileOpen(false)}
@@ -95,7 +96,7 @@ export default function Header() {
         >
           {mobileOpen ? <HiX size={28} /> : <HiMenu size={28} />}
         </button>
-      </div>
+      </Container>
 
       <AnimatePresence>
         {mobileOpen && (

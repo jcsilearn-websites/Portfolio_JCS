@@ -1,6 +1,7 @@
 import { motion, type Variants } from 'framer-motion'
 import { serviceCategories } from '../data/content'
 import Button from '../components/Button'
+import Container from '../components/Container'
 
 const container: Variants = {
   hidden: {},
@@ -16,8 +17,8 @@ const item: Variants = {
 
 export default function ServicesCards() {
   return (
-    <section className="bg-white px-6 py-20">
-      <div className="mx-auto max-w-6xl">
+    <section className="bg-white py-20">
+      <Container>
         <h2 className="text-center text-3xl font-bold text-navy sm:text-4xl">
           Our Services
         </h2>
@@ -52,7 +53,7 @@ export default function ServicesCards() {
             </motion.div>
           ))}
         </motion.div>
-      </div>
+      </Container>
     </section>
   )
 }

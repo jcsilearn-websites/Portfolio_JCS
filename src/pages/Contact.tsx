@@ -2,6 +2,7 @@ import { HiMapPin, HiPhone, HiEnvelope } from 'react-icons/hi2'
 import ContactForm from '../sections/ContactForm'
 import { contactInfo } from '../data/content'
 import Button from '../components/Button'
+import Container from '../components/Container'
 
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
   contactInfo.address,
@@ -10,8 +11,8 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
 export default function Contact() {
   return (
     <main>
-      <section className="bg-navy px-6 py-20">
-        <div className="mx-auto grid max-w-5xl items-start gap-12 lg:grid-cols-2">
+      <section className="bg-navy py-20">
+        <Container className="grid items-start gap-12 lg:grid-cols-2">
           <div>
             <h1 className="text-4xl font-bold text-white sm:text-5xl">
               Get In Touch
@@ -26,11 +27,11 @@ export default function Contact() {
           <div className="rounded-2xl bg-white p-8 shadow-sm">
             <ContactForm />
           </div>
-        </div>
+        </Container>
       </section>
 
-      <section className="bg-pale-blue-bg px-6 py-16">
-        <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
+      <section className="bg-pale-blue-bg py-16">
+        <Container className="flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
           <div className="flex-1">
             <h2 className="text-xl font-semibold text-navy sm:text-2xl">
               Looking to train your students or team?
@@ -43,11 +44,11 @@ export default function Contact() {
           <Button href="#contact-form" variant="primary" size="md" className="shrink-0">
             Get In Touch
           </Button>
-        </div>
+        </Container>
       </section>
 
-      <section className="bg-white px-6 py-20">
-        <div className="mx-auto max-w-5xl">
+      <section className="bg-white py-20">
+        <Container>
           <div className="overflow-hidden rounded-2xl shadow-sm">
             <iframe
               title="JCS iLearn location"
@@ -103,7 +104,7 @@ export default function Contact() {
               ))}
             </div>
           </div>
-        </div>
+        </Container>
       </section>
     </main>
   )
