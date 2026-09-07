@@ -196,10 +196,18 @@ export const collegeLogos: CollegeLogo[] = [
 // Draft copy synthesized from sourced About/Founder material (audience categories, the
 // co-founder's "closing the gap between education and employability" mission) — not a
 // verbatim CLAUDE.md quote, no new stats or claims introduced. Pending client review.
+// Headline is flagged in CLAUDE.md as draft copy too — swap if the client sends preferred
+// wording. Closing line reuses homeHero.supportingLine verbatim (real sourced mission copy).
 export const whoWeServe = {
-  heading: 'Who We Serve',
+  label: 'Who We Serve',
+  headline: {
+    lead: 'We Believe Every Learner Deserves a ',
+    emphasis: 'Path to Employability',
+    trail: '.',
+  },
   paragraph:
     'JCS iLearn trains learners at every stage — university students preparing for placements, professionals and corporate teams sharpening their skills, startups building strong foundations, and schools shaping young minds early. Across every audience, our mission stays the same: closing the gap between education and employability, one classroom at a time.',
+  closingLine: homeHero.supportingLine,
 }
 
 export const philosophy = {
