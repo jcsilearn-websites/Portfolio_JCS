@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import founderPortrait from '../assets/founders/WhatsApp Image 2026-09-06 at 11.11.35 PM.jpeg'
 import { philosophy } from '../data/content'
-import Container from '../components/Container'
 
 export default function Philosophy() {
   return (
@@ -10,9 +9,9 @@ export default function Philosophy() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="bg-pale-blue-bg py-20"
+      className="bg-pale-blue-bg px-6 py-20"
     >
-      <Container className="grid items-center gap-12 lg:grid-cols-2">
+      <div className="mx-auto grid max-w-5xl items-center gap-12 lg:grid-cols-2">
         <img
           src={founderPortrait}
           alt=""
@@ -26,7 +25,7 @@ export default function Philosophy() {
             “{philosophy.quote}”
           </blockquote>
         </div>
-      </Container>
+      </div>
     </motion.section>
   )
 }

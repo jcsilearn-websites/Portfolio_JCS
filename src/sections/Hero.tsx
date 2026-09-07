@@ -3,7 +3,6 @@ import { HiChevronDown } from 'react-icons/hi'
 import { homeHero } from '../data/content'
 import heroVideo from '../assets/front-page-vid.mp4'
 import Button from '../components/Button'
-import Container from '../components/Container'
 
 const container: Variants = {
   hidden: {},
@@ -37,7 +36,7 @@ export default function Hero() {
           even behind the text, rather than a hard-edged cutoff */}
       <div className="absolute inset-0 hidden bg-gradient-to-r from-navy/85 from-0% via-navy/85 via-30% to-transparent to-[88%] lg:block" />
 
-      <Container className="relative z-10 flex min-h-[92vh] items-center py-16">
+      <div className="relative z-10 flex min-h-[92vh] items-center px-6 py-16 sm:px-10 lg:px-16">
         <motion.div
           variants={container}
           initial="hidden"
@@ -87,7 +86,7 @@ export default function Hero() {
             ))}
           </motion.div>
         </motion.div>
-      </Container>
+      </div>
 
       <motion.div
         aria-hidden

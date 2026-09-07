@@ -397,14 +397,6 @@ Jcs/
     account before this page goes live.
 
 ## Conventions
-- **Site-wide layout container (check first if anything looks misaligned):** Psiog maintains
-  one consistent left/right content margin across every section on every page — logo, nav,
-  hero text, paragraphs, diagrams, and founder cards all align to the same horizontal edges
-  throughout, not per-section custom padding. Every section on JCS's site must use ONE shared
-  layout wrapper (a `<Container>` component or a fixed `max-w-7xl mx-auto px-6 lg:px-8` combo
-  — pick one and use it everywhere) rather than inventing padding per section. Sections built
-  in earlier isolated prompts need auditing against this shared container, not left as-is.
-  Compare directly against psiog.com at 100% browser zoom, same viewport width, when in doubt.
 - All copy/stats/program data lives in typed `src/data/content.ts` — components read from
   there, never hardcode client-specific strings inline, so future data updates (e.g. real
   testimonial quotes replacing drafts) are single-file edits.

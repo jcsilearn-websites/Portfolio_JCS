@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { whoWeServe } from '../data/content'
 import WhoWeServeMap from './WhoWeServeMap'
-import Container from '../components/Container'
 
 export default function WhoWeServe() {
   return (
@@ -10,9 +9,9 @@ export default function WhoWeServe() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.4 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="bg-white py-20"
+      className="bg-white px-6 py-20"
     >
-      <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <span className="inline-flex flex-col items-start">
             <span className="text-sm font-semibold tracking-wide text-navy uppercase">
@@ -37,7 +36,7 @@ export default function WhoWeServe() {
         </div>
 
         <WhoWeServeMap />
-      </Container>
+      </div>
     </motion.section>
   )
 }

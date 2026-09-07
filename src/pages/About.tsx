@@ -3,7 +3,6 @@ import { motion, type Variants } from 'framer-motion'
 import { FaLinkedin } from 'react-icons/fa'
 import { HiFlag, HiLightBulb, HiHandRaised, HiStar } from 'react-icons/hi2'
 import Drawer from '../components/Drawer'
-import Container from '../components/Container'
 import aboutHeroImage from '../assets/About-page/header.png'
 import ourStoryImage from '../assets/About-page/ChatGPT Image Sep 7, 2026, 11_12_22 PM.png'
 import {
@@ -36,71 +35,67 @@ export default function About() {
     <main>
       <section
         id="positioning"
-        className="scroll-mt-24 bg-navy bg-cover bg-center bg-no-repeat py-16 text-center sm:py-20"
+        className="scroll-mt-24 bg-navy bg-cover bg-center bg-no-repeat px-6 py-16 text-center sm:py-20"
         style={{ backgroundImage: `url(${aboutHeroImage})` }}
       >
-        <Container>
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="mx-auto max-w-3xl"
-          >
-            <span className="inline-flex flex-col items-center">
-              <span className="text-sm font-semibold tracking-wide text-white uppercase">
-                {positioning.label}
-              </span>
-              <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="mx-auto max-w-3xl"
+        >
+          <span className="inline-flex flex-col items-center">
+            <span className="text-sm font-semibold tracking-wide text-white uppercase">
+              {positioning.label}
             </span>
+            <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
+          </span>
 
-            <h1 className="mt-4 text-4xl leading-tight font-bold text-white sm:text-5xl lg:text-6xl">
-              {positioning.headline}
-            </h1>
-            <p className="mt-2 text-lg text-white italic sm:text-xl">
-              {positioning.subheading}
-            </p>
-          </motion.div>
-        </Container>
+          <h1 className="mt-4 text-4xl leading-tight font-bold text-white sm:text-5xl lg:text-6xl">
+            {positioning.headline}
+          </h1>
+          <p className="mt-2 text-lg text-white italic sm:text-xl">
+            {positioning.subheading}
+          </p>
+        </motion.div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
-        <Container>
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-32"
-          >
-            <div>
-              {ourStory.paragraphs.map((paragraph, index) => (
-                <p
-                  key={paragraph}
-                  className={`text-xl leading-relaxed text-navy/70 ${index === 0 ? '' : 'mt-6'}`}
-                >
-                  {paragraph}
-                </p>
-              ))}
-              <p className="mt-6 text-2xl leading-relaxed font-semibold text-navy">
-                {ourStory.closingLine}
+      <section className="bg-white px-6 py-16 sm:py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-32"
+        >
+          <div>
+            {ourStory.paragraphs.map((paragraph, index) => (
+              <p
+                key={paragraph}
+                className={`text-xl leading-relaxed text-navy/70 ${index === 0 ? '' : 'mt-6'}`}
+              >
+                {paragraph}
               </p>
-            </div>
+            ))}
+            <p className="mt-6 text-2xl leading-relaxed font-semibold text-navy">
+              {ourStory.closingLine}
+            </p>
+          </div>
 
-            <img
-              src={ourStoryImage}
-              alt={`Gear-and-checkmark graphic beside a quote card that reads: "${ourStory.quoteCardText}"`}
-              className="mx-auto w-full max-w-xl lg:max-w-none"
-            />
-          </motion.div>
-        </Container>
+          <img
+            src={ourStoryImage}
+            alt={`Gear-and-checkmark graphic beside a quote card that reads: "${ourStory.quoteCardText}"`}
+            className="mx-auto w-full max-w-xl lg:max-w-none"
+          />
+        </motion.div>
       </section>
 
       <section
         id="our-model"
-        className="scroll-mt-24 bg-white py-20 sm:py-24"
+        className="scroll-mt-24 bg-white px-6 py-20 sm:py-24"
       >
-        <Container>
+        <div className="mx-auto max-w-6xl">
           <h2 className="text-center text-3xl font-bold text-navy sm:text-4xl">
             Our Model
           </h2>
@@ -133,19 +128,19 @@ export default function About() {
               </motion.div>
             ))}
           </motion.div>
-        </Container>
+        </div>
       </section>
 
       <section
         id="leadership"
-        className="scroll-mt-24 bg-pale-blue-bg py-20 sm:py-24"
+        className="scroll-mt-24 bg-pale-blue-bg px-6 py-20 sm:py-24"
       >
-        <Container>
+        <div className="mx-auto max-w-3xl">
           <h2 className="text-center text-3xl font-bold text-navy sm:text-4xl">
             Leadership
           </h2>
 
-          <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-2">
+          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
             {founders.map((founder) => (
               <button
                 key={founder.id}
@@ -167,6 +162,7 @@ export default function About() {
               </button>
             ))}
           </div>
+        </div>
 
         <Drawer open={activeFounder !== null} onClose={() => setActiveFounder(null)}>
           {activeFounder && (
@@ -206,34 +202,33 @@ export default function About() {
           )}
         </Drawer>
 
-          <div className="mx-auto mt-20 max-w-5xl">
-            <h3 className="text-center text-2xl font-bold text-navy sm:text-3xl">
-              Our Leadership Values
-            </h3>
+        <div className="mx-auto mt-20 max-w-5xl">
+          <h3 className="text-center text-2xl font-bold text-navy sm:text-3xl">
+            Our Leadership Values
+          </h3>
 
-            <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {leadershipValues.map((value, index) => {
-                const Icon = leadershipIcons[index]
-                return (
-                  <div
-                    key={value.title}
-                    className="flex flex-col items-center text-center"
-                  >
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/15 text-gold">
-                      <Icon size={22} />
-                    </span>
-                    <p className="mt-4 text-base font-semibold text-navy">
-                      {value.title}
-                    </p>
-                    <p className="mt-2 text-sm text-navy/70">
-                      {value.description}
-                    </p>
-                  </div>
-                )
-              })}
-            </div>
+          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            {leadershipValues.map((value, index) => {
+              const Icon = leadershipIcons[index]
+              return (
+                <div
+                  key={value.title}
+                  className="flex flex-col items-center text-center"
+                >
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/15 text-gold">
+                    <Icon size={22} />
+                  </span>
+                  <p className="mt-4 text-base font-semibold text-navy">
+                    {value.title}
+                  </p>
+                  <p className="mt-2 text-sm text-navy/70">
+                    {value.description}
+                  </p>
+                </div>
+              )
+            })}
           </div>
-        </Container>
+        </div>
       </section>
     </main>
   )
