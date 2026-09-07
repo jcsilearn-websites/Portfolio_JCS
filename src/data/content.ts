@@ -226,7 +226,12 @@ export const philosophy = {
 // hero (plain background), not overlaid on the photo.
 export const positioning = {
   label: 'About Us',
-  headline: 'I Learn, I Earn',
+  // Split lead/emphasis like whoWeServe.headline below, so "I Earn" can carry the same
+  // gold-accent treatment the tagline already gets in the Home hero (Hero.tsx).
+  headline: {
+    lead: 'I Learn, ',
+    emphasis: 'I Earn',
+  },
   subheading: 'Empowering Lives Through Essential Skills.',
   paragraph:
     'JCS iLearn is a training and skill-development company built to make learning lead somewhere. We partner with universities, corporates, startups, and schools to turn classroom learning into workplace-ready skill — backed by a growing network of trainers delivering practice-first programs, not one-size-fits-all lectures.',
