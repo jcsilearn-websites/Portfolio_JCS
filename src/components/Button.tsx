@@ -53,6 +53,15 @@ const sizeStyles: Record<
   },
 }
 
+// Single source of truth for hover timing so the root button and the arrow
+// icon (two separate elements, each with their own transition-property list)
+// can never drift out of sync with each other.
+const HOVER_TRANSITION = 'duration-[380ms] ease-out'
+
+// Tailwind v4's translate-* utilities animate the CSS `translate` property,
+// not `transform` — listing `transform` in transition-property is a no-op
+// for them, so the hover lift/travel would snap instead of easing.
+
 const variantStyles: Record<ButtonVariant, { button: string; icon: string }> = {
   primary: {
     button: 'bg-gold text-navy hover:bg-navy hover:text-white',
@@ -110,13 +119,13 @@ export default function Button({
   const s = sizeStyles[size]
   const v = variantStyles[variant]
 
-  const rootClassName = `group relative inline-flex items-center cursor-pointer font-bold shadow-sm transition-[background-color,color,transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg ${s.button} ${v.button} ${className}`
+  const rootClassName = `group relative inline-flex items-center cursor-pointer font-bold shadow-sm transition-[background-color,color,translate,box-shadow] ${HOVER_TRANSITION} hover:-translate-y-0.5 hover:shadow-lg ${s.button} ${v.button} ${className}`
 
   const content = (
     <>
       {children}
       <span
-        className={`absolute ${s.inset} flex items-center justify-center transition-[background-color,color,transform] duration-300 ease-out ${s.travel} ${s.icon} ${v.icon}`}
+        className={`absolute ${s.inset} flex items-center justify-center transition-[background-color,color,translate] ${HOVER_TRANSITION} ${s.travel} ${s.icon} ${v.icon}`}
       >
         <ArrowGlyph size={s.arrow} />
       </span>
