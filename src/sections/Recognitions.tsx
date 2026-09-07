@@ -19,6 +19,7 @@ import {
   type StatItem,
 } from '../data/content'
 import { useCountUp } from '../hooks/useCountUp'
+import Container from '../components/Container'
 
 const container: Variants = {
   hidden: {},
@@ -101,8 +102,8 @@ export default function Recognitions() {
   const partnerLogos = collegeLogos.slice(0, 3)
 
   return (
-    <section ref={ref} className="bg-white px-6 pt-20 pb-20 sm:pb-24">
-      <div className="mx-auto max-w-5xl text-center">
+    <section ref={ref} className="bg-white pt-20 pb-20 sm:pb-24">
+      <Container className="text-center">
         <h2 className="text-3xl font-bold text-navy sm:text-4xl">
           Recognized for Excellence
         </h2>
@@ -220,7 +221,7 @@ export default function Recognitions() {
             )
           })}
         </motion.div>
-      </div>
+      </Container>
 
       <style>{`
         @media (min-width: 768px) {
