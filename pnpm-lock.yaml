@@ -11,6 +11,9 @@ importers:
       '@emailjs/browser':
         specifier: ^4.4.1
         version: 4.4.1
+      '@svg-maps/india':
+        specifier: ^2.0.0
+        version: 2.0.0
       framer-motion:
         specifier: ^13.2.0
         version: 13.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -310,6 +313,9 @@ packages:
 
   '@rolldown/pluginutils@1.0.1':
     resolution: {integrity: sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==}
+
+  '@svg-maps/india@2.0.0':
+    resolution: {integrity: sha512-2v47x6L9bAzIJlcUtk4AxKyr94gjFiK/vcF4JMdO+1T8BHvt6pcJbr5sSzoEOzMRN7wxYxOZYNmw3rH5bwGd5w==}
 
   '@tailwindcss/node@4.3.3':
     resolution: {integrity: sha512-/T8IKEsf9VTU6tLjgC7+sv2mOPtQxzE2jMw7u4Tt40Tx+QSZxpzh95/H6cMKoja9XuW7iMdLJYBB0o9G1CaAgg==}
@@ -947,6 +953,8 @@ snapshots:
     optional: true
 
   '@rolldown/pluginutils@1.0.1': {}
+
+  '@svg-maps/india@2.0.0': {}
 
   '@tailwindcss/node@4.3.3':
     dependencies:

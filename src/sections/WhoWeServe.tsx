@@ -1,6 +1,15 @@
 import { useState, type ReactNode } from 'react'
 import { motion } from 'framer-motion'
+import indiaMap from '@svg-maps/india'
 import { whoWeServe, collegeLogos, type CollegeLogo } from '../data/content'
+
+// @svg-maps/india ships an unresolvable internal type reference (svg-maps__common), which
+// skipLibCheck leaves untyped — annotate the shape we actually use instead of casting to any.
+interface IndiaMapLocation {
+  id: string
+  name: string
+  path: string
+}
 
 interface BadgeSlot {
   top: string
@@ -86,18 +95,15 @@ function WhoWeServeGraphic() {
   return (
     <div className="relative mx-auto aspect-square w-full max-w-sm sm:max-w-md lg:mx-0 lg:max-w-none">
       <svg
-        viewBox="0 0 300 340"
+        viewBox={indiaMap.viewBox}
         aria-hidden="true"
         className="absolute inset-0 m-auto h-auto w-3/5"
       >
-        <path
-          d="M148,8 C185,6 215,20 222,45 C226,60 218,58 240,50 C265,55 285,80 288,108 C290,128 272,132 255,140 C258,165 250,195 238,222 C225,255 205,285 185,308 C172,323 160,335 150,336 C142,330 128,312 112,288 C92,258 78,225 68,190 C58,155 55,120 62,88 C68,60 82,35 105,20 C118,12 133,8 148,8 Z"
-          fill="#0A0B68"
-          fillOpacity="0.08"
-          stroke="#0A0B68"
-          strokeOpacity="0.15"
-          strokeWidth="2"
-        />
+        <g fill="#0A0B68" fillOpacity="0.1" stroke="none">
+          {(indiaMap.locations as IndiaMapLocation[]).map((location) => (
+            <path key={location.id} d={location.path} />
+          ))}
+        </g>
       </svg>
 
       <svg
