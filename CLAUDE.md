@@ -114,10 +114,14 @@ Journey/Vision/Identity content into this structure as sections, not routes. Rem
 sub-routes.
 
 **1. Positioning section — "Our Story"** (Psiog: company identity — who they are; matches
-Psiog's two-column layout, text left / image+overlapping-quote-card right). Directly below
-the hero, real final copy from the client (verbatim, not draft):
+Psiog's two-column layout, text left / image right). Directly below the hero, real final copy
+from the client (verbatim, not draft):
 
-Left column heading: **"Our Story"**, followed by these paragraphs verbatim:
+**No visible "Our Story" heading** — go straight into the body paragraphs, left-aligned, no
+section title above them (client explicitly removed it to match Psiog's own proportions/scale
+more closely).
+
+Left column, verbatim:
 
 > Every great journey begins with a belief. Ours began with a belief that education should
 > transform lives, not simply award certificates.
@@ -129,20 +133,20 @@ Left column heading: **"Our Story"**, followed by these paragraphs verbatim:
 >
 > **We don't just build skills. We build possibilities.**
 
-Right column: `src/assets/About-page/gear.png` (JCS's gear/checkmark mark, standing in for
-Psiog's bronze plaque image), with a pre-designed quote-card image
-(`src/assets/About-page/quote-card.png` or wherever the client's second image lands — a
-navy card with gold quote marks reading "Empowering learners today for brighter tomorrows. At
-JCS iLEARN, we bridge education and opportunities to help individuals build skills,
-confidence, and successful careers.") overlapping the bottom-left corner of the gear image,
-matching Psiog's exact overlap positioning. This quote card has its own text baked in as an
-image (client-designed asset) — add descriptive alt text since it won't be readable by screen
-readers/SEO otherwise.
+Right column: a single pre-composited image at
+`src/assets/About-page/ChatGPT Image Sep 7, 2026, 11_12_22 PM.png` — this ONE file already
+contains both the gear/checkmark graphic AND the navy quote card ("Empowering learners today
+for brighter tomorrows...") baked together in one image, matching Psiog's plaque-photo layout
+exactly. Do not render a separate live quote card or a separate gear image — this single
+asset replaces both.
 
-**Superseded**: the earlier version of this section (centered single paragraph + a live-text
-"Because when you Learn with Purpose, you Earn with Confidence." pull-quote) is replaced by
-this two-column layout — the pull-quote line is now carried by the quote-card image instead
-of live text.
+**Scale**: match Psiog's reference proportions closely — the image should be large/prominent
+(comparable relative size to Psiog's plaque photo taking up most of its column height), and
+left-column body text sized/line-length comparable to Psiog's paragraph column, not smaller/
+more compact than the reference.
+
+The image has text baked in — add descriptive alt text since it won't be readable by screen
+readers/SEO otherwise.
 
 **2. Our Model section** (Psiog: how they work/their methodology): map the existing "Why
 Choose Our Training Services" content here — Industry-Relevant Curriculum, Expert Trainers,

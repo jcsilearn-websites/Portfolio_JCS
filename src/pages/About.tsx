@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { motion, type Variants } from 'framer-motion'
 import { FaLinkedin } from 'react-icons/fa'
-import { HiFlag, HiLightBulb, HiHandRaised, HiStar, HiSparkles } from 'react-icons/hi2'
+import { HiFlag, HiLightBulb, HiHandRaised, HiStar } from 'react-icons/hi2'
 import Drawer from '../components/Drawer'
 import aboutHeroImage from '../assets/About-page/header.png'
-import gearImage from '../assets/About-page/gear.png'
+import ourStoryImage from '../assets/About-page/ChatGPT Image Sep 7, 2026, 11_12_22 PM.png'
 import {
   positioning,
   ourStory,
@@ -67,51 +67,27 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2 lg:gap-20"
+          className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-32"
         >
           <div>
-            <h2 className="text-3xl font-bold text-navy sm:text-4xl">
-              {ourStory.heading}
-            </h2>
-            {ourStory.paragraphs.map((paragraph) => (
-              <p key={paragraph} className="mt-6 text-lg text-navy/70">
+            {ourStory.paragraphs.map((paragraph, index) => (
+              <p
+                key={paragraph}
+                className={`text-xl leading-relaxed text-navy/70 ${index === 0 ? '' : 'mt-6'}`}
+              >
                 {paragraph}
               </p>
             ))}
-            <p className="mt-6 text-xl font-semibold text-navy">
+            <p className="mt-6 text-2xl leading-relaxed font-semibold text-navy">
               {ourStory.closingLine}
             </p>
           </div>
 
-          <div className="relative mx-auto w-full max-w-sm py-6 pb-16 sm:pb-20">
-            {/* gear.png is a small icon asset (86x116), not a full photo — it sits inside a
-                decorative panel so the right column carries visual weight matching the text
-                column, rather than upscaling a low-res icon to fill the space directly. */}
-            <div className="flex aspect-square items-center justify-center rounded-3xl bg-pale-blue-bg shadow-sm">
-              <img
-                src={gearImage}
-                alt=""
-                className="h-28 w-28 object-contain sm:h-36 sm:w-36"
-              />
-            </div>
-
-            {/*
-              TEMPORARY placeholder for the client's designed quote-card image (see CLAUDE.md
-              "Positioning section — Our Story") — that asset hasn't arrived yet, so this is
-              coded as a live-text stand-in rather than an <img>, using the same copy the real
-              card will carry (ourStory.quoteCardText). Once the image lands, replace this
-              entire <div> with:
-                <img src={quoteCardImage} alt={ourStory.quoteCardText} className="absolute
-                bottom-0 left-0 w-48 sm:w-56 rounded-2xl shadow-xl" />
-              so the baked-in card text isn't duplicated as live text anymore.
-            */}
-            <div className="absolute bottom-0 left-0 w-48 rounded-2xl bg-navy p-5 text-left shadow-xl sm:w-56 sm:p-6">
-              <HiSparkles className="text-gold" size={20} />
-              <p className="mt-2 text-xs leading-relaxed text-white/90 sm:text-sm">
-                {ourStory.quoteCardText}
-              </p>
-            </div>
-          </div>
+          <img
+            src={ourStoryImage}
+            alt={`Gear-and-checkmark graphic beside a quote card that reads: "${ourStory.quoteCardText}"`}
+            className="mx-auto w-full max-w-xl lg:max-w-none"
+          />
         </motion.div>
       </section>
 

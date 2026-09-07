@@ -358,12 +358,11 @@ export const positioning = {
 
 // "Our Story" section, directly below the hero — client-provided final copy (verbatim, not
 // draft), per CLAUDE.md's "Positioning section — Our Story". Two-column layout: this copy on
-// the left, gear.png + an overlapping quote-card image on the right. quoteCardText is the
-// copy the client's quote-card image itself carries (per CLAUDE.md) — kept here only because
-// that image asset hasn't arrived yet (see About.tsx's placeholder card); once the real image
-// lands, this string becomes its alt text and the coded placeholder goes away.
+// the left (no section heading — client removed it to match Psiog's proportions), a single
+// pre-composited image (gear graphic + quote card baked together) on the right. quoteCardText
+// is the copy baked into that image, kept here only to build descriptive alt text for it since
+// the baked-in text isn't otherwise readable by screen readers/SEO.
 export const ourStory = {
-  heading: 'Our Story',
   paragraphs: [
     'Every great journey begins with a belief. Ours began with a belief that education should transform lives, not simply award certificates.',
     'JCS iLearn was created to bridge the gap between what people learn and what the world expects, turning knowledge into skills, confidence into capability, and ambition into achievement. We are building a learning ecosystem where every learner is empowered to discover their potential, embrace opportunities, and create a future they can be proud of.',
