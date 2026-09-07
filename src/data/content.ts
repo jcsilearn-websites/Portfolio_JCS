@@ -348,22 +348,28 @@ export const philosophy = {
   quote: homeHero.supportingLine,
 }
 
-// Positioning section of the consolidated /about page. Label/headline/subheading sit on the
-// hero photo (see reference layout — About Us eyebrow, then the Vision headline split into
-// its two halves rather than one combined string, matching the reference's tighter two-line
-// hierarchy instead of the headline wrapping across lines on its own). Sourced verbatim from
-// CLAUDE.md's Vision headline / mission line. The paragraph is draft copy deliberately
-// reworded from whoWeServe's paragraph below (same 5 audiences, no new claims) so the two
-// don't read as duplicated copy when both appear in the same site flow — pending client
-// review, same as whoWeServe. Paragraph + quote now render in their own section below the
-// hero (plain background), not overlaid on the photo.
+// Positioning section (hero) of the consolidated /about page. Label/headline/subheading sit
+// on the hero photo, sourced verbatim from CLAUDE.md's Vision headline / mission line.
 export const positioning = {
   label: 'About Us',
   headline: 'I Learn, I Earn',
   subheading: 'Empowering Lives Through Essential Skills.',
-  paragraph:
-    'JCS iLearn is a training and skill-development company built to make learning lead somewhere. We partner with universities, corporates, startups, and schools to turn classroom learning into workplace-ready skill — backed by a growing network of trainers delivering practice-first programs, not one-size-fits-all lectures.',
-  quote: homeHero.supportingLine,
+}
+
+// "Our Story" section, directly below the hero — client-provided final copy (verbatim, not
+// draft), per CLAUDE.md's "Positioning section — Our Story". Two-column layout: this copy on
+// the left (no section heading — client removed it to match Psiog's proportions), a single
+// pre-composited image (gear graphic + quote card baked together) on the right. quoteCardText
+// is the copy baked into that image, kept here only to build descriptive alt text for it since
+// the baked-in text isn't otherwise readable by screen readers/SEO.
+export const ourStory = {
+  paragraphs: [
+    'Every great journey begins with a belief. Ours began with a belief that education should transform lives, not simply award certificates.',
+    'JCS iLearn was created to bridge the gap between what people learn and what the world expects, turning knowledge into skills, confidence into capability, and ambition into achievement. We are building a learning ecosystem where every learner is empowered to discover their potential, embrace opportunities, and create a future they can be proud of.',
+  ],
+  closingLine: "We don't just build skills. We build possibilities.",
+  quoteCardText:
+    'Empowering learners today for brighter tomorrows. At JCS iLearn, we bridge education and opportunities to help individuals build skills, confidence, and successful careers.',
 }
 
 export interface ModelPillar {

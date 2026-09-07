@@ -113,13 +113,40 @@ sections in Psiog's exact order — Positioning → Our Model → Leadership. Fo
 Journey/Vision/Identity content into this structure as sections, not routes. Remove the old
 sub-routes.
 
-**1. Positioning section** (Psiog: company identity — who they are, who they serve): use the
-existing Vision headline and mission line as the anchor copy — `"I Learn, I Earn" —
-Empowering Lives Through Essential Skills` as the section heading, "Because when you Learn
-with Purpose, you Earn with Confidence." as a pull-quote line, plus a short paragraph on what
-JCS is and who it trains (can reuse/adapt the "Who We Serve" paragraph already written for
-Home — don't duplicate it verbatim if both sections end up on the same page flow, vary the
-phrasing slightly so it doesn't read as repeated copy).
+**1. Positioning section — "Our Story"** (Psiog: company identity — who they are; matches
+Psiog's two-column layout, text left / image right). Directly below the hero, real final copy
+from the client (verbatim, not draft):
+
+**No visible "Our Story" heading** — go straight into the body paragraphs, left-aligned, no
+section title above them (client explicitly removed it to match Psiog's own proportions/scale
+more closely).
+
+Left column, verbatim:
+
+> Every great journey begins with a belief. Ours began with a belief that education should
+> transform lives, not simply award certificates.
+>
+> JCS iLearn was created to bridge the gap between what people learn and what the world
+> expects, turning knowledge into skills, confidence into capability, and ambition into
+> achievement. We are building a learning ecosystem where every learner is empowered to
+> discover their potential, embrace opportunities, and create a future they can be proud of.
+>
+> **We don't just build skills. We build possibilities.**
+
+Right column: a single pre-composited image at
+`src/assets/About-page/ChatGPT Image Sep 7, 2026, 11_12_22 PM.png` — this ONE file already
+contains both the gear/checkmark graphic AND the navy quote card ("Empowering learners today
+for brighter tomorrows...") baked together in one image, matching Psiog's plaque-photo layout
+exactly. Do not render a separate live quote card or a separate gear image — this single
+asset replaces both.
+
+**Scale**: match Psiog's reference proportions closely — the image should be large/prominent
+(comparable relative size to Psiog's plaque photo taking up most of its column height), and
+left-column body text sized/line-length comparable to Psiog's paragraph column, not smaller/
+more compact than the reference.
+
+The image has text baked in — add descriptive alt text since it won't be readable by screen
+readers/SEO otherwise.
 
 **2. Our Model section** (Psiog: how they work/their methodology): map the existing "Why
 Choose Our Training Services" content here — Industry-Relevant Curriculum, Expert Trainers,

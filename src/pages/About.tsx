@@ -4,8 +4,10 @@ import { FaLinkedin } from 'react-icons/fa'
 import { HiFlag, HiLightBulb, HiHandRaised, HiStar } from 'react-icons/hi2'
 import Drawer from '../components/Drawer'
 import aboutHeroImage from '../assets/About-page/header.png'
+import ourStoryImage from '../assets/About-page/ChatGPT Image Sep 7, 2026, 11_12_22 PM.png'
 import {
   positioning,
+  ourStory,
   ourModel,
   founders,
   leadershipValues,
@@ -65,12 +67,27 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="mx-auto max-w-3xl text-center"
+          className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-32"
         >
-          <p className="text-lg text-navy/70">{positioning.paragraph}</p>
-          <p className="mt-6 text-base font-light text-navy/60 italic">
-            {positioning.quote}
-          </p>
+          <div>
+            {ourStory.paragraphs.map((paragraph, index) => (
+              <p
+                key={paragraph}
+                className={`text-xl leading-relaxed text-navy/70 ${index === 0 ? '' : 'mt-6'}`}
+              >
+                {paragraph}
+              </p>
+            ))}
+            <p className="mt-6 text-2xl leading-relaxed font-semibold text-navy">
+              {ourStory.closingLine}
+            </p>
+          </div>
+
+          <img
+            src={ourStoryImage}
+            alt={`Gear-and-checkmark graphic beside a quote card that reads: "${ourStory.quoteCardText}"`}
+            className="mx-auto w-full max-w-xl lg:max-w-none"
+          />
         </motion.div>
       </section>
 
