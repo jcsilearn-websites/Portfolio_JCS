@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
+import BackToTopButton from './components/BackToTopButton'
 import Home from './pages/Home'
 import About from './pages/About'
 import Programs from './pages/Programs'
@@ -21,6 +22,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/careers" element={<Careers />} />
       </Routes>
+      <BackToTopButton />
     </BrowserRouter>
   )
 }

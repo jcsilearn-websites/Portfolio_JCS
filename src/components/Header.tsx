@@ -5,6 +5,7 @@ import { HiMenu, HiX } from 'react-icons/hi'
 import jcsLogo from '../assets/logos/jcs-ilearn-logo.svg'
 import Button from './Button'
 import Container from './Container'
+import { useHideOnScroll } from '../hooks/useHideOnScroll'
 
 const navLinks = [
   { key: '/about', label: 'About Us', to: '/about' },
@@ -17,6 +18,8 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [hoveredKey, setHoveredKey] = useState<string | null>(null)
   const location = useLocation()
+  const scrollHidden = useHideOnScroll()
+  const hidden = scrollHidden && !mobileOpen
 
   const activeKey =
     location.pathname === '/'
@@ -25,7 +28,11 @@ export default function Header() {
   const highlightedKey = hoveredKey ?? activeKey
 
   return (
-    <header className="sticky top-0 z-50 border-b border-navy/10 bg-white">
+    <header
+      className={`sticky top-0 z-50 border-b border-navy/10 bg-white transition-transform duration-300 ease-out ${
+        hidden ? '-translate-y-full' : 'translate-y-0'
+      }`}
+    >
       <Container className="flex items-center justify-between py-4">
         <Link
           to="/"

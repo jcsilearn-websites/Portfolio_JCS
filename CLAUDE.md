@@ -405,6 +405,14 @@ Jcs/
   — pick one and use it everywhere) rather than inventing padding per section. Sections built
   in earlier isolated prompts need auditing against this shared container, not left as-is.
   Compare directly against psiog.com at 100% browser zoom, same viewport width, when in doubt.
+- **Hide-on-scroll navbar + back-to-top button (site-wide, every page):** Psiog's header
+  hides when scrolling down and reappears when scrolling up (or fully hides after a scroll
+  threshold — confirm exact behavior visually against the reference, but the core pattern is
+  "disappears on scroll down, not always pinned visible"). Separately, a circular floating
+  "scroll to top" button (chevron-up icon, navy background) appears in the bottom-right corner
+  once the user has scrolled down a bit, and clicking it smooth-scrolls back to the top. Both
+  behaviors apply globally across every page, not just Home — implement once at the layout/
+  App level, not per-page.
 - All copy/stats/program data lives in typed `src/data/content.ts` — components read from
   there, never hardcode client-specific strings inline, so future data updates (e.g. real
   testimonial quotes replacing drafts) are single-file edits.
