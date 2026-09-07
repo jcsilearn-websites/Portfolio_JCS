@@ -1,33 +1,24 @@
 import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { HiMenu, HiX, HiChevronDown } from 'react-icons/hi'
+import { HiMenu, HiX } from 'react-icons/hi'
 import jcsLogo from '../assets/logos/jcs-ilearn-logo.svg'
 import Button from './Button'
 
-const aboutLinks = [
-  { label: 'About', to: '/about' },
-  { label: 'Journey', to: '/about/journey' },
-  { label: 'Founders', to: '/about/founders' },
-  { label: 'Vision', to: '/about/vision' },
-]
-
 const navLinks = [
+  { key: '/about', label: 'About Us', to: '/about' },
   { key: '/programs', label: 'Our Programs', to: '/programs' },
   { key: '/services', label: 'Our Services', to: '/services' },
   { key: '/trainers', label: 'Trainers', to: '/trainers' },
 ]
 
 export default function Header() {
-  const [aboutOpen, setAboutOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [hoveredKey, setHoveredKey] = useState<string | null>(null)
   const location = useLocation()
 
-  const aboutActive = location.pathname.startsWith('/about')
-  const activeKey = aboutActive
-    ? 'about'
-    : location.pathname === '/'
+  const activeKey =
+    location.pathname === '/'
       ? 'home'
       : (navLinks.find((link) => location.pathname === link.to)?.key ?? null)
   const highlightedKey = hoveredKey ?? activeKey
@@ -65,75 +56,6 @@ export default function Header() {
               />
             )}
           </Link>
-
-          <div
-            className="relative"
-            onMouseEnter={() => {
-              setAboutOpen(true)
-              setHoveredKey('about')
-            }}
-            onMouseLeave={() => {
-              setAboutOpen(false)
-              setHoveredKey(null)
-            }}
-          >
-            <button
-              type="button"
-              className={`relative flex items-center gap-1 pb-1.5 text-base font-medium tracking-normal transition-colors duration-200 ${
-                aboutActive || aboutOpen
-                  ? 'text-gold'
-                  : 'text-navy hover:text-gold'
-              }`}
-              onClick={() => setAboutOpen((open) => !open)}
-              aria-expanded={aboutOpen}
-            >
-              About Us
-              <HiChevronDown
-                className={`transition-transform duration-200 ${
-                  aboutOpen ? 'rotate-180' : ''
-                }`}
-              />
-              {highlightedKey === 'about' && (
-                <motion.span
-                  layoutId="nav-underline"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-gold"
-                  transition={{ duration: 0.25, ease: 'easeOut' }}
-                />
-              )}
-            </button>
-
-            <AnimatePresence>
-              {aboutOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.2, ease: 'easeOut' }}
-                  className="absolute top-full left-0 mt-3 w-56 overflow-hidden rounded-2xl bg-white py-2 shadow-xl ring-1 ring-navy/5"
-                >
-                  {aboutLinks.map((link) => (
-                    <NavLink
-                      key={link.to}
-                      to={link.to}
-                      end
-                      onClick={() => setAboutOpen(false)}
-                      className={({ isActive }) =>
-                        `block px-5 py-2.5 text-sm font-medium transition-colors duration-200 ${
-                          isActive
-                            ? 'bg-pale-blue-bg text-gold'
-                            : 'text-navy hover:bg-pale-blue-bg hover:text-gold'
-                        }`
-                      }
-                    >
-                      {link.label}
-                    </NavLink>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
 
           {navLinks.map((link) => (
             <Link
@@ -197,27 +119,6 @@ export default function Header() {
               >
                 Home
               </NavLink>
-
-              <p className="mt-2 text-xs font-semibold tracking-wide text-navy/40 uppercase">
-                About Us
-              </p>
-              {aboutLinks.map((link) => (
-                <NavLink
-                  key={link.to}
-                  to={link.to}
-                  end
-                  onClick={() => setMobileOpen(false)}
-                  className={({ isActive }) =>
-                    `rounded-lg px-3 py-2 text-sm font-medium ${
-                      isActive ? 'text-gold' : 'text-navy/70 hover:text-navy'
-                    }`
-                  }
-                >
-                  {link.label}
-                </NavLink>
-              ))}
-
-              <div className="my-2 h-px bg-navy/10" />
 
               {navLinks.map((link) => (
                 <NavLink

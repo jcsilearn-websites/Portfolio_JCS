@@ -215,6 +215,59 @@ export const philosophy = {
   quote: homeHero.supportingLine,
 }
 
+// Positioning section of the consolidated /about page. Heading + closing pull-quote are the
+// sourced Vision headline / mission line (CLAUDE.md "About / Journey / Vision copy"), used
+// verbatim. The paragraph is draft copy deliberately reworded from whoWeServe's paragraph
+// below (same 5 audiences, no new claims) so the two don't read as duplicated copy when both
+// appear in the same site flow — pending client review, same as whoWeServe.
+export const positioning = {
+  heading: '"I Learn, I Earn" — Empowering Lives Through Essential Skills',
+  paragraph:
+    'JCS iLearn is a training and skill-development company built to make learning lead somewhere. We partner with universities, corporates, startups, and schools to turn classroom learning into workplace-ready skill — backed by a growing network of trainers delivering practice-first programs, not one-size-fits-all lectures.',
+  quote: homeHero.supportingLine,
+}
+
+export interface ModelPillar {
+  stage: string
+  title: string
+  description: string
+}
+
+// Our Model section of the consolidated /about page. Pillar titles (Industry-Relevant
+// Curriculum / Expert Trainers / Proven Results) are sourced verbatim from the old site's
+// "Why Choose Our Training Services" ("already sourced" per CLAUDE.md, though no body copy
+// for each ever made it into the handoff — descriptions below are draft synthesis grounded
+// only in stats/facts already established elsewhere in this file, not new claims).
+// Design choice: since both this pillar list and the Journey content's narrative arc are
+// three items, the arc's own stage names (Spark/Vision/Impact) are used as labels for the
+// three pillars in order, rather than building a separate unrelated 3-step structure —
+// this is how "map the Why Choose content" and "use the Spark -> Vision -> Impact arc as
+// the section's story structure" combine into one thing instead of two.
+export const ourModel = {
+  intro:
+    'JCS iLearn was born from a classroom moment—but built on years of passion, purpose, and belief in the power of education.',
+  pillars: [
+    {
+      stage: 'Spark',
+      title: 'Industry-Relevant Curriculum',
+      description:
+        'Every program starts with what industries and institutions actually need — practice-first content, not theory for its own sake.',
+    },
+    {
+      stage: 'Vision',
+      title: 'Expert Trainers',
+      description:
+        'Carried into the classroom by a network of 400+ trainers, many certified specialists in their domain.',
+    },
+    {
+      stage: 'Impact',
+      title: 'Proven Results',
+      description:
+        '1,50,000+ students and professionals trained across 25+ institutions and 35 cities so far.',
+    },
+  ] satisfies ModelPillar[],
+}
+
 export interface Recognition {
   trainerName: string
   title: string
