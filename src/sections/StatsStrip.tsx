@@ -73,7 +73,7 @@ export default function StatsStrip() {
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className="bg-white py-16"
       >
-        <p className="px-6 text-center text-lg font-bold tracking-wide text-gold uppercase sm:text-xl">
+        <p className="px-6 text-center text-lg font-bold tracking-wide text-navy uppercase sm:text-xl">
           Trusted By
         </p>
         <div className="mt-10 overflow-hidden">
