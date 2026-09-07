@@ -129,7 +129,7 @@ export default function Recognitions() {
           variants={container}
           initial="hidden"
           animate={isInView ? 'show' : 'hidden'}
-          className="bento-grid mx-auto grid grid-cols-2 gap-4 md:gap-6"
+          className="bento-grid mx-auto grid grid-cols-2 gap-2 md:gap-3"
         >
           {bentoTiles.map((tile) => {
             const stat = tile.statId ? statsById[tile.statId] : undefined
@@ -146,7 +146,7 @@ export default function Recognitions() {
                   style={{ gridArea: tile.area }}
                   className={`relative flex min-h-[140px] flex-col justify-end overflow-hidden p-6 text-left ${tile.bg} ${ROUNDED[tile.rounded]} ${HOVER}`}
                 >
-                  <TamilNaduOutline className="absolute inset-0 m-auto h-[80%] w-auto text-navy/15" />
+                  <TamilNaduOutline className="absolute inset-0 m-auto h-[80%] w-auto text-navy/30" />
                   {stat && (
                     <StatNumber
                       stat={stat}
@@ -176,7 +176,7 @@ export default function Recognitions() {
                     {partnerLogos.map((logo) => (
                       <span
                         key={logo.name}
-                        className="flex h-16 w-full items-center justify-center rounded-lg bg-white p-3"
+                        className="mx-auto flex h-16 w-4/5 items-center justify-center rounded-lg bg-white p-1.5"
                       >
                         <img
                           src={logo.src}
@@ -226,11 +226,11 @@ export default function Recognitions() {
         @media (min-width: 768px) {
           .bento-grid {
             grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: repeat(3, minmax(140px, auto));
+            grid-template-rows: repeat(3, minmax(150px, auto));
             grid-template-areas:
-              "trained trained trained trained map map map partners partners partners partners partners"
-              "inst inst inst corp corp year year partners partners partners partners partners"
-              "courses courses courses courses satisfaction satisfaction satisfaction satisfaction trainers trainers trainers trainers";
+              "trained trained trained trained map map map map map partners partners partners"
+              "inst inst corp corp map map map map map partners partners partners"
+              "courses courses courses year year satisfaction satisfaction satisfaction trainers trainers trainers trainers";
           }
         }
       `}</style>
