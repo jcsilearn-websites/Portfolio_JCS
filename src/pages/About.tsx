@@ -177,11 +177,18 @@ export default function About() {
 
       <section
         id="leadership"
-        className="scroll-mt-24 bg-pale-blue-bg py-20 sm:py-24"
+        className="scroll-mt-24 bg-white py-20 sm:py-24"
       >
         <Container>
-          <h2 className="text-center text-3xl font-bold text-navy sm:text-4xl">
-            Leadership
+          <span className="mx-auto flex flex-col items-center">
+            <span className="text-sm font-semibold tracking-wide text-black uppercase">
+              Leadership
+            </span>
+            <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
+          </span>
+
+          <h2 className="mt-6 text-center text-4xl font-bold text-black sm:text-5xl">
+            Founding Team
           </h2>
 
           <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-2">

@@ -158,7 +158,13 @@ content's Spark → Vision → Impact narrative arc as the section's story struc
 where JCS's approach/methodology lives, matching what Psiog's "Our Model" section does for
 their business.
 
-**3. Leadership section — CORRECTED interaction pattern (third revision — this is the final,
+**3. Leadership section — header styling:** white background for this entire section (not
+pale-blue-bg). Above the card grid: "Leadership" small label with gold underline, then a large
+headline "Founding Team" below it — both in BLACK text (not navy), sized to match Psiog's
+reference proportions exactly (the "Founding Team" headline reads large/bold, comparable
+scale to other major section headlines already built elsewhere on the site).
+
+**3a. Leadership section — CORRECTED interaction pattern (third revision — this is the final,
 confirmed behavior)**: a grid of cards (photo, name, title), each with a circular "+" icon in
 the top-right corner. Two earlier versions were wrong: first an off-canvas side drawer, then
 an inline panel pushing content down. Confirmed from real Psiog screenshots: it's actually a
