@@ -140,12 +140,18 @@ for brighter tomorrows...") baked together in one image, matching Psiog's plaque
 exactly. Do not render a separate live quote card or a separate gear image — this single
 asset replaces both.
 
-**Scale — CORRECTED, be concrete this time:** the image is currently rendering far too small
-with excess empty space around it in its column. Fix: the image should fill its entire
-column width (`w-full`), height scaled proportionally to its own aspect ratio — no fixed
-small max-width/max-height constraining it artificially. It should be the dominant visual
-element on that side of the section, comparable to how large Psiog's plaque photo reads
-relative to its column. Left-column body text sized/line-length comparable to Psiog's
+**Scale + vertical alignment — CORRECTED again:** the row is `items-start` (not
+`items-center`) so the image's top edge lines up with the top of the left column's text,
+not sitting lower/centered. The image's natural aspect ratio (1541x1021, ~1.51:1) renders
+too short to read as dominant once top-aligned, especially in the ~1024-1440px range where
+the text column runs noticeably taller than the image at its natural height — so the image
+is wrapped in a `aspect-[5/4] w-full overflow-hidden` box with `h-full w-full object-cover`
+on the `<img>` itself, cropping the image's wide empty margins (not its actual gear/quote-
+card content) to reach a taller box. Verified across 1024-1920px: crop only eats into the
+decorative background space around the quote card and gear, never the content itself. A
+full pixel-for-pixel match to the text column's height isn't achievable at the narrow end
+(~1024px) without cropping into real content, so don't chase that further — this is the
+accepted compromise. Left-column body text sized/line-length comparable to Psiog's
 paragraph column.
 
 The image has text baked in — add descriptive alt text since it won't be readable by screen

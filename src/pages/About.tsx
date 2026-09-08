@@ -110,7 +110,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-32"
+            className="grid items-start gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-32"
           >
             <div>
               {ourStory.paragraphs.map((paragraph, index) => (
@@ -126,11 +126,13 @@ export default function About() {
               </p>
             </div>
 
-            <img
-              src={ourStoryImage}
-              alt={`Gear-and-checkmark graphic beside a quote card that reads: "${ourStory.quoteCardText}"`}
-              className="w-full"
-            />
+            <div className="aspect-[5/4] w-full overflow-hidden">
+              <img
+                src={ourStoryImage}
+                alt={`Gear-and-checkmark graphic beside a quote card that reads: "${ourStory.quoteCardText}"`}
+                className="h-full w-full object-cover"
+              />
+            </div>
           </motion.div>
         </Container>
       </section>
