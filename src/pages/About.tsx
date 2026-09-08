@@ -218,11 +218,11 @@ export default function About() {
                   <HiXMark size={20} />
                 </button>
 
-                <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[220px_1fr]">
+                <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[200px_1fr]">
                   <img
-                    src={activeFounder.photo}
+                    src={activeFounder.modalPhoto}
                     alt={`${activeFounder.name}, ${activeFounder.title}`}
-                    className="mx-auto w-40 rounded-2xl shadow-lg sm:w-48 md:mx-0 md:w-full"
+                    className="mx-auto aspect-square w-40 rounded-2xl object-cover shadow-lg sm:w-48 md:mx-0 md:w-[200px]"
                   />
                   <div>
                     <div className="flex flex-wrap items-center gap-3">
