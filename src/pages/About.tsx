@@ -13,6 +13,8 @@ import {
   vision,
   ourModel,
   founders,
+  founderStatCallout,
+  technicalSupportTeamHeading,
   type Founder,
 } from '../data/content'
 
@@ -317,6 +319,29 @@ export default function About() {
               />
             ))}
           </div>
+
+          <div className="mx-auto mt-16 max-w-2xl text-center">
+            <h3 className="text-3xl font-bold text-black sm:text-4xl">
+              {founderStatCallout.headline.lead}
+              <em className="font-normal italic">{founderStatCallout.headline.emphasis}</em>
+              {founderStatCallout.headline.trail}
+            </h3>
+            <p className="mt-6 text-lg leading-relaxed text-black/70">
+              {founderStatCallout.sentence.map((part, index) =>
+                part.bold ? (
+                  <strong key={index} className="font-semibold text-black">
+                    {part.text}
+                  </strong>
+                ) : (
+                  <span key={index}>{part.text}</span>
+                ),
+              )}
+            </p>
+          </div>
+
+          <h2 className="mt-20 text-center text-4xl font-bold text-black sm:text-5xl">
+            {technicalSupportTeamHeading}
+          </h2>
 
           <Modal isOpen={!!activeFounder} onClose={() => setActiveFounderId(null)}>
             {activeFounder && (

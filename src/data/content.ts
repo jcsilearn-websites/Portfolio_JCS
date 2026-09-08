@@ -508,6 +508,35 @@ export const founders: Founder[] = [
   },
 ]
 
+export interface StatCalloutPart {
+  text: string
+  bold?: boolean
+}
+
+// Stat-callout block directly below the Founding Team cards (Psiog equivalent: "Young
+// leadership. Deep expertise." block). Numbers are simple addition of figures already stated
+// in each founder's own bio above — 850 = 500 (Raghul) + 350 (Siva Harish) training programs;
+// 1,70,000 = 1,00,000 + 70,000 students/professionals — not new claims, per CLAUDE.md.
+export const founderStatCallout = {
+  headline: {
+    lead: 'Founders. ',
+    emphasis: 'Deep Experience.',
+    trail: '',
+  },
+  sentence: [
+    { text: 'Together, Raghul and Siva Harish have delivered ' },
+    { text: '850+ training programs', bold: true },
+    { text: ' and reached over ' },
+    { text: '1,70,000 students and professionals', bold: true },
+    { text: ' across India.' },
+  ] satisfies StatCalloutPart[],
+}
+
+// Heading only, per CLAUDE.md — the card grid below it needs real team member photos/names
+// from the client before it can be built (see Known open items #12). No eyebrow label, same
+// visual treatment as the "Founding Team" heading above it (Psiog equivalent: "Leading The Way").
+export const technicalSupportTeamHeading = 'Technical Support Team'
+
 export interface LeadershipValue {
   title: string
   description: string

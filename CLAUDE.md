@@ -272,6 +272,22 @@ reconfirmed current):
 > which has strengthened my foundation in analytical thinking, problem-solving, and
 > technology-driven learning.
 
+**New — stat-callout section, right after the Founding Team cards** (Psiog equivalent:
+"Young leadership. Deep expertise." block): headline "Founders. Deep Experience." (italicize
+"Deep Experience"), followed by one sentence with key numbers bolded, built entirely from
+figures already stated in each founder's own bio above (not new claims):
+
+> Together, Raghul and Siva Harish have delivered **850+ training programs** and reached over
+> **1,70,000 students and professionals** across India.
+
+(850 = 500 from Raghul's bio + 350 from Siva Harish's bio; 1,70,000 = 1,00,000 + 70,000 —
+simple addition of already-sourced figures, not a new stat.)
+
+**New — "Technical Support Team" heading** (Psiog equivalent: "Leading The Way" — same visual
+treatment: large bold headline, no eyebrow label needed). **Heading only for now** — the
+actual grid of team member cards below it needs real photos/names from the client before it
+can be built; leave it as a heading with no cards yet rather than inventing placeholder people.
+
 **Removed per explicit client request**: the "Our Leadership Values" 4-item grid that used to
 follow this card+modal section has been removed entirely from the live page (see the
 Conventions/open-items note below — the content stays documented for history but is not
@@ -515,6 +531,8 @@ Jcs/
 11. Contact form won't send mail until a real .env with EmailJS service/template/public key
     IDs is added locally (see .env.example) — get these from the client or a fresh EmailJS
     account before this page goes live.
+12. "Technical Support Team" section on /about has a heading only — real team member photos
+    and names still needed from the client before the card grid below it can be built.
 
 ## Conventions
 - **Site-wide layout container — CORRECTED with measured value.** Psiog maintains one
