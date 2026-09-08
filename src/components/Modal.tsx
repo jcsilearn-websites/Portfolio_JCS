@@ -43,7 +43,7 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
             onClick={(event) => event.stopPropagation()}
-            className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl shadow-2xl"
+            className="max-h-[90vh] w-full max-w-6xl overflow-y-auto rounded-2xl shadow-2xl"
           >
             {children}
           </motion.div>
