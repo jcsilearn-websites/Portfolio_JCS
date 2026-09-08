@@ -362,7 +362,6 @@ export const philosophy = {
     'Most training providers arrive with a fixed curriculum. We arrive with questions.',
     "Our trainers spend time understanding what your students or teams actually struggle with — the skill gaps, the confidence gaps, the specific outcomes you need — before a single session is planned. That's what makes a program land, not just get delivered.",
   ],
-  pullQuote: 'We understand the learner first. Then we design the program.',
 }
 
 // Positioning section (hero) of the consolidated /about page. Label/headline/subheading sit

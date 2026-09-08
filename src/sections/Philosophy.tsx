@@ -42,10 +42,6 @@ export default function Philosophy() {
             </p>
           ))}
         </div>
-
-        <p className="text-center text-2xl text-black italic sm:text-3xl lg:col-span-2 lg:mt-4">
-          “{philosophy.pullQuote}”
-        </p>
       </Container>
     </motion.section>
   )
