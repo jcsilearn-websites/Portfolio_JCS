@@ -517,3 +517,58 @@ export const contactInfo = {
   emails: ['info@jcsilearn.com', 'jcsilearn@gmail.com'],
   hours: ['Mon–Fri 9:00 AM–5:00 PM', 'Sat 9:00 AM–1:00 PM'],
 }
+
+export interface ProgramTopic {
+  label: string
+  slug: string
+  description: string
+}
+
+// Single source of truth for both the Header "Our Programs" dropdown and the /programs
+// page sections — shared by label+slug so the two never drift out of sync. Descriptions
+// are draft copy (topic-level, not sourced from the client's 23-program branded taxonomy —
+// see CLAUDE.md's open programs-vs-services-taxonomy item).
+export const programTopics: ProgramTopic[] = [
+  {
+    label: 'Soft Skills',
+    slug: 'soft-skills',
+    description:
+      'From confident communication to teamwork and interview presence, this track builds the everyday skills that shape how learners carry themselves in a room, a group discussion, or a panel interview. It’s practice-first, not lecture-first — learners rehearse the moments that actually matter.',
+  },
+  {
+    label: 'Technical Skills',
+    slug: 'technical-skills',
+    description:
+      'Hands-on training in coding, tools, and domain-specific technical ability, built to close the gap between classroom theory and what employers actually expect on day one. Sessions are structured around real problems, not just syntax.',
+  },
+  {
+    label: 'Aptitude & Reasoning',
+    slug: 'aptitude-reasoning',
+    description:
+      'Structured quantitative, logical, and verbal reasoning prep for the tests that stand between learners and their next opportunity — placement drives, entrance exams, and competitive assessments alike. We break difficult concepts into simple, repeatable techniques.',
+  },
+  {
+    label: 'Placement & Recruitment',
+    slug: 'placement-recruitment',
+    description:
+      'End-to-end support for campus placement season — mock interviews, resume readiness, group discussions, and recruiter-facing conduct — so learners walk into a hiring drive prepared instead of anxious.',
+  },
+  {
+    label: 'Career Planning',
+    slug: 'career-planning',
+    description:
+      'Guidance for learners figuring out what comes next: goal-setting, career-path clarity, and a realistic roadmap from where they are to where they want to be, built one honest conversation at a time.',
+  },
+  {
+    label: 'Corporate Readiness',
+    slug: 'corporate-readiness',
+    description:
+      'Workplace conduct, professional grooming, and the unwritten rules of a corporate environment — preparing learners not just to get hired, but to succeed once they’re in the room.',
+  },
+  {
+    label: 'School Enrichment',
+    slug: 'school-enrichment',
+    description:
+      'Early, foundational skill-building for school students — communication, confidence, and curiosity — designed to plant the habits that make every later stage of learning easier.',
+  },
+]
