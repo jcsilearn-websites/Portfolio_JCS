@@ -151,6 +151,30 @@ paragraph column.
 The image has text baked in — add descriptive alt text since it won't be readable by screen
 readers/SEO otherwise.
 
+**1b. Vision section — NEW, inserted between Our Story and Our Model** (Psiog equivalent:
+"Mid-Market Focus" → "Addressing the often overlooked"). Left column: "VISION" label with
+gold underline, headline with one italicized phrase — "Building a Future Where *Every Learner
+Thrives*." — followed by three paragraphs (draft copy, flagged pending client review, built
+from concepts already established elsewhere in this file — no new stats/claims invented):
+
+> Education alone isn't enough. What matters is whether that education translates into real
+> opportunity — a job, a promotion, a business, a career someone is proud of.
+>
+> We're building JCS iLearn to be that bridge at scale — reaching more students, more
+> institutions, more professionals, without losing the practice-first, relationship-driven
+> approach that got us here.
+>
+> Our vision is simple: a growing network of trainers, a widening reach across cities and
+> institutions, and a generation of learners who don't just complete a program — they walk
+> away genuinely more employable, more confident, and more capable than when they started.
+
+Right column: single pre-composited image asset at `src/assets/About-page/vision.png` —
+client-designed (check actual content when implementing, same as other About-page image
+assets in this project). Match Psiog's reference proportions exactly: same relative size/
+shape, same text sizing and alignment pattern already established for this page's other
+sections (label+underline size, headline size with italic phrase, paragraph sizing/line-length
+comparable to the reference).
+
 **2. Our Model section** (Psiog: how they work/their methodology): map the existing "Why
 Choose Our Training Services" content here — Industry-Relevant Curriculum, Expert Trainers,
 Proven Results (already sourced, from the old site's services page) — plus the Journey
@@ -267,7 +291,7 @@ own fuller page:
 ## Site structure (routes)
 
 - `/` — Home: Hero → Stats strip → About teaser → Services (tabbed, audience-based) → Programs teaser → Trainers teaser → Testimonials → CTA → Footer
-- `/about` — **Single consolidated page** (corrected from the earlier multi-page approach): Positioning → Our Model → Leadership (card+drawer) sections, all on one page with anchors, matching Psiog's exact structure. No sub-routes.
+- `/about` — **Single consolidated page**: Hero → Our Story (Positioning) → Vision (new) → Our Model → Leadership (card+modal) sections, all on one page, matching Psiog's structure. No sub-routes.
 - `/programs` — full programs grid/tabs (see Programs data below)
 - `/services` — audience-based service cards (Universities/Corporates/Startups/Schools/Professionals)
 - `/trainers` — **new page, not in the old site** — trainer profile grid (content exists, see below; justified by the depth of the trainers deck the client provided)

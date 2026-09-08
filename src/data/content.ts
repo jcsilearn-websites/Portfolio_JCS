@@ -389,6 +389,24 @@ export const ourStory = {
     'Empowering learners today for brighter tomorrows. At JCS iLearn, we bridge education and opportunities to help individuals build skills, confidence, and successful careers.',
 }
 
+// Vision section, inserted between Our Story and Our Model (Psiog equivalent: "Mid-Market
+// Focus" -> "Addressing the often overlooked"). Draft copy, flagged pending client review —
+// built from concepts already established elsewhere in this file, no new stats/claims
+// invented. Right column is a single pre-composited image (src/assets/About-page/vision.png).
+export const vision = {
+  label: 'Vision',
+  headline: {
+    lead: 'Building a Future Where ',
+    emphasis: 'Every Learner Thrives',
+    trail: '.',
+  },
+  paragraphs: [
+    "Education alone isn't enough. What matters is whether that education translates into real opportunity — a job, a promotion, a business, a career someone is proud of.",
+    "We're building JCS iLearn to be that bridge at scale — reaching more students, more institutions, more professionals, without losing the practice-first, relationship-driven approach that got us here.",
+    "Our vision is simple: a growing network of trainers, a widening reach across cities and institutions, and a generation of learners who don't just complete a program — they walk away genuinely more employable, more confident, and more capable than when they started.",
+  ],
+}
+
 export interface ModelPillar {
   stage: string
   title: string

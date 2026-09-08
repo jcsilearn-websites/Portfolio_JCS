@@ -6,9 +6,11 @@ import Container from '../components/Container'
 import Modal from '../components/Modal'
 import aboutHeroImage from '../assets/About-page/header.png'
 import ourStoryImage from '../assets/About-page/ChatGPT Image Sep 7, 2026, 11_12_22 PM.png'
+import visionImage from '../assets/About-page/vision.png'
 import {
   positioning,
   ourStory,
+  vision,
   ourModel,
   founders,
   leadershipValues,
@@ -131,6 +133,48 @@ export default function About() {
                 className="h-full w-full object-cover"
               />
             </div>
+          </motion.div>
+        </Container>
+      </section>
+
+      <section className="bg-white py-16 sm:py-20">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16"
+          >
+            <div>
+              <span className="inline-flex flex-col items-start">
+                <span className="text-sm font-semibold tracking-wide text-navy uppercase">
+                  {vision.label}
+                </span>
+                <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
+              </span>
+
+              <h2 className="mt-6 text-4xl font-bold text-navy sm:text-5xl">
+                {vision.headline.lead}
+                <em className="font-normal italic">{vision.headline.emphasis}</em>
+                {vision.headline.trail}
+              </h2>
+
+              {vision.paragraphs.map((paragraph, index) => (
+                <p
+                  key={paragraph}
+                  className={`text-xl leading-relaxed text-navy/70 ${index === 0 ? 'mt-6' : 'mt-4'}`}
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+
+            <img
+              src={visionImage}
+              alt="Two circular photo collages, labeled Student Friendly and Skilled Trainers, connected by a decorative ribbon around a central gear-and-checkmark icon"
+              className="w-full"
+            />
           </motion.div>
         </Container>
       </section>
