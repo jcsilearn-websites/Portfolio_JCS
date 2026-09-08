@@ -82,10 +82,11 @@ export default function Programs() {
               <h2 className="text-3xl font-bold text-black sm:text-4xl">
                 {active.label}
               </h2>
+              <span className="mt-3 block h-0.5 w-10 rounded-full bg-gold" />
 
               <ProgramDescription segments={active.description} />
 
-              <blockquote className="mt-6 border-l-4 border-gold pl-4 text-xl text-navy/80 italic">
+              <blockquote className="mt-6 border-l-4 border-gold pl-4 text-xl text-black italic">
                 “{active.quote}”
               </blockquote>
 
@@ -95,7 +96,7 @@ export default function Programs() {
                     key={bullet}
                     className="flex items-start gap-2 text-base text-black/70"
                   >
-                    <HiCheckCircle className="mt-0.5 shrink-0 text-gold" size={20} />
+                    <HiCheckCircle className="mt-0.5 shrink-0 text-black" size={20} />
                     <span>{bullet}</span>
                   </li>
                 ))}
