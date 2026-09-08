@@ -18,9 +18,11 @@ import takshashilaUniversityLogo from '../assets/college-logos/Takshashila Unive
 import tamilNaduCollegeLogo from '../assets/college-logos/Tamil Nadu College of Engineering, Coimbatore/TN.jpg'
 import velsUniversityLogo from '../assets/college-logos/VELS University, Chennai/VELS.png'
 import vsbCollegeLogo from '../assets/college-logos/VSB College of Engineering, Coimbatore/images (3).jpeg'
-// Photo-to-name mapping is client-confirmed (see Founder type below / CLAUDE.md).
-import raghulPhoto from '../assets/founders/WhatsApp Image 2026-09-06 at 11.11.35 PM.jpeg'
-import sivaPhoto from '../assets/founders/WhatsApp Image 2026-09-06 at 11.12.47 PM.jpeg'
+// Pre-composited card-face images (photo + gradient background + name/title baked in) —
+// replaces the earlier plain WhatsApp headshots. Photo-to-name mapping is client-confirmed
+// (see Founder type below / CLAUDE.md).
+import raghulPhoto from '../assets/About-page/about-ceo.png'
+import sivaPhoto from '../assets/About-page/about-vp.png'
 
 export const homeHero = {
   taglineLine1: 'I Learn,',

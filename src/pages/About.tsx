@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { AnimatePresence, motion, type Variants } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import { FaLinkedin } from 'react-icons/fa'
 import { HiFlag, HiLightBulb, HiHandRaised, HiStar, HiPlus, HiXMark } from 'react-icons/hi2'
 import Container from '../components/Container'
+import Modal from '../components/Modal'
 import aboutHeroImage from '../assets/About-page/header.png'
 import ourStoryImage from '../assets/About-page/ChatGPT Image Sep 7, 2026, 11_12_22 PM.png'
 import {
@@ -36,13 +37,18 @@ interface FounderCardProps {
 
 function FounderCard({ founder, isOpen, onToggle }: FounderCardProps) {
   return (
-    <div className="relative flex flex-col items-center rounded-2xl bg-white p-8 text-center shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+    <div className="relative overflow-hidden rounded-2xl shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+      <img
+        src={founder.photo}
+        alt={`${founder.name}, ${founder.title}`}
+        className="block w-full"
+      />
       <button
         type="button"
         onClick={onToggle}
+        aria-haspopup="dialog"
         aria-expanded={isOpen}
-        aria-controls={`founder-panel-${founder.id}`}
-        aria-label={isOpen ? `Collapse ${founder.name}'s bio` : `Expand ${founder.name}'s bio`}
+        aria-label={`View ${founder.name}'s bio`}
         className={`absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-300 ${
           isOpen ? 'bg-gold text-navy' : 'bg-navy text-white'
         }`}
@@ -55,14 +61,6 @@ function FounderCard({ founder, isOpen, onToggle }: FounderCardProps) {
           <HiPlus size={18} />
         </motion.span>
       </button>
-
-      <img
-        src={founder.photo}
-        alt={founder.name}
-        className="h-40 w-40 rounded-full object-cover object-top shadow-sm"
-      />
-      <p className="mt-5 text-lg font-semibold text-navy">{founder.name}</p>
-      <p className="mt-1 text-sm text-pale-blue-text">{founder.title}</p>
     </div>
   )
 }
@@ -201,68 +199,58 @@ export default function About() {
             ))}
           </div>
 
-          <AnimatePresence mode="wait" initial={false}>
+          <Modal isOpen={!!activeFounder} onClose={() => setActiveFounderId(null)}>
             {activeFounder && (
-              <motion.div
-                key={activeFounder.id}
-                id={`founder-panel-${activeFounder.id}`}
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.35, ease: 'easeOut' }}
-                className="mt-8 overflow-hidden rounded-2xl"
-              >
-                <div className="relative bg-navy px-8 py-10 sm:px-12 sm:py-12">
-                  <button
-                    type="button"
-                    onClick={() => setActiveFounderId(null)}
-                    aria-label="Close"
-                    className="absolute top-6 right-6 flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-200 hover:bg-gold hover:text-navy"
-                  >
-                    <HiXMark size={20} />
-                  </button>
+              <div className="relative bg-navy px-8 py-10 sm:px-12 sm:py-12">
+                <button
+                  type="button"
+                  onClick={() => setActiveFounderId(null)}
+                  aria-label="Close"
+                  className="absolute top-6 right-6 flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-200 hover:bg-gold hover:text-navy"
+                >
+                  <HiXMark size={20} />
+                </button>
 
-                  <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[auto_1fr]">
-                    <img
-                      src={activeFounder.photo}
-                      alt={activeFounder.name}
-                      className="mx-auto h-48 w-48 rounded-full object-cover object-top shadow-lg md:mx-0"
-                    />
-                    <div>
-                      <div className="flex flex-wrap items-center gap-3">
-                        <h3 className="text-2xl font-bold text-white">
-                          {activeFounder.name}
-                        </h3>
-                        <a
-                          href={activeFounder.linkedIn}
-                          target="_blank"
-                          rel="noreferrer"
-                          aria-label={`${activeFounder.name} on LinkedIn`}
-                          className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-200 hover:bg-gold hover:text-navy"
+                <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[220px_1fr]">
+                  <img
+                    src={activeFounder.photo}
+                    alt={`${activeFounder.name}, ${activeFounder.title}`}
+                    className="mx-auto w-40 rounded-2xl shadow-lg sm:w-48 md:mx-0 md:w-full"
+                  />
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <h3 className="text-2xl font-bold text-white">
+                        {activeFounder.name}
+                      </h3>
+                      <a
+                        href={activeFounder.linkedIn}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${activeFounder.name} on LinkedIn`}
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-200 hover:bg-gold hover:text-navy"
+                      >
+                        <FaLinkedin size={16} />
+                      </a>
+                    </div>
+                    <p className="mt-1 text-sm font-medium text-gold">
+                      {activeFounder.title}
+                    </p>
+
+                    <div className="mt-6 space-y-4">
+                      {activeFounder.bio.map((paragraph, index) => (
+                        <p
+                          key={index}
+                          className="text-base leading-relaxed text-white/85"
                         >
-                          <FaLinkedin size={16} />
-                        </a>
-                      </div>
-                      <p className="mt-1 text-sm font-medium text-gold">
-                        {activeFounder.title}
-                      </p>
-
-                      <div className="mt-6 space-y-4">
-                        {activeFounder.bio.map((paragraph, index) => (
-                          <p
-                            key={index}
-                            className="text-base leading-relaxed text-white/85"
-                          >
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
+                          {paragraph}
+                        </p>
+                      ))}
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             )}
-          </AnimatePresence>
+          </Modal>
 
           <div className="mx-auto mt-20 max-w-5xl">
             <h3 className="text-center text-2xl font-bold text-navy sm:text-3xl">

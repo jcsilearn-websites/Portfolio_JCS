@@ -140,18 +140,12 @@ for brighter tomorrows...") baked together in one image, matching Psiog's plaque
 exactly. Do not render a separate live quote card or a separate gear image — this single
 asset replaces both.
 
-**Scale + vertical alignment — CORRECTED again:** the row is `items-start` (not
-`items-center`) so the image's top edge lines up with the top of the left column's text,
-not sitting lower/centered. The image's natural aspect ratio (1541x1021, ~1.51:1) renders
-too short to read as dominant once top-aligned, especially in the ~1024-1440px range where
-the text column runs noticeably taller than the image at its natural height — so the image
-is wrapped in a `aspect-[5/4] w-full overflow-hidden` box with `h-full w-full object-cover`
-on the `<img>` itself, cropping the image's wide empty margins (not its actual gear/quote-
-card content) to reach a taller box. Verified across 1024-1920px: crop only eats into the
-decorative background space around the quote card and gear, never the content itself. A
-full pixel-for-pixel match to the text column's height isn't achievable at the narrow end
-(~1024px) without cropping into real content, so don't chase that further — this is the
-accepted compromise. Left-column body text sized/line-length comparable to Psiog's
+**Scale — CORRECTED, be concrete this time:** the image is currently rendering far too small
+with excess empty space around it in its column. Fix: the image should fill its entire
+column width (`w-full`), height scaled proportionally to its own aspect ratio — no fixed
+small max-width/max-height constraining it artificially. It should be the dominant visual
+element on that side of the section, comparable to how large Psiog's plaque photo reads
+relative to its column. Left-column body text sized/line-length comparable to Psiog's
 paragraph column.
 
 The image has text baked in — add descriptive alt text since it won't be readable by screen
@@ -164,20 +158,29 @@ content's Spark → Vision → Impact narrative arc as the section's story struc
 where JCS's approach/methodology lives, matching what Psiog's "Our Model" section does for
 their business.
 
-**3. Leadership section — CORRECTED interaction pattern** (supersedes the earlier off-canvas
-drawer version, now that real Psiog screenshots show the actual mechanism): a grid of cards
-(photo, name, title), each with a circular "+" icon in the top-right corner. On click:
-- The "+" icon rotates (becomes visually an "×") and its circular background fills gold
-  (JCS's equivalent of Psiog's yellow-green fill).
-- A full-width bio panel expands (inline, pushing content below it down — NOT an off-canvas
-  drawer sliding from the side) directly below the row of cards, on a navy background
-  (Psiog uses teal): photo on the left, full bio text on the right, with a close "×" button
-  in the panel's top-right corner.
-- Clicking "×" or the same "+" icon again collapses the panel and un-rotates the icon.
+**3. Leadership section — CORRECTED interaction pattern (third revision — this is the final,
+confirmed behavior)**: a grid of cards (photo, name, title), each with a circular "+" icon in
+the top-right corner. Two earlier versions were wrong: first an off-canvas side drawer, then
+an inline panel pushing content down. Confirmed from real Psiog screenshots: it's actually a
+**centered modal overlay** —
+- The "+" icon rotates (becomes visually an "×") and its circular background fills gold.
+- A dark semi-transparent backdrop dims the entire page behind it.
+- A centered modal card appears on top (navy background, matching Psiog's teal): the
+  founder's photo on the left, full bio text on the right, close "×" button in the modal's
+  top-right corner.
+- Clicking the "×", clicking the backdrop, or pressing Escape closes the modal and un-rotates
+  the icon.
+- Use a proper modal/dialog pattern (portal to body, focus trap, scroll-lock on the page
+  behind it while open) — not a positioned-absolute element that could get clipped by a
+  parent's overflow.
 
-Only 2 cards — Raghul J C, Siva Harish M. Photo assignment now CONFIRMED (resolves the earlier
-open item): `src/assets/founders/WhatsApp Image 2026-09-06 at 11.11.35 PM.jpeg` = Raghul J C;
-`src/assets/founders/WhatsApp Image 2026-09-06 at 11.12.47 PM.jpeg` = Siva Harish M.
+Only 2 cards — Raghul J C, Siva Harish M. **Card face images — NEW assets, replacing the
+plain WhatsApp headshots used before:** `src/assets/About-page/about-ceo.png` = Raghul J C,
+`src/assets/About-page/about-vp.png` = Siva Harish M. These are client-designed card images
+(check actual content/styling when implementing — likely already have a background treatment
+baked in, similar to how other About-page assets in this project were pre-composited; adapt
+the card wrapper accordingly rather than assuming a plain headshot that needs additional
+background styling on top).
 
 **Bios — NEW, supersedes the old "From the Founder's Desk"/"Message from the Co-Founder"
 narrative copy for this card component** (that older copy was written for the earlier
