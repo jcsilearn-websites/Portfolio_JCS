@@ -220,7 +220,7 @@ export default function About() {
 
                 <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-[220px_1fr]">
                   <img
-                    src={activeFounder.photo}
+                    src={activeFounder.modalPhoto}
                     alt={`${activeFounder.name}, ${activeFounder.title}`}
                     className="mx-auto w-40 rounded-2xl shadow-lg sm:w-48 md:mx-0 md:w-full"
                   />

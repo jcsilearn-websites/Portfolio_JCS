@@ -23,6 +23,10 @@ import vsbCollegeLogo from '../assets/college-logos/VSB College of Engineering, 
 // (see Founder type below / CLAUDE.md).
 import raghulPhoto from '../assets/About-page/about-ceo.png'
 import sivaPhoto from '../assets/About-page/about-vp.png'
+// Separate modal-only photos — no baked-in name/title (unlike the card-face images above),
+// so the modal's coded name/title/LinkedIn header isn't duplicating text already in the image.
+import raghulModalPhoto from '../assets/About-page/Inside-card-coe.png'
+import sivaModalPhoto from '../assets/About-page/inside-card-vp.png'
 
 export const homeHero = {
   taglineLine1: 'I Learn,',
@@ -452,6 +456,7 @@ export interface Founder {
   linkedIn: string
   bio: string[]
   photo: string
+  modalPhoto: string
 }
 
 // Bios are verbatim from CLAUDE.md's new professional/credentials-focused copy, written
@@ -471,6 +476,7 @@ export const founders: Founder[] = [
       "His leadership philosophy combines strategic vision, operational discipline, and a learner-centric approach, strengthening JCS iLEARN's mission of empowering students and professionals with the competencies required for long-term career success.",
     ],
     photo: raghulPhoto,
+    modalPhoto: raghulModalPhoto,
   },
   {
     id: 'siva-harish-m',
@@ -481,6 +487,7 @@ export const founders: Founder[] = [
       'With experience in Aptitude, Skill Development, Communication, and Interpersonal Skills, I have trained 70,000+ students across 35+ institutions throughout India and have been part of 350+ training programs, gaining exposure to diverse students, institutions, and learning environments. I served as a Senior Aptitude Mentor at Alliance University, where I was involved in academic training, content creation, and content delivery. With a vision to create a greater impact in the education and employability sector, I co-founded JCS iLearn, where I currently serve as Co-Founder & Vice President – Business Development & Human Resources, handling institutional partnerships, business development, client relationships, talent acquisition, team management, HR operations, and organizational growth. I also continue to contribute to training, skill development, and employability initiatives. I hold a Bachelor of Technology (B.Tech) degree from Paavai Engineering College, Namakkal, which has strengthened my foundation in analytical thinking, problem-solving, and technology-driven learning.',
     ],
     photo: sivaPhoto,
+    modalPhoto: sivaModalPhoto,
   },
 ]
 
