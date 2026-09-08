@@ -14,10 +14,12 @@ interface ContainerProps {
 //
 // Horizontal gutter scale — widened beyond the original measured px-6 lg:px-8 to give
 // desktop noticeably more side breathing room (reference: psiog.com's wider gutters).
-// Mobile stays tight at 24px; sm/lg/xl progressively increase from there.
+// Mobile stays tight at 24px; sm/lg/xl progressively increase from there. lg/xl bumped a
+// second time (16->20, 24->32) — the first widening still read as too narrow on large
+// screens next to the reference site's gutters.
 export default function Container({ children, className = '' }: ContainerProps) {
   return (
-    <div className={`mx-auto max-w-screen-2xl px-6 sm:px-10 lg:px-16 xl:px-24 ${className}`}>
+    <div className={`mx-auto max-w-screen-2xl px-6 sm:px-10 lg:px-20 xl:px-32 ${className}`}>
       {children}
     </div>
   )
