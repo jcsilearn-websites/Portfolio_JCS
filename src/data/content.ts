@@ -342,9 +342,21 @@ export const whoWeServe = {
   closingLine: homeHero.supportingLine,
 }
 
+// Draft copy structurally mirroring Psiog's philosophy-section pattern in JCS's own
+// training-domain language (see CLAUDE.md row 6) — not a sourced/verbatim client claim,
+// no new stats or promises introduced. Pending client review, same as whoWeServe above.
 export const philosophy = {
-  heading: 'Our Philosophy',
-  quote: homeHero.supportingLine,
+  label: 'Our Philosophy',
+  headline: {
+    lead: 'We listen to every learner ',
+    emphasis: 'before we design a program',
+    trail: '.',
+  },
+  paragraphs: [
+    'Most training providers arrive with a fixed curriculum. We arrive with questions.',
+    "Our trainers spend time understanding what your students or teams actually struggle with — the skill gaps, the confidence gaps, the specific outcomes you need — before a single session is planned. That's what makes a program land, not just get delivered.",
+  ],
+  pullQuote: 'We understand the learner first. Then we design the program.',
 }
 
 // Positioning section (hero) of the consolidated /about page. Label/headline/subheading sit
