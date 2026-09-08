@@ -144,17 +144,17 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16"
+            className="grid items-center gap-12 lg:grid-cols-[620px_1fr] lg:gap-16"
           >
             <div>
               <span className="inline-flex flex-col items-start">
-                <span className="text-sm font-semibold tracking-wide text-navy uppercase">
+                <span className="text-sm font-semibold tracking-wide text-black uppercase">
                   {vision.label}
                 </span>
                 <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
               </span>
 
-              <h2 className="mt-6 text-4xl font-bold text-navy sm:text-5xl">
+              <h2 className="mt-6 text-4xl font-bold text-black sm:text-5xl">
                 {vision.headline.lead}
                 <em className="font-normal italic">{vision.headline.emphasis}</em>
                 {vision.headline.trail}
@@ -163,7 +163,7 @@ export default function About() {
               {vision.paragraphs.map((paragraph, index) => (
                 <p
                   key={paragraph}
-                  className={`text-xl leading-relaxed text-navy/70 ${index === 0 ? 'mt-6' : 'mt-4'}`}
+                  className={`text-xl leading-relaxed text-black/70 ${index === 0 ? 'mt-6' : 'mt-4'}`}
                 >
                   {paragraph}
                 </p>
