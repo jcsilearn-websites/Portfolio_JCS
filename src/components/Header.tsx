@@ -120,7 +120,7 @@ export default function Header() {
                         {programTopics.map((topic) => (
                           <Link
                             key={topic.slug}
-                            to={`/programs#${topic.slug}`}
+                            to={`/programs/${topic.slug}`}
                             onClick={() => setProgramsOpen(false)}
                             className="block px-4 py-2.5 text-sm font-medium text-navy transition-colors duration-200 hover:bg-pale-blue-bg hover:text-gold"
                           >
@@ -227,7 +227,7 @@ export default function Header() {
                               {programTopics.map((topic) => (
                                 <Link
                                   key={topic.slug}
-                                  to={`/programs#${topic.slug}`}
+                                  to={`/programs/${topic.slug}`}
                                   onClick={closeMobileMenu}
                                   className="rounded-lg px-3 py-2 text-sm text-navy/60 hover:text-navy"
                                 >

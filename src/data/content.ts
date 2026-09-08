@@ -525,57 +525,146 @@ export const contactInfo = {
   hours: ['Mon–Fri 9:00 AM–5:00 PM', 'Sat 9:00 AM–1:00 PM'],
 }
 
+export interface ProgramDescriptionSegment {
+  text: string
+  emphasis?: 'bold' | 'italic'
+}
+
 export interface ProgramTopic {
   label: string
   slug: string
-  description: string
+  /** Inline-emphasis segments — join in order to read as one flowing paragraph. */
+  description: ProgramDescriptionSegment[]
+  /** Short, punchy pull-quote in the program's own voice, distinct from the paragraph. */
+  quote: string
+  /** 2-3 concrete highlights, rendered as a checkmark list. */
+  bullets: string[]
 }
 
 // Single source of truth for both the Header "Our Programs" dropdown and the /programs
-// page sections — shared by label+slug so the two never drift out of sync. Descriptions
-// are draft copy (topic-level, not sourced from the client's 23-program branded taxonomy —
-// see CLAUDE.md's open programs-vs-services-taxonomy item).
+// page — shared by label+slug so the two never drift out of sync. Copy (description,
+// quote, bullets) is draft, topic-level content (not sourced from the client's 23-program
+// branded taxonomy — see CLAUDE.md's open programs-vs-services-taxonomy item).
 export const programTopics: ProgramTopic[] = [
   {
     label: 'Soft Skills',
     slug: 'soft-skills',
-    description:
-      'From confident communication to teamwork and interview presence, this track builds the everyday skills that shape how learners carry themselves in a room, a group discussion, or a panel interview. It’s practice-first, not lecture-first — learners rehearse the moments that actually matter.',
+    description: [
+      { text: 'From ' },
+      { text: 'confident communication', emphasis: 'bold' },
+      {
+        text: ' to teamwork and interview presence, this track builds the everyday skills that shape how learners carry themselves in a room, a group discussion, or a panel interview. It’s ',
+      },
+      { text: 'practice-first, not lecture-first', emphasis: 'italic' },
+      { text: ' — learners rehearse the moments that actually matter.' },
+    ],
+    quote: 'Confidence isn’t taught in theory — it’s built one conversation at a time.',
+    bullets: [
+      'Mock interviews and group discussions',
+      'Communication and body language coaching',
+      'Real-time feedback from certified trainers',
+    ],
   },
   {
     label: 'Technical Skills',
     slug: 'technical-skills',
-    description:
-      'Hands-on training in coding, tools, and domain-specific technical ability, built to close the gap between classroom theory and what employers actually expect on day one. Sessions are structured around real problems, not just syntax.',
+    description: [
+      { text: 'Hands-on training in coding, tools, and domain-specific technical ability, built to ' },
+      { text: 'close the gap between classroom theory and industry expectation', emphasis: 'bold' },
+      { text: '. Sessions are structured around ' },
+      { text: 'real problems, not just syntax', emphasis: 'italic' },
+      { text: ' — so learners leave with something they can actually build.' },
+    ],
+    quote: 'We don’t teach code. We teach how to think like a builder.',
+    bullets: [
+      'Hands-on coding labs and live projects',
+      'Industry-aligned tools and frameworks',
+      'Peer code reviews and mentor guidance',
+    ],
   },
   {
     label: 'Aptitude & Reasoning',
     slug: 'aptitude-reasoning',
-    description:
-      'Structured quantitative, logical, and verbal reasoning prep for the tests that stand between learners and their next opportunity — placement drives, entrance exams, and competitive assessments alike. We break difficult concepts into simple, repeatable techniques.',
+    description: [
+      { text: 'Structured quantitative, logical, and verbal reasoning prep for the tests that stand between learners and their next opportunity. We break difficult concepts into ' },
+      { text: 'simple, repeatable techniques', emphasis: 'bold' },
+      { text: ' learners can rely on under pressure, with ' },
+      { text: 'timed practice that mirrors the real exam', emphasis: 'italic' },
+      { text: '.' },
+    ],
+    quote: 'Speed comes from method, not memorisation.',
+    bullets: [
+      'Topic-wise concept building and shortcuts',
+      'Timed mock tests with detailed analysis',
+      'Personalised weak-area tracking',
+    ],
   },
   {
     label: 'Placement & Recruitment',
     slug: 'placement-recruitment',
-    description:
-      'End-to-end support for campus placement season — mock interviews, resume readiness, group discussions, and recruiter-facing conduct — so learners walk into a hiring drive prepared instead of anxious.',
+    description: [
+      { text: 'End-to-end support for campus placement season — ' },
+      { text: 'mock interviews, resume readiness, and recruiter-facing conduct', emphasis: 'bold' },
+      { text: ' — so learners walk into a hiring drive prepared instead of anxious. It’s ' },
+      { text: 'built around what recruiters actually screen for', emphasis: 'italic' },
+      { text: ', not generic advice.' },
+    ],
+    quote: 'Preparation is the difference between nervous and ready.',
+    bullets: [
+      'One-on-one mock interview sessions',
+      'Resume and LinkedIn profile building',
+      'Group discussion and panel simulations',
+    ],
   },
   {
     label: 'Career Planning',
     slug: 'career-planning',
-    description:
-      'Guidance for learners figuring out what comes next: goal-setting, career-path clarity, and a realistic roadmap from where they are to where they want to be, built one honest conversation at a time.',
+    description: [
+      { text: 'Guidance for learners figuring out what comes next: ' },
+      { text: 'goal-setting and career-path clarity', emphasis: 'bold' },
+      { text: ' built one honest conversation at a time. This is ' },
+      { text: 'advice grounded in the learner’s own strengths', emphasis: 'italic' },
+      { text: ', not a one-size-fits-all roadmap.' },
+    ],
+    quote: 'A clear direction beats a hundred open options.',
+    bullets: [
+      'One-on-one career counselling sessions',
+      'Skill-gap and strength assessments',
+      'Personalised short- and long-term roadmaps',
+    ],
   },
   {
     label: 'Corporate Readiness',
     slug: 'corporate-readiness',
-    description:
-      'Workplace conduct, professional grooming, and the unwritten rules of a corporate environment — preparing learners not just to get hired, but to succeed once they’re in the room.',
+    description: [
+      { text: 'Workplace conduct, professional grooming, and the unwritten rules of a corporate environment — preparing learners not just to ' },
+      { text: 'get hired, but to succeed once they’re in the room', emphasis: 'bold' },
+      { text: '. It’s ' },
+      { text: 'the polish that experience usually teaches the hard way', emphasis: 'italic' },
+      { text: ', taught early instead.' },
+    ],
+    quote: 'Getting the offer is step one. Fitting in is step two.',
+    bullets: [
+      'Corporate etiquette and email communication',
+      'Workplace grooming and professional presence',
+      'Cross-team collaboration simulations',
+    ],
   },
   {
     label: 'School Enrichment',
     slug: 'school-enrichment',
-    description:
-      'Early, foundational skill-building for school students — communication, confidence, and curiosity — designed to plant the habits that make every later stage of learning easier.',
+    description: [
+      { text: 'Early, foundational skill-building for school students — communication, confidence, and curiosity — designed to plant the habits that make ' },
+      { text: 'every later stage of learning easier', emphasis: 'bold' },
+      { text: '. It’s ' },
+      { text: 'skill-building disguised as fun', emphasis: 'italic' },
+      { text: ', not another classroom lecture.' },
+    ],
+    quote: 'The habits students build young are the ones that stay.',
+    bullets: [
+      'Interactive communication and confidence workshops',
+      'Age-appropriate life-skills activities',
+      'Encouraging curiosity through real-world tasks',
+    ],
   },
 ]
