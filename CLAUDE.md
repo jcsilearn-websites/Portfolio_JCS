@@ -121,6 +121,10 @@ from the client (verbatim, not draft):
 section title above them (client explicitly removed it to match Psiog's own proportions/scale
 more closely).
 
+**Text color override — black, not navy** (same style of exception as the Our Philosophy
+section): all left-column paragraph text in this section renders in black, matching Psiog's
+own text color. Don't "correct" it back to navy in a future pass.
+
 Left column, verbatim:
 
 > Every great journey begins with a belief. Ours began with a belief that education should

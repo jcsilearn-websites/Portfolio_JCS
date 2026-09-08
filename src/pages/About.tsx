@@ -191,12 +191,12 @@ export default function About() {
               {ourStory.paragraphs.map((paragraph, index) => (
                 <p
                   key={paragraph}
-                  className={`text-xl leading-relaxed text-navy/70 ${index === 0 ? '' : 'mt-6'}`}
+                  className={`text-xl leading-relaxed text-black/70 ${index === 0 ? '' : 'mt-6'}`}
                 >
                   {paragraph}
                 </p>
               ))}
-              <p className="mt-6 text-2xl leading-relaxed font-semibold text-navy">
+              <p className="mt-6 text-2xl leading-relaxed font-semibold text-black">
                 {ourStory.closingLine}
               </p>
             </div>
