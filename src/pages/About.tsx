@@ -129,7 +129,7 @@ export default function About() {
             <img
               src={ourStoryImage}
               alt={`Gear-and-checkmark graphic beside a quote card that reads: "${ourStory.quoteCardText}"`}
-              className="mx-auto w-full max-w-xl lg:max-w-none"
+              className="w-full"
             />
           </motion.div>
         </Container>
