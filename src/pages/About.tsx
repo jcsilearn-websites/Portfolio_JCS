@@ -170,11 +170,13 @@ export default function About() {
               ))}
             </div>
 
-            <img
-              src={visionImage}
-              alt="Two circular photo collages, labeled Student Friendly and Skilled Trainers, connected by a decorative ribbon around a central gear-and-checkmark icon"
-              className="w-full"
-            />
+            <div className="aspect-[6/5] w-full overflow-hidden">
+              <img
+                src={visionImage}
+                alt="Two circular photo collages, labeled Student Friendly and Skilled Trainers, connected by a decorative ribbon around a central gear-and-checkmark icon"
+                className="h-full w-full object-contain"
+              />
+            </div>
           </motion.div>
         </Container>
       </section>
