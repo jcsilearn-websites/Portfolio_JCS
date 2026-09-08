@@ -467,14 +467,16 @@ Jcs/
   — pick one and use it everywhere) rather than inventing padding per section. Sections built
   in earlier isolated prompts need auditing against this shared container, not left as-is.
   Compare directly against psiog.com at 100% browser zoom, same viewport width, when in doubt.
-- **Navbar stays static/pinned at top (site-wide, every page) — CORRECTED, do not hide on
-  scroll.** An earlier version of this convention called for a hide-on-scroll-down header;
-  client has explicitly reversed that — the navbar must remain fixed/sticky at the top at all
-  times regardless of scroll direction, never disappearing. Back-to-top button behavior is
-  unaffected and stays as-is: a circular floating "scroll to top" button (chevron-up icon,
-  navy background) appears in the bottom-right corner once scrolled down a bit, smooth-scrolls
-  to top on click. Both apply globally across every page, implemented once at the layout/App
-  level, not per-page.
+- **Navbar is genuinely static (CSS `position: static`/`relative`), NOT fixed, NOT sticky —
+  this is the final, confirmed behavior (site-wide, every page).** Two earlier versions of
+  this convention were wrong: first "hide on scroll down," then "always pinned/fixed
+  visible." Neither is correct. Confirmed against real Psiog screenshots: their nav is part of
+  normal page flow — it scrolls away with the page like any other content and is NOT visible
+  once you've scrolled down into the page; it only reappears if you scroll back up to the very
+  top. Do not use `position: fixed` or `sticky` on the header at all. Back-to-top button is
+  unaffected: a circular floating "scroll to top" button (chevron-up icon, navy background)
+  still appears in the bottom-right corner once scrolled down a bit, smooth-scrolls to top on
+  click — that part stays exactly as-is. Implement once at the layout/App level, not per-page.
 - All copy/stats/program data lives in typed `src/data/content.ts` — components read from
   there, never hardcode client-specific strings inline, so future data updates (e.g. real
   testimonial quotes replacing drafts) are single-file edits.

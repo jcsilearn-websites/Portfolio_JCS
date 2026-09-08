@@ -25,7 +25,7 @@ export default function Header() {
   const highlightedKey = hoveredKey ?? activeKey
 
   return (
-    <header className="sticky top-0 z-50 border-b border-navy/10 bg-white">
+    <header className="border-b border-navy/10 bg-white">
       <Container className="flex items-center justify-between py-4">
         <Link
           to="/"
