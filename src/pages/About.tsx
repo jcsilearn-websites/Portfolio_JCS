@@ -37,7 +37,7 @@ interface FounderCardProps {
 
 function FounderCard({ founder, isOpen, onToggle }: FounderCardProps) {
   return (
-    <div className="relative overflow-hidden rounded-2xl shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
+    <div className="relative overflow-hidden rounded-2xl">
       <img
         src={founder.photo}
         alt={`${founder.name}, ${founder.title}`}
