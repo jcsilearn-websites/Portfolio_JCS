@@ -27,6 +27,11 @@ import sivaPhoto from '../assets/About-page/about-vp.png'
 // so the modal's coded name/title/LinkedIn header isn't duplicating text already in the image.
 import raghulModalPhoto from '../assets/About-page/Inside-card-coe.png'
 import sivaModalPhoto from '../assets/About-page/inside-card-vp.png'
+// Technical Support Team card-face images — name/title baked in, same pre-composited style
+// as the founder card-face images above. No modal-only counterpart: these cards are static,
+// no click-to-expand behavior.
+import sanjayPhoto from '../assets/About-page/Tech-Support-Team/sanjay-j.png'
+import tharunPhoto from '../assets/About-page/Tech-Support-Team/tharun-balaji-s.png'
 
 export const homeHero = {
   taglineLine1: 'I Learn,',
@@ -532,10 +537,33 @@ export const founderStatCallout = {
   ] satisfies StatCalloutPart[],
 }
 
-// Heading only, per CLAUDE.md — the card grid below it needs real team member photos/names
-// from the client before it can be built (see Known open items #12). No eyebrow label, same
-// visual treatment as the "Founding Team" heading above it (Psiog equivalent: "Leading The Way").
+// No eyebrow label, same visual treatment as the "Founding Team" heading above it
+// (Psiog equivalent: "Leading The Way").
 export const technicalSupportTeamHeading = 'Technical Support Team'
+
+export interface TeamMember {
+  id: string
+  name: string
+  title: string
+  photo: string
+}
+
+// Static cards, no click-to-expand modal (unlike the founders above) — name/title are baked
+// into the card-face image itself, same pre-composited style as the founder cards.
+export const technicalSupportTeam: TeamMember[] = [
+  {
+    id: 'sanjay-j',
+    name: 'Sanjay J',
+    title: 'Technical Support',
+    photo: sanjayPhoto,
+  },
+  {
+    id: 'tharun-balaji-s',
+    name: 'Tharun Balaji S',
+    title: 'Technical Support',
+    photo: tharunPhoto,
+  },
+]
 
 export interface LeadershipValue {
   title: string

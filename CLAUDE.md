@@ -283,10 +283,12 @@ figures already stated in each founder's own bio above (not new claims):
 (850 = 500 from Raghul's bio + 350 from Siva Harish's bio; 1,70,000 = 1,00,000 + 70,000 —
 simple addition of already-sourced figures, not a new stat.)
 
-**New — "Technical Support Team" heading** (Psiog equivalent: "Leading The Way" — same visual
-treatment: large bold headline, no eyebrow label needed). **Heading only for now** — the
-actual grid of team member cards below it needs real photos/names from the client before it
-can be built; leave it as a heading with no cards yet rather than inventing placeholder people.
+**"Technical Support Team" heading** (Psiog equivalent: "Leading The Way" — same visual
+treatment: large bold headline, no eyebrow label needed), followed by a card grid — same
+visual treatment as the Founding Team cards (photo + name/title baked into the card-face
+image), but **static: no "+" icon, no click-to-expand modal**. Two members, client-confirmed
+filenames: `src/assets/About-page/Tech-Support-Team/sanjay-j.png` = Sanjay J, Technical
+Support; `tharun-balaji-s.png` = Tharun Balaji S, Technical Support.
 
 **Removed per explicit client request**: the "Our Leadership Values" 4-item grid that used to
 follow this card+modal section has been removed entirely from the live page (see the
@@ -531,8 +533,8 @@ Jcs/
 11. Contact form won't send mail until a real .env with EmailJS service/template/public key
     IDs is added locally (see .env.example) — get these from the client or a fresh EmailJS
     account before this page goes live.
-12. "Technical Support Team" section on /about has a heading only — real team member photos
-    and names still needed from the client before the card grid below it can be built.
+12. ~~"Technical Support Team" section on /about has a heading only~~ — RESOLVED: client sent
+    photos with names/titles baked in (Sanjay J, Tharun Balaji S), card grid built.
 
 ## Conventions
 - **Site-wide layout container — CORRECTED with measured value.** Psiog maintains one

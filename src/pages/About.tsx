@@ -15,7 +15,9 @@ import {
   founders,
   founderStatCallout,
   technicalSupportTeamHeading,
+  technicalSupportTeam,
   type Founder,
+  type TeamMember,
 } from '../data/content'
 
 const container: Variants = {
@@ -62,6 +64,20 @@ function FounderCard({ founder, isOpen, onToggle }: FounderCardProps) {
           <HiPlus size={18} />
         </motion.span>
       </button>
+    </div>
+  )
+}
+
+// Static counterpart to FounderCard — same photo/overlay treatment, no "+" icon and no
+// click-to-expand modal (Technical Support Team cards have no bio to expand into).
+function TeamMemberCard({ member }: { member: TeamMember }) {
+  return (
+    <div className="relative overflow-hidden rounded-2xl">
+      <img
+        src={member.photo}
+        alt={`${member.name}, ${member.title}`}
+        className="block w-full"
+      />
     </div>
   )
 }
@@ -342,6 +358,12 @@ export default function About() {
           <h2 className="mt-20 text-center text-4xl font-bold text-black sm:text-5xl">
             {technicalSupportTeamHeading}
           </h2>
+
+          <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-2">
+            {technicalSupportTeam.map((member) => (
+              <TeamMemberCard key={member.id} member={member} />
+            ))}
+          </div>
 
           <Modal isOpen={!!activeFounder} onClose={() => setActiveFounderId(null)}>
             {activeFounder && (
