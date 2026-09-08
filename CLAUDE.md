@@ -459,14 +459,17 @@ Jcs/
     account before this page goes live.
 
 ## Conventions
-- **Site-wide layout container (check first if anything looks misaligned):** Psiog maintains
-  one consistent left/right content margin across every section on every page — logo, nav,
-  hero text, paragraphs, diagrams, and founder cards all align to the same horizontal edges
-  throughout, not per-section custom padding. Every section on JCS's site must use ONE shared
-  layout wrapper (a `<Container>` component or a fixed `max-w-7xl mx-auto px-6 lg:px-8` combo
-  — pick one and use it everywhere) rather than inventing padding per section. Sections built
-  in earlier isolated prompts need auditing against this shared container, not left as-is.
-  Compare directly against psiog.com at 100% browser zoom, same viewport width, when in doubt.
+- **Site-wide layout container — CORRECTED with measured value.** Psiog maintains one
+  consistent left/right content margin across every section on every page — logo, nav, hero
+  text, paragraphs, diagrams, and founder cards all align to the same horizontal edges
+  throughout, not per-section custom padding. Client measured this directly against real
+  100%-zoom screenshots (Who We Serve, Our Philosophy, Our Services — three different section
+  types, same margins every time): content area is consistently centered with a max-width of
+  **1536px** (`max-w-screen-2xl` in Tailwind, NOT the earlier placeholder guess of `max-w-7xl`
+  /1280px — that was too narrow and has been superseded). Use `max-w-screen-2xl mx-auto px-6
+  lg:px-8` (or a `<Container>` component wrapping that exact combo) as the ONE shared layout
+  wrapper everywhere — every section must use it, not invent its own padding/max-width.
+  Sections built in earlier isolated prompts need re-auditing against this corrected value.
 - **Navbar is genuinely static (CSS `position: static`/`relative`), NOT fixed, NOT sticky —
   this is the final, confirmed behavior (site-wide, every page).** Two earlier versions of
   this convention were wrong: first "hide on scroll down," then "always pinned/fixed
