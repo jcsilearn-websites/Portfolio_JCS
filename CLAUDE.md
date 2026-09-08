@@ -259,8 +259,10 @@ reconfirmed current):
 > which has strengthened my foundation in analytical thinking, problem-solving, and
 > technology-driven learning.
 
-Followed by the "Our Leadership Values" 4-item grid (Purpose-Driven / Innovation /
-Collaboration / Excellence) — unchanged, stays below this card+expand section.
+**Removed per explicit client request**: the "Our Leadership Values" 4-item grid that used to
+follow this card+modal section has been removed entirely from the live page (see the
+Conventions/open-items note below — the content stays documented for history but is not
+rendered anywhere).
 
 **Identity page content**: never actually sourced/extracted (it existed in the old repo but
 wasn't linked in the old site's own nav either) — do not fabricate content for it. If nothing
@@ -371,7 +373,8 @@ feature wants them — not currently used anywhere in the live site)
   >
   > — Siva Harish M, Co-Founder & VP
 
-### Our Leadership Values (4-item grid — belongs below the founder cards/drawer in the Leadership section of the consolidated /about page)
+### Our Leadership Values (4-item grid — REMOVED from the live page per explicit client
+request. Content kept here for history only, not rendered anywhere on the site)
 From the old site, reuse verbatim:
 1. **Purpose-Driven** — "Every decision is guided by our mission to empower learners"
 2. **Innovation** — "Continuously evolving our approach to meet changing needs"

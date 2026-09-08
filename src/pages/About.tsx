@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, type Variants } from 'framer-motion'
 import { FaLinkedin } from 'react-icons/fa'
-import { HiFlag, HiLightBulb, HiHandRaised, HiStar, HiPlus, HiXMark } from 'react-icons/hi2'
+import { HiPlus, HiXMark } from 'react-icons/hi2'
 import Container from '../components/Container'
 import Modal from '../components/Modal'
 import aboutHeroImage from '../assets/About-page/header.png'
@@ -13,11 +13,8 @@ import {
   vision,
   ourModel,
   founders,
-  leadershipValues,
   type Founder,
 } from '../data/content'
-
-const leadershipIcons = [HiFlag, HiLightBulb, HiHandRaised, HiStar]
 
 const container: Variants = {
   hidden: {},
@@ -304,34 +301,6 @@ export default function About() {
               </div>
             )}
           </Modal>
-
-          <div className="mx-auto mt-20 max-w-5xl">
-            <h3 className="text-center text-2xl font-bold text-navy sm:text-3xl">
-              Our Leadership Values
-            </h3>
-
-            <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {leadershipValues.map((value, index) => {
-                const Icon = leadershipIcons[index]
-                return (
-                  <div
-                    key={value.title}
-                    className="flex flex-col items-center text-center"
-                  >
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/15 text-gold">
-                      <Icon size={22} />
-                    </span>
-                    <p className="mt-4 text-base font-semibold text-navy">
-                      {value.title}
-                    </p>
-                    <p className="mt-2 text-sm text-navy/70">
-                      {value.description}
-                    </p>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
         </Container>
       </section>
     </main>
