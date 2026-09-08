@@ -182,6 +182,15 @@ content's Spark → Vision → Impact narrative arc as the section's story struc
 where JCS's approach/methodology lives, matching what Psiog's "Our Model" section does for
 their business.
 
+**Card styling — CORRECTED** (supersedes the earlier pale-blue-bg card treatment): each of
+the 3 cards is white background with a black outline border (not filled pale-blue). Shape
+matches the exact pill/rounded silhouette defined in `src/assets/cards-svg/button-pill.svg` —
+use that SVG's shape for the card container, not a generic rounded-rectangle. On click, the
+card's background transitions to navy (`#0A0B68`) — smooth transition, not an abrupt snap.
+Add a sensible hover effect (e.g. subtle lift + border color shift) leading into the click
+state, Claude Code's judgment on exact treatment as long as it feels intentional and matches
+the site's existing interaction quality elsewhere (buttons, leadership cards).
+
 **3. Leadership section — header styling:** white background for this entire section (not
 pale-blue-bg). Above the card grid: "Leadership" small label with gold underline, then a large
 headline "Founding Team" below it — both in BLACK text (not navy), sized to match Psiog's
