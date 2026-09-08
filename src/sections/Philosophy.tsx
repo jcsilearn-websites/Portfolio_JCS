@@ -21,7 +21,7 @@ export default function Philosophy() {
 
         <div>
           <span className="inline-flex flex-col items-start">
-            <span className="text-sm font-semibold tracking-wide text-navy uppercase">
+            <span className="text-sm font-semibold tracking-wide text-black uppercase">
               {philosophy.label}
             </span>
             <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
@@ -43,7 +43,7 @@ export default function Philosophy() {
           ))}
         </div>
 
-        <p className="text-center text-2xl text-navy italic sm:text-3xl lg:col-span-2 lg:mt-4">
+        <p className="text-center text-2xl text-black italic sm:text-3xl lg:col-span-2 lg:mt-4">
           “{philosophy.pullQuote}”
         </p>
       </Container>
