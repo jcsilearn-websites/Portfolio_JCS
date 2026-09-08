@@ -144,7 +144,7 @@ export default function Recognitions() {
                   variants={item}
                   whileHover={HOVER_LIFT}
                   transition={HOVER_TRANSITION}
-                  style={{ gridArea: tile.area }}
+                  data-tile={tile.id}
                   className={`relative flex min-h-[140px] flex-col justify-end overflow-hidden p-6 text-left ${tile.bg} ${ROUNDED[tile.rounded]} ${HOVER}`}
                 >
                   <TamilNaduOutline className="absolute inset-0 m-auto h-[80%] w-auto text-navy/30" />
@@ -167,7 +167,7 @@ export default function Recognitions() {
                   variants={item}
                   whileHover={HOVER_LIFT}
                   transition={HOVER_TRANSITION}
-                  style={{ gridArea: tile.area }}
+                  data-tile={tile.id}
                   className={`flex min-h-[140px] flex-col gap-3 p-6 text-left ${tile.bg} ${ROUNDED[tile.rounded]} ${HOVER}`}
                 >
                   <span className="text-sm font-semibold tracking-wide text-white/80 uppercase">
@@ -197,7 +197,7 @@ export default function Recognitions() {
                 variants={item}
                 whileHover={HOVER_LIFT}
                 transition={HOVER_TRANSITION}
-                style={{ gridArea: tile.area }}
+                data-tile={tile.id}
                 className={`relative flex min-h-[140px] flex-col justify-end overflow-hidden p-6 text-left ${tile.bg} ${ROUNDED[tile.rounded]} ${HOVER}`}
               >
                 {Icon && tile.iconTreatment === 'watermark' && (
@@ -233,6 +233,12 @@ export default function Recognitions() {
               "inst inst corp corp map map map map map partners partners partners"
               "courses courses courses year year satisfaction satisfaction satisfaction trainers trainers trainers trainers";
           }
+          /* grid-area is only assigned at md+, matching the named areas above. Applying it
+             unconditionally (e.g. via inline style) breaks the mobile 2-col fallback: per the
+             CSS Grid spec, a grid-area name with no matching named area doesn't fall back to
+             auto-placement — the browser synthesizes new implicit lines for it instead, which
+             collapses every tile into the same overlapping cell below md. */
+          ${bentoTiles.map((tile) => `.bento-grid [data-tile="${tile.id}"] { grid-area: ${tile.area}; }`).join('\n          ')}
         }
       `}</style>
     </section>

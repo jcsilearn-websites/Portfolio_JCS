@@ -466,10 +466,13 @@ Jcs/
   100%-zoom screenshots (Who We Serve, Our Philosophy, Our Services — three different section
   types, same margins every time): content area is consistently centered with a max-width of
   **1536px** (`max-w-screen-2xl` in Tailwind, NOT the earlier placeholder guess of `max-w-7xl`
-  /1280px — that was too narrow and has been superseded). Use `max-w-screen-2xl mx-auto px-6
-  lg:px-8` (or a `<Container>` component wrapping that exact combo) as the ONE shared layout
-  wrapper everywhere — every section must use it, not invent its own padding/max-width.
-  Sections built in earlier isolated prompts need re-auditing against this corrected value.
+  /1280px — that was too narrow and has been superseded). **Horizontal gutter widened again
+  (post-measurement) for more desktop breathing room, matching psiog.com's wider side
+  margins**: use `max-w-screen-2xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-24` (or the
+  `<Container>` component, which wraps that exact combo) as the ONE shared layout wrapper
+  everywhere — every section must use it, not invent its own padding/max-width. The original
+  `px-6 lg:px-8` value is superseded; don't revert to it. Sections built in earlier isolated
+  prompts need re-auditing against this value.
 - **Navbar is genuinely static (CSS `position: static`/`relative`), NOT fixed, NOT sticky —
   this is the final, confirmed behavior (site-wide, every page).** Two earlier versions of
   this convention were wrong: first "hide on scroll down," then "always pinned/fixed

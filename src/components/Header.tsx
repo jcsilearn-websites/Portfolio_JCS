@@ -35,7 +35,7 @@ export default function Header() {
           <img src={jcsLogo} alt="JCS iLearn" className="h-10 w-auto sm:h-12" />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-5 md:flex lg:gap-8">
           <Link
             to="/"
             onMouseEnter={() => setHoveredKey('home')}
@@ -107,7 +107,7 @@ export default function Header() {
             transition={{ duration: 0.3, ease: 'easeOut' }}
             className="overflow-hidden border-t border-navy/10 bg-white md:hidden"
           >
-            <div className="flex flex-col gap-1 px-6 pb-6">
+            <div className="flex flex-col gap-1 px-6 pb-6 sm:px-10">
               <NavLink
                 to="/"
                 end
