@@ -359,7 +359,7 @@ export default function About() {
             {technicalSupportTeamHeading}
           </h2>
 
-          <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-2">
+          <div className="mx-auto mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {technicalSupportTeam.map((member) => (
               <TeamMemberCard key={member.id} member={member} />
             ))}

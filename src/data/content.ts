@@ -32,6 +32,8 @@ import sivaModalPhoto from '../assets/About-page/inside-card-vp.png'
 // no click-to-expand behavior.
 import sanjayPhoto from '../assets/About-page/Tech-Support-Team/sanjay-j.png'
 import tharunPhoto from '../assets/About-page/Tech-Support-Team/tharun-balaji-s.png'
+import hariramjiPhoto from '../assets/About-page/Tech-Support-Team/Hariramji-H.png'
+import infantAshilPhoto from '../assets/About-page/Tech-Support-Team/Infant-Ashil-A.png'
 
 export const homeHero = {
   taglineLine1: 'I Learn,',
@@ -539,7 +541,7 @@ export const founderStatCallout = {
 
 // No eyebrow label, same visual treatment as the "Founding Team" heading above it
 // (Psiog equivalent: "Leading The Way").
-export const technicalSupportTeamHeading = 'Technical Support Team'
+export const technicalSupportTeamHeading = 'Support Team'
 
 export interface TeamMember {
   id: string
@@ -562,6 +564,18 @@ export const technicalSupportTeam: TeamMember[] = [
     name: 'Tharun Balaji S',
     title: 'Technical Support',
     photo: tharunPhoto,
+  },
+  {
+    id: 'hariramji-h',
+    name: 'Hariramji H',
+    title: 'Graphic Designer',
+    photo: hariramjiPhoto,
+  },
+  {
+    id: 'infant-ashil-a',
+    name: 'Infant Ashil A',
+    title: 'UI/UX Designer',
+    photo: infantAshilPhoto,
   },
 ]
 

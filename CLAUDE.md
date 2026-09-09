@@ -283,12 +283,15 @@ figures already stated in each founder's own bio above (not new claims):
 (850 = 500 from Raghul's bio + 350 from Siva Harish's bio; 1,70,000 = 1,00,000 + 70,000 —
 simple addition of already-sourced figures, not a new stat.)
 
-**"Technical Support Team" heading** (Psiog equivalent: "Leading The Way" — same visual
-treatment: large bold headline, no eyebrow label needed), followed by a card grid — same
-visual treatment as the Founding Team cards (photo + name/title baked into the card-face
-image), but **static: no "+" icon, no click-to-expand modal**. Two members, client-confirmed
-filenames: `src/assets/About-page/Tech-Support-Team/sanjay-j.png` = Sanjay J, Technical
-Support; `tharun-balaji-s.png` = Tharun Balaji S, Technical Support.
+**"Support Team" heading** (renamed from "Technical Support Team" — Psiog equivalent:
+"Leading The Way", same visual treatment: large bold headline, no eyebrow label needed).
+Below it: a 4-card grid, static (no "+" icon, no LinkedIn icon, no click/modal interaction —
+just a photo card with name/title overlay at the bottom), same visual size/proportions as
+Psiog's "Leading The Way" cards. Real assets, titles still needed from client (see open items):
+- `src/assets/About-page/Tech-Support-Team/sanjay-j.png` — Sanjay J
+- `src/assets/About-page/Tech-Support-Team/tharun-balaji-s.png` — Tharun Balaji S
+- `src/assets/About-page/Tech-Support-Team/Hariramji-H.png` — Hariramji H
+- `src/assets/About-page/Tech-Support-Team/Infant-Ashil-A.png` — Infant Ashil A
 
 **Removed per explicit client request**: the "Our Leadership Values" 4-item grid that used to
 follow this card+modal section has been removed entirely from the live page (see the
@@ -533,8 +536,12 @@ Jcs/
 11. Contact form won't send mail until a real .env with EmailJS service/template/public key
     IDs is added locally (see .env.example) — get these from the client or a fresh EmailJS
     account before this page goes live.
-12. ~~"Technical Support Team" section on /about has a heading only~~ — RESOLVED: client sent
-    photos with names/titles baked in (Sanjay J, Tharun Balaji S), card grid built.
+12. ~~"Support Team" section on /about — job titles still needed from client~~ — RESOLVED:
+    all 4 card-face images (Sanjay J, Tharun Balaji S, Hariramji H, Infant Ashil A) have
+    name + title baked in (Technical Support / Technical Support / Graphic Designer / UI-UX
+    Designer respectively), same pre-composited style as the founder cards. Section is built:
+    heading renamed to "Support Team", 4-card grid (grid-cols-1 sm:grid-cols-2 lg:grid-cols-4)
+    below it, fully static — no "+" icon, no LinkedIn icon, no click/modal.
 
 ## Conventions
 - **Site-wide layout container — CORRECTED with measured value.** Psiog maintains one
