@@ -10,6 +10,7 @@ import {
   HiCheck,
 } from 'react-icons/hi2'
 import { serviceCategories } from '../data/content'
+import Container from '../components/Container'
 
 const icons = {
   universities: HiAcademicCap,
@@ -28,8 +29,8 @@ export default function ServicesTabs() {
   const active = serviceCategories.find((category) => category.id === activeId)!
 
   return (
-    <section className="px-6 py-20">
-      <div className="mx-auto max-w-5xl">
+    <section className="py-20">
+      <Container>
         <div className="flex gap-2 overflow-x-auto border-b border-navy/10 pb-px sm:justify-center">
           {serviceCategories.map((category) => {
             const Icon = icons[category.id as keyof typeof icons]
@@ -88,7 +89,7 @@ export default function ServicesTabs() {
             </div>
           </motion.div>
         </AnimatePresence>
-      </div>
+      </Container>
     </section>
   )
 }

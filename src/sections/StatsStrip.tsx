@@ -1,86 +1,40 @@
 import { useRef } from 'react'
-import { motion, useInView, type Variants } from 'framer-motion'
-import { homeStats, collegeLogos } from '../data/content'
-import { useCountUp } from '../hooks/useCountUp'
-
-const container: Variants = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.12 },
-  },
-}
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-}
-
-const numberFormatter = new Intl.NumberFormat('en-IN')
-
-function StatValue({
-  target,
-  suffix,
-  inView,
-}: {
-  target: number
-  suffix: string
-  inView: boolean
-}) {
-  const value = useCountUp(target, inView)
-  return (
-    <span className="text-4xl font-bold text-navy sm:text-5xl">
-      {numberFormatter.format(value)}
-      {suffix}
-    </span>
-  )
-}
+import { motion, useInView } from 'framer-motion'
+import { collegeLogos } from '../data/content'
+import Container from '../components/Container'
 
 export default function StatsStrip() {
-  const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: true, amount: 0.4 })
+  const trustedByRef = useRef<HTMLElement>(null)
+  const trustedByInView = useInView(trustedByRef, { once: true, amount: 0.3 })
 
   return (
-    <section ref={ref} className="bg-pale-blue-bg px-6 py-20">
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate={isInView ? 'show' : 'hidden'}
-        className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-10 text-center sm:grid-cols-3 lg:grid-cols-6"
-      >
-        {homeStats.map((stat) => (
-          <motion.div
-            key={stat.label}
-            variants={item}
-            className="flex flex-col items-center gap-2"
-          >
-            <StatValue target={stat.target} suffix={stat.suffix} inView={isInView} />
-            <span className="text-sm font-medium text-pale-blue-text sm:text-base">
-              {stat.label}
-            </span>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.3 }}
-        className="mx-auto mt-16 max-w-6xl border-t border-navy/10 pt-12"
-      >
-        <p className="text-center text-xs font-semibold tracking-wide text-pale-blue-text/70 uppercase">
+    <motion.section
+      ref={trustedByRef}
+      initial={{ opacity: 0 }}
+      animate={trustedByInView ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className="bg-white py-16"
+    >
+      <Container className="flex flex-col items-center">
+        <p className="text-center text-lg font-bold tracking-wide text-black uppercase sm:text-xl">
           Trusted By
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-          {collegeLogos.map((logo) => (
+        <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
+      </Container>
+      {/* Deliberately full-bleed, outside Container — a marquee ticker reads better running
+          edge-to-edge than boxed inside the shared content width. */}
+      <div className="mt-10 overflow-hidden">
+        <div className="flex w-max items-center gap-x-10 animate-[marquee_50s_linear_infinite] hover:[animation-play-state:paused] sm:gap-x-14">
+          {[...collegeLogos, ...collegeLogos].map((logo, index) => (
             <img
-              key={logo.name}
+              key={`${logo.name}-${index}`}
               src={logo.src}
               alt={logo.name}
-              className="h-10 w-auto object-contain opacity-70 grayscale transition-all duration-200 hover:opacity-100 hover:grayscale-0"
+              className="h-14 w-auto shrink-0 object-contain drop-shadow-[0_4px_8px_rgba(10,11,104,0.12)] sm:h-16"
             />
           ))}
         </div>
-      </motion.div>
-    </section>
+      </div>
+    </motion.section>
   )
 }

@@ -71,7 +71,13 @@ export default function ContactForm() {
         <textarea id="message" name="message" rows={4} required className={inputClasses} />
       </div>
 
-      <Button type="submit" variant="primary" disabled={status === 'sending'} fullWidth>
+      <Button
+        type="submit"
+        variant="primary"
+        size="md"
+        disabled={status === 'sending'}
+        className="w-full disabled:opacity-60"
+      >
         {status === 'sending' ? 'Sending…' : 'Submit'}
       </Button>
 
