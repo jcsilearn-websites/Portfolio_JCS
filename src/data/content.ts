@@ -629,6 +629,22 @@ export interface ProgramTopic {
   bullets: string[]
 }
 
+// Program images are dropped into src/assets/programs-images/ named after the topic's
+// slug (e.g. soft-skills.png) — no code changes needed to wire a new one up. Glob keys
+// look like '../assets/programs-images/soft-skills.png'; strip the path/extension to get
+// the slug, then key the resulting map by slug for a simple lookup in Programs.tsx.
+const programImageModules = import.meta.glob<{ default: string }>(
+  '../assets/programs-images/*.{png,jpg,jpeg}',
+  { eager: true }
+)
+
+export const programImages: Record<string, string> = Object.fromEntries(
+  Object.entries(programImageModules).map(([path, module]) => {
+    const slug = path.split('/').pop()!.replace(/\.(png|jpe?g)$/i, '')
+    return [slug, module.default]
+  })
+)
+
 // Single source of truth for both the Header "Our Programs" dropdown and the /programs
 // page — shared by label+slug so the two never drift out of sync. Copy (description,
 // quote, bullets) is draft, topic-level content (not sourced from the client's 23-program

@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 import { HiCheckCircle, HiPhoto } from 'react-icons/hi2'
-import { programTopics, type ProgramDescriptionSegment } from '../data/content'
+import { programImages, programTopics, type ProgramDescriptionSegment } from '../data/content'
 import Container from '../components/Container'
 
 function ProgramDescription({ segments }: { segments: ProgramDescriptionSegment[] }) {
@@ -36,9 +36,7 @@ export default function Programs() {
   )
   const active = programTopics[activeIndex]
   const isTextFirst = activeIndex % 2 === 0
-  const rounded = isTextFirst
-    ? 'rounded-tl-3xl rounded-br-3xl'
-    : 'rounded-tr-3xl rounded-bl-3xl'
+  const activeImage = programImages[active.slug]
 
   return (
     <main>
@@ -103,15 +101,25 @@ export default function Programs() {
               </ul>
             </div>
 
-            {/* TODO: replace with real program image */}
-            <div
-              className={`flex aspect-[4/3] flex-col items-center justify-center gap-3 bg-pale-blue-bg p-8 text-center ${rounded} ${
-                isTextFirst ? 'md:order-2' : 'md:order-1'
-              }`}
-            >
-              <HiPhoto className="text-navy/30" size={64} />
-              <span className="text-sm text-navy/50">Image coming soon</span>
-            </div>
+            {activeImage ? (
+              <img
+                src={activeImage}
+                alt={active.label}
+                className={`w-full h-auto object-contain rounded-3xl ${
+                  isTextFirst ? 'md:order-2' : 'md:order-1'
+                }`}
+              />
+            ) : (
+              // TODO: replace with real program image
+              <div
+                className={`flex aspect-[4/3] flex-col items-center justify-center gap-3 rounded-3xl bg-pale-blue-bg p-8 text-center ${
+                  isTextFirst ? 'md:order-2' : 'md:order-1'
+                }`}
+              >
+                <HiPhoto className="text-navy/30" size={64} />
+                <span className="text-sm text-navy/50">Image coming soon</span>
+              </div>
+            )}
           </Container>
         </motion.section>
       </AnimatePresence>
