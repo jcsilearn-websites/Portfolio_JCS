@@ -283,15 +283,38 @@ figures already stated in each founder's own bio above (not new claims):
 (850 = 500 from Raghul's bio + 350 from Siva Harish's bio; 1,70,000 = 1,00,000 + 70,000 —
 simple addition of already-sourced figures, not a new stat.)
 
-**"Support Team" heading** (renamed from "Technical Support Team" — Psiog equivalent:
-"Leading The Way", same visual treatment: large bold headline, no eyebrow label needed).
-Below it: a 4-card grid, static (no "+" icon, no LinkedIn icon, no click/modal interaction —
-just a photo card with name/title overlay at the bottom), same visual size/proportions as
-Psiog's "Leading The Way" cards. Real assets, titles still needed from client (see open items):
-- `src/assets/About-page/Tech-Support-Team/sanjay-j.png` — Sanjay J
-- `src/assets/About-page/Tech-Support-Team/tharun-balaji-s.png` — Tharun Balaji S
-- `src/assets/About-page/Tech-Support-Team/Hariramji-H.png` — Hariramji H
-- `src/assets/About-page/Tech-Support-Team/Infant-Ashil-A.png` — Infant Ashil A
+**Team section — restructured into departments** (supersedes the earlier flat "Support Team"
+4-card section). Below the Founding Team cards and the stat-callout, the team is now organized
+into 6 department sections in this order, each with its own heading — same large bold style as
+"Founding Team" (Psiog equivalent: "Leading The Way", no eyebrow label needed) — followed by a
+static card grid (no "+" icon, no LinkedIn icon, no click/modal interaction, same visual size/
+proportions as Psiog's "Leading The Way" cards). All card-face images are pre-composited with
+name + title already baked in (same style as the founder cards), so no separate coded caption
+text is rendered — the data layer's `name`/`title` fields exist for alt text only:
+
+1. **Business Development** (4 cards): Nishanth Kumar V, Sharavanan A K, Krithika T, Andrew
+   Ponnarasan M S — `src/assets/About-page/Business-Development/`
+2. **Program Delivery & Learning** (4 cards): Kirubalini J, Kavya S, Ajai T, Shibiraj S —
+   `src/assets/About-page/Program-delivery/`
+3. **Finance & Accounts** (2 cards): Gowtham J, Sanjeev D —
+   `src/assets/About-page/Finance-Administration/`
+4. **People & Talent** (2 cards): Siddarth J C, Yuvarani S —
+   `src/assets/About-page/Finance-Administration/`
+5. **Technology & Digital** (2 cards): Sanjay J, Tharun Balaji S —
+   `src/assets/About-page/Tech-Support-Team/`
+6. **Design & Creative** (2 cards): Hariramji H, Infant Ashil A —
+   `src/assets/About-page/Tech-Support-Team/`
+
+⚠️ **Two filename/spelling mismatches, flagged not silently resolved:**
+- `Program-delivery/Ajay-T.png` — filename says "Ajay", but the card's own baked-in caption
+  already reads "Ajai T", matching the spelling used above. No visible mismatch, just a
+  misnamed file.
+- `Finance-Administration/Siddharth-J-C.png` — filename says "Siddharth J **C**", but the
+  card's own baked-in caption reads "Siddharth J" (no "C"). Neither matches the "Siddarth J C"
+  spelling used above (and in the client's document, the more authoritative source for the
+  spelling). This is a real 3-way mismatch — the visible card in the browser will show
+  "Siddharth J", not "Siddarth J C". A corrected image asset is needed from whoever owns the
+  card-design source file if "Siddarth J C" must be the spelling that actually displays.
 
 **Removed per explicit client request**: the "Our Leadership Values" 4-item grid that used to
 follow this card+modal section has been removed entirely from the live page (see the
@@ -536,12 +559,11 @@ Jcs/
 11. Contact form won't send mail until a real .env with EmailJS service/template/public key
     IDs is added locally (see .env.example) — get these from the client or a fresh EmailJS
     account before this page goes live.
-12. ~~"Support Team" section on /about — job titles still needed from client~~ — RESOLVED:
-    all 4 card-face images (Sanjay J, Tharun Balaji S, Hariramji H, Infant Ashil A) have
-    name + title baked in (Technical Support / Technical Support / Graphic Designer / UI-UX
-    Designer respectively), same pre-composited style as the founder cards. Section is built:
-    heading renamed to "Support Team", 4-card grid (grid-cols-1 sm:grid-cols-2 lg:grid-cols-4)
-    below it, fully static — no "+" icon, no LinkedIn icon, no click/modal.
+12. ~~"Support Team" section on /about — job titles still needed from client~~ — RESOLVED and
+    superseded: the flat 4-card section is now 6 department sections (see "Team section —
+    restructured into departments" above), all 16 card-face images have name + title baked in.
+    Two filename/spelling mismatches flagged there (Ajay/Ajai, Siddharth/Siddarth) are still
+    open — the Siddharth one needs a corrected image asset.
 
 ## Conventions
 - **Site-wide layout container — CORRECTED with measured value.** Psiog maintains one

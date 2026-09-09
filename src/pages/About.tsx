@@ -14,8 +14,7 @@ import {
   ourModel,
   founders,
   founderStatCallout,
-  technicalSupportTeamHeading,
-  technicalSupportTeam,
+  teamDepartments,
   type Founder,
   type TeamMember,
 } from '../data/content'
@@ -355,15 +354,25 @@ export default function About() {
             </p>
           </div>
 
-          <h2 className="mt-20 text-center text-4xl font-bold text-black sm:text-5xl">
-            {technicalSupportTeamHeading}
-          </h2>
+          {teamDepartments.map((department) => (
+            <div key={department.heading}>
+              <h2 className="mt-20 text-center text-4xl font-bold text-black sm:text-5xl">
+                {department.heading}
+              </h2>
 
-          <div className="mx-auto mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {technicalSupportTeam.map((member) => (
-              <TeamMemberCard key={member.id} member={member} />
-            ))}
-          </div>
+              <div
+                className={`mx-auto mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 ${
+                  department.members.length > 2
+                    ? 'lg:grid-cols-4'
+                    : 'max-w-3xl'
+                }`}
+              >
+                {department.members.map((member) => (
+                  <TeamMemberCard key={member.id} member={member} />
+                ))}
+              </div>
+            </div>
+          ))}
 
           <Modal isOpen={!!activeFounder} onClose={() => setActiveFounderId(null)}>
             {activeFounder && (

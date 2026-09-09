@@ -27,9 +27,26 @@ import sivaPhoto from '../assets/About-page/about-vp.png'
 // so the modal's coded name/title/LinkedIn header isn't duplicating text already in the image.
 import raghulModalPhoto from '../assets/About-page/Inside-card-coe.png'
 import sivaModalPhoto from '../assets/About-page/inside-card-vp.png'
-// Technical Support Team card-face images — name/title baked in, same pre-composited style
-// as the founder card-face images above. No modal-only counterpart: these cards are static,
-// no click-to-expand behavior.
+// Team department card-face images — name/title baked in, same pre-composited style as the
+// founder card-face images above. No modal-only counterpart: these cards are static, no
+// click-to-expand behavior. Organized by department per CLAUDE.md's team restructure.
+import nishanthPhoto from '../assets/About-page/Business-Development/Nishanth-Kumar-V.png'
+import sharavananPhoto from '../assets/About-page/Business-Development/Sharavanan-A-K.png'
+import krithikaPhoto from '../assets/About-page/Business-Development/Krithika-T.png'
+import andrewPhoto from '../assets/About-page/Business-Development/Andrew-Ponnarasan-M-S.png'
+import kirubaliniPhoto from '../assets/About-page/Program-delivery/Kirubalini-J.png'
+import kavyaPhoto from '../assets/About-page/Program-delivery/Kavya-S.png'
+// NOTE: filename on disk is "Ajay-T.png" (asset export spelling) — the card's own baked-in
+// caption reads "Ajai T", matching the client document's spelling used in the data below.
+import ajaiPhoto from '../assets/About-page/Program-delivery/Ajay-T.png'
+import shibirajPhoto from '../assets/About-page/Program-delivery/Shibiraj-S.png'
+import gowthamPhoto from '../assets/About-page/Finance-Administration/Gowtham-J.png'
+import sanjeevPhoto from '../assets/About-page/Finance-Administration/Sanjeev-D.png'
+// NOTE: filename on disk is "Siddharth-J-C.png", and that card's own baked-in caption reads
+// "Siddharth J" (no "C") — neither matches the client document's "Siddarth J C" spelling used
+// in the data below. Flagged back to the client; a corrected asset may be needed.
+import siddarthPhoto from '../assets/About-page/Finance-Administration/Siddharth-J-C.png'
+import yuvaraniPhoto from '../assets/About-page/Finance-Administration/Yuvarani-S.png'
 import sanjayPhoto from '../assets/About-page/Tech-Support-Team/sanjay-j.png'
 import tharunPhoto from '../assets/About-page/Tech-Support-Team/tharun-balaji-s.png'
 import hariramjiPhoto from '../assets/About-page/Tech-Support-Team/Hariramji-H.png'
@@ -539,10 +556,6 @@ export const founderStatCallout = {
   ] satisfies StatCalloutPart[],
 }
 
-// No eyebrow label, same visual treatment as the "Founding Team" heading above it
-// (Psiog equivalent: "Leading The Way").
-export const technicalSupportTeamHeading = 'Support Team'
-
 export interface TeamMember {
   id: string
   name: string
@@ -550,32 +563,142 @@ export interface TeamMember {
   photo: string
 }
 
-// Static cards, no click-to-expand modal (unlike the founders above) — name/title are baked
-// into the card-face image itself, same pre-composited style as the founder cards.
-export const technicalSupportTeam: TeamMember[] = [
+export interface TeamDepartment {
+  heading: string
+  members: TeamMember[]
+}
+
+// Restructured from the old flat "Support Team" 4-card section into 6 department sections
+// (client-provided org breakdown, see CLAUDE.md). Each department gets its own heading, same
+// visual treatment as the "Founding Team" heading above (Psiog equivalent: "Leading The Way"),
+// followed by a static card grid — no click-to-expand modal, name/title are baked into each
+// card-face image itself, same pre-composited style as the founder cards.
+export const teamDepartments: TeamDepartment[] = [
   {
-    id: 'sanjay-j',
-    name: 'Sanjay J',
-    title: 'Technical Support',
-    photo: sanjayPhoto,
+    heading: 'Business Development',
+    members: [
+      {
+        id: 'nishanth-kumar-v',
+        name: 'Nishanth Kumar V',
+        title: 'Business Development Manager - Institutional Partnerships',
+        photo: nishanthPhoto,
+      },
+      {
+        id: 'sharavanan-a-k',
+        name: 'Sharavanan A K',
+        title: 'Business Development Executive - Institutional Partnerships',
+        photo: sharavananPhoto,
+      },
+      {
+        id: 'krithika-t',
+        name: 'Krithika T',
+        title: 'Business Development Manager - Corporate Relations',
+        photo: krithikaPhoto,
+      },
+      {
+        id: 'andrew-ponnarasan-m-s',
+        name: 'Andrew Ponnarasan M S',
+        title: 'Marketing Manager',
+        photo: andrewPhoto,
+      },
+    ],
   },
   {
-    id: 'tharun-balaji-s',
-    name: 'Tharun Balaji S',
-    title: 'Technical Support',
-    photo: tharunPhoto,
+    heading: 'Program Delivery & Learning',
+    members: [
+      {
+        id: 'kirubalini-j',
+        name: 'Kirubalini J',
+        title: 'Learning and Development Manager',
+        photo: kirubaliniPhoto,
+      },
+      {
+        id: 'kavya-s',
+        name: 'Kavya S',
+        title: 'Senior Program Coordinator',
+        photo: kavyaPhoto,
+      },
+      {
+        id: 'ajai-t',
+        name: 'Ajai T',
+        title: 'Senior Program Executive',
+        photo: ajaiPhoto,
+      },
+      {
+        id: 'shibiraj-s',
+        name: 'Shibiraj S',
+        title: 'Senior Content & Social Media Executive',
+        photo: shibirajPhoto,
+      },
+    ],
   },
   {
-    id: 'hariramji-h',
-    name: 'Hariramji H',
-    title: 'Graphic Designer',
-    photo: hariramjiPhoto,
+    heading: 'Finance & Accounts',
+    members: [
+      {
+        id: 'gowtham-j',
+        name: 'Gowtham J',
+        title: 'Senior Accounts Manager',
+        photo: gowthamPhoto,
+      },
+      {
+        id: 'sanjeev-d',
+        name: 'Sanjeev D',
+        title: 'Finance Associate',
+        photo: sanjeevPhoto,
+      },
+    ],
   },
   {
-    id: 'infant-ashil-a',
-    name: 'Infant Ashil A',
-    title: 'UI/UX Designer',
-    photo: infantAshilPhoto,
+    heading: 'People & Talent',
+    members: [
+      {
+        id: 'siddarth-j-c',
+        name: 'Siddarth J C',
+        title: 'People & Talent Acquisition Specialist',
+        photo: siddarthPhoto,
+      },
+      {
+        id: 'yuvarani-s',
+        name: 'Yuvarani S',
+        title: 'Human Resources Manager',
+        photo: yuvaraniPhoto,
+      },
+    ],
+  },
+  {
+    heading: 'Technology & Digital',
+    members: [
+      {
+        id: 'sanjay-j',
+        name: 'Sanjay J',
+        title: 'Technical Support',
+        photo: sanjayPhoto,
+      },
+      {
+        id: 'tharun-balaji-s',
+        name: 'Tharun Balaji S',
+        title: 'Technical Support',
+        photo: tharunPhoto,
+      },
+    ],
+  },
+  {
+    heading: 'Design & Creative',
+    members: [
+      {
+        id: 'hariramji-h',
+        name: 'Hariramji H',
+        title: 'Graphic Designer',
+        photo: hariramjiPhoto,
+      },
+      {
+        id: 'infant-ashil-a',
+        name: 'Infant Ashil A',
+        title: 'UI/UX Designer',
+        photo: infantAshilPhoto,
+      },
+    ],
   },
 ]
 
