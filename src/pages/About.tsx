@@ -11,7 +11,6 @@ import {
   positioning,
   ourStory,
   vision,
-  ourModel,
   founders,
   founderStatCallout,
   teamRows,
@@ -148,87 +147,9 @@ function PairedDepartmentRow({
   )
 }
 
-// Same diagonal-corner "pill" silhouette as src/assets/cards-svg/button-pill.svg (sharp
-// top-left/bottom-right corners, arced top-right/bottom-left), re-proportioned for a card's
-// taller aspect ratio. preserveAspectRatio="none" so it always fills the card's real box.
-const modelCardPillPath =
-  'M 24 24 H 336 A 40 40 0 0 1 376 64 V 236 H 64 A 40 40 0 0 1 24 196 Z'
-
-interface OurModelCardProps {
-  pillar: (typeof ourModel.pillars)[number]
-  isActive: boolean
-  onToggle: () => void
-}
-
-function OurModelCard({ pillar, isActive, onToggle }: OurModelCardProps) {
-  return (
-    <motion.button
-      type="button"
-      variants={item}
-      onClick={onToggle}
-      aria-pressed={isActive}
-      className="group relative isolate flex flex-col text-left transition-transform duration-300 ease-out hover:-translate-y-1"
-    >
-      <svg
-        viewBox="0 0 400 260"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full"
-      >
-        <path
-          d={modelCardPillPath}
-          vectorEffect="non-scaling-stroke"
-          strokeWidth={2}
-          className={`transition-colors duration-300 ease-out ${
-            isActive
-              ? 'fill-navy stroke-navy'
-              : 'fill-white stroke-black group-hover:stroke-navy'
-          }`}
-        />
-      </svg>
-
-      <div className="relative z-10 flex flex-col px-8 py-9">
-        <span
-          className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase transition-colors duration-300 ${
-            isActive ? 'bg-white/10 text-gold' : 'bg-gold/15 text-gold'
-          }`}
-        >
-          {pillar.stage}
-        </span>
-        <h3
-          className={`mt-4 text-lg font-semibold transition-colors duration-300 ${
-            isActive ? 'text-white' : 'text-navy'
-          }`}
-        >
-          {pillar.title}
-        </h3>
-        <p
-          className={`mt-2 text-sm transition-colors duration-300 ${
-            isActive ? 'text-white/85' : 'text-pale-blue-text'
-          }`}
-        >
-          {pillar.description}
-        </p>
-      </div>
-    </motion.button>
-  )
-}
-
 export default function About() {
   const [activeFounderId, setActiveFounderId] = useState<string | null>(null)
   const activeFounder = founders.find((founder) => founder.id === activeFounderId) ?? null
-  const [activeModelCards, setActiveModelCards] = useState<Set<number>>(new Set())
-  const toggleModelCard = (index: number) => {
-    setActiveModelCards((current) => {
-      const next = new Set(current)
-      if (next.has(index)) {
-        next.delete(index)
-      } else {
-        next.add(index)
-      }
-      return next
-    })
-  }
 
   return (
     <main>
@@ -336,37 +257,6 @@ export default function About() {
                 className="h-full w-full object-contain"
               />
             </div>
-          </motion.div>
-        </Container>
-      </section>
-
-      <section
-        id="our-model"
-        className="scroll-mt-24 bg-white py-20 sm:py-24"
-      >
-        <Container>
-          <h2 className="text-center text-3xl font-bold text-navy sm:text-4xl">
-            Our Model
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-center text-navy/70">
-            {ourModel.intro}
-          </p>
-
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3"
-          >
-            {ourModel.pillars.map((pillar, index) => (
-              <OurModelCard
-                key={pillar.title}
-                pillar={pillar}
-                isActive={activeModelCards.has(index)}
-                onToggle={() => toggleModelCard(index)}
-              />
-            ))}
           </motion.div>
         </Container>
       </section>
