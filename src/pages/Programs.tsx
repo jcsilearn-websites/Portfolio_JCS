@@ -68,9 +68,9 @@ export default function Programs() {
         </Container>
       </section>
 
-      <div className="bg-white pb-16 sm:pb-20">
+      <div className="bg-white pb-6 sm:pb-8">
         <Container>
-          <div className="relative z-10 -mt-5 flex gap-3 overflow-x-auto pb-2 sm:-mt-6 sm:flex-wrap sm:justify-center sm:overflow-visible">
+          <div className="relative z-10 mt-8 flex gap-3 overflow-x-auto pb-2 sm:mt-10 sm:flex-wrap sm:justify-center sm:overflow-visible">
             {programTopics.map((topic) => {
               const isActive = topic.slug === active.slug
               return (
@@ -99,9 +99,7 @@ export default function Programs() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -12 }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          className={`scroll-mt-24 py-16 sm:py-20 ${
-            activeIndex % 2 === 0 ? 'bg-white' : 'bg-pale-blue-bg/30'
-          }`}
+          className="scroll-mt-24 pt-6 pb-16 sm:pt-8 sm:pb-20 bg-white"
         >
           <Container className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
             <div className={isTextFirst ? 'md:order-1' : 'md:order-2'}>
