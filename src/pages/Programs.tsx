@@ -47,7 +47,7 @@ export default function Programs() {
   return (
     <main>
       <section
-        className="bg-navy bg-cover bg-center bg-no-repeat py-16 text-center sm:py-20"
+        className="flex items-center justify-center bg-navy bg-cover bg-center bg-no-repeat py-8 text-center sm:py-10"
         style={{ backgroundImage: `url(${programsHeroImage})` }}
       >
         <Container>
@@ -56,7 +56,6 @@ export default function Programs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="mx-auto max-w-3xl"
           >
             <span className="inline-flex flex-col items-center">
               <span className="text-sm font-semibold tracking-wide text-white uppercase">
@@ -64,17 +63,13 @@ export default function Programs() {
               </span>
               <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
             </span>
-
-            <h1 className="mt-4 text-4xl leading-tight font-bold text-white sm:text-5xl lg:text-6xl">
-              {programsHero.headline}
-            </h1>
           </motion.div>
         </Container>
       </section>
 
       <div className="bg-white pb-8 sm:pb-10">
         <Container>
-          <div className="relative z-10 -mt-8 flex gap-3 overflow-x-auto pb-2 sm:-mt-10 sm:flex-wrap sm:justify-center sm:overflow-visible">
+          <div className="relative z-10 -mt-5 flex gap-3 overflow-x-auto pb-2 sm:-mt-6 sm:flex-wrap sm:justify-center sm:overflow-visible">
             {programTopics.map((topic) => {
               const isActive = topic.slug === active.slug
               return (

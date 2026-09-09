@@ -810,12 +810,10 @@ export const programImages: Record<string, string> = Object.fromEntries(
   })
 )
 
-// Hero (label + headline) for the /programs page — same label+gold-underline pattern as
-// the About page's `positioning`. Headline is draft copy, deliberately echoing the
-// "I Learn, I Earn" tagline's short parallel-clause rhythm.
+// Hero (eyebrow label) for the /programs page — same label+gold-underline pattern as
+// the About page's `positioning`.
 export const programsHero = {
   label: 'Our Programs',
-  headline: 'Learn the Skills. Earn the Future.',
 }
 
 // Single source of truth for both the Header "Our Programs" dropdown and the /programs
