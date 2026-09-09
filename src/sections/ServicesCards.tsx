@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom'
 import { motion, type Variants } from 'framer-motion'
-import { HiArrowUpRight } from 'react-icons/hi2'
 import { serviceCategories } from '../data/content'
+import Button from '../components/Button'
 
 const container: Variants = {
   hidden: {},
@@ -31,29 +30,25 @@ export default function ServicesCards() {
           className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5"
         >
           {serviceCategories.map((category) => (
-            <motion.div key={category.id} variants={item}>
-              <Link
+            <motion.div
+              key={category.id}
+              variants={item}
+              className="flex h-full flex-col rounded-2xl bg-pale-blue-bg p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+            >
+              <h3 className="text-lg font-semibold text-navy">
+                {category.label}
+              </h3>
+              <p className="mt-2 flex-1 text-sm text-pale-blue-text">
+                {category.description}
+              </p>
+              <Button
                 to={`/services#${category.id}`}
-                className="group flex h-full flex-col rounded-2xl bg-pale-blue-bg p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+                variant="primary"
+                size="sm"
+                className="mt-4 self-start"
               >
-                <h3 className="text-lg font-semibold text-navy">
-                  {category.label}
-                </h3>
-                <p className="mt-2 flex-1 text-sm text-pale-blue-text">
-                  {category.description}
-                </p>
-                <span className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-navy">
-                  <span className="flex items-center gap-2 transition-transform duration-200 ease-out group-hover:translate-x-1">
-                    Explore
-                    <span className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-tl-md rounded-tr-none rounded-br-md rounded-bl-md bg-gold text-navy">
-                      <HiArrowUpRight
-                        size={14}
-                        className="transition-transform duration-200 ease-out group-hover:-translate-y-1"
-                      />
-                    </span>
-                  </span>
-                </span>
-              </Link>
+                Explore
+              </Button>
             </motion.div>
           ))}
         </motion.div>

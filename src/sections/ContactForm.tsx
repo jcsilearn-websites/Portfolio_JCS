@@ -1,5 +1,6 @@
 import { useRef, useState, type FormEvent } from 'react'
 import emailjs from '@emailjs/browser'
+import Button from '../components/Button'
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
@@ -70,13 +71,9 @@ export default function ContactForm() {
         <textarea id="message" name="message" rows={4} required className={inputClasses} />
       </div>
 
-      <button
-        type="submit"
-        disabled={status === 'sending'}
-        className="w-full rounded-xl bg-gold px-6 py-3.5 text-base font-semibold text-navy transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-60"
-      >
+      <Button type="submit" variant="primary" disabled={status === 'sending'} fullWidth>
         {status === 'sending' ? 'Sending…' : 'Submit'}
-      </button>
+      </Button>
 
       {status === 'success' && (
         <p className="text-sm font-medium text-navy">
