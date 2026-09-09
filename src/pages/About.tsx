@@ -40,7 +40,7 @@ interface FounderCardProps {
 
 function FounderCard({ founder, isOpen, onToggle }: FounderCardProps) {
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <motion.div variants={item} className="relative overflow-hidden rounded-2xl">
       <img
         src={founder.photo}
         alt={`${founder.name}, ${founder.title}`}
@@ -64,7 +64,7 @@ function FounderCard({ founder, isOpen, onToggle }: FounderCardProps) {
           <HiPlus size={18} />
         </motion.span>
       </button>
-    </div>
+    </motion.div>
   )
 }
 
@@ -72,13 +72,13 @@ function FounderCard({ founder, isOpen, onToggle }: FounderCardProps) {
 // click-to-expand modal (Technical Support Team cards have no bio to expand into).
 function TeamMemberCard({ member }: { member: TeamMember }) {
   return (
-    <div className="relative overflow-hidden rounded-2xl">
+    <motion.div variants={item} className="relative overflow-hidden rounded-2xl">
       <img
         src={member.photo}
         alt={`${member.name}, ${member.title}`}
         className="block w-full"
       />
-    </div>
+    </motion.div>
   )
 }
 
@@ -111,24 +111,36 @@ function PairedDepartmentRow({
             </h2>
           ))}
         </div>
-        <div className="mt-12 grid grid-cols-4 gap-6">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-12 grid grid-cols-4 gap-6"
+        >
           {departments.flatMap((department) =>
             department.members.map((member) => (
               <TeamMemberCard key={member.id} member={member} />
             )),
           )}
-        </div>
+        </motion.div>
       </div>
 
       <div className="lg:hidden">
         {departments.map((department, index) => (
           <div key={department.heading} className={index === 0 ? '' : 'mt-16'}>
             <h2 className={departmentHeadingClass}>{department.heading}</h2>
-            <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2">
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2"
+            >
               {department.members.map((member) => (
                 <TeamMemberCard key={member.id} member={member} />
               ))}
-            </div>
+            </motion.div>
           </div>
         ))}
       </div>
@@ -375,7 +387,13 @@ export default function About() {
             Founding Team
           </h2>
 
-          <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-2">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-8 sm:grid-cols-2"
+          >
             {founders.map((founder) => (
               <FounderCard
                 key={founder.id}
@@ -388,7 +406,7 @@ export default function About() {
                 }
               />
             ))}
-          </div>
+          </motion.div>
 
           <div className="mx-auto mt-16 max-w-2xl text-center">
             <h3 className="text-3xl font-bold text-black sm:text-4xl">
@@ -414,11 +432,17 @@ export default function About() {
               <div key={row.department.heading} className="mt-20">
                 <h2 className={departmentHeadingClass}>{row.department.heading}</h2>
 
-                <div className="mx-auto mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                <motion.div
+                  variants={container}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.3 }}
+                  className="mx-auto mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+                >
                   {row.department.members.map((member) => (
                     <TeamMemberCard key={member.id} member={member} />
                   ))}
-                </div>
+                </motion.div>
               </div>
             ) : (
               <PairedDepartmentRow
