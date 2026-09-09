@@ -86,6 +86,11 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
 // for every department heading below it, whether full-width or paired-and-centered.
 const departmentHeadingClass = 'text-center text-4xl font-bold text-black sm:text-5xl'
 
+// Smaller variant for the desktop paired-row headings only: each one only has half a 4-card
+// row's width to sit in (roughly card-1-middle to card-2-middle), so the full department-
+// heading size reads oversized/cramped there — this keeps it proportioned to that space.
+const pairedRowHeadingClass = 'text-center text-2xl font-bold text-black lg:text-3xl'
+
 // Two 2-card departments sharing one combined 4-card row (see CLAUDE.md "CORRECTED LAYOUT"):
 // each department keeps its own heading centered over its own pair. Below `lg` there isn't
 // room for 4 cards in one row, so each pair renders as its own stacked mini-section (heading
@@ -101,7 +106,7 @@ function PairedDepartmentRow({
       <div className="hidden lg:block">
         <div className="grid grid-cols-4 gap-6">
           {departments.map((department) => (
-            <h2 key={department.heading} className={`col-span-2 ${departmentHeadingClass}`}>
+            <h2 key={department.heading} className={`col-span-2 ${pairedRowHeadingClass}`}>
               {department.heading}
             </h2>
           ))}
