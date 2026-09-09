@@ -4,8 +4,8 @@ import {
   HiMapPin,
   HiPhone,
 } from 'react-icons/hi2'
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa6'
-import jcsLogo from '../assets/logos/jcs-ilearn-logo.svg'
+import { FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa6'
+import gearIcon from '../assets/About-page/gear.png'
 import { contactInfo, homeHero } from '../data/content'
 import Container from './Container'
 
@@ -27,12 +27,18 @@ const companyLinks = [
 // TODO: create real page and route once content is ready
 const legalLinks = ['Privacy Policy', 'Terms & Conditions', 'Refund Policy']
 
-// TODO: add real social media URLs
 const socialLinks = [
-  { icon: FaLinkedinIn, label: 'LinkedIn', href: '#' },
-  { icon: FaInstagram, label: 'Instagram', href: '#' },
-  { icon: FaYoutube, label: 'YouTube', href: '#' },
-  { icon: FaFacebookF, label: 'Facebook', href: '#' },
+  {
+    icon: FaLinkedinIn,
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/jcs-institute-of-lifeskills-education-and-recruitment-network/',
+  },
+  {
+    icon: FaInstagram,
+    label: 'Instagram',
+    href: 'https://www.instagram.com/jcs_ilearn?igsh=N3hpZmQ1c2k3Njdq',
+  },
+  { icon: FaYoutube, label: 'YouTube', href: 'https://www.youtube.com/@JCSiLearn' },
 ]
 
 const linkClass = 'text-pale-blue-bg/80 transition-colors duration-200 hover:text-gold'
@@ -45,7 +51,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Brand block */}
           <div className="lg:col-span-4">
-            <img src={jcsLogo} alt="JCS iLearn" className="h-10 w-auto brightness-0 invert" />
+            <img src={gearIcon} alt="JCS iLearn" className="h-10 w-10 brightness-0 invert" />
             <p className="mt-4 max-w-xs text-sm text-pale-blue-bg/80 italic">
               {homeHero.supportingLine}
             </p>
@@ -122,8 +128,10 @@ export default function Footer() {
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-gold text-navy transition-colors duration-200 hover:bg-white"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gold text-navy transition-colors duration-200 hover:bg-white"
                 >
                   <Icon size={16} />
                 </a>
@@ -132,10 +140,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-3 border-t border-white/10 pt-6 text-sm text-pale-blue-bg/60 sm:flex-row sm:justify-between">
+        <div className="mt-12 flex flex-col items-center gap-3 border-t border-white/10 pt-6 text-sm text-pale-blue-bg/60 justify-center sm:flex-row">
           <p>&copy; {new Date().getFullYear()} JCS iLearn. All rights reserved.</p>
-          {/* TODO: update credit line if needed */}
-          <p>Made with ❤️ by JCS iLearn Team</p>
         </div>
       </Container>
     </footer>
