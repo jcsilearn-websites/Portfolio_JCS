@@ -109,8 +109,7 @@ manufacture sections looking for content to fill.
 **Correction — this was previously locked as 5 separate routes (`/about`, `/about/journey`,
 `/about/founders`, `/about/vision`, `/about/identity`). Client has now explicitly reversed
 that decision** and wants the true Psiog "ditto": one single `/about` page with anchored
-sections in Psiog's exact order — Positioning → Our Model → Leadership (Our Model has since
-been removed from the live page, see below). Fold the existing
+sections in Psiog's exact order — Positioning → Our Model → Leadership. Fold the existing
 Journey/Vision/Identity content into this structure as sections, not routes. Remove the old
 sub-routes.
 
@@ -180,15 +179,21 @@ shape, same text sizing and alignment pattern already established for this page'
 sections (label+underline size, headline size with italic phrase, paragraph sizing/line-length
 comparable to the reference).
 
-**2. Our Model section — REMOVED from the live page.** Previously mapped the existing "Why
+**2. Our Model section** (Psiog: how they work/their methodology): map the existing "Why
 Choose Our Training Services" content here — Industry-Relevant Curriculum, Expert Trainers,
 Proven Results (already sourced, from the old site's services page) — plus the Journey
-content's Spark → Vision → Impact narrative arc as the section's story structure, matching
-what Psiog's "Our Model" section does for their business, with 3 click-to-navy pill cards
-(shape from `src/assets/cards-svg/button-pill.svg`). Removed per direct instruction; content
-kept here for history only (and `ourModel` stays defined in `src/data/content.ts`, just no
-longer imported/rendered on `/about`) — not rendered anywhere on the live site. The page now
-flows straight from Vision into Leadership.
+content's Spark → Vision → Impact narrative arc as the section's story structure. This is
+where JCS's approach/methodology lives, matching what Psiog's "Our Model" section does for
+their business.
+
+**Card styling — CORRECTED** (supersedes the earlier pale-blue-bg card treatment): each of
+the 3 cards is white background with a black outline border (not filled pale-blue). Shape
+matches the exact pill/rounded silhouette defined in `src/assets/cards-svg/button-pill.svg` —
+use that SVG's shape for the card container, not a generic rounded-rectangle. On click, the
+card's background transitions to navy (`#0A0B68`) — smooth transition, not an abrupt snap.
+Add a sensible hover effect (e.g. subtle lift + border color shift) leading into the click
+state, Claude Code's judgment on exact treatment as long as it feels intentional and matches
+the site's existing interaction quality elsewhere (buttons, leadership cards).
 
 **3. Leadership section — header styling:** white background for this entire section (not
 pale-blue-bg). Above the card grid: "Leadership" small label with gold underline, then a large
@@ -314,10 +319,15 @@ the last 2 cards.
 - `src/assets/About-page/Tech-Support-Team/Hariramji-H.png` — Hariramji H, Graphic Designer
 - `src/assets/About-page/Tech-Support-Team/Infant-Ashil-A.png` — Infant Ashil A, UI/UX Designer
 
-**Both paired rows — mobile behavior:** the merged one-row-of-4 treatment only applies at `lg`
-and above, where there's room for 4 cards side by side. Below `lg`, each pair renders as its
-own stacked mini-section (its heading directly above its own 2-card grid) so the two
-departments' cards stay visually grouped under their own label instead of interleaving.
+**Closing stat-callout — after all team images, before the footer** (same style/pattern as
+the "Founders. Deep Experience." block above: headline with one italicized phrase, then one
+centered sentence with bolded numbers). Built from stats already established elsewhere in
+this file (400+ Trainers, 1,50,000+ Students Trained from the Home stats) — not new claims:
+
+Headline: "One Team. *One Mission.*" (italicize "One Mission")
+
+> From leadership to delivery, this is the team behind **400+ trainers** and **1,50,000+
+> students trained** across India.
 
 **Removed per explicit client request**: the "Our Leadership Values" 4-item grid that used to
 follow this card+modal section has been removed entirely from the live page (see the
@@ -353,7 +363,7 @@ own fuller page:
 ## Site structure (routes)
 
 - `/` — Home: Hero → Stats strip → About teaser → Services (tabbed, audience-based) → Programs teaser → Trainers teaser → Testimonials → CTA → Footer
-- `/about` — **Single consolidated page**: Hero → Our Story (Positioning) → Vision (new) → Leadership (card+modal) sections, all on one page, matching Psiog's structure. No sub-routes. (Our Model was removed from the flow, see "About & Contact page specs" above.)
+- `/about` — **Single consolidated page**: Hero → Our Story (Positioning) → Vision (new) → Our Model → Leadership (card+modal) sections, all on one page, matching Psiog's structure. No sub-routes.
 - `/programs` — full programs grid/tabs (see Programs data below)
 - `/services` — audience-based service cards (Universities/Corporates/Startups/Schools/Professionals)
 - `/trainers` — **new page, not in the old site** — trainer profile grid (content exists, see below; justified by the depth of the trainers deck the client provided)
