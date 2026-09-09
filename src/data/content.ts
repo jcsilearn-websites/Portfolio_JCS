@@ -218,6 +218,17 @@ export const bentoTiles: BentoTile[] = [
   },
 ]
 
+// Hero (label + headline + subheading) for the /services page — same three-tier pattern as
+// the About page's `positioning`. Headline is draft copy (unlike the label and subheading,
+// which reuse the page's existing sourced content), echoing the "I Learn, I Earn" tagline's
+// short parallel-clause rhythm.
+export const servicesHero = {
+  label: 'Our Services',
+  headline: 'Train Your People. Power Your Growth.',
+  subheading:
+    'Programs designed for Universities, Corporates, Startups, Schools, and Professionals.',
+}
+
 export interface ServiceCategory {
   id: string
   label: string
