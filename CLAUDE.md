@@ -283,38 +283,46 @@ figures already stated in each founder's own bio above (not new claims):
 (850 = 500 from Raghul's bio + 350 from Siva Harish's bio; 1,70,000 = 1,00,000 + 70,000 —
 simple addition of already-sourced figures, not a new stat.)
 
-**Team section — restructured into departments** (supersedes the earlier flat "Support Team"
-4-card section). Below the Founding Team cards and the stat-callout, the team is now organized
-into 6 department sections in this order, each with its own heading — same large bold style as
-"Founding Team" (Psiog equivalent: "Leading The Way", no eyebrow label needed) — followed by a
-static card grid (no "+" icon, no LinkedIn icon, no click/modal interaction, same visual size/
-proportions as Psiog's "Leading The Way" cards). All card-face images are pre-composited with
-name + title already baked in (same style as the founder cards), so no separate coded caption
-text is rendered — the data layer's `name`/`title` fields exist for alt text only:
+**Team section — restructured into departments (supersedes the flat "Support Team" 4-card
+version above).** Founders/Leadership cards stay exactly as-is above this; everything below
+is new. Order and real names/titles, confirmed from the client's own org list document:
 
-1. **Business Development** (4 cards): Nishanth Kumar V, Sharavanan A K, Krithika T, Andrew
-   Ponnarasan M S — `src/assets/About-page/Business-Development/`
-2. **Program Delivery & Learning** (4 cards): Kirubalini J, Kavya S, Ajai T, Shibiraj S —
-   `src/assets/About-page/Program-delivery/`
-3. **Finance & Accounts** (2 cards): Gowtham J, Sanjeev D —
-   `src/assets/About-page/Finance-Administration/`
-4. **People & Talent** (2 cards): Siddarth J C, Yuvarani S —
-   `src/assets/About-page/Finance-Administration/`
-5. **Technology & Digital** (2 cards): Sanjay J, Tharun Balaji S —
-   `src/assets/About-page/Tech-Support-Team/`
-6. **Design & Creative** (2 cards): Hariramji H, Infant Ashil A —
-   `src/assets/About-page/Tech-Support-Team/`
+**Business Development** (own full section, 4 cards in one row, own heading above):
+- `src/assets/About-page/Business-Development/Nishanth-Kumar-V.png` — Nishanth Kumar V, Business Development Manager – Institutional Partnerships
+- `src/assets/About-page/Business-Development/Sharavanan-A-K.png` — Sharavanan A K, Business Development Executive – Institutional Partnerships
+- `src/assets/About-page/Business-Development/Krithika-T.png` — Krithika T, Business Development Manager – Corporate Relations
+- `src/assets/About-page/Business-Development/Andrew-Ponnarasan-M-S.png` — Andrew Ponnarasan M S, Marketing Manager
 
-⚠️ **Two filename/spelling mismatches, flagged not silently resolved:**
-- `Program-delivery/Ajay-T.png` — filename says "Ajay", but the card's own baked-in caption
-  already reads "Ajai T", matching the spelling used above. No visible mismatch, just a
-  misnamed file.
-- `Finance-Administration/Siddharth-J-C.png` — filename says "Siddharth J **C**", but the
-  card's own baked-in caption reads "Siddharth J" (no "C"). Neither matches the "Siddarth J C"
-  spelling used above (and in the client's document, the more authoritative source for the
-  spelling). This is a real 3-way mismatch — the visible card in the browser will show
-  "Siddharth J", not "Siddarth J C". A corrected image asset is needed from whoever owns the
-  card-design source file if "Siddarth J C" must be the spelling that actually displays.
+**Program Delivery & Learning** (own full section, 4 cards in one row, own heading above):
+- `src/assets/About-page/Program-delivery/Kirubalini-J.png` — Kirubalini J, Learning and Development Manager
+- `src/assets/About-page/Program-delivery/Kavya-S.png` — Kavya S, Senior Program Coordinator
+- `src/assets/About-page/Program-delivery/Ajay-T.png` — Ajai T, Senior Program Executive (⚠️ filename says "Ajay", client's doc says "Ajai" — confirm correct spelling before shipping)
+- `src/assets/About-page/Program-delivery/Shibiraj-S.png` — Shibiraj S, Senior Content & Social Media Executive
+
+**Finance & Accounts + People & Talent — CORRECTED LAYOUT: paired into one combined row, not
+two separate stacked sections.** All 4 cards sit in a single horizontal row (Gowtham J,
+Sanjeev D, Siddarth J C, Yuvarani S in that order). Above the row: TWO separate department
+labels/headings, each centered over its own pair of cards — "Finance & Accounts" centered
+above the first 2 cards, "People & Talent" centered above the last 2 cards — not one heading
+for the whole row.
+- `src/assets/About-page/Finance-Administration/Gowtham-J.png` — Gowtham J, Senior Accounts Manager
+- `src/assets/About-page/Finance-Administration/Sanjeev-D.png` — Sanjeev D, Finance Associate
+- `src/assets/About-page/Finance-Administration/Siddharth-J-C.png` — Siddarth J C, Talent Acquisition Specialist (⚠️ filename says "Siddharth", client's doc says "Siddarth" — confirm correct spelling; note this file also lives in the Finance-Administration folder despite being People & Talent content)
+- `src/assets/About-page/Finance-Administration/Yuvarani-S.png` — Yuvarani S, Human Resources Manager
+
+**Technology & Digital + Design & Creative — SAME paired-row treatment as Finance/People
+above.** All 4 cards in one row (Sanjay J, Tharun Balaji S, Hariramji H, Infant Ashil A), with
+"Technology & Digital" centered above the first 2 cards and "Design & Creative" centered above
+the last 2 cards.
+- `src/assets/About-page/Tech-Support-Team/sanjay-j.png` — Sanjay J, Software Developer
+- `src/assets/About-page/Tech-Support-Team/tharun-balaji-s.png` — Tharun Balaji S, Software Developer
+- `src/assets/About-page/Tech-Support-Team/Hariramji-H.png` — Hariramji H, Graphic Designer
+- `src/assets/About-page/Tech-Support-Team/Infant-Ashil-A.png` — Infant Ashil A, UI/UX Designer
+
+**Both paired rows — mobile behavior:** the merged one-row-of-4 treatment only applies at `lg`
+and above, where there's room for 4 cards side by side. Below `lg`, each pair renders as its
+own stacked mini-section (its heading directly above its own 2-card grid) so the two
+departments' cards stay visually grouped under their own label instead of interleaving.
 
 **Removed per explicit client request**: the "Our Leadership Values" 4-item grid that used to
 follow this card+modal section has been removed entirely from the live page (see the
@@ -559,11 +567,11 @@ Jcs/
 11. Contact form won't send mail until a real .env with EmailJS service/template/public key
     IDs is added locally (see .env.example) — get these from the client or a fresh EmailJS
     account before this page goes live.
-12. ~~"Support Team" section on /about — job titles still needed from client~~ — RESOLVED and
-    superseded: the flat 4-card section is now 6 department sections (see "Team section —
-    restructured into departments" above), all 16 card-face images have name + title baked in.
-    Two filename/spelling mismatches flagged there (Ajay/Ajai, Siddharth/Siddarth) are still
-    open — the Siddharth one needs a corrected image asset.
+12. Team section — all 14 department members' names/titles now confirmed from the client's
+    org list document (resolves the earlier open item). Two small filename-vs-document
+    spelling mismatches remain unconfirmed: "Ajay" (filename) vs "Ajai" (doc) for the Program
+    Delivery team member, and "Siddharth" (filename) vs "Siddarth" (doc) for the People &
+    Talent team member — verify correct spelling with the client before shipping.
 
 ## Conventions
 - **Site-wide layout container — CORRECTED with measured value.** Psiog maintains one

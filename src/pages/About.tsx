@@ -14,9 +14,10 @@ import {
   ourModel,
   founders,
   founderStatCallout,
-  teamDepartments,
+  teamRows,
   type Founder,
   type TeamMember,
+  type TeamDepartment,
 } from '../data/content'
 
 const container: Variants = {
@@ -77,6 +78,55 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
         alt={`${member.name}, ${member.title}`}
         className="block w-full"
       />
+    </div>
+  )
+}
+
+// Same large-bold treatment as "Founding Team" (Psiog equivalent: "Leading The Way"), reused
+// for every department heading below it, whether full-width or paired-and-centered.
+const departmentHeadingClass = 'text-center text-4xl font-bold text-black sm:text-5xl'
+
+// Two 2-card departments sharing one combined 4-card row (see CLAUDE.md "CORRECTED LAYOUT"):
+// each department keeps its own heading centered over its own pair. Below `lg` there isn't
+// room for 4 cards in one row, so each pair renders as its own stacked mini-section (heading
+// directly above its own 2-card grid) instead of interleaving with the other department's
+// cards; at `lg`+ the two pairs merge into one heading row + one 4-card row.
+function PairedDepartmentRow({
+  departments,
+}: {
+  departments: [TeamDepartment, TeamDepartment]
+}) {
+  return (
+    <div className="mt-20">
+      <div className="hidden lg:block">
+        <div className="grid grid-cols-4 gap-6">
+          {departments.map((department) => (
+            <h2 key={department.heading} className={`col-span-2 ${departmentHeadingClass}`}>
+              {department.heading}
+            </h2>
+          ))}
+        </div>
+        <div className="mt-12 grid grid-cols-4 gap-6">
+          {departments.flatMap((department) =>
+            department.members.map((member) => (
+              <TeamMemberCard key={member.id} member={member} />
+            )),
+          )}
+        </div>
+      </div>
+
+      <div className="lg:hidden">
+        {departments.map((department, index) => (
+          <div key={department.heading} className={index === 0 ? '' : 'mt-16'}>
+            <h2 className={departmentHeadingClass}>{department.heading}</h2>
+            <div className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2">
+              {department.members.map((member) => (
+                <TeamMemberCard key={member.id} member={member} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
@@ -354,25 +404,24 @@ export default function About() {
             </p>
           </div>
 
-          {teamDepartments.map((department) => (
-            <div key={department.heading}>
-              <h2 className="mt-20 text-center text-4xl font-bold text-black sm:text-5xl">
-                {department.heading}
-              </h2>
+          {teamRows.map((row) =>
+            row.type === 'single' ? (
+              <div key={row.department.heading} className="mt-20">
+                <h2 className={departmentHeadingClass}>{row.department.heading}</h2>
 
-              <div
-                className={`mx-auto mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 ${
-                  department.members.length > 2
-                    ? 'lg:grid-cols-4'
-                    : 'max-w-3xl'
-                }`}
-              >
-                {department.members.map((member) => (
-                  <TeamMemberCard key={member.id} member={member} />
-                ))}
+                <div className="mx-auto mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  {row.department.members.map((member) => (
+                    <TeamMemberCard key={member.id} member={member} />
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ) : (
+              <PairedDepartmentRow
+                key={row.departments.map((department) => department.heading).join('+')}
+                departments={row.departments}
+              />
+            ),
+          )}
 
           <Modal isOpen={!!activeFounder} onClose={() => setActiveFounderId(null)}>
             {activeFounder && (

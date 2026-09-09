@@ -568,135 +568,158 @@ export interface TeamDepartment {
   members: TeamMember[]
 }
 
-// Restructured from the old flat "Support Team" 4-card section into 6 department sections
-// (client-provided org breakdown, see CLAUDE.md). Each department gets its own heading, same
-// visual treatment as the "Founding Team" heading above (Psiog equivalent: "Leading The Way"),
-// followed by a static card grid — no click-to-expand modal, name/title are baked into each
-// card-face image itself, same pre-composited style as the founder cards.
-export const teamDepartments: TeamDepartment[] = [
+// A "row" is either a single full department (4 cards, one heading spanning the row) or a
+// paired row of two 2-card departments sharing one combined 4-card row, each with its own
+// heading centered above its own pair — see CLAUDE.md's "CORRECTED LAYOUT" note.
+export type TeamRow =
+  | { type: 'single'; department: TeamDepartment }
+  | { type: 'paired'; departments: [TeamDepartment, TeamDepartment] }
+
+// Restructured from the old flat "Support Team" 4-card section into department rows
+// (client-provided org breakdown, see CLAUDE.md). Each heading gets the same visual treatment
+// as "Founding Team" above (Psiog equivalent: "Leading The Way"), followed by a static card
+// grid — no click-to-expand modal, name/title are baked into each card-face image itself, same
+// pre-composited style as the founder cards (the `title` field here is used for alt text only).
+export const teamRows: TeamRow[] = [
   {
-    heading: 'Business Development',
-    members: [
+    type: 'single',
+    department: {
+      heading: 'Business Development',
+      members: [
+        {
+          id: 'nishanth-kumar-v',
+          name: 'Nishanth Kumar V',
+          title: 'Business Development Manager - Institutional Partnerships',
+          photo: nishanthPhoto,
+        },
+        {
+          id: 'sharavanan-a-k',
+          name: 'Sharavanan A K',
+          title: 'Business Development Executive - Institutional Partnerships',
+          photo: sharavananPhoto,
+        },
+        {
+          id: 'krithika-t',
+          name: 'Krithika T',
+          title: 'Business Development Manager - Corporate Relations',
+          photo: krithikaPhoto,
+        },
+        {
+          id: 'andrew-ponnarasan-m-s',
+          name: 'Andrew Ponnarasan M S',
+          title: 'Marketing Manager',
+          photo: andrewPhoto,
+        },
+      ],
+    },
+  },
+  {
+    type: 'single',
+    department: {
+      heading: 'Program Delivery & Learning',
+      members: [
+        {
+          id: 'kirubalini-j',
+          name: 'Kirubalini J',
+          title: 'Learning and Development Manager',
+          photo: kirubaliniPhoto,
+        },
+        {
+          id: 'kavya-s',
+          name: 'Kavya S',
+          title: 'Senior Program Coordinator',
+          photo: kavyaPhoto,
+        },
+        {
+          id: 'ajai-t',
+          name: 'Ajai T',
+          title: 'Senior Program Executive',
+          photo: ajaiPhoto,
+        },
+        {
+          id: 'shibiraj-s',
+          name: 'Shibiraj S',
+          title: 'Senior Content & Social Media Executive',
+          photo: shibirajPhoto,
+        },
+      ],
+    },
+  },
+  {
+    type: 'paired',
+    departments: [
       {
-        id: 'nishanth-kumar-v',
-        name: 'Nishanth Kumar V',
-        title: 'Business Development Manager - Institutional Partnerships',
-        photo: nishanthPhoto,
+        heading: 'Finance & Accounts',
+        members: [
+          {
+            id: 'gowtham-j',
+            name: 'Gowtham J',
+            title: 'Senior Accounts Manager',
+            photo: gowthamPhoto,
+          },
+          {
+            id: 'sanjeev-d',
+            name: 'Sanjeev D',
+            title: 'Finance Associate',
+            photo: sanjeevPhoto,
+          },
+        ],
       },
       {
-        id: 'sharavanan-a-k',
-        name: 'Sharavanan A K',
-        title: 'Business Development Executive - Institutional Partnerships',
-        photo: sharavananPhoto,
-      },
-      {
-        id: 'krithika-t',
-        name: 'Krithika T',
-        title: 'Business Development Manager - Corporate Relations',
-        photo: krithikaPhoto,
-      },
-      {
-        id: 'andrew-ponnarasan-m-s',
-        name: 'Andrew Ponnarasan M S',
-        title: 'Marketing Manager',
-        photo: andrewPhoto,
+        heading: 'People & Talent',
+        members: [
+          {
+            id: 'siddarth-j-c',
+            name: 'Siddarth J C',
+            title: 'Talent Acquisition Specialist',
+            photo: siddarthPhoto,
+          },
+          {
+            id: 'yuvarani-s',
+            name: 'Yuvarani S',
+            title: 'Human Resources Manager',
+            photo: yuvaraniPhoto,
+          },
+        ],
       },
     ],
   },
   {
-    heading: 'Program Delivery & Learning',
-    members: [
+    type: 'paired',
+    departments: [
       {
-        id: 'kirubalini-j',
-        name: 'Kirubalini J',
-        title: 'Learning and Development Manager',
-        photo: kirubaliniPhoto,
+        heading: 'Technology & Digital',
+        members: [
+          {
+            id: 'sanjay-j',
+            name: 'Sanjay J',
+            title: 'Software Developer',
+            photo: sanjayPhoto,
+          },
+          {
+            id: 'tharun-balaji-s',
+            name: 'Tharun Balaji S',
+            title: 'Software Developer',
+            photo: tharunPhoto,
+          },
+        ],
       },
       {
-        id: 'kavya-s',
-        name: 'Kavya S',
-        title: 'Senior Program Coordinator',
-        photo: kavyaPhoto,
-      },
-      {
-        id: 'ajai-t',
-        name: 'Ajai T',
-        title: 'Senior Program Executive',
-        photo: ajaiPhoto,
-      },
-      {
-        id: 'shibiraj-s',
-        name: 'Shibiraj S',
-        title: 'Senior Content & Social Media Executive',
-        photo: shibirajPhoto,
-      },
-    ],
-  },
-  {
-    heading: 'Finance & Accounts',
-    members: [
-      {
-        id: 'gowtham-j',
-        name: 'Gowtham J',
-        title: 'Senior Accounts Manager',
-        photo: gowthamPhoto,
-      },
-      {
-        id: 'sanjeev-d',
-        name: 'Sanjeev D',
-        title: 'Finance Associate',
-        photo: sanjeevPhoto,
-      },
-    ],
-  },
-  {
-    heading: 'People & Talent',
-    members: [
-      {
-        id: 'siddarth-j-c',
-        name: 'Siddarth J C',
-        title: 'People & Talent Acquisition Specialist',
-        photo: siddarthPhoto,
-      },
-      {
-        id: 'yuvarani-s',
-        name: 'Yuvarani S',
-        title: 'Human Resources Manager',
-        photo: yuvaraniPhoto,
-      },
-    ],
-  },
-  {
-    heading: 'Technology & Digital',
-    members: [
-      {
-        id: 'sanjay-j',
-        name: 'Sanjay J',
-        title: 'Technical Support',
-        photo: sanjayPhoto,
-      },
-      {
-        id: 'tharun-balaji-s',
-        name: 'Tharun Balaji S',
-        title: 'Technical Support',
-        photo: tharunPhoto,
-      },
-    ],
-  },
-  {
-    heading: 'Design & Creative',
-    members: [
-      {
-        id: 'hariramji-h',
-        name: 'Hariramji H',
-        title: 'Graphic Designer',
-        photo: hariramjiPhoto,
-      },
-      {
-        id: 'infant-ashil-a',
-        name: 'Infant Ashil A',
-        title: 'UI/UX Designer',
-        photo: infantAshilPhoto,
+        heading: 'Design & Creative',
+        members: [
+          {
+            id: 'hariramji-h',
+            name: 'Hariramji H',
+            title: 'Graphic Designer',
+            photo: hariramjiPhoto,
+          },
+          {
+            id: 'infant-ashil-a',
+            name: 'Infant Ashil A',
+            title: 'UI/UX Designer',
+            photo: infantAshilPhoto,
+          },
+        ],
       },
     ],
   },
