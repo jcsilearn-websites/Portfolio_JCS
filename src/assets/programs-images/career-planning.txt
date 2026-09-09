@@ -1,1 +1,0 @@
-Replace this file with career-planning.png (or .jpg) — same filename, same folder — and it will automatically appear on the /programs/career-planning page. No code changes needed.

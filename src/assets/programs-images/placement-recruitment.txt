@@ -1,1 +1,0 @@
-Replace this file with placement-recruitment.png (or .jpg) — same filename, same folder — and it will automatically appear on the /programs/placement-recruitment page. No code changes needed.

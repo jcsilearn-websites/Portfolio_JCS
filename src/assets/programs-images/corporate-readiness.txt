@@ -1,1 +1,0 @@
-Replace this file with corporate-readiness.png (or .jpg) — same filename, same folder — and it will automatically appear on the /programs/corporate-readiness page. No code changes needed.

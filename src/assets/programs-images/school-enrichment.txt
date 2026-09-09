@@ -1,1 +1,0 @@
-Replace this file with school-enrichment.png (or .jpg) — same filename, same folder — and it will automatically appear on the /programs/school-enrichment page. No code changes needed.
