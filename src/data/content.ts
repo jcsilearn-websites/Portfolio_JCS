@@ -556,6 +556,25 @@ export const founderStatCallout = {
   ] satisfies StatCalloutPart[],
 }
 
+// Closing stat-callout after all team department grids, before the footer — same style/
+// pattern as founderStatCallout above (headline with one italicized phrase, one centered
+// sentence with bolded numbers). Figures are the existing 400+ Trainers / 1,50,000+ Students
+// Trained stats from the Home stats strip, not new claims.
+export const teamStatCallout = {
+  headline: {
+    lead: 'One Team. ',
+    emphasis: 'One Mission.',
+    trail: '',
+  },
+  sentence: [
+    { text: 'From leadership to delivery, this is the team behind ' },
+    { text: '400+ trainers', bold: true },
+    { text: ' and ' },
+    { text: '1,50,000+ students trained', bold: true },
+    { text: ' across India.' },
+  ] satisfies StatCalloutPart[],
+}
+
 export interface TeamMember {
   id: string
   name: string

@@ -13,6 +13,7 @@ import {
   vision,
   founders,
   founderStatCallout,
+  teamStatCallout,
   teamRows,
   type Founder,
   type TeamMember,
@@ -341,6 +342,25 @@ export default function About() {
               />
             ),
           )}
+
+          <div className="mx-auto mt-20 max-w-2xl text-center">
+            <h3 className="text-3xl font-bold text-black sm:text-4xl">
+              {teamStatCallout.headline.lead}
+              <em className="font-normal italic">{teamStatCallout.headline.emphasis}</em>
+              {teamStatCallout.headline.trail}
+            </h3>
+            <p className="mt-6 text-lg leading-relaxed text-black/70">
+              {teamStatCallout.sentence.map((part, index) =>
+                part.bold ? (
+                  <strong key={index} className="font-semibold text-black">
+                    {part.text}
+                  </strong>
+                ) : (
+                  <span key={index}>{part.text}</span>
+                ),
+              )}
+            </p>
+          </div>
 
           <Modal isOpen={!!activeFounder} onClose={() => setActiveFounderId(null)}>
             {activeFounder && (
