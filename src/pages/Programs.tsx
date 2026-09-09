@@ -56,6 +56,7 @@ export default function Programs() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="-mt-2.5 sm:-mt-3"
           >
             <span className="inline-flex flex-col items-center">
               <span className="text-sm font-semibold tracking-wide text-white uppercase">
@@ -67,7 +68,7 @@ export default function Programs() {
         </Container>
       </section>
 
-      <div className="bg-white pb-8 sm:pb-10">
+      <div className="bg-white pb-16 sm:pb-20">
         <Container>
           <div className="relative z-10 -mt-5 flex gap-3 overflow-x-auto pb-2 sm:-mt-6 sm:flex-wrap sm:justify-center sm:overflow-visible">
             {programTopics.map((topic) => {
