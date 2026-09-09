@@ -1,8 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 import { HiCheckCircle, HiPhoto } from 'react-icons/hi2'
-import { programImages, programTopics, type ProgramDescriptionSegment } from '../data/content'
+import {
+  programImages,
+  programsHero,
+  programTopics,
+  type ProgramDescriptionSegment,
+} from '../data/content'
 import Container from '../components/Container'
+import programsHeroImage from '../assets/Our-program/programs-hero.png'
 
 function ProgramDescription({ segments }: { segments: ProgramDescriptionSegment[] }) {
   return (
@@ -40,19 +46,45 @@ export default function Programs() {
 
   return (
     <main>
-      <div className="bg-white pt-16 pb-8 sm:pt-20">
+      <section
+        className="bg-navy bg-cover bg-center bg-no-repeat py-16 text-center sm:py-20"
+        style={{ backgroundImage: `url(${programsHeroImage})` }}
+      >
         <Container>
-          <div className="flex gap-3 overflow-x-auto pb-2 sm:flex-wrap sm:justify-center sm:overflow-visible">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="mx-auto max-w-3xl"
+          >
+            <span className="inline-flex flex-col items-center">
+              <span className="text-sm font-semibold tracking-wide text-white uppercase">
+                {programsHero.label}
+              </span>
+              <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
+            </span>
+
+            <h1 className="mt-4 text-4xl leading-tight font-bold text-white sm:text-5xl lg:text-6xl">
+              {programsHero.headline}
+            </h1>
+          </motion.div>
+        </Container>
+      </section>
+
+      <div className="bg-white pb-8 sm:pb-10">
+        <Container>
+          <div className="relative z-10 -mt-8 flex gap-3 overflow-x-auto pb-2 sm:-mt-10 sm:flex-wrap sm:justify-center sm:overflow-visible">
             {programTopics.map((topic) => {
               const isActive = topic.slug === active.slug
               return (
                 <Link
                   key={topic.slug}
                   to={`/programs/${topic.slug}`}
-                  className={`shrink-0 rounded-full px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors duration-200 ${
+                  className={`shrink-0 rounded-full border px-4 py-2 text-sm font-medium whitespace-nowrap shadow-sm transition-colors duration-200 ${
                     isActive
-                      ? 'bg-navy text-white'
-                      : 'bg-pale-blue-bg text-navy hover:bg-pale-blue-bg/70'
+                      ? 'border-navy bg-navy text-white'
+                      : 'border-transparent bg-pale-blue-bg text-navy hover:border-gold hover:bg-pale-blue-bg/60'
                   }`}
                 >
                   {topic.label}

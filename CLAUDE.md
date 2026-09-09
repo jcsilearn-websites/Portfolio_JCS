@@ -364,7 +364,17 @@ own fuller page:
 
 - `/` — Home: Hero → Stats strip → About teaser → Services (tabbed, audience-based) → Programs teaser → Trainers teaser → Testimonials → CTA → Footer
 - `/about` — **Single consolidated page**: Hero → Our Story (Positioning) → Vision (new) → Our Model → Leadership (card+modal) sections, all on one page, matching Psiog's structure. No sub-routes.
-- `/programs` — full programs grid/tabs (see Programs data below)
+- `/programs` — full programs grid/tabs (see Programs data below). **Hero — matches the About
+  page hero pattern exactly**: background image at `src/assets/Our-program/ChatGPT Image Sep
+  10, 2026, 01_01_35 AM.png` with the same navy overlay treatment already established on
+  About's hero, "OUR PROGRAMS" eyebrow label with gold underline (same style as "ABOUT US"),
+  headline below it. The category pill-tab bar (Soft Skills / Technical Skills / Aptitude &
+  Reasoning / Placement & Recruitment / Career Planning / Corporate Readiness / School
+  Enrichment) sits OVERLAPPING the bottom edge of the hero image — not below it on plain
+  white like it currently is — same overlap technique as other hero-adjacent elements already
+  built on the site. Same fade-in/entrance animation on load as the About hero. Add a hover
+  effect to the inactive pill tabs (currently static pale-blue) — subtle fill/border shift on
+  hover, consistent with the site's other interactive pill/button treatments.
 - `/services` — audience-based service cards (Universities/Corporates/Startups/Schools/Professionals)
 - `/trainers` — **new page, not in the old site** — trainer profile grid (content exists, see below; justified by the depth of the trainers deck the client provided)
 - `/contact`
@@ -556,7 +566,13 @@ Jcs/
 ```
 
 ## Known open items (do not silently resolve — flag back to the user)
-1. Programs vs. service-category taxonomy conflict (see above)
+1. ~~Programs vs. service-category taxonomy conflict~~ — RESOLVED in practice: /programs was
+   built using the 7 category names only (Soft Skills, Technical Skills, Aptitude &
+   Reasoning, Placement & Recruitment, Career Planning, Corporate Readiness, School
+   Enrichment) as pill tabs, each with fresh drafted description copy — this sidesteps the
+   conflict by never surfacing the old branded product names (Skillora, AptEdge, etc.) or the
+   newer audience-first structure. If the client later wants either taxonomy surfaced
+   explicitly, that's a separate future decision, not a blocker anymore.
 2. Final logo asset (transparent PNG or SVG) — using placeholder raster for now
 3. Corporate/company partner logos — none received yet (only college logos)
 4. Missing photo for trainer Soundariya T
