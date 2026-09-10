@@ -4,6 +4,7 @@ import StatsStrip from '../sections/StatsStrip'
 import WhoWeServe from '../sections/WhoWeServe'
 import Philosophy from '../sections/Philosophy'
 import ServicesCards from '../sections/ServicesCards'
+import Testimonials from '../sections/Testimonials'
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <WhoWeServe />
       <Philosophy />
       <ServicesCards />
+      <Testimonials />
       {/* Culture section (photo collage — training + team photos) goes here, next pass */}
     </main>
   )

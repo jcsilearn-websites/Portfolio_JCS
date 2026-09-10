@@ -1,7 +1,6 @@
 import { HiMapPin, HiPhone, HiEnvelope } from 'react-icons/hi2'
 import ContactForm from '../sections/ContactForm'
 import { contactInfo } from '../data/content'
-import Button from '../components/Button'
 import Container from '../components/Container'
 import getInTouchBg from '../assets/get-in-touch/get-in-touch-bg.png'
 
@@ -39,8 +38,8 @@ export default function Contact() {
       </section>
 
       <section className="bg-pale-blue-bg py-16">
-        <Container className="flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
-          <div className="flex-1">
+        <Container className="flex flex-col items-center gap-4 text-center">
+          <div>
             <h2 className="text-xl font-semibold text-navy sm:text-2xl">
               Looking to train your students or team?
             </h2>
@@ -48,10 +47,11 @@ export default function Contact() {
               Let&rsquo;s design a program that fits your institution or
               organization.
             </p>
+            <p className="mt-1 text-sm text-pale-blue-text/80">
+              From soft skills to placement readiness, we tailor every
+              program to your learners&rsquo; goals.
+            </p>
           </div>
-          <Button href="#contact-form" variant="primary" size="md" className="shrink-0">
-            Get In Touch
-          </Button>
         </Container>
       </section>
 

@@ -51,6 +51,17 @@ import sanjayPhoto from '../assets/About-page/Tech-Support-Team/sanjay-j.png'
 import tharunPhoto from '../assets/About-page/Tech-Support-Team/tharun-balaji-s.png'
 import hariramjiPhoto from '../assets/About-page/Tech-Support-Team/Hariramji-H.png'
 import infantAshilPhoto from '../assets/About-page/Tech-Support-Team/Infant-Ashil-A.png'
+// Homepage testimonials carousel — generic stand-in headshots reused from the testimonial
+// photo set (see CLAUDE.md asset inventory); these 3 people/quotes are separate from the
+// draft testimonial quotes already documented in CLAUDE.md and don't need to match by name.
+import testimonialSnehaPhoto from '../assets/testimonials/Arun-Kumar.jpg'
+import testimonialArvindPhoto from '../assets/testimonials/Esu-Kumar.png'
+import testimonialMeenaPhoto from '../assets/testimonials/Heera-Patey.png'
+import testimonialRahulPhoto from '../assets/testimonials/Poovarasan.jpg'
+import testimonialPriyaPhoto from '../assets/testimonials/Sanjeev.png'
+import testimonialKarthikPhoto from '../assets/testimonials/Sanjushree-Venkat.png'
+// 7th testimonial repeats an already-used photo — only 6 stand-in images are available.
+import testimonialAnithaPhoto from '../assets/testimonials/Poovarasan.jpg'
 
 export const homeHero = {
   taglineLine1: 'I Learn,',
@@ -952,5 +963,93 @@ export const programTopics: ProgramTopic[] = [
       'Age-appropriate life-skills activities',
       'Encouraging curiosity through real-world tasks',
     ],
+  },
+]
+
+export interface Testimonial {
+  id: string
+  quote: string
+  name: string
+  role: string
+  organization: string
+  rating: number
+  photo: string
+}
+
+// Homepage testimonials carousel content — distinct from the draft testimonial quotes
+// already documented in CLAUDE.md (Arun Kumar, Esu Kumar, etc.); photos here are generic
+// stand-ins reused from the same testimonial photo set, not matched to these names.
+// Entries 4-7 are temporary/placeholder content added to give the carousel enough cards
+// to peek — swap for real testimonials once the client sends more.
+export const testimonials: Testimonial[] = [
+  {
+    id: 't1',
+    quote:
+      'JCS iLearn helped me bridge the gap between academics and the industry. The training and guidance gave me the confidence to start my career with clarity.',
+    name: 'Sneha R',
+    role: 'B.Tech Student',
+    organization: 'Anna University',
+    rating: 5,
+    photo: testimonialSnehaPhoto,
+  },
+  {
+    id: 't2',
+    quote:
+      'Our collaboration with JCS iLearn has been highly valuable. Their well-structured programs and professional approach have consistently delivered skilled and confident talent.',
+    name: 'Arvind Kumar',
+    role: 'HR Manager',
+    organization: 'Zoho Corporation',
+    rating: 5,
+    photo: testimonialArvindPhoto,
+  },
+  {
+    id: 't3',
+    quote:
+      "JCS iLearn's programs are practical, relevant, and impactful. They truly prepare students for real-world challenges and future opportunities.",
+    name: 'Dr. Meena S',
+    role: 'Faculty Member',
+    organization: 'PSG College of Technology',
+    rating: 5,
+    photo: testimonialMeenaPhoto,
+  },
+  {
+    id: 't4',
+    quote:
+      'The mock interviews and aptitude sessions were exactly what I needed. I walked into my placement drive feeling prepared instead of anxious.',
+    name: 'Rahul Varma',
+    role: 'Final Year Student',
+    organization: 'SRM University',
+    rating: 5,
+    photo: testimonialRahulPhoto,
+  },
+  {
+    id: 't5',
+    quote:
+      "Partnering with JCS iLearn gave our team practical, job-ready skills in a fraction of the time we expected. Their trainers really understand industry needs.",
+    name: 'Priya Nair',
+    role: 'Talent Development Lead',
+    organization: 'Freshworks',
+    rating: 5,
+    photo: testimonialPriyaPhoto,
+  },
+  {
+    id: 't6',
+    quote:
+      'What impressed me most was how personalized the sessions felt, even in a large batch. Every trainer took time to address individual doubts.',
+    name: 'Karthik S',
+    role: 'MBA Student',
+    organization: 'Bharathiar University',
+    rating: 5,
+    photo: testimonialKarthikPhoto,
+  },
+  {
+    id: 't7',
+    quote:
+      'Our students consistently rate the JCS iLearn workshops as the most useful part of their placement preparation. A dependable training partner.',
+    name: 'Anitha Raghavan',
+    role: 'Placement Officer',
+    organization: 'Rathinam Technical Campus',
+    rating: 5,
+    photo: testimonialAnithaPhoto,
   },
 ]
