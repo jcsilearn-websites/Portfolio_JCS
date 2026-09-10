@@ -82,7 +82,7 @@ export default function Testimonials() {
   const [centerIndex, setCenterIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   const isDesktop = useIsDesktop('(min-width: 768px)')
-  const releaseTimer = useRef<ReturnType<typeof setTimeout>>()
+  const releaseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     return () => {
