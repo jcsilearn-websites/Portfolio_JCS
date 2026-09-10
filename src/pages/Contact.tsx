@@ -18,6 +18,19 @@ export default function Contact() {
       >
         <div className="relative z-10">
           <Container className="grid items-start gap-12 lg:grid-cols-2">
+            <div className="mt-25">
+              <h1 className="text-4xl font-bold sm:text-5xl">
+                <span className="text-white">Get In </span>
+                <span className="text-gold">Touch</span>
+              </h1>
+
+              <p className="mt-4 max-w-md text-lg text-white/80 italic">
+                Have a question about our programs, or want to bring JCS
+                iLearn to your students or team? Send us a message and
+                we&rsquo;ll get back to you.
+              </p>
+            </div>
+
             <div className="rounded-2xl bg-white p-8 shadow-sm lg:col-start-2">
               <ContactForm />
             </div>

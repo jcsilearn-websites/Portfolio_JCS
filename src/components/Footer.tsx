@@ -23,9 +23,13 @@ const companyLinks = [
   { to: '/', label: 'Home' },
 ]
 
-// These pages don't exist yet — placeholder links until content/routes are ready.
-// TODO: create real page and route once content is ready
-const legalLinks = ['Privacy Policy', 'Terms & Conditions', 'Refund Policy']
+// Refund Policy has no page/content yet — kept as a placeholder link until it exists.
+const legalLinks = [
+  { to: '/privacy-policy', label: 'Privacy Policy' },
+  { to: '/terms-conditions', label: 'Terms & Conditions' },
+  { to: '/cookie-policy', label: 'Cookie Policy' },
+  { to: null, label: 'Refund Policy' },
+]
 
 const socialLinks = [
   {
@@ -110,11 +114,17 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <h3 className={headingClass}>Legal</h3>
             <ul className="mt-4 space-y-3">
-              {legalLinks.map((label) => (
+              {legalLinks.map(({ to, label }) => (
                 <li key={label}>
-                  <a href="#" className={linkClass}>
-                    {label}
-                  </a>
+                  {to ? (
+                    <Link to={to} className={linkClass}>
+                      {label}
+                    </Link>
+                  ) : (
+                    <a href="#" className={linkClass}>
+                      {label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
