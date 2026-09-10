@@ -3,6 +3,7 @@ import ContactForm from '../sections/ContactForm'
 import { contactInfo } from '../data/content'
 import Button from '../components/Button'
 import Container from '../components/Container'
+import getInTouchBg from '../assets/get-in-touch/get-in-touch-bg.png'
 
 const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
   contactInfo.address,
@@ -11,23 +12,17 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
 export default function Contact() {
   return (
     <main>
-      <section className="bg-navy py-20">
-        <Container className="grid items-start gap-12 lg:grid-cols-2">
-          <div>
-            <h1 className="text-4xl font-bold text-white sm:text-5xl">
-              Get In Touch
-            </h1>
-            <p className="mt-4 max-w-md text-base text-pale-blue-bg sm:text-lg">
-              Have a question about our programs, or want to bring JCS iLearn
-              to your students or team? Send us a message and we&rsquo;ll get
-              back to you.
-            </p>
-          </div>
-
-          <div className="rounded-2xl bg-white p-8 shadow-sm">
-            <ContactForm />
-          </div>
-        </Container>
+      <section
+        className="relative min-h-[500px] bg-cover bg-center bg-no-repeat py-20 md:min-h-[560px]"
+        style={{ backgroundImage: `url(${getInTouchBg})` }}
+      >
+        <div className="relative z-10">
+          <Container className="grid items-start gap-12 lg:grid-cols-2">
+            <div className="rounded-2xl bg-white p-8 shadow-sm lg:col-start-2">
+              <ContactForm />
+            </div>
+          </Container>
+        </div>
       </section>
 
       <section className="bg-pale-blue-bg py-16">
