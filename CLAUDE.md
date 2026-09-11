@@ -481,6 +481,26 @@ Program names by category (title — one-line description already exists in old 
 - Corporate Readiness: Inspire, Corp
 - School Enrichment: Pathcraft
 
+**"For Corporates" tab content — CORRECTED, replaces the plain 4-card grid layout** with a
+single large detail panel matching Psiog's "Business-First Approach" panel structure exactly:
+navy/teal panel background, photo on the left (full height), text on the right — small label
+with underline, headline with one italicized phrase, two short paragraphs, then a row of
+pill-style chips (reuse the 5 already-sourced program names as the chips: Leadership &
+Managerial Excellence, Communication & Workplace Excellence, Sales & Customer Excellence,
+Productivity & Performance Enhancement, AI Digital & Future Skills — don't invent new ones),
+and a small bullet/plus-icon line at the bottom.
+
+Image: `src/assets/our-services/Corperate.png` — **check its actual content first** before
+deciding how to use it: if it's a full pre-composited panel (photo + text baked in together),
+use it as the entire panel with no additional live text. If it's photo-only, use it as the
+left-side photo and build the label/headline/paragraphs/chips as live text (draft copy for
+headline/paragraphs, flagged pending review; chips use the real sourced program names above).
+
+This pattern (single detail panel per audience tab, not a card grid) should likely extend to
+the other 4 audience tabs (Universities/Startups/Schools/Professionals) once this one is
+confirmed working — but only build "For Corporates" for now, don't apply to the others yet
+without confirming this one looks right first.
+
 ### Service category programs (NEW — from client, audience-first structure)
 ⚠️ Conflicts with the branded program list above — see open decision note. Kept here verbatim
 in case the client confirms this replaces the old taxonomy:

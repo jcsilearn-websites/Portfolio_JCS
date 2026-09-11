@@ -11,6 +11,7 @@ import {
 } from 'react-icons/hi2'
 import { serviceCategories } from '../data/content'
 import Container from '../components/Container'
+import corporatesPanel from '../assets/our-services/Corperate.png'
 
 const icons = {
   universities: HiAcademicCap,
@@ -68,25 +69,35 @@ export default function ServicesTabs() {
             transition={{ duration: 0.3, ease: 'easeOut' }}
             className="pt-10"
           >
-            <p className="mx-auto max-w-2xl text-center text-pale-blue-text">
-              {active.description}
-            </p>
+            {active.id === 'corporates' ? (
+              <img
+                src={corporatesPanel}
+                alt="For Corporates — Empowering People & Performance. Leadership, communication, and performance programs that help teams and organizations perform at their best. We design and deliver customized learning and development solutions that build future-ready teams, strengthen workplace capabilities, and drive measurable business impact. Programs: Leadership & Managerial Excellence, Communication & Workplace Excellence, Sales & Customer Excellence, Productivity & Performance Enhancement, AI, Digital & Future Skills."
+                className="h-auto w-full rounded-2xl sm:rounded-3xl"
+              />
+            ) : (
+              <>
+                <p className="mx-auto max-w-2xl text-center text-pale-blue-text">
+                  {active.description}
+                </p>
 
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {active.programs.map((program) => (
-                <div
-                  key={program}
-                  className="flex items-center gap-3 rounded-2xl bg-pale-blue-bg p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
-                >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">
-                    <HiCheck />
-                  </span>
-                  <span className="text-sm font-medium text-navy sm:text-base">
-                    {program}
-                  </span>
+                <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {active.programs.map((program) => (
+                    <div
+                      key={program}
+                      className="flex items-center gap-3 rounded-2xl bg-pale-blue-bg p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+                    >
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold/15 text-gold">
+                        <HiCheck />
+                      </span>
+                      <span className="text-sm font-medium text-navy sm:text-base">
+                        {program}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </>
+            )}
           </motion.div>
         </AnimatePresence>
       </Container>
