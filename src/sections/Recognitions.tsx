@@ -7,7 +7,6 @@ import {
   HiBuildingOffice2,
   HiCalendarDays,
   HiStar,
-  HiTrophy,
   HiUserGroup,
 } from 'react-icons/hi2'
 import {
@@ -20,6 +19,7 @@ import {
 } from '../data/content'
 import { useCountUp } from '../hooks/useCountUp'
 import Container from '../components/Container'
+import allianceUniversityIcon from '../assets/front-page/Alliance_University_Icon.svg'
 
 const container: Variants = {
   hidden: {},
@@ -114,10 +114,14 @@ export default function Recognitions() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
           whileHover={HOVER_LIFT}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className={`relative mx-auto mt-12 mb-16 w-full max-w-[300px] rounded-tl-3xl rounded-br-3xl rounded-tr-none rounded-bl-none bg-pale-blue-bg p-5 pl-8 text-left shadow-sm ${HOVER}`}
+          className={`relative mx-auto mt-12 mb-16 w-full max-w-[300px] rounded-tl-3xl rounded-br-3xl rounded-tr-none rounded-bl-none bg-gray-100 p-5 pl-14 text-left shadow-sm ${HOVER}`}
         >
-          <span className="absolute -top-5 -left-5 flex h-16 w-16 items-center justify-center rounded-full bg-gold text-navy shadow-md">
-            <HiTrophy size={28} />
+          <span className="absolute -top-8 -left-8 flex h-20 w-20 items-center justify-center rounded-full shadow-md">
+            <img
+              src={allianceUniversityIcon}
+              alt="Alliance University"
+              className="h-full w-full rounded-full object-contain"
+            />
           </span>
           <p className="mt-3 text-base font-semibold text-navy">{award.title}</p>
           <p className="mt-1 text-sm text-pale-blue-text">
