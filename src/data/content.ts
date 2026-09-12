@@ -7,10 +7,7 @@ import lpuLogo from '../assets/college-logos/Lovely Profesional University, Punj
 import mahendraEngineeringLogo from '../assets/college-logos/Mahendra Engineering College, Salem/4690.jpg'
 import muthayammalEngineeringLogo from '../assets/college-logos/Muthayammal Engineering College, Salem/MTEC.jpg'
 import parkCollegeLogo from '../assets/college-logos/PARK College of Engineering and Technology, Coimbatore/images (1).jpeg'
-import parkSlideshowPhoto1 from '../assets/slideshow/PARK Engineering College, Coimbatore/ChatGPT Image Sep 12, 2026, 09_42_20 AM.png'
-import parkSlideshowPhoto2 from '../assets/slideshow/PARK Engineering College, Coimbatore/ChatGPT Image Sep 12, 2026, 09_44_31 AM.png'
-import parkSlideshowPhoto3 from '../assets/slideshow/PARK Engineering College, Coimbatore/ChatGPT Image Sep 12, 2026, 09_46_47 AM.png'
-import psgLogo from '../assets/college-logos/PSG, Coimbatore/PSG.jpg'
+import psgLogo from '../assets/college-logos/PSG, Coimbatore/PSG.jpeg'
 import psnaCollegeLogo from '../assets/college-logos/PSNA College of Engineering and Technology, Dindugal/PSNA.png'
 import rathinamCampusLogo from '../assets/college-logos/Rathinam Technical Campus, Coimbatore/RTC.jpeg'
 import sriManakulaVinayagarLogo from '../assets/college-logos/Manakula/ChatGPT Image Sep 12, 2026, 09_26_53 AM.png'
@@ -1064,10 +1061,26 @@ export interface TrainingFootprint {
   programName: string
   collegeName: string
   logo?: string
-  // Photo slideshow test case — only PARK Engineering College has a photo folder so far (see
-  // src/assets/slideshow/). Every other entry leaves this undefined and keeps the blank
-  // placeholder box until the client sends more slideshow photos.
+  // 2+ photos -> rendered as an auto-looping slideshow; exactly 1 -> a plain static image;
+  // undefined -> the blank placeholder box (kept optional for any future entry added before
+  // its slideshow folder arrives, same convention as `logo` above).
   photos?: string[]
+}
+
+// Bulk-import every slideshow photo once via Vite's glob import rather than hand-writing 30+
+// named imports (each folder's exact spelling — spaces, commas, the curly apostrophe in
+// "Ganadipathy Tulsi's" — only has to be typed once, as the lookup key below, not twice).
+const slideshowModules = import.meta.glob('../assets/slideshow/*/*.png', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>
+
+function slideshowPhotos(folderName: string): string[] {
+  const prefix = `../assets/slideshow/${folderName}/`
+  return Object.keys(slideshowModules)
+    .filter((path) => path.startsWith(prefix))
+    .sort()
+    .map((path) => slideshowModules[path])
 }
 
 // "Training Footprints" timeline on /trainers, below the trainer profile grid — all 17 real
@@ -1075,109 +1088,135 @@ export interface TrainingFootprint {
 // Engineering College and Sri Manakula Vinayagar Engineering College initially shipped with
 // no logo (no folder existed for either in the asset export); both logos were supplied
 // afterward and are wired in below. PSG College of Arts and Science appears 4 times with
-// different dates/engagements — that's real, not a duplicate.
+// different dates/engagements — that's real, not a duplicate. PSG's 4 slideshow folders are
+// disambiguated by date range in their folder names (not just college name), matched below
+// by passing each entry's own exact folder name — do not let these cross-match.
 export const trainingFootprints: TrainingFootprint[] = [
   {
     dateRange: '1st Sept 2026 to 3rd Sept 2026',
     programName: 'Soft Skills Induction Program',
     collegeName: 'PARK Engineering College, Coimbatore',
     logo: parkCollegeLogo,
-    photos: [parkSlideshowPhoto1, parkSlideshowPhoto2, parkSlideshowPhoto3],
+    photos: slideshowPhotos('PARK Engineering College, Coimbatore'),
   },
   {
     dateRange: '1st Sept 2026 to 3rd Sept 2026',
     programName: 'Freshmen Induction Program',
     collegeName: 'Tamil Nadu College of Engineering, Coimbatore',
     logo: tamilNaduCollegeLogo,
+    photos: slideshowPhotos('Tamil Nadu College of Engineering, Coimbatore'),
   },
   {
     dateRange: '13th & 14th Oct 2026',
     programName: 'Pre Placement Preparation Program',
     collegeName: 'Idhaya Engineering College for Women, Chinnasalem',
     logo: idhayaEngineeringLogo,
+    photos: slideshowPhotos('Idhaya Engineering College for Women, Chinnasalem'),
   },
   {
     dateRange: '4th Nov to 10th Nov 2026',
     programName: 'Placement Readiness Program',
     collegeName: 'Dhanalakshmi Srinivasan University, Trichy',
     logo: dhanalakshmiSrinivasanLogo,
+    photos: slideshowPhotos('Dhanalakshmi Srinivasan University, Trichy'),
   },
   {
     dateRange: '3rd Nov to 27th Nov 2026',
     programName: 'Communication Skills Training',
     collegeName: 'VSB Engineering College, Coimbatore',
     logo: vsbCollegeLogo,
+    photos: slideshowPhotos('VSB Engineering College, Coimbatore'),
   },
   {
     dateRange: '27th Nov to 30th Nov 2026',
     programName: 'Block Training',
     collegeName: 'PSG College of Arts and Science, Coimbatore',
     logo: psgLogo,
+    photos: slideshowPhotos(
+      'PSG College of Arts and Science, Coimbatore , 27th November 2026 to 30th November 2026',
+    ),
   },
   {
     dateRange: '6th Jan to 10th Jan 2026',
     programName: 'Aptitude Training',
     collegeName: "Ganadipathy Tulsi's Jain Engineering College, Vellore",
     logo: ganadipathyTulsisJainLogo,
+    photos: slideshowPhotos('Ganadipathy Tulsi’s Jain Engineering College, Vellore'),
   },
   {
     dateRange: '20th Jan to 22nd Apr 2026',
     programName: 'Technical - Capgemini Python',
     collegeName: 'Dayanand Sagar University, Bangalore',
     logo: dayanandSagarLogo,
+    photos: slideshowPhotos('Dayanand Sagar University, Bangalore'),
   },
   {
     dateRange: '2nd Feb to 26th Apr 2026',
     programName: 'Continuous Aptitude Training',
     collegeName: 'Rathinam Technical Campus, Coimbatore',
     logo: rathinamCampusLogo,
+    photos: slideshowPhotos('Rathinam Technical Campus'),
   },
   {
     dateRange: '3rd Feb to 14th Feb 2026',
     programName: 'Placement Training',
     collegeName: 'Sri Manakula Vinayagar Engineering College, Puducherry',
     logo: sriManakulaVinayagarLogo,
+    photos: slideshowPhotos('Sri Manakula Vinayagar Engineering College, Puducherry'),
   },
   {
     dateRange: '19th Feb to 22nd Feb 2026',
     programName: 'Block Training',
     collegeName: 'PSG College of Arts and Science, Coimbatore',
     logo: psgLogo,
+    photos: slideshowPhotos(
+      'PSG College of Arts and Science, Coimbatore 19th February 2026 to 22nd February 2026',
+    ),
   },
   {
     dateRange: '1st June to 10th July 2026',
     programName: 'Soft Skills Program',
     collegeName: 'JAIN University, Bangalore',
     logo: jainUniversityLogo,
+    photos: slideshowPhotos('JAIN University, Bangalore'),
   },
   {
     dateRange: '8th June to 12th June 2026',
     programName: 'Block Training',
     collegeName: 'PSG College of Arts and Science, Coimbatore',
     logo: psgLogo,
+    photos: slideshowPhotos(
+      'PSG College of Arts and Science, Coimbatore 8th June 2026 to 12th June 2026',
+    ),
   },
   {
     dateRange: '17th July to 24th July 2026',
     programName: 'Soft Skills & Aptitude Training MBA',
     collegeName: 'VELS University, Chennai',
     logo: velsUniversityLogo,
+    photos: slideshowPhotos('VELS University, Chennai'),
   },
   {
     dateRange: '4th Aug to 8th Aug',
     programName: 'Aptitude Training',
     collegeName: 'PSNA College of Engineering and Technology, Dindugal',
     logo: psnaCollegeLogo,
+    photos: slideshowPhotos('PSNA College of Engineering and Technology, Dindugal'),
   },
   {
     dateRange: '10th Aug to 30th Nov 2026',
     programName: 'CAT Specified Aptitude Training Program',
     collegeName: 'SRM University, Andhra Pradesh',
     logo: srmUniversityLogo,
+    photos: slideshowPhotos('SRM Andhra Pradesh'),
   },
   {
     dateRange: '27th Aug to 30th Aug',
     programName: 'Block Training',
     collegeName: 'PSG College of Arts and Science, Coimbatore',
     logo: psgLogo,
+    photos: slideshowPhotos(
+      'PSG College of Arts and Science, Coimbatore 27th August to 30th August',
+    ),
   },
 ]

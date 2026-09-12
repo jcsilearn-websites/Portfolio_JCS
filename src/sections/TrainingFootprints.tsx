@@ -57,11 +57,17 @@ export default function TrainingFootprints() {
                     {footprint.collegeName}
                   </p>
 
-                  {footprint.photos ? (
+                  {footprint.photos && footprint.photos.length > 1 ? (
                     <PhotoSlideshow
                       photos={footprint.photos}
                       alt={`${footprint.programName} at ${footprint.collegeName}`}
                       className="mt-4 aspect-video w-full rounded-xl border border-black/10"
+                    />
+                  ) : footprint.photos && footprint.photos.length === 1 ? (
+                    <img
+                      src={footprint.photos[0]}
+                      alt={`${footprint.programName} at ${footprint.collegeName}`}
+                      className="mt-4 aspect-video w-full rounded-xl border border-black/10 object-cover"
                     />
                   ) : (
                     <div className="mt-4 aspect-video w-full rounded-xl border border-black/10 bg-white" />

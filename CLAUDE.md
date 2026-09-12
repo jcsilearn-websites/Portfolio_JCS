@@ -564,14 +564,22 @@ an accent-colored subtitle, and content below. Adapt that card shape for trainin
   and are listed below with their paths.
 - **Title** (bold, large) — CORRECTED to BLACK (not navy): the Program Name
 - **Subtitle** — CORRECTED to BLACK (not gold/accent): the College Name
-- **Below that, a photo slideshow area — TEST CASE for one entry, rest stay blank placeholders.**
-  For the **PARK Engineering College, Coimbatore** card only (entry #1): build a real
-  auto-looping slideshow using the 3 photos in `src/assets/slideshow/PARK Engineering
-  College, Coimbatore/` — continuous auto-advance (fade transition, a few seconds per photo),
-  looping back to the first photo after the third, no user controls needed, running
-  automatically on load (this is a test to confirm the pattern works before rolling it out).
-  All other 16 cards keep the empty placeholder box exactly as before — do not build
-  slideshows for colleges without a slideshow folder yet.
+- **Below that, a photo slideshow area — CONFIRMED WORKING on the PARK test, now roll out to
+  ALL 17 cards.** Every college now has a real folder under `src/assets/slideshow/`:
+  - Match each entry to its folder by college name, same as the logo matching already done.
+  - **Special case — PSG College of Arts and Science, Coimbatore appears 4 times** (entries
+    #6, #11, #13, #17) with 4 separate dated folders, one per engagement — match by BOTH
+    college name AND date range, not just name:
+    - `PSG College of Arts and Science, Coimbatore , 27th November 2026 to 30th November 2026` → entry #6 (27th–30th Nov)
+    - `PSG College of Arts and Science, Coimbatore 19th February 2026 to 22nd February 2026` → entry #11 (19th–22nd Feb)
+    - `PSG College of Arts and Science, Coimbatore 8th June 2026 to 12th June 2026` → entry #13 (8th–12th June)
+    - `PSG College of Arts and Science, Coimbatore 27th August to 30th August` → entry #17 (27th–30th Aug)
+  - **Photo count varies per folder** (some have 3-4, some have 2, some have only 1):
+    - 2+ photos → auto-looping slideshow, same behavior as the confirmed PARK test (fade
+      transition, auto-advance every few seconds, loop continuously, no user controls).
+    - Exactly 1 photo → render as a plain STATIC image, no slideshow/animation logic at all
+      (nothing to cycle between).
+  - This replaces the "PARK only, rest blank" test scope — build it for all 17 cards now.
 - No skill-tag pills (unlike the reference's Node.js/Fastify/etc. tags) — there's no JCS
   equivalent, omit that row entirely rather than inventing tags
 
@@ -667,11 +675,11 @@ Jcs/
     spelling mismatches remain unconfirmed: "Ajay" (filename) vs "Ajai" (doc) for the Program
     Delivery team member, and "Siddharth" (filename) vs "Siddarth" (doc) for the People &
     Talent team member — verify correct spelling with the client before shipping.
-13. Training Footprints slideshow: only PARK Engineering College has real photos
-    (`src/assets/slideshow/PARK Engineering College, Coimbatore/`) and a working slideshow as
-    a test case. The other 16 cards still show an empty placeholder box — once the PARK test
-    is confirmed working, the client will likely provide slideshow photo folders for the
-    remaining colleges to roll the same treatment out everywhere.
+13. ~~Training Footprints slideshow~~ — RESOLVED: PARK test confirmed working, and the
+    client has since provided slideshow photo folders for all 17 entries (with PSG's 4
+    separate dated folders disambiguated by date range). Full rollout now in progress —
+    remember the single-photo-folder → static-image fallback (not every entry has enough
+    photos for a real slideshow).
 
 ## Conventions
 - **Site-wide layout container — CORRECTED with measured value.** Psiog maintains one
