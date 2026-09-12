@@ -546,17 +546,23 @@ pull verbatim when building the page rather than summarizing further.
 
 ### Training Footprints timeline (new section on `/trainers`, below the trainer profile grid)
 
+**Section heading** (above the timeline): "Training Footprints" with subtext "A look at where
+our trainers have delivered programs recently — colleges and universities across India." —
+both render in BLACK text (matching the site's plain-white background here).
+
 **Design reference**: a timeline-card layout the client showed from their own separate
 personal portfolio site (tharun-portfolio-olive.vercel.app/#experience) — NOT part of this
 project's codebase, just a visual pattern to replicate: a date-range pill badge, a bold title,
 an accent-colored subtitle, and content below. Adapt that card shape for training footprints:
 
+- **Card background — CORRECTED**: white, with a thin black border outline (not the current
+  pale-blue-bg fill) — matches the site's white background in this section.
 - **Date badge** (pill, top-left, gold/accent): the date range for that engagement
 - **College logo** (small image) placed near the top of the card — **if a college has no logo
   file available (see the two flagged below), leave that space blank, don't show a broken
   image or a generic placeholder icon**
-- **Title** (bold, large): the Program Name
-- **Subtitle** (accent color): the College Name
+- **Title** (bold, large) — CORRECTED to BLACK (not navy): the Program Name
+- **Subtitle** — CORRECTED to BLACK (not gold/accent): the College Name
 - **Below that, a blank placeholder image box** (empty for now — this is reserved for an
   actual photo slideshow of that specific training session, which doesn't exist yet; don't
   build slideshow functionality now, just leave the visual space as an empty placeholder)

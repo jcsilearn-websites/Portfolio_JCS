@@ -7,10 +7,10 @@ export default function TrainingFootprints() {
     <section className="bg-white py-20 sm:py-24">
       <Container>
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-navy sm:text-4xl">
+          <h2 className="text-3xl font-bold text-black sm:text-4xl">
             Training Footprints
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-pale-blue-text">
+          <p className="mx-auto mt-3 max-w-2xl text-black">
             A look at where our trainers have delivered programs recently — colleges and
             universities across India.
           </p>
@@ -34,7 +34,7 @@ export default function TrainingFootprints() {
               </div>
 
               <div className="flex-1 pb-10">
-                <div className="rounded-2xl bg-pale-blue-bg/60 p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md sm:p-6">
+                <div className="rounded-2xl border border-black bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md sm:p-6">
                   <span className="inline-block rounded-full bg-gold px-3 py-1 text-xs font-semibold text-navy sm:text-sm">
                     {footprint.dateRange}
                   </span>
@@ -51,14 +51,14 @@ export default function TrainingFootprints() {
                     )}
                   </div>
 
-                  <h3 className="mt-3 text-lg font-bold text-navy sm:text-xl">
+                  <h3 className="mt-3 text-lg font-bold text-black sm:text-xl">
                     {footprint.programName}
                   </h3>
-                  <p className="mt-1 text-sm font-medium text-gold sm:text-base">
+                  <p className="mt-1 text-sm font-medium text-black sm:text-base">
                     {footprint.collegeName}
                   </p>
 
-                  <div className="mt-4 aspect-video w-full rounded-xl bg-white" />
+                  <div className="mt-4 aspect-video w-full rounded-xl border border-black/10 bg-white" />
                 </div>
               </div>
             </motion.li>
