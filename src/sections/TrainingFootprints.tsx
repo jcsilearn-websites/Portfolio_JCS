@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { trainingFootprints } from '../data/content'
 import Container from '../components/Container'
+import PhotoSlideshow from '../components/PhotoSlideshow'
 
 export default function TrainingFootprints() {
   return (
@@ -56,7 +57,15 @@ export default function TrainingFootprints() {
                     {footprint.collegeName}
                   </p>
 
-                  <div className="mt-4 aspect-video w-full rounded-xl border border-black/10 bg-white" />
+                  {footprint.photos ? (
+                    <PhotoSlideshow
+                      photos={footprint.photos}
+                      alt={`${footprint.programName} at ${footprint.collegeName}`}
+                      className="mt-4 aspect-video w-full rounded-xl border border-black/10"
+                    />
+                  ) : (
+                    <div className="mt-4 aspect-video w-full rounded-xl border border-black/10 bg-white" />
+                  )}
                 </div>
               </div>
             </motion.li>

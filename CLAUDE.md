@@ -564,9 +564,14 @@ an accent-colored subtitle, and content below. Adapt that card shape for trainin
   and are listed below with their paths.
 - **Title** (bold, large) — CORRECTED to BLACK (not navy): the Program Name
 - **Subtitle** — CORRECTED to BLACK (not gold/accent): the College Name
-- **Below that, a blank placeholder image box** (empty for now — this is reserved for an
-  actual photo slideshow of that specific training session, which doesn't exist yet; don't
-  build slideshow functionality now, just leave the visual space as an empty placeholder)
+- **Below that, a photo slideshow area — TEST CASE for one entry, rest stay blank placeholders.**
+  For the **PARK Engineering College, Coimbatore** card only (entry #1): build a real
+  auto-looping slideshow using the 3 photos in `src/assets/slideshow/PARK Engineering
+  College, Coimbatore/` — continuous auto-advance (fade transition, a few seconds per photo),
+  looping back to the first photo after the third, no user controls needed, running
+  automatically on load (this is a test to confirm the pattern works before rolling it out).
+  All other 16 cards keep the empty placeholder box exactly as before — do not build
+  slideshows for colleges without a slideshow folder yet.
 - No skill-tag pills (unlike the reference's Node.js/Fastify/etc. tags) — there's no JCS
   equivalent, omit that row entirely rather than inventing tags
 
@@ -662,6 +667,11 @@ Jcs/
     spelling mismatches remain unconfirmed: "Ajay" (filename) vs "Ajai" (doc) for the Program
     Delivery team member, and "Siddharth" (filename) vs "Siddarth" (doc) for the People &
     Talent team member — verify correct spelling with the client before shipping.
+13. Training Footprints slideshow: only PARK Engineering College has real photos
+    (`src/assets/slideshow/PARK Engineering College, Coimbatore/`) and a working slideshow as
+    a test case. The other 16 cards still show an empty placeholder box — once the PARK test
+    is confirmed working, the client will likely provide slideshow photo folders for the
+    remaining colleges to roll the same treatment out everywhere.
 
 ## Conventions
 - **Site-wide layout container — CORRECTED with measured value.** Psiog maintains one

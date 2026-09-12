@@ -7,6 +7,9 @@ import lpuLogo from '../assets/college-logos/Lovely Profesional University, Punj
 import mahendraEngineeringLogo from '../assets/college-logos/Mahendra Engineering College, Salem/4690.jpg'
 import muthayammalEngineeringLogo from '../assets/college-logos/Muthayammal Engineering College, Salem/MTEC.jpg'
 import parkCollegeLogo from '../assets/college-logos/PARK College of Engineering and Technology, Coimbatore/images (1).jpeg'
+import parkSlideshowPhoto1 from '../assets/slideshow/PARK Engineering College, Coimbatore/ChatGPT Image Sep 12, 2026, 09_42_20 AM.png'
+import parkSlideshowPhoto2 from '../assets/slideshow/PARK Engineering College, Coimbatore/ChatGPT Image Sep 12, 2026, 09_44_31 AM.png'
+import parkSlideshowPhoto3 from '../assets/slideshow/PARK Engineering College, Coimbatore/ChatGPT Image Sep 12, 2026, 09_46_47 AM.png'
 import psgLogo from '../assets/college-logos/PSG, Coimbatore/PSG.jpg'
 import psnaCollegeLogo from '../assets/college-logos/PSNA College of Engineering and Technology, Dindugal/PSNA.png'
 import rathinamCampusLogo from '../assets/college-logos/Rathinam Technical Campus, Coimbatore/RTC.jpeg'
@@ -1061,6 +1064,10 @@ export interface TrainingFootprint {
   programName: string
   collegeName: string
   logo?: string
+  // Photo slideshow test case — only PARK Engineering College has a photo folder so far (see
+  // src/assets/slideshow/). Every other entry leaves this undefined and keeps the blank
+  // placeholder box until the client sends more slideshow photos.
+  photos?: string[]
 }
 
 // "Training Footprints" timeline on /trainers, below the trainer profile grid — all 17 real
@@ -1075,6 +1082,7 @@ export const trainingFootprints: TrainingFootprint[] = [
     programName: 'Soft Skills Induction Program',
     collegeName: 'PARK Engineering College, Coimbatore',
     logo: parkCollegeLogo,
+    photos: [parkSlideshowPhoto1, parkSlideshowPhoto2, parkSlideshowPhoto3],
   },
   {
     dateRange: '1st Sept 2026 to 3rd Sept 2026',
