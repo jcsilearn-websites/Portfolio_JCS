@@ -1,6 +1,7 @@
 import dayanandSagarLogo from '../assets/college-logos/Dayanand Sagar University, Bangalore/Dayananda_Sagar_University.webp'
 import dhanalakshmiSrinivasanLogo from '../assets/college-logos/Dhanalakshmi Srinivasan University, Trichy/Dhanalakshmi_Srinivasan_University.webp'
 import ganadipathyTulsisJainLogo from '../assets/college-logos/Ganadipathy Tulsi’s Jain Engineering College, Vellore/images.jpeg'
+import idhayaEngineeringLogo from '../assets/college-logos/Idhaya/ChatGPT Image Sep 12, 2026, 09_22_43 AM.png'
 import jainUniversityLogo from '../assets/college-logos/JAIN University, Bangalore/JAIN.png'
 import lpuLogo from '../assets/college-logos/Lovely Profesional University, Punjab/LPU.png'
 import mahendraEngineeringLogo from '../assets/college-logos/Mahendra Engineering College, Salem/4690.jpg'
@@ -9,6 +10,7 @@ import parkCollegeLogo from '../assets/college-logos/PARK College of Engineering
 import psgLogo from '../assets/college-logos/PSG, Coimbatore/PSG.jpg'
 import psnaCollegeLogo from '../assets/college-logos/PSNA College of Engineering and Technology, Dindugal/PSNA.png'
 import rathinamCampusLogo from '../assets/college-logos/Rathinam Technical Campus, Coimbatore/RTC.jpeg'
+import sriManakulaVinayagarLogo from '../assets/college-logos/Manakula/ChatGPT Image Sep 12, 2026, 09_26_53 AM.png'
 import srmUniversityLogo from '../assets/college-logos/SRM University, Andhra Pradesh/SRM-University.avif'
 import shriNehruLogo from '../assets/college-logos/Shri Nehru Maha Vidyalaya College of Arts and Science/SNMV.png'
 import sreeSaraswathiLogo from '../assets/college-logos/Sree Saraswathi Thiyagaraja College, Pollachi/images (2).jpeg'
@@ -1062,11 +1064,11 @@ export interface TrainingFootprint {
 }
 
 // "Training Footprints" timeline on /trainers, below the trainer profile grid — all 17 real
-// entries from the client's Training Footprints PDF, in the exact order given. Two entries
-// (Idhaya Engineering College, Sri Manakula Vinayagar Engineering College) have no logo file
-// in the asset export — confirmed no folder exists for either, `logo` is left undefined
-// rather than guessed at. PSG College of Arts and Science appears 4 times with different
-// dates/engagements — that's real, not a duplicate.
+// entries from the client's Training Footprints PDF, in the exact order given. Idhaya
+// Engineering College and Sri Manakula Vinayagar Engineering College initially shipped with
+// no logo (no folder existed for either in the asset export); both logos were supplied
+// afterward and are wired in below. PSG College of Arts and Science appears 4 times with
+// different dates/engagements — that's real, not a duplicate.
 export const trainingFootprints: TrainingFootprint[] = [
   {
     dateRange: '1st Sept 2026 to 3rd Sept 2026',
@@ -1084,6 +1086,7 @@ export const trainingFootprints: TrainingFootprint[] = [
     dateRange: '13th & 14th Oct 2026',
     programName: 'Pre Placement Preparation Program',
     collegeName: 'Idhaya Engineering College for Women, Chinnasalem',
+    logo: idhayaEngineeringLogo,
   },
   {
     dateRange: '4th Nov to 10th Nov 2026',
@@ -1125,6 +1128,7 @@ export const trainingFootprints: TrainingFootprint[] = [
     dateRange: '3rd Feb to 14th Feb 2026',
     programName: 'Placement Training',
     collegeName: 'Sri Manakula Vinayagar Engineering College, Puducherry',
+    logo: sriManakulaVinayagarLogo,
   },
   {
     dateRange: '19th Feb to 22nd Feb 2026',

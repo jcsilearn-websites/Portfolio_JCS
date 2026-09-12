@@ -558,9 +558,10 @@ an accent-colored subtitle, and content below. Adapt that card shape for trainin
 - **Card background — CORRECTED**: white, with a thin black border outline (not the current
   pale-blue-bg fill) — matches the site's white background in this section.
 - **Date badge** (pill, top-left, gold/accent): the date range for that engagement
-- **College logo** (small image) placed near the top of the card — **if a college has no logo
-  file available (see the two flagged below), leave that space blank, don't show a broken
-  image or a generic placeholder icon**
+- **College logo** (small image) placed near the top of the card, directly on the white card
+  background (no box, no shadow wrapper). All 17 entries now have a real logo file — the two
+  that were previously missing (Idhaya, Sri Manakula Vinayagar) were provided by the client
+  and are listed below with their paths.
 - **Title** (bold, large) — CORRECTED to BLACK (not navy): the Program Name
 - **Subtitle** — CORRECTED to BLACK (not gold/accent): the College Name
 - **Below that, a blank placeholder image box** (empty for now — this is reserved for an
@@ -573,14 +574,14 @@ an accent-colored subtitle, and content below. Adapt that card shape for trainin
 
 1. PARK Engineering College, Coimbatore — 1st Sept 2026 to 3rd Sept 2026 — Soft Skills Induction Program — logo: `src/assets/college-logos/PARK College of Engineering and Technology, Coimbatore/images (1).jpeg`
 2. Tamil Nadu College of Engineering, Coimbatore — 1st Sept 2026 to 3rd Sept 2026 — Freshmen Induction Program — logo: `.../Tamil Nadu College of Engineering, Coimbatore/TN.jpg`
-3. Idhaya Engineering College for Women, Chinnasalem — 13th & 14th Oct 2026 — Pre Placement Preparation Program — **NO LOGO, leave blank**
+3. Idhaya Engineering College for Women, Chinnasalem — 13th & 14th Oct 2026 — Pre Placement Preparation Program — logo: `src/assets/college-logos/Idhaya/ChatGPT Image Sep 12, 2026, 09_22_43 AM.png` (client-provided, resolves earlier "no logo" flag)
 4. Dhanalakshmi Srinivasan University, Trichy — 4th Nov to 10th Nov 2026 — Placement Readiness Program — logo: `.../Dhanalakshmi Srinivasan University, Trichy/Dhanalakshmi_Srinivasan_University.webp`
 5. VSB Engineering College, Coimbatore — 3rd Nov to 27th Nov 2026 — Communication Skills Training — logo: `.../VSB College of Engineering, Coimbatore/images (3).jpeg`
 6. PSG College of Arts and Science, Coimbatore — 27th Nov to 30th Nov 2026 — Block Training — logo: `.../PSG, Coimbatore/PSG.jpg`
 7. Ganadipathy Tulsi's Jain Engineering College, Vellore — 6th Jan to 10th Jan 2026 — Aptitude Training — logo: `.../Ganadipathy Tulsi's Jain Engineering College, Vellore/images.jpeg`
 8. Dayanand Sagar University, Bangalore — 20th Jan to 22nd Apr 2026 — Technical - Capgemini Python — logo: `.../Dayanand Sagar University, Bangalore/Dayananda_Sagar_University.webp`
 9. Rathinam Technical Campus, Coimbatore — 2nd Feb to 26th Apr 2026 — Continuous Aptitude Training — logo: `.../Rathinam Technical Campus, Coimbatore/RTC.jpeg`
-10. Sri Manakula Vinayagar Engineering College, Puducherry — 3rd Feb to 14th Feb 2026 — Placement Training — **NO LOGO, leave blank**
+10. Sri Manakula Vinayagar Engineering College, Puducherry — 3rd Feb to 14th Feb 2026 — Placement Training — logo: `src/assets/college-logos/Manakula/ChatGPT Image Sep 12, 2026, 09_26_53 AM.png` (client-provided, resolves earlier "no logo" flag)
 11. PSG College of Arts and Science, Coimbatore — 19th Feb to 22nd Feb 2026 — Block Training — logo: `.../PSG, Coimbatore/PSG.jpg`
 12. JAIN University, Bangalore — 1st June to 10th July 2026 — Soft Skills Program — logo: `.../JAIN University, Bangalore/JAIN.png`
 13. PSG College of Arts and Science, Coimbatore — 8th June to 12th June 2026 — Block Training — logo: `.../PSG, Coimbatore/PSG.jpg`
