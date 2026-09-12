@@ -41,13 +41,11 @@ export default function TrainingFootprints() {
 
                   <div className="mt-4 h-12">
                     {footprint.logo && (
-                      <span className="inline-flex h-12 w-28 items-center justify-center rounded-lg bg-white p-1.5 shadow-sm">
-                        <img
-                          src={footprint.logo}
-                          alt={footprint.collegeName}
-                          className="h-full w-full object-contain"
-                        />
-                      </span>
+                      <img
+                        src={footprint.logo}
+                        alt={footprint.collegeName}
+                        className="h-full w-auto max-w-[140px] object-contain object-left"
+                      />
                     )}
                   </div>
 
