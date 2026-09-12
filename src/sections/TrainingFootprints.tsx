@@ -7,17 +7,7 @@ export default function TrainingFootprints() {
   return (
     <section className="bg-white py-20 sm:py-24">
       <Container>
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-black sm:text-4xl">
-            Training Footprints
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-black">
-            A look at where our trainers have delivered programs recently — colleges and
-            universities across India.
-          </p>
-        </div>
-
-        <ol className="mx-auto mt-16 max-w-3xl">
+        <ol className="mx-auto max-w-3xl">
           {trainingFootprints.map((footprint, index) => (
             <motion.li
               key={`${footprint.collegeName}-${footprint.dateRange}`}

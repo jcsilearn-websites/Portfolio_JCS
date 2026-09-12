@@ -14,7 +14,7 @@ interface PhotoSlideshowProps {
 export default function PhotoSlideshow({
   photos,
   alt,
-  intervalMs = 3500,
+  intervalMs = 2200,
   className = '',
 }: PhotoSlideshowProps) {
   const [index, setIndex] = useState(0)
@@ -37,7 +37,7 @@ export default function PhotoSlideshow({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          transition={{ duration: 0.6, ease: 'easeInOut' }}
           className="absolute inset-0 h-full w-full object-cover"
         />
       </AnimatePresence>
