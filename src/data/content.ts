@@ -7,7 +7,7 @@ import lpuLogo from '../assets/college-logos/Lovely Profesional University, Punj
 import mahendraEngineeringLogo from '../assets/college-logos/Mahendra Engineering College, Salem/4690.jpg'
 import muthayammalEngineeringLogo from '../assets/college-logos/Muthayammal Engineering College, Salem/MTEC.jpg'
 import parkCollegeLogo from '../assets/college-logos/PARK College of Engineering and Technology, Coimbatore/images (1).jpeg'
-import psgLogo from '../assets/college-logos/PSG, Coimbatore/PSG.jpeg'
+import psgLogo from '../assets/college-logos/PSG, Coimbatore/psg.png'
 import psnaCollegeLogo from '../assets/college-logos/PSNA College of Engineering and Technology, Dindugal/PSNA.png'
 import rathinamCampusLogo from '../assets/college-logos/Rathinam Technical Campus, Coimbatore/RTC.jpeg'
 import sriManakulaVinayagarLogo from '../assets/college-logos/Manakula/ChatGPT Image Sep 12, 2026, 09_26_53 AM.png'
