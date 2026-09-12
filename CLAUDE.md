@@ -544,6 +544,48 @@ Each has: name, domain, years of experience, 3 highlight bullets. Photos availab
 Full highlight bullets for each are in the source PPTX (`JCSiLearn_TrainersProfile.pptx`) —
 pull verbatim when building the page rather than summarizing further.
 
+### Training Footprints timeline (new section on `/trainers`, below the trainer profile grid)
+
+**Design reference**: a timeline-card layout the client showed from their own separate
+personal portfolio site (tharun-portfolio-olive.vercel.app/#experience) — NOT part of this
+project's codebase, just a visual pattern to replicate: a date-range pill badge, a bold title,
+an accent-colored subtitle, and content below. Adapt that card shape for training footprints:
+
+- **Date badge** (pill, top-left, gold/accent): the date range for that engagement
+- **College logo** (small image) placed near the top of the card — **if a college has no logo
+  file available (see the two flagged below), leave that space blank, don't show a broken
+  image or a generic placeholder icon**
+- **Title** (bold, large): the Program Name
+- **Subtitle** (accent color): the College Name
+- **Below that, a blank placeholder image box** (empty for now — this is reserved for an
+  actual photo slideshow of that specific training session, which doesn't exist yet; don't
+  build slideshow functionality now, just leave the visual space as an empty placeholder)
+- No skill-tag pills (unlike the reference's Node.js/Fastify/etc. tags) — there's no JCS
+  equivalent, omit that row entirely rather than inventing tags
+
+**All 17 real entries, in this order** (from the client's Training Footprints PDF):
+
+1. PARK Engineering College, Coimbatore — 1st Sept 2026 to 3rd Sept 2026 — Soft Skills Induction Program — logo: `src/assets/college-logos/PARK College of Engineering and Technology, Coimbatore/images (1).jpeg`
+2. Tamil Nadu College of Engineering, Coimbatore — 1st Sept 2026 to 3rd Sept 2026 — Freshmen Induction Program — logo: `.../Tamil Nadu College of Engineering, Coimbatore/TN.jpg`
+3. Idhaya Engineering College for Women, Chinnasalem — 13th & 14th Oct 2026 — Pre Placement Preparation Program — **NO LOGO, leave blank**
+4. Dhanalakshmi Srinivasan University, Trichy — 4th Nov to 10th Nov 2026 — Placement Readiness Program — logo: `.../Dhanalakshmi Srinivasan University, Trichy/Dhanalakshmi_Srinivasan_University.webp`
+5. VSB Engineering College, Coimbatore — 3rd Nov to 27th Nov 2026 — Communication Skills Training — logo: `.../VSB College of Engineering, Coimbatore/images (3).jpeg`
+6. PSG College of Arts and Science, Coimbatore — 27th Nov to 30th Nov 2026 — Block Training — logo: `.../PSG, Coimbatore/PSG.jpg`
+7. Ganadipathy Tulsi's Jain Engineering College, Vellore — 6th Jan to 10th Jan 2026 — Aptitude Training — logo: `.../Ganadipathy Tulsi's Jain Engineering College, Vellore/images.jpeg`
+8. Dayanand Sagar University, Bangalore — 20th Jan to 22nd Apr 2026 — Technical - Capgemini Python — logo: `.../Dayanand Sagar University, Bangalore/Dayananda_Sagar_University.webp`
+9. Rathinam Technical Campus, Coimbatore — 2nd Feb to 26th Apr 2026 — Continuous Aptitude Training — logo: `.../Rathinam Technical Campus, Coimbatore/RTC.jpeg`
+10. Sri Manakula Vinayagar Engineering College, Puducherry — 3rd Feb to 14th Feb 2026 — Placement Training — **NO LOGO, leave blank**
+11. PSG College of Arts and Science, Coimbatore — 19th Feb to 22nd Feb 2026 — Block Training — logo: `.../PSG, Coimbatore/PSG.jpg`
+12. JAIN University, Bangalore — 1st June to 10th July 2026 — Soft Skills Program — logo: `.../JAIN University, Bangalore/JAIN.png`
+13. PSG College of Arts and Science, Coimbatore — 8th June to 12th June 2026 — Block Training — logo: `.../PSG, Coimbatore/PSG.jpg`
+14. VELS University, Chennai — 17th July to 24th July 2026 — Soft Skills & Aptitude Training MBA — logo: `.../VELS University, Chennai/VELS.png`
+15. PSNA College of Engineering and Technology, Dindugal — 4th Aug to 8th Aug — Aptitude Training — logo: `.../PSNA College of Engineering and Technology, Dindugal/PSNA.png`
+16. SRM University, Andhra Pradesh — 10th Aug to 30th Nov 2026 — CAT Specified Aptitude Training Program — logo: `.../SRM University, Andhra Pradesh/SRM-University.avif`
+17. PSG College of Arts and Science, Coimbatore — 27th Aug to 30th Aug — Block Training — logo: `.../PSG, Coimbatore/PSG.jpg`
+
+(PSG College of Arts and Science appears 4 times with different dates — that's correct, not a
+duplicate error, they ran multiple separate Block Training engagements there.)
+
 ### Testimonials (DRAFT copy — client sent real photos but no quotes; these are placeholders for client review, not final copy)
 
 > Client instruction: draft the best-fitting quotes using the real names provided; client

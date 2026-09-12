@@ -1,0 +1,70 @@
+import { motion } from 'framer-motion'
+import { trainingFootprints } from '../data/content'
+import Container from '../components/Container'
+
+export default function TrainingFootprints() {
+  return (
+    <section className="bg-white py-20 sm:py-24">
+      <Container>
+        <div className="text-center">
+          <h2 className="text-3xl font-bold text-navy sm:text-4xl">
+            Training Footprints
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-pale-blue-text">
+            A look at where our trainers have delivered programs recently — colleges and
+            universities across India.
+          </p>
+        </div>
+
+        <ol className="mx-auto mt-16 max-w-3xl">
+          {trainingFootprints.map((footprint, index) => (
+            <motion.li
+              key={`${footprint.collegeName}-${footprint.dateRange}`}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.4, ease: 'easeOut', delay: Math.min(index * 0.04, 0.3) }}
+              className="flex gap-4 sm:gap-6"
+            >
+              <div className="flex flex-col items-center">
+                <span className="mt-6 h-3 w-3 shrink-0 rounded-full border-2 border-white bg-gold shadow-[0_0_0_3px_rgba(244,180,0,0.2)]" />
+                {index < trainingFootprints.length - 1 && (
+                  <span className="mt-2 w-0.5 flex-1 bg-pale-blue-bg" />
+                )}
+              </div>
+
+              <div className="flex-1 pb-10">
+                <div className="rounded-2xl bg-pale-blue-bg/60 p-5 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md sm:p-6">
+                  <span className="inline-block rounded-full bg-gold px-3 py-1 text-xs font-semibold text-navy sm:text-sm">
+                    {footprint.dateRange}
+                  </span>
+
+                  <div className="mt-4 h-12">
+                    {footprint.logo && (
+                      <span className="inline-flex h-12 w-28 items-center justify-center rounded-lg bg-white p-1.5 shadow-sm">
+                        <img
+                          src={footprint.logo}
+                          alt={footprint.collegeName}
+                          className="h-full w-full object-contain"
+                        />
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 className="mt-3 text-lg font-bold text-navy sm:text-xl">
+                    {footprint.programName}
+                  </h3>
+                  <p className="mt-1 text-sm font-medium text-gold sm:text-base">
+                    {footprint.collegeName}
+                  </p>
+
+                  <div className="mt-4 aspect-video w-full rounded-xl bg-white" />
+                </div>
+              </div>
+            </motion.li>
+          ))}
+        </ol>
+      </Container>
+    </section>
+  )
+}

@@ -1053,3 +1053,119 @@ export const testimonials: Testimonial[] = [
     photo: testimonialAnithaPhoto,
   },
 ]
+
+export interface TrainingFootprint {
+  dateRange: string
+  programName: string
+  collegeName: string
+  logo?: string
+}
+
+// "Training Footprints" timeline on /trainers, below the trainer profile grid — all 17 real
+// entries from the client's Training Footprints PDF, in the exact order given. Two entries
+// (Idhaya Engineering College, Sri Manakula Vinayagar Engineering College) have no logo file
+// in the asset export — confirmed no folder exists for either, `logo` is left undefined
+// rather than guessed at. PSG College of Arts and Science appears 4 times with different
+// dates/engagements — that's real, not a duplicate.
+export const trainingFootprints: TrainingFootprint[] = [
+  {
+    dateRange: '1st Sept 2026 to 3rd Sept 2026',
+    programName: 'Soft Skills Induction Program',
+    collegeName: 'PARK Engineering College, Coimbatore',
+    logo: parkCollegeLogo,
+  },
+  {
+    dateRange: '1st Sept 2026 to 3rd Sept 2026',
+    programName: 'Freshmen Induction Program',
+    collegeName: 'Tamil Nadu College of Engineering, Coimbatore',
+    logo: tamilNaduCollegeLogo,
+  },
+  {
+    dateRange: '13th & 14th Oct 2026',
+    programName: 'Pre Placement Preparation Program',
+    collegeName: 'Idhaya Engineering College for Women, Chinnasalem',
+  },
+  {
+    dateRange: '4th Nov to 10th Nov 2026',
+    programName: 'Placement Readiness Program',
+    collegeName: 'Dhanalakshmi Srinivasan University, Trichy',
+    logo: dhanalakshmiSrinivasanLogo,
+  },
+  {
+    dateRange: '3rd Nov to 27th Nov 2026',
+    programName: 'Communication Skills Training',
+    collegeName: 'VSB Engineering College, Coimbatore',
+    logo: vsbCollegeLogo,
+  },
+  {
+    dateRange: '27th Nov to 30th Nov 2026',
+    programName: 'Block Training',
+    collegeName: 'PSG College of Arts and Science, Coimbatore',
+    logo: psgLogo,
+  },
+  {
+    dateRange: '6th Jan to 10th Jan 2026',
+    programName: 'Aptitude Training',
+    collegeName: "Ganadipathy Tulsi's Jain Engineering College, Vellore",
+    logo: ganadipathyTulsisJainLogo,
+  },
+  {
+    dateRange: '20th Jan to 22nd Apr 2026',
+    programName: 'Technical - Capgemini Python',
+    collegeName: 'Dayanand Sagar University, Bangalore',
+    logo: dayanandSagarLogo,
+  },
+  {
+    dateRange: '2nd Feb to 26th Apr 2026',
+    programName: 'Continuous Aptitude Training',
+    collegeName: 'Rathinam Technical Campus, Coimbatore',
+    logo: rathinamCampusLogo,
+  },
+  {
+    dateRange: '3rd Feb to 14th Feb 2026',
+    programName: 'Placement Training',
+    collegeName: 'Sri Manakula Vinayagar Engineering College, Puducherry',
+  },
+  {
+    dateRange: '19th Feb to 22nd Feb 2026',
+    programName: 'Block Training',
+    collegeName: 'PSG College of Arts and Science, Coimbatore',
+    logo: psgLogo,
+  },
+  {
+    dateRange: '1st June to 10th July 2026',
+    programName: 'Soft Skills Program',
+    collegeName: 'JAIN University, Bangalore',
+    logo: jainUniversityLogo,
+  },
+  {
+    dateRange: '8th June to 12th June 2026',
+    programName: 'Block Training',
+    collegeName: 'PSG College of Arts and Science, Coimbatore',
+    logo: psgLogo,
+  },
+  {
+    dateRange: '17th July to 24th July 2026',
+    programName: 'Soft Skills & Aptitude Training MBA',
+    collegeName: 'VELS University, Chennai',
+    logo: velsUniversityLogo,
+  },
+  {
+    dateRange: '4th Aug to 8th Aug',
+    programName: 'Aptitude Training',
+    collegeName: 'PSNA College of Engineering and Technology, Dindugal',
+    logo: psnaCollegeLogo,
+  },
+  {
+    dateRange: '10th Aug to 30th Nov 2026',
+    programName: 'CAT Specified Aptitude Training Program',
+    collegeName: 'SRM University, Andhra Pradesh',
+    logo: srmUniversityLogo,
+  },
+  {
+    dateRange: '27th Aug to 30th Aug',
+    programName: 'Block Training',
+    collegeName: 'PSG College of Arts and Science, Coimbatore',
+    logo: psgLogo,
+  },
+]
