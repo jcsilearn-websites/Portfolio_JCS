@@ -11,6 +11,7 @@ import {
   HiUserGroup,
 } from 'react-icons/hi2'
 import { BadgeCheck, Headset } from 'lucide-react'
+import indiaMap from '@svg-maps/india'
 import {
   bentoTiles,
   homeStats,
@@ -83,46 +84,55 @@ function StatNumber({
   )
 }
 
-// Real Tamil Nadu state outline: unioned from the 38 district polygons in
-// udit-001/india-maps-data (geojson/india.geojson, st_nm "Tamil Nadu"), simplified
-// with turf.simplify and projected to this viewBox — not a hand-drawn approximation.
-// Approximate on-tile positions (percent of the tile box, not the raw SVG viewBox) for
-// a few real cities, biased to sit over the outline's actual coastline/inland shape.
-// `pin` stays on the outline at the city's real spot; `label` sits just outside the
-// outline's silhouette in the nearest open direction, close enough to read as belonging
-// to that pin without needing a connector line.
+// @svg-maps/india ships an unresolvable internal type reference (svg-maps__common), which
+// skipLibCheck leaves untyped — annotate the shape we actually use instead of casting to any.
+interface IndiaMapLocation {
+  id: string
+  name: string
+  path: string
+}
+
+const indiaLocations = indiaMap.locations as IndiaMapLocation[]
+
+// Tile-relative percentages, derived by rendering the real IndiaOutline svg and converting
+// each city's true @svg-maps/india coordinate (Chennai/Coimbatore from WhoWeServeMap.tsx's
+// PIN_LOCATIONS, Madurai estimated the same way) through the svg's actual on-screen box —
+// not eyeballed. At full-India zoom these three sit close together in the south-east, so
+// labels are nudged outward in whichever direction has clear space rather than a fixed offset.
 const CITY_PINS = [
   {
     name: 'Chennai',
-    pin: { x: 74, y: 14 },
-    label: { x: 78, y: 12 },
+    pin: { x: 45.3, y: 74.0 },
+    label: { x: 50, y: 70 },
     labelAlign: 'left' as const,
   },
   {
     name: 'Coimbatore',
-    pin: { x: 20, y: 44 },
-    label: { x: 16, y: 44 },
+    pin: { x: 39.8, y: 78.0 },
+    label: { x: 32, y: 78 },
     labelAlign: 'right' as const,
   },
   {
     name: 'Madurai',
-    pin: { x: 52, y: 70 },
-    label: { x: 56, y: 73 },
+    pin: { x: 40.9, y: 81.7 },
+    label: { x: 36, y: 89 },
     labelAlign: 'left' as const,
   },
 ]
 
-function TamilNaduOutline({ className }: { className?: string }) {
+function IndiaOutline({ className }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 220 260"
+      viewBox={indiaMap.viewBox}
       className={className}
       fill="none"
       stroke="currentColor"
-      strokeWidth={2.5}
+      strokeWidth={1.2}
       strokeLinejoin="round"
     >
-      <path d="M 19.8 99.4 L 33.6 106.7 L 29.0 113.7 L 40.6 112.0 L 42.6 119.1 L 38.3 125.2 L 49.3 132.1 L 45.3 147.8 L 48.7 155.0 L 52.6 156.8 L 61.4 150.7 L 66.1 156.2 L 60.8 183.4 L 71.1 187.2 L 59.9 209.8 L 64.6 215.6 L 60.9 221.6 L 65.2 228.8 L 57.7 241.3 L 73.0 250.0 L 88.3 247.0 L 103.6 232.1 L 104.8 215.4 L 114.2 206.1 L 135.6 199.0 L 154.5 199.5 L 155.9 196.6 L 144.0 197.2 L 136.8 189.7 L 152.2 164.2 L 152.9 156.3 L 158.2 152.5 L 178.9 154.0 L 178.4 130.1 L 172.9 125.6 L 174.0 122.7 L 178.5 123.2 L 174.5 95.2 L 176.6 85.5 L 171.3 83.9 L 178.0 80.6 L 191.1 60.6 L 200.2 22.7 L 196.8 10.0 L 194.5 13.3 L 186.7 11.1 L 176.0 24.2 L 159.0 20.1 L 160.4 26.5 L 151.2 27.9 L 148.3 33.9 L 136.4 30.6 L 124.6 35.2 L 123.3 44.3 L 115.4 51.1 L 99.8 41.2 L 89.9 40.6 L 85.8 49.1 L 79.8 49.3 L 80.4 62.5 L 74.1 68.0 L 86.2 71.8 L 83.1 80.8 L 75.1 81.1 L 72.2 88.8 L 49.4 87.6 L 46.7 96.4 L 34.1 95.2 L 32.0 91.6 L 19.8 99.4 Z" />
+      {indiaLocations.map((location) => (
+        <path key={location.id} d={location.path} />
+      ))}
     </svg>
   )
 }
@@ -185,7 +195,7 @@ export default function Recognitions() {
                   data-tile={tile.id}
                   className={`relative flex min-h-[140px] flex-col justify-end overflow-hidden p-6 text-left ${tile.bg} ${ROUNDED[tile.rounded]} ${HOVER}`}
                 >
-                  <TamilNaduOutline className="absolute inset-0 m-auto h-[80%] w-auto text-navy/30" />
+                  <IndiaOutline className="absolute inset-0 m-auto h-[80%] w-auto text-navy/30" />
 
                   {CITY_PINS.map((city) => (
                     <span key={city.name}>
@@ -290,7 +300,11 @@ export default function Recognitions() {
         @media (min-width: 768px) {
           .bento-grid {
             grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: repeat(3, minmax(150px, auto));
+            /* Row heights follow the reference sketch's proportions (trained : inst/corp :
+               bottom-row β‰ˆ 58 : 68 : 46) instead of three equal rows — same tiles, same
+               column widths/spans, just a taller middle band and a slightly shorter bottom
+               row rather than a uniform grid. */
+            grid-template-rows: minmax(150px, auto) minmax(165px, auto) minmax(135px, auto);
             grid-template-areas:
               "trained trained trained trained map map map map map partners partners partners"
               "inst inst corp corp map map map map map partners partners partners"
