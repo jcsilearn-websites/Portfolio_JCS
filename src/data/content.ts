@@ -60,8 +60,8 @@ import testimonialRajarubanPhoto from '../assets/testimonials/Rajaruban.jpeg'
 import testimonialVaishnaviPhoto from '../assets/testimonials/VAISHNAVI S.jpeg'
 import testimonialEdupathPhoto from '../assets/testimonials/edupath.png'
 import testimonialSnehaPhoto from '../assets/testimonials/Arun-Kumar.jpg'
-import testimonialArvindPhoto from '../assets/testimonials/Esu-Kumar.png'
-import testimonialMeenaPhoto from '../assets/testimonials/Heera-Patey.png'
+import testimonialGnanaprakasamPhoto from '../assets/testimonials/gnanaprakasham.jpeg'
+import testimonialHarithaPhoto from '../assets/testimonials/haritha.jpeg'
 
 export const homeHero = {
   taglineLine1: 'I Learn,',
@@ -989,11 +989,11 @@ export interface Testimonial {
   photo?: string
 }
 
-// Homepage testimonials carousel content. t1/t2/t6 are finalized (real photo + real quote,
-// client-confirmed). The rest are draft placeholder entries — draft copy and stand-in
-// photos, documented in CLAUDE.md as pending client sign-off — kept in place so the
-// carousel's 5-card coverflow has enough cards. Total stays fixed at 7: each new real
-// testimonial replaces one placeholder rather than being added on top of it.
+// Homepage testimonials carousel content. t1/t2/t4/t5/t6/t7 are finalized (real photo +
+// real quote, client-confirmed). t3 is the one remaining draft placeholder entry — its
+// quote/photo/rating are stand-in content pending client sign-off, though its name/role
+// were updated per client request. Total stays fixed at 7: each new real testimonial
+// replaces one placeholder rather than being added on top of it.
 export const testimonials: Testimonial[] = [
   {
     id: 't1',
@@ -1019,8 +1019,8 @@ export const testimonials: Testimonial[] = [
     id: 't3',
     quote:
       'JCS iLearn helped me bridge the gap between academics and the industry. The training and guidance gave me the confidence to start my career with clarity.',
-    name: 'Sneha R',
-    role: 'B.Tech Student',
+    name: 'Arun Kumar',
+    role: 'B.Tech — SNS Institutions',
     organization: 'Anna University',
     rating: 5,
     photo: testimonialSnehaPhoto,
@@ -1028,22 +1028,22 @@ export const testimonials: Testimonial[] = [
   {
     id: 't4',
     quote:
-      'Our collaboration with JCS iLearn has been highly valuable. Their well-structured programs and professional approach have consistently delivered skilled and confident talent.',
-    name: 'Arvind Kumar',
-    role: 'HR Manager',
-    organization: 'Zoho Corporation',
+      'The aptitude training was highly effective and engaging. The sessions helped our students strengthen their problem-solving and reasoning abilities while building confidence to face placement assessments.',
+    name: 'Dr. Gnanaprakasam Thangavel',
+    role: 'Placement Director — Training Division',
+    organization: '',
     rating: 5,
-    photo: testimonialArvindPhoto,
+    photo: testimonialGnanaprakasamPhoto,
   },
   {
     id: 't5',
     quote:
-      "JCS iLearn's programs are practical, relevant, and impactful. They truly prepare students for real-world challenges and future opportunities.",
-    name: 'Dr. Meena S',
-    role: 'Faculty Member',
-    organization: 'PSG College of Technology',
+      'JCS iLEARN has consistently provided us with high-quality trainers who bring strong subject expertise, professionalism, and excellent classroom engagement. We have been impressed with the quality of trainers and the overall coordination from their team. It has been a great experience working with JCS iLEARN, and we look forward to strengthening our association further.',
+    name: 'Haritha M',
+    role: 'Operations Manager, Six Phrase — Veranda',
+    organization: '',
     rating: 5,
-    photo: testimonialMeenaPhoto,
+    photo: testimonialHarithaPhoto,
   },
   {
     id: 't6',
