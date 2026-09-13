@@ -24,3 +24,9 @@ body {
     transform: translateX(-50%);
   }
 }
+
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
