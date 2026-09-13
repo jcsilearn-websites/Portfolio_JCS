@@ -19,9 +19,10 @@ export default function ServicesCards() {
   return (
     <section className="bg-white py-20">
       <Container>
-        <h2 className="text-center text-3xl font-bold text-navy sm:text-4xl">
+        <h2 className="text-center text-lg font-bold tracking-wide text-black uppercase sm:text-xl">
           Our Services
         </h2>
+        <span className="mx-auto mt-1 block h-0.5 w-10 rounded-full bg-gold" />
 
         <motion.div
           variants={container}

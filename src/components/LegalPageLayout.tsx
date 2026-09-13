@@ -16,7 +16,12 @@ export default function LegalPageLayout({
     <main className="bg-white py-20">
       <Container>
         <div className="mx-auto max-w-4xl">
-          <h1 className="text-3xl font-bold text-navy sm:text-4xl">{title}</h1>
+          <p className="text-lg font-bold tracking-wide text-black uppercase sm:text-xl">
+            Legal
+          </p>
+          <span className="mt-1 block h-0.5 w-10 rounded-full bg-gold" />
+
+          <h1 className="mt-4 text-3xl font-bold text-navy sm:text-4xl">{title}</h1>
           <p className="mt-2 text-sm text-navy/60">Last Updated: {lastUpdated}</p>
 
           <div className="mt-10">{children}</div>

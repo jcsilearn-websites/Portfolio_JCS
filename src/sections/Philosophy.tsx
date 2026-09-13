@@ -21,7 +21,7 @@ export default function Philosophy() {
 
         <div>
           <span className="inline-flex flex-col items-start">
-            <span className="text-sm font-semibold tracking-wide text-black uppercase">
+            <span className="text-lg font-bold tracking-wide text-black uppercase sm:text-xl">
               {philosophy.label}
             </span>
             <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />

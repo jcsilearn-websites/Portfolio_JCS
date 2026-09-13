@@ -104,9 +104,10 @@ export default function Recognitions() {
   return (
     <section ref={ref} className="bg-white pt-20 pb-20 sm:pb-24">
       <Container className="text-center">
-        <h2 className="text-3xl font-bold text-navy sm:text-4xl">
+        <h2 className="text-center text-lg font-bold tracking-wide text-black uppercase sm:text-xl">
           Recognized for Excellence
         </h2>
+        <span className="mx-auto mt-1 block h-0.5 w-10 rounded-full bg-gold" />
 
         {/* Award badge card */}
         <motion.div

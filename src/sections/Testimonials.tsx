@@ -47,12 +47,16 @@ function useIsDesktop(query: string) {
 
 function TestimonialCardBody({ testimonial }: { testimonial: Testimonial }) {
   return (
-    <>
+    <div className="flex h-full flex-col">
       <span className="font-serif text-5xl leading-none text-gold">
         &ldquo;
       </span>
 
-      <p className="mt-2 text-base text-navy">{testimonial.quote}</p>
+      {/* Fixed-height clamp so every card is the same box size regardless of
+          how long a given testimonial's quote is — content never resizes the card. */}
+      <p className="mt-2 line-clamp-4 text-base text-black">
+        {testimonial.quote}
+      </p>
 
       <div className="mt-4 flex gap-0.5 text-gold">
         {Array.from({ length: testimonial.rating }).map((_, i) => (
@@ -60,7 +64,7 @@ function TestimonialCardBody({ testimonial }: { testimonial: Testimonial }) {
         ))}
       </div>
 
-      <div className="mt-6 flex items-center gap-3">
+      <div className="mt-6 flex flex-1 items-end gap-3">
         <img
           src={testimonial.photo}
           alt={testimonial.name}
@@ -68,12 +72,16 @@ function TestimonialCardBody({ testimonial }: { testimonial: Testimonial }) {
         />
         <div>
           <p className="font-bold text-navy">{testimonial.name}</p>
-          <p className="text-sm text-navy/60">
-            {testimonial.role}, {testimonial.organization}
-          </p>
+          {(testimonial.role || testimonial.organization) && (
+            <p className="text-sm text-navy/60">
+              {testimonial.role && testimonial.organization
+                ? `${testimonial.role} — ${testimonial.organization}`
+                : testimonial.role || testimonial.organization}
+            </p>
+          )}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
@@ -113,13 +121,10 @@ export default function Testimonials() {
     >
       <Container>
         <div className="flex flex-col items-center">
-          <span className="flex items-center gap-3">
-            <span className="h-px w-8 bg-gold" />
-            <span className="text-sm font-semibold tracking-wide text-gold uppercase">
-              Testimonials
-            </span>
-            <span className="h-px w-8 bg-gold" />
-          </span>
+          <p className="text-center text-lg font-bold tracking-wide text-black uppercase sm:text-xl">
+            Testimonials
+          </p>
+          <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
 
           <h2 className="mt-4 text-center text-3xl font-bold sm:text-4xl">
             <span className="text-navy">Voices That </span>
@@ -176,7 +181,7 @@ export default function Testimonials() {
                         zIndex: style.zIndex,
                       }}
                       transition={TRANSITION}
-                      style={{ width: 340 }}
+                      style={{ width: 340, height: 380 }}
                       className={`pointer-events-auto relative rounded-2xl bg-white p-6 sm:p-8 ${
                         isCenter
                           ? 'border-2 border-navy shadow-xl'
@@ -201,7 +206,7 @@ export default function Testimonials() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -40 }}
                   transition={TRANSITION}
-                  className="rounded-2xl border-2 border-navy bg-white p-6 shadow-xl sm:p-8"
+                  className="h-[380px] rounded-2xl border-2 border-navy bg-white p-6 shadow-xl sm:p-8"
                 >
                   <TestimonialCardBody testimonial={testimonials[centerIndex]} />
                 </motion.div>
