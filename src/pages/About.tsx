@@ -207,11 +207,11 @@ export default function About() {
               </p>
             </div>
 
-            <div className="aspect-[5/4] w-full overflow-hidden rounded-2xl">
+            <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl">
               <img
                 src={ourStoryImage}
                 alt={`Gear-and-checkmark graphic beside a quote card that reads: "${ourStory.quoteCardText}"`}
-                className="h-full w-full rounded-2xl object-cover"
+                className="h-full w-full rounded-2xl object-contain"
               />
             </div>
           </motion.div>
