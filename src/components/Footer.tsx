@@ -5,7 +5,7 @@ import {
   HiPhone,
 } from 'react-icons/hi2'
 import { FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa6'
-import gearIcon from '../assets/About-page/gear.png'
+import gearIcon from '../assets/logos/gg.png'
 import { contactInfo, homeHero } from '../data/content'
 import Container from './Container'
 
@@ -52,7 +52,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Brand block */}
           <div className="lg:col-span-4">
-            <img src={gearIcon} alt="JCS iLearn" className="h-10 w-10 brightness-0 invert" />
+            <img src={gearIcon} alt="JCS iLearn" className="h-10 w-10 object-contain" />
             <p className="mt-4 max-w-xs text-sm text-pale-blue-bg/80 italic">
               {homeHero.supportingLine}
             </p>
@@ -60,7 +60,17 @@ export default function Footer() {
             <div className="mt-6 space-y-3 text-sm text-pale-blue-bg/80">
               <div className="flex items-start gap-3">
                 <HiMapPin className="mt-0.5 shrink-0 text-gold" size={18} />
-                <span>{contactInfo.address}</span>
+                {/* contactInfo.address stays one plain string (Contact.tsx also feeds it
+                    straight into a Maps URL query) — these are the same words, just broken
+                    onto 3 fixed lines here instead of wrapping wherever the column happens to
+                    be narrow. Keep in sync with contactInfo.address if that ever changes. */}
+                <span>
+                  No.10, Udayampalayam Main Road,
+                  <br />
+                  Sowripalayam, Coimbatore, Tamil Nadu,
+                  <br />
+                  India – 641028
+                </span>
               </div>
               <a
                 href={`tel:${contactInfo.phoneHref}`}
