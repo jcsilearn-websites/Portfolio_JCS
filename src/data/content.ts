@@ -458,9 +458,8 @@ export const vision = {
     trail: '.',
   },
   paragraphs: [
-    "Education alone isn't enough. What matters is whether that education translates into real opportunity — a job, a promotion, a business, a career someone is proud of.",
-    "We're building JCS iLearn to be that bridge at scale — reaching more students, more institutions, more professionals, without losing the practice-first, relationship-driven approach that got us here.",
-    "Our vision is simple: a growing network of trainers, a widening reach across cities and institutions, and a generation of learners who don't just complete a program — they walk away genuinely more employable, more confident, and more capable than when they started.",
+    "Education alone isn't enough—what matters is turning learning into real opportunity: jobs, promotions, businesses, and meaningful careers.",
+    'JCS iLearn bridges that gap through practice-first training, expanding across institutions and cities to help learners become more employable, confident, and capable.',
   ],
 }
 

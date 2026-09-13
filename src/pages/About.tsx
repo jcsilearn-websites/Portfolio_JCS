@@ -251,7 +251,7 @@ export default function About() {
               ))}
             </div>
 
-            <div className="aspect-[6/5] w-full overflow-hidden rounded-2xl">
+            <div className="aspect-[6/5] w-full overflow-hidden rounded-2xl pt-[100px]">
               <img
                 src={visionImage}
                 alt="Two circular photo collages, labeled Student Friendly and Skilled Trainers, connected by a decorative ribbon around a central gear-and-checkmark icon"
