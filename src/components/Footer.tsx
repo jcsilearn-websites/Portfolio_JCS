@@ -12,23 +12,20 @@ import Container from './Container'
 const programLinks = [
   { to: '/programs', label: 'All Programs' },
   { to: '/services', label: 'Our Services' },
-  { to: '/trainers', label: 'Our Trainers' },
+  { to: '/trainers', label: 'Footprints' },
   { to: '/about', label: 'About Us' },
 ]
 
 const companyLinks = [
   { to: '/about', label: 'About Us' },
-  { to: '/careers', label: 'Careers' },
   { to: '/contact', label: 'Contact Us' },
   { to: '/', label: 'Home' },
 ]
 
-// Refund Policy has no page/content yet — kept as a placeholder link until it exists.
 const legalLinks = [
   { to: '/privacy-policy', label: 'Privacy Policy' },
   { to: '/terms-conditions', label: 'Terms & Conditions' },
   { to: '/cookie-policy', label: 'Cookie Policy' },
-  { to: null, label: 'Refund Policy' },
 ]
 
 const socialLinks = [
@@ -116,15 +113,9 @@ export default function Footer() {
             <ul className="mt-4 space-y-3">
               {legalLinks.map(({ to, label }) => (
                 <li key={label}>
-                  {to ? (
-                    <Link to={to} className={linkClass}>
-                      {label}
-                    </Link>
-                  ) : (
-                    <a href="#" className={linkClass}>
-                      {label}
-                    </a>
-                  )}
+                  <Link to={to} className={linkClass}>
+                    {label}
+                  </Link>
                 </li>
               ))}
             </ul>
