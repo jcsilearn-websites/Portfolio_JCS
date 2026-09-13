@@ -12,6 +12,14 @@ import {
 import { serviceCategories } from '../data/content'
 import Container from '../components/Container'
 import corporatesPanel from '../assets/our-services/Corperate.png'
+import schoolsPanel from '../assets/our-services/schools.png'
+import professionalsPanel from '../assets/our-services/proffesionals.png'
+
+const panelImages: Partial<Record<string, string>> = {
+  corporates: corporatesPanel,
+  schools: schoolsPanel,
+  professionals: professionalsPanel,
+}
 
 const icons = {
   universities: HiAcademicCap,
@@ -69,10 +77,10 @@ export default function ServicesTabs() {
             transition={{ duration: 0.3, ease: 'easeOut' }}
             className="pt-10"
           >
-            {active.id === 'corporates' ? (
+            {panelImages[active.id] ? (
               <img
-                src={corporatesPanel}
-                alt="For Corporates — Empowering People & Performance. Leadership, communication, and performance programs that help teams and organizations perform at their best. We design and deliver customized learning and development solutions that build future-ready teams, strengthen workplace capabilities, and drive measurable business impact. Programs: Leadership & Managerial Excellence, Communication & Workplace Excellence, Sales & Customer Excellence, Productivity & Performance Enhancement, AI, Digital & Future Skills."
+                src={panelImages[active.id]}
+                alt={`${active.label} — ${active.description}`}
                 className="h-auto w-full rounded-2xl sm:rounded-3xl"
               />
             ) : (
