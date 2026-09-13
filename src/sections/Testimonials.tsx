@@ -4,6 +4,7 @@ import {
   HiChevronLeft,
   HiChevronRight,
   HiStar,
+  HiUserCircle,
 } from 'react-icons/hi2'
 import { testimonials, type Testimonial } from '../data/content'
 import Container from '../components/Container'
@@ -65,11 +66,17 @@ function TestimonialCardBody({ testimonial }: { testimonial: Testimonial }) {
       </div>
 
       <div className="mt-6 flex flex-1 items-end gap-3">
-        <img
-          src={testimonial.photo}
-          alt={testimonial.name}
-          className="h-12 w-12 shrink-0 rounded-full object-cover sm:h-14 sm:w-14"
-        />
+        {testimonial.photo ? (
+          <img
+            src={testimonial.photo}
+            alt={testimonial.name}
+            className="h-12 w-12 shrink-0 rounded-full object-cover sm:h-14 sm:w-14"
+          />
+        ) : (
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-pale-blue-bg sm:h-14 sm:w-14">
+            <HiUserCircle className="h-8 w-8 text-navy/40 sm:h-9 sm:w-9" />
+          </span>
+        )}
         <div>
           <p className="font-bold text-navy">{testimonial.name}</p>
           {(testimonial.role || testimonial.organization) && (
@@ -237,10 +244,10 @@ export default function Testimonials() {
                 index > 0 ? 'border-navy/10 sm:border-l' : ''
               }`}
             >
-              <p className="text-2xl font-bold text-navy sm:text-3xl">
+              <p className="text-2xl font-bold text-black sm:text-3xl">
                 {stat.value}
               </p>
-              <p className="mt-1 text-sm text-navy/60">{stat.label}</p>
+              <p className="mt-1 text-sm text-black">{stat.label}</p>
             </div>
           ))}
         </div>

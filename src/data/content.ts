@@ -62,7 +62,6 @@ import testimonialEdupathPhoto from '../assets/testimonials/edupath.png'
 import testimonialSnehaPhoto from '../assets/testimonials/Arun-Kumar.jpg'
 import testimonialArvindPhoto from '../assets/testimonials/Esu-Kumar.png'
 import testimonialMeenaPhoto from '../assets/testimonials/Heera-Patey.png'
-import testimonialPriyaPhoto from '../assets/testimonials/Sanjeev.png'
 
 export const homeHero = {
   taglineLine1: 'I Learn,',
@@ -166,7 +165,7 @@ export const bentoTiles: BentoTile[] = [
   {
     id: 'partners',
     area: 'partners',
-    label: 'Our Partners',
+    label: 'Why Choose Us',
     bg: 'bg-navy',
     numberColor: 'text-white',
     labelColor: 'text-white/80',
@@ -228,6 +227,18 @@ export const bentoTiles: BentoTile[] = [
     iconTreatment: 'corner',
     rounded: 'tl-br',
   },
+]
+
+export interface WhyChooseUsHighlight {
+  icon: 'certifications' | 'support'
+  stat: string
+}
+
+// Content for the "Why Choose Us" bento tile (replaces the earlier partner-logo chips) —
+// icon rendering is looked up in Recognitions.tsx, keeping this file icon-library-agnostic.
+export const whyChooseUsHighlights: WhyChooseUsHighlight[] = [
+  { icon: 'certifications', stat: '15+ Trainer Certifications' },
+  { icon: 'support', stat: '24/7 Learner Support' },
 ]
 
 // Hero (label + headline + subheading) for the /services page — same three-tier pattern as
@@ -974,7 +985,8 @@ export interface Testimonial {
   role: string
   organization: string
   rating: number
-  photo: string
+  // Omitted when no real photo exists yet — the card renders a generic icon avatar instead.
+  photo?: string
 }
 
 // Homepage testimonials carousel content. t1/t2/t6 are finalized (real photo + real quote,
@@ -1046,12 +1058,12 @@ export const testimonials: Testimonial[] = [
   {
     id: 't7',
     quote:
-      "Partnering with JCS iLearn gave our team practical, job-ready skills in a fraction of the time we expected. Their trainers really understand industry needs.",
-    name: 'Priya Nair',
-    role: 'Talent Development Lead',
-    organization: 'Freshworks',
+      'JCS iLearn provided me with valuable practical knowledge and guidance beyond the classroom. The training helped me understand industry requirements, improve my skills, and gain confidence in applying what I learned. It was a great learning experience that gave me better clarity about my career.',
+    name: 'Dayaani Vijay',
+    role: 'B.Tech Aerospace Engineering Student',
+    organization: 'Alliance University, Bengaluru, Karnataka',
     rating: 5,
-    photo: testimonialPriyaPhoto,
+    // No real photo available yet — renders as a generic icon avatar (see Testimonials.tsx).
   },
 ]
 

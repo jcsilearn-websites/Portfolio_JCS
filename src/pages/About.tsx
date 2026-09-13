@@ -207,11 +207,11 @@ export default function About() {
               </p>
             </div>
 
-            <div className="aspect-[5/4] w-full overflow-hidden">
+            <div className="aspect-[5/4] w-full overflow-hidden rounded-2xl">
               <img
                 src={ourStoryImage}
                 alt={`Gear-and-checkmark graphic beside a quote card that reads: "${ourStory.quoteCardText}"`}
-                className="h-full w-full object-cover"
+                className="h-full w-full rounded-2xl object-cover"
               />
             </div>
           </motion.div>
@@ -225,7 +225,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="grid items-center gap-12 lg:items-start lg:grid-cols-[620px_1fr] lg:gap-16"
+            className="grid items-start gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16"
           >
             <div>
               <span className="inline-flex flex-col items-start">
@@ -251,11 +251,11 @@ export default function About() {
               ))}
             </div>
 
-            <div className="aspect-[6/5] w-full overflow-hidden lg:aspect-auto lg:mt-[207px] lg:h-[254px]">
+            <div className="aspect-[6/5] w-full overflow-hidden rounded-2xl">
               <img
                 src={visionImage}
                 alt="Two circular photo collages, labeled Student Friendly and Skilled Trainers, connected by a decorative ribbon around a central gear-and-checkmark icon"
-                className="h-full w-full object-contain"
+                className="h-full w-full rounded-2xl object-contain"
               />
             </div>
           </motion.div>

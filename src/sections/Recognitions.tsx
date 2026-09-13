@@ -6,16 +6,19 @@ import {
   HiBriefcase,
   HiBuildingOffice2,
   HiCalendarDays,
+  HiMapPin,
   HiStar,
   HiUserGroup,
 } from 'react-icons/hi2'
+import { BadgeCheck, Headset } from 'lucide-react'
 import {
   bentoTiles,
-  collegeLogos,
   homeStats,
   recognitions,
+  whyChooseUsHighlights,
   type BentoIcon,
   type StatItem,
+  type WhyChooseUsHighlight,
 } from '../data/content'
 import { useCountUp } from '../hooks/useCountUp'
 import Container from '../components/Container'
@@ -49,6 +52,11 @@ const ICONS: Record<BentoIcon, typeof HiAcademicCap> = {
   star: HiStar,
 }
 
+const WHY_CHOOSE_US_ICONS: Record<WhyChooseUsHighlight['icon'], typeof BadgeCheck> = {
+  certifications: BadgeCheck,
+  support: Headset,
+}
+
 const ROUNDED: Record<'tl-br' | 'tr-bl', string> = {
   'tl-br': 'rounded-tl-3xl rounded-br-3xl rounded-tr-none rounded-bl-none',
   'tr-bl': 'rounded-tr-3xl rounded-bl-3xl rounded-tl-none rounded-br-none',
@@ -78,6 +86,32 @@ function StatNumber({
 // Real Tamil Nadu state outline: unioned from the 38 district polygons in
 // udit-001/india-maps-data (geojson/india.geojson, st_nm "Tamil Nadu"), simplified
 // with turf.simplify and projected to this viewBox — not a hand-drawn approximation.
+// Approximate on-tile positions (percent of the tile box, not the raw SVG viewBox) for
+// a few real cities, biased to sit over the outline's actual coastline/inland shape.
+// `pin` stays on the outline at the city's real spot; `label` sits just outside the
+// outline's silhouette in the nearest open direction, close enough to read as belonging
+// to that pin without needing a connector line.
+const CITY_PINS = [
+  {
+    name: 'Chennai',
+    pin: { x: 74, y: 14 },
+    label: { x: 78, y: 12 },
+    labelAlign: 'left' as const,
+  },
+  {
+    name: 'Coimbatore',
+    pin: { x: 20, y: 44 },
+    label: { x: 16, y: 44 },
+    labelAlign: 'right' as const,
+  },
+  {
+    name: 'Madurai',
+    pin: { x: 52, y: 70 },
+    label: { x: 56, y: 73 },
+    labelAlign: 'left' as const,
+  },
+]
+
 function TamilNaduOutline({ className }: { className?: string }) {
   return (
     <svg
@@ -99,7 +133,6 @@ export default function Recognitions() {
 
   const statsById = Object.fromEntries(homeStats.map((stat) => [stat.id, stat]))
   const award = recognitions[0]
-  const partnerLogos = collegeLogos.slice(0, 3)
 
   return (
     <section ref={ref} className="bg-white pt-20 pb-20 sm:pb-24">
@@ -153,6 +186,26 @@ export default function Recognitions() {
                   className={`relative flex min-h-[140px] flex-col justify-end overflow-hidden p-6 text-left ${tile.bg} ${ROUNDED[tile.rounded]} ${HOVER}`}
                 >
                   <TamilNaduOutline className="absolute inset-0 m-auto h-[80%] w-auto text-navy/30" />
+
+                  {CITY_PINS.map((city) => (
+                    <span key={city.name}>
+                      <HiMapPin
+                        className="absolute h-4 w-4 -translate-x-1/2 -translate-y-full text-navy drop-shadow-sm sm:h-5 sm:w-5"
+                        style={{ top: `${city.pin.y}%`, left: `${city.pin.x}%` }}
+                        aria-hidden="true"
+                      />
+                      <span
+                        className={`absolute -translate-y-1/2 text-xs font-semibold whitespace-nowrap text-navy ${
+                          city.labelAlign === 'right'
+                            ? '-translate-x-full'
+                            : ''
+                        }`}
+                        style={{ top: `${city.label.y}%`, left: `${city.label.x}%` }}
+                      >
+                        {city.name}
+                      </span>
+                    </span>
+                  ))}
                   {stat && (
                     <StatNumber
                       stat={stat}
@@ -179,18 +232,23 @@ export default function Recognitions() {
                     {tile.label}
                   </span>
                   <div className="flex flex-1 flex-col justify-between gap-3">
-                    {partnerLogos.map((logo) => (
-                      <span
-                        key={logo.name}
-                        className="mx-auto flex h-16 w-4/5 items-center justify-center rounded-lg bg-white p-1.5"
-                      >
-                        <img
-                          src={logo.src}
-                          alt={logo.name}
-                          className="h-full w-full object-contain"
-                        />
-                      </span>
-                    ))}
+                    {whyChooseUsHighlights.map((highlight) => {
+                      const HighlightIcon = WHY_CHOOSE_US_ICONS[highlight.icon]
+                      return (
+                        <span
+                          key={highlight.stat}
+                          className="flex flex-1 items-center gap-3 rounded-lg bg-white px-4 py-4"
+                        >
+                          <HighlightIcon
+                            className="h-8 w-8 shrink-0 text-navy"
+                            strokeWidth={1.75}
+                          />
+                          <span className="text-sm leading-snug font-bold text-navy sm:text-base">
+                            {highlight.stat}
+                          </span>
+                        </span>
+                      )
+                    })}
                   </div>
                 </motion.div>
               )
