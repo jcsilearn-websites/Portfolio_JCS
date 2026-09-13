@@ -41,14 +41,19 @@ export default function Hero() {
       {/* Certified ribbon, Psiog-style: pinned to the hero's own top-right corner (not the
           header above it — Header is in normal flow, not fixed, so there's no collision risk
           regardless of this section's z-index) and hidden below `sm`, where the hero switches
-          to the near-solid mobile overlay and the text column has less room to spare. */}
+          to the near-solid mobile overlay and the text column has less room to spare. The
+          source PNG has a soft glow baked in, so the solid ribbon shape actually starts ~10%
+          down from the file's own top edge — pulled up with a negative `top` so the *visible*
+          ribbon lines up flush with the header's bottom edge instead of floating below it.
+          That negative offset only pushes the transparent glow padding past the section's
+          `overflow-hidden` edge, so nothing visible is clipped. */}
       <motion.img
         src={certifiedBadge}
         alt="Great Place To Learn — certified"
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
-        className="absolute top-0 right-4 z-20 hidden h-auto w-20 sm:block sm:right-6 sm:w-24 lg:right-10 lg:w-28"
+        className="absolute -top-3.5 right-10 z-20 hidden h-auto w-24 sm:block lg:-top-4 lg:right-16 lg:w-28"
       />
 
       <Container className="relative z-10 flex min-h-[92vh] items-center py-16">
