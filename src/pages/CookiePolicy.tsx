@@ -91,14 +91,14 @@ export default function CookiePolicy() {
 
       <LegalSection title="4. First-Party and Third-Party Cookies">
         <LegalParagraph>
-          <strong className="font-semibold text-navy">
+          <strong className="font-semibold text-black">
             First-party cookies
           </strong>{' '}
           are placed by JCS iLEARN or service providers acting on our
           behalf.
         </LegalParagraph>
         <LegalParagraph>
-          <strong className="font-semibold text-navy">
+          <strong className="font-semibold text-black">
             Third-party cookies
           </strong>{' '}
           are placed by external service providers whose technologies or
@@ -170,21 +170,21 @@ export default function CookiePolicy() {
           practices, please contact:
         </LegalParagraph>
         <LegalParagraph>
-          <strong className="font-semibold text-navy">
+          <strong className="font-semibold text-black">
             JCS Institute of Lifeskills Education And Recruitment Network
             LLP
           </strong>
           <br />
-          <strong className="font-semibold text-navy">Brand:</strong> JCS
+          <strong className="font-semibold text-black">Brand:</strong> JCS
           iLEARN
           <br />
-          <strong className="font-semibold text-navy">Website:</strong>{' '}
+          <strong className="font-semibold text-black">Website:</strong>{' '}
           www.jcsilearn.com
           <br />
-          <strong className="font-semibold text-navy">Email:</strong>{' '}
+          <strong className="font-semibold text-black">Email:</strong>{' '}
           info@jcsilearn.com
           <br />
-          <strong className="font-semibold text-navy">Location:</strong>{' '}
+          <strong className="font-semibold text-black">Location:</strong>{' '}
           Coimbatore, Tamil Nadu, India
         </LegalParagraph>
         <LegalParagraph>

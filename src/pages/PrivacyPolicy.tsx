@@ -490,7 +490,7 @@ export default function PrivacyPolicy() {
           contact us at:
         </LegalParagraph>
         <LegalParagraph>
-          <strong className="font-semibold text-navy">Email:</strong>{' '}
+          <strong className="font-semibold text-black">Email:</strong>{' '}
           info@jcsilearn.com
         </LegalParagraph>
         <LegalParagraph>
@@ -563,18 +563,18 @@ export default function PrivacyPolicy() {
           information, please contact:
         </LegalParagraph>
         <LegalParagraph>
-          <strong className="font-semibold text-navy">
+          <strong className="font-semibold text-black">
             JCS Institute of Lifeskills Education And Recruitment Network
             LLP
           </strong>
           <br />
-          <strong className="font-semibold text-navy">Brand:</strong> JCS
+          <strong className="font-semibold text-black">Brand:</strong> JCS
           iLEARN
           <br />
-          <strong className="font-semibold text-navy">Email:</strong>{' '}
+          <strong className="font-semibold text-black">Email:</strong>{' '}
           info@jcsilearn.com
           <br />
-          <strong className="font-semibold text-navy">Website:</strong>{' '}
+          <strong className="font-semibold text-black">Website:</strong>{' '}
           jcsilearn.com
         </LegalParagraph>
         <LegalParagraph>

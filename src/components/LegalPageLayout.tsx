@@ -40,25 +40,25 @@ export function LegalSection({
 }) {
   return (
     <section className="mt-10 space-y-4 first:mt-0">
-      <h2 className="text-xl font-semibold text-navy">{title}</h2>
+      <h2 className="text-xl font-semibold text-black">{title}</h2>
       {children}
     </section>
   )
 }
 
 export function LegalSubheading({ children }: { children: ReactNode }) {
-  return <h3 className="text-lg font-semibold text-navy/90">{children}</h3>
+  return <h3 className="text-lg font-semibold text-black">{children}</h3>
 }
 
 export function LegalParagraph({ children }: { children: ReactNode }) {
-  return <p className="text-base leading-relaxed text-navy/70">{children}</p>
+  return <p className="text-base leading-relaxed text-black">{children}</p>
 }
 
 export function LegalList({ items }: { items: ReactNode[] }) {
   return (
-    <ul className="list-disc space-y-1.5 pl-5 marker:text-gold">
+    <ul className="list-disc space-y-1.5 pl-5 marker:text-black">
       {items.map((item, index) => (
-        <li key={index} className="text-base leading-relaxed text-navy/70">
+        <li key={index} className="text-base leading-relaxed text-black">
           {item}
         </li>
       ))}

@@ -425,7 +425,7 @@ export default function TermsConditions() {
           partners.
         </LegalParagraph>
         <LegalParagraph>
-          JCS iLEARN does not <strong className="font-semibold text-navy">guarantee</strong>:
+          JCS iLEARN does not <strong className="font-semibold text-black">guarantee</strong>:
         </LegalParagraph>
         <LegalList
           items={[
@@ -950,21 +950,21 @@ export default function TermsConditions() {
           &amp; Conditions, you may contact us at:
         </LegalParagraph>
         <LegalParagraph>
-          <strong className="font-semibold text-navy">
+          <strong className="font-semibold text-black">
             JCS Institute of Lifeskills Education And Recruitment Network
             LLP
           </strong>
           <br />
-          <strong className="font-semibold text-navy">JCS iLEARN</strong>
+          <strong className="font-semibold text-black">JCS iLEARN</strong>
           <br />
-          <strong className="font-semibold text-navy">Email:</strong>{' '}
+          <strong className="font-semibold text-black">Email:</strong>{' '}
           info@jcsilearn.com
           <br />
-          <strong className="font-semibold text-navy">Website:</strong>{' '}
+          <strong className="font-semibold text-black">Website:</strong>{' '}
           jcsilearn.com
         </LegalParagraph>
         <LegalParagraph>
-          <strong className="font-semibold text-navy">
+          <strong className="font-semibold text-black">
             By accessing the JCS iLEARN website, registering for a program,
             participating in an assessment or training program, or using
             our services, you acknowledge that you have read, understood,
