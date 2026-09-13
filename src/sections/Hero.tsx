@@ -2,6 +2,7 @@ import { motion, type Variants } from 'framer-motion'
 import { HiChevronDown } from 'react-icons/hi'
 import { homeHero } from '../data/content'
 import heroVideo from '../assets/front-page-vid.mp4'
+import certifiedBadge from '../assets/front-page/flag.png'
 import Button from '../components/Button'
 import Container from '../components/Container'
 
@@ -36,6 +37,19 @@ export default function Hero() {
           fading gradually to transparent by ~88% so faint video texture bleeds through
           even behind the text, rather than a hard-edged cutoff */}
       <div className="absolute inset-0 hidden bg-gradient-to-r from-navy/85 from-0% via-navy/85 via-30% to-transparent to-[88%] lg:block" />
+
+      {/* Certified ribbon, Psiog-style: pinned to the hero's own top-right corner (not the
+          header above it — Header is in normal flow, not fixed, so there's no collision risk
+          regardless of this section's z-index) and hidden below `sm`, where the hero switches
+          to the near-solid mobile overlay and the text column has less room to spare. */}
+      <motion.img
+        src={certifiedBadge}
+        alt="Great Place To Learn — certified"
+        initial={{ opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.4 }}
+        className="absolute top-0 right-4 z-20 hidden h-auto w-20 sm:block sm:right-6 sm:w-24 lg:right-10 lg:w-28"
+      />
 
       <Container className="relative z-10 flex min-h-[92vh] items-center py-16">
         <motion.div
