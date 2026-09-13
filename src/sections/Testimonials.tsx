@@ -10,9 +10,9 @@ import { testimonials, type Testimonial } from '../data/content'
 import Container from '../components/Container'
 
 const bottomStats = [
-  { value: '10K+', label: 'Learners Impacted' },
-  { value: '200+', label: 'Partner Institutions' },
-  { value: '500+', label: 'Corporate Collaborations' },
+  { value: '1.5L+', label: 'Learners Impacted' },
+  { value: '25+', label: 'Partner Institutions' },
+  { value: '50+', label: 'Corporate Collaborations' },
 ]
 
 const TRANSITION = { duration: 0.6, ease: 'easeInOut' } as const
