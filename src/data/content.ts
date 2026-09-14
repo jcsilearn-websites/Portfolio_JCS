@@ -1008,7 +1008,7 @@ export const testimonials: Testimonial[] = [
     id: 't2',
     quote:
       'JCS iLearn provided an excellent learning experience with a good balance of technical training and practical exposure. The mentors were supportive throughout the journey and helped me gain the confidence to face real world industry challenges.',
-    name: 'VAISHNAVI S',
+    name: 'Vaishnavi S',
     role: 'CSE AIML, 2023–2027',
     organization: 'Alliance University',
     rating: 5,
@@ -1048,9 +1048,9 @@ export const testimonials: Testimonial[] = [
     id: 't6',
     quote:
       'JCS iLEARN has been a reliable partner in providing career guidance and skill development for students. Their practical approach helps students understand their strengths and make better career choices.',
-    name: 'Edupath Education Consultancy',
-    role: '',
-    organization: '',
+    name: 'Ragul M',
+    role: 'Founder',
+    organization: 'Edupath Education Consultancy',
     rating: 5,
     photo: testimonialEdupathPhoto,
   },
