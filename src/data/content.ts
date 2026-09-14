@@ -237,8 +237,8 @@ export interface WhyChooseUsHighlight {
 // Content for the "Why Choose Us" bento tile (replaces the earlier partner-logo chips) —
 // icon rendering is looked up in Recognitions.tsx, keeping this file icon-library-agnostic.
 export const whyChooseUsHighlights: WhyChooseUsHighlight[] = [
-  { icon: 'certifications', stat: '15+ Trainer Certifications' },
-  { icon: 'support', stat: '24/7 Learner Support' },
+  { icon: 'certifications', stat: 'Certified Trainers' },
+  { icon: 'support', stat: 'End to End Learning Support' },
 ]
 
 // Hero (label + headline + subheading) for the /services page — same three-tier pattern as
