@@ -1009,7 +1009,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'JCS iLearn provided an excellent learning experience with a good balance of technical training and practical exposure. The mentors were supportive throughout the journey and helped me gain the confidence to face real world industry challenges.',
     name: 'Ms. Vaishnavi S',
-    role: 'B.Tech CSE Final Year Student, 2023–2027',
+    role: 'B.Tech CSE Final Year Student',
     organization: 'Alliance University, Bengaluru, Karnataka',
     rating: 5,
     photo: testimonialVaishnaviPhoto,
