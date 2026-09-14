@@ -225,8 +225,14 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="grid items-start gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16"
+            className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16"
           >
+            <img
+              src={visionImage}
+              alt="Two circular photo collages, labeled Student Friendly and Skilled Trainers, connected by a decorative ribbon around a central gear-and-checkmark icon"
+              className="w-full"
+            />
+
             <div>
               <span className="inline-flex flex-col items-start">
                 <span className="text-sm font-semibold tracking-wide text-black uppercase">
@@ -249,14 +255,6 @@ export default function About() {
                   {paragraph}
                 </p>
               ))}
-            </div>
-
-            <div className="aspect-[6/5] w-full overflow-hidden rounded-2xl pt-[100px]">
-              <img
-                src={visionImage}
-                alt="Two circular photo collages, labeled Student Friendly and Skilled Trainers, connected by a decorative ribbon around a central gear-and-checkmark icon"
-                className="h-full w-full rounded-2xl object-contain"
-              />
             </div>
           </motion.div>
         </Container>
