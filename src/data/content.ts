@@ -1019,8 +1019,8 @@ export const testimonials: Testimonial[] = [
     quote:
       'JCS iLearn helped me bridge the gap between academics and the industry. The training and guidance gave me the confidence to start my career with clarity.',
     name: 'Arun Kumar',
-    role: 'B.Tech — SNS Institutions',
-    organization: 'Anna University',
+    role: 'B.E',
+    organization: 'PSG College of Technology, Coimbatore.',
     rating: 5,
     photo: testimonialSnehaPhoto,
   },
