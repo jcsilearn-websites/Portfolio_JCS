@@ -92,7 +92,7 @@ export const homeStats: StatItem[] = [
   { id: 'year', target: 1, suffix: '', label: 'Year in Operation' },
   { id: 'students', target: 150000, suffix: '+', label: 'Students/Professionals Trained' },
   { id: 'institutions', target: 25, suffix: '+', label: 'Institutions' },
-  { id: 'corporate', target: 10, suffix: '+', label: 'Corporate Partners' },
+  { id: 'corporate', target: 50, suffix: '+', label: 'Corporate Partners' },
   { id: 'trainers', target: 400, suffix: '+', label: 'Trainers' },
   { id: 'cities', target: 35, suffix: '', label: 'Cities Served' },
   // TODO: replace with real figure — not in client-sourced content, placeholder for layout only
