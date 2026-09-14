@@ -998,7 +998,7 @@ export const testimonials: Testimonial[] = [
     id: 't1',
     quote:
       "JCS iLEARN provided valuable career planning and guidance, helping students understand their strengths in language, critical thinking, and problem-solving. Their guidance encouraged students to explore suitable career opportunities and make informed career choices in today's competitive environment.",
-    name: 'Mr. Rajaruban M D S',
+    name: 'Dr. Rajaruban M D S',
     role: 'Assistant Professor, Food Technology',
     organization: 'Paavai Engineering College',
     rating: 5,
@@ -1008,7 +1008,7 @@ export const testimonials: Testimonial[] = [
     id: 't2',
     quote:
       'JCS iLearn provided an excellent learning experience with a good balance of technical training and practical exposure. The mentors were supportive throughout the journey and helped me gain the confidence to face real world industry challenges.',
-    name: 'Vaishnavi S',
+    name: 'Ms. Vaishnavi S',
     role: 'CSE AIML, 2023–2027',
     organization: 'Alliance University',
     rating: 5,
@@ -1018,7 +1018,7 @@ export const testimonials: Testimonial[] = [
     id: 't3',
     quote:
       'JCS iLearn helped me bridge the gap between academics and the industry. The training and guidance gave me the confidence to start my career with clarity.',
-    name: 'Arun Kumar',
+    name: 'Mr. Arun Kumar',
     role: 'B.E',
     organization: 'PSG College of Technology, Coimbatore.',
     rating: 5,
@@ -1038,7 +1038,7 @@ export const testimonials: Testimonial[] = [
     id: 't5',
     quote:
       'JCS iLEARN has consistently provided us with high-quality trainers who bring strong subject expertise, professionalism, and excellent classroom engagement. We have been impressed with the quality of trainers and the overall coordination from their team. It has been a great experience working with JCS iLEARN, and we look forward to strengthening our association further.',
-    name: 'Haritha M',
+    name: 'Mrs.Haritha M',
     role: 'Operations Manager, Six Phrase — Veranda',
     organization: '',
     rating: 5,
@@ -1048,7 +1048,7 @@ export const testimonials: Testimonial[] = [
     id: 't6',
     quote:
       'JCS iLEARN has been a reliable partner in providing career guidance and skill development for students. Their practical approach helps students understand their strengths and make better career choices.',
-    name: 'Ragul M',
+    name: 'Mr. Ragul M',
     role: 'Founder',
     organization: 'Edupath Education Consultancy',
     rating: 5,
@@ -1058,7 +1058,7 @@ export const testimonials: Testimonial[] = [
     id: 't7',
     quote:
       'JCS iLearn provided me with valuable practical knowledge and guidance beyond the classroom. The training helped me understand industry requirements, improve my skills, and gain confidence in applying what I learned. It was a great learning experience that gave me better clarity about my career.',
-    name: 'Dayaani Vijay',
+    name: 'Ms. Dayaani Vijay',
     role: 'B.Tech Aerospace Engineering Student',
     organization: 'Alliance University, Bengaluru, Karnataka',
     rating: 5,
