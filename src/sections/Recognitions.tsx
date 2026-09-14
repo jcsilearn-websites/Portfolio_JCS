@@ -121,30 +121,48 @@ interface IndiaMapLocation {
 
 const indiaLocations = indiaMap.locations as IndiaMapLocation[]
 
-// Tile-relative percentages, derived by rendering the real IndiaOutline svg and converting
-// each city's true @svg-maps/india coordinate (Chennai/Coimbatore from WhoWeServeMap.tsx's
-// PIN_LOCATIONS, Madurai estimated the same way) through the svg's actual on-screen box —
-// not eyeballed. At full-India zoom these three sit close together in the south-east, so
-// labels are nudged outward in whichever direction has clear space rather than a fixed offset.
-const CITY_PINS = [
-  {
-    name: 'Chennai',
-    pin: { x: 45.3, y: 74.0 },
-    label: { x: 50, y: 70 },
-    labelAlign: 'left' as const,
-  },
-  {
-    name: 'Coimbatore',
-    pin: { x: 39.8, y: 78.0 },
-    label: { x: 32, y: 78 },
-    labelAlign: 'right' as const,
-  },
-  {
-    name: 'Madurai',
-    pin: { x: 40.9, y: 81.7 },
-    label: { x: 36, y: 89 },
-    labelAlign: 'left' as const,
-  },
+// Reach markers for the client-supplied city list. No labels (just pins) — positions are
+// tile-relative percentages derived from each city's real lat/long, run through a linear
+// lat/long->svg calibration fit to @svg-maps/india's own real state bounding boxes (measured
+// via getBBox() on the actual paths, not eyeballed), then through the outline svg's real
+// on-screen box in this tile. Every point was checked against its containing state's real
+// bounding box and landed inside it (Chandigarh/New Delhi given exact centers since those
+// union territories are tiny; Mumbai/Ghaziabad nudged a few px off the calibration's raw
+// output since they sit right at a state border/city cluster, to keep them visually
+// separated and on-landmass rather than exactly overlapping a neighboring point).
+const REACH_PINS = [
+  { x: 43.4, y: 71.7 }, // Ongole
+  { x: 36.5, y: 24.1 }, // Chandigarh
+  { x: 38.5, y: 26.8 }, // Roorkee
+  { x: 62.3, y: 49.6 }, // Kolkata
+  { x: 37.4, y: 47.4 }, // Bhopal
+  { x: 29.4, y: 62.2 }, // Pune
+  { x: 27.9, y: 60.5 }, // Mumbai
+  { x: 39.9, y: 65.8 }, // Hyderabad
+  { x: 37.8, y: 79.6 }, // Bangalore
+  { x: 31.6, y: 79.8 }, // Mangalore
+  { x: 50.6, y: 64.8 }, // Vizag
+  { x: 56.5, y: 56.7 }, // Bhubaneshwar
+  { x: 45.5, y: 36.2 }, // Lucknow
+  { x: 37.0, y: 30.7 }, // New Delhi
+  { x: 33.8, y: 36.0 }, // Jaipur
+  { x: 33.9, y: 23.6 }, // Punjab
+  { x: 44.3, y: 69.2 }, // Guntur
+  { x: 42.4, y: 63.9 }, // Warangal
+  { x: 37.8, y: 30.9 }, // Ghaziabad
+  { x: 41.2, y: 54.0 }, // Nagpur
+  { x: 27.8, y: 50.4 }, // Vadodara
+  { x: 34.8, y: 89.1 }, // Cochin
+  { x: 36.3, y: 87.5 }, // Ernakulam (nudged a few px from Cochin — they're twin/adjacent
+  //                        cities, the raw lat/long calibration put them almost exactly on
+  //                        top of each other)
+  { x: 35.4, y: 90.2 }, // Kottayam
+  { x: 43.9, y: 79.2 }, // Chennai
+  { x: 36.4, y: 85.7 }, // Coimbatore
+  { x: 40.4, y: 86.4 }, // Trichy
+  { x: 39.0, y: 89.1 }, // Madurai
+  { x: 41.4, y: 86.4 }, // Thanjavur
+  { x: 39.1, y: 83.7 }, // Salem
 ]
 
 function IndiaOutline({ className }: { className?: string }) {
@@ -234,26 +252,15 @@ export default function Recognitions() {
                       as a big background mark, cropped by the tile's own overflow-hidden. */}
                   <GearMark className="pointer-events-none absolute inset-0 m-auto h-[135%] w-[135%] -z-10 text-white opacity-[0.07]" />
 
-                  <IndiaOutline className="absolute inset-0 m-auto h-[80%] w-auto text-navy/30" />
+                  <IndiaOutline className="absolute inset-0 m-auto h-[95%] w-auto text-navy/60" />
 
-                  {CITY_PINS.map((city) => (
-                    <span key={city.name}>
-                      <HiMapPin
-                        className="absolute h-4 w-4 -translate-x-1/2 -translate-y-full text-navy drop-shadow-sm sm:h-5 sm:w-5"
-                        style={{ top: `${city.pin.y}%`, left: `${city.pin.x}%` }}
-                        aria-hidden="true"
-                      />
-                      <span
-                        className={`absolute -translate-y-1/2 text-xs font-semibold whitespace-nowrap text-navy ${
-                          city.labelAlign === 'right'
-                            ? '-translate-x-full'
-                            : ''
-                        }`}
-                        style={{ top: `${city.label.y}%`, left: `${city.label.x}%` }}
-                      >
-                        {city.name}
-                      </span>
-                    </span>
+                  {REACH_PINS.map((pin, index) => (
+                    <HiMapPin
+                      key={index}
+                      className="absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-full text-navy drop-shadow-sm sm:h-3 sm:w-3"
+                      style={{ top: `${pin.y}%`, left: `${pin.x}%` }}
+                      aria-hidden="true"
+                    />
                   ))}
                   {stat && (
                     <StatNumber
