@@ -91,7 +91,7 @@ export default function Footer() {
 
           {/* Our Programs */}
           <div className="lg:col-span-2">
-            <h3 className={headingClass}>Our Programs</h3>
+            <h3 className={headingClass}>Resources</h3>
             <ul className="mt-4 space-y-3">
               {programLinks.map((link) => (
                 <li key={link.label}>
@@ -152,7 +152,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center gap-3 border-t border-white/10 pt-6 text-sm text-pale-blue-bg/60 justify-center sm:flex-row">
-          <p>&copy; {new Date().getFullYear()} JCS iLearn. All rights reserved.</p>
+          <p>&copy; 2025 JCS iLearn. All rights reserved.</p>
         </div>
       </Container>
     </footer>
