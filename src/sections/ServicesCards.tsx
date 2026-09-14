@@ -34,7 +34,7 @@ export default function ServicesCards() {
   return (
     <section className="bg-white py-20">
       <Container>
-        <h2 className="text-center text-lg font-bold tracking-wide text-black uppercase sm:text-xl">
+        <h2 className="font-google-sans text-center text-lg text-black">
           Our Services
         </h2>
         <span className="mx-auto mt-1 block h-0.5 w-10 rounded-full bg-gold" />
@@ -88,6 +88,12 @@ export default function ServicesCards() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Full-width centered closing statement, same treatment as WhoWeServe's own
+            (Google Sans, bold italic, centered). */}
+        <p className="font-google-sans mt-8 text-center text-xl font-bold text-black italic">
+          Learn with purpose. Get skilled. Get placed.
+        </p>
       </Container>
     </section>
   )

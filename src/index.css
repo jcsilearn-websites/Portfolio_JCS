@@ -5,6 +5,8 @@
   --color-gold: #f4b400;
   --color-pale-blue-bg: #dce6ff;
   --color-pale-blue-text: #1e3a8a;
+  /* Scoped to the "Recognized for Excellence" heading — see index.html for where this loads. */
+  --font-google-sans: 'Google Sans', system-ui, sans-serif;
 }
 
 body {

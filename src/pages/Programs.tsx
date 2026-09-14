@@ -103,7 +103,7 @@ export default function Programs() {
         >
           <Container className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
             <div className={isTextFirst ? 'md:order-1' : 'md:order-2'}>
-              <h2 className="text-3xl font-bold text-black sm:text-4xl">
+              <h2 className="font-google-sans text-lg text-black">
                 {active.label}
               </h2>
               <span className="mt-3 block h-0.5 w-10 rounded-full bg-gold" />

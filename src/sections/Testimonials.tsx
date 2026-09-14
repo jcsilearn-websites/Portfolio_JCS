@@ -126,7 +126,7 @@ export default function Testimonials() {
     >
       <Container>
         <div className="flex flex-col items-center">
-          <p className="text-center text-lg font-bold tracking-wide text-black uppercase sm:text-xl">
+          <p className="font-google-sans text-center text-lg text-black">
             Testimonials
           </p>
           <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />

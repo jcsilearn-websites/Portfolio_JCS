@@ -21,7 +21,7 @@ export default function Philosophy() {
 
         <div>
           <span className="inline-flex flex-col items-start">
-            <span className="text-lg font-bold tracking-wide text-black uppercase sm:text-xl">
+            <span className="font-google-sans text-lg text-black">
               {philosophy.label}
             </span>
             <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
@@ -42,6 +42,13 @@ export default function Philosophy() {
             </p>
           ))}
         </div>
+      </Container>
+
+      {/* Full-width centered closing statement, same treatment as WhoWeServe/ServicesCards. */}
+      <Container>
+        <p className="font-google-sans mt-8 text-center text-xl font-bold text-black italic">
+          Learn with purpose. Grow with confidence. Lead with skill.
+        </p>
       </Container>
     </motion.section>
   )

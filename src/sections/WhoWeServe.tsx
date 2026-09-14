@@ -15,7 +15,7 @@ export default function WhoWeServe() {
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <span className="inline-flex flex-col items-start">
-            <span className="text-lg font-bold tracking-wide text-black uppercase sm:text-xl">
+            <span className="font-google-sans text-lg text-black">
               {whoWeServe.label}
             </span>
             <span className="mt-1 h-0.5 w-10 rounded-full bg-gold" />
@@ -30,13 +30,18 @@ export default function WhoWeServe() {
           <p className="mt-6 text-left text-lg text-black/70">
             {whoWeServe.paragraph}
           </p>
-
-          <p className="mt-6 text-base font-light text-black/60 italic">
-            {whoWeServe.closingLine}
-          </p>
         </div>
 
         <WhoWeServeMap />
+      </Container>
+
+      {/* Full-width centered statement below the two-column block, matching psiog.com's own
+          closing-line treatment for this same slot (Google Sans, 20px, bold italic,
+          centered — verified via that page's computed styles, not eyeballed). */}
+      <Container>
+        <p className="font-google-sans -mt-8 text-center text-xl font-bold text-black italic">
+          {whoWeServe.closingLine}
+        </p>
       </Container>
     </motion.section>
   )

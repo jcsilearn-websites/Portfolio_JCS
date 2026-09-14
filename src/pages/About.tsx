@@ -202,9 +202,6 @@ export default function About() {
                   {paragraph}
                 </p>
               ))}
-              <p className="mt-6 text-2xl leading-relaxed font-semibold text-black">
-                {ourStory.closingLine}
-              </p>
             </div>
 
             <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl">
@@ -215,6 +212,14 @@ export default function About() {
               />
             </div>
           </motion.div>
+        </Container>
+
+        {/* Full-width centered closing statement, same treatment as the homepage's
+            WhoWeServe/Philosophy/ServicesCards closing lines. */}
+        <Container>
+          <p className="font-google-sans mt-8 text-center text-xl font-bold text-black italic">
+            {ourStory.closingLine}
+          </p>
         </Container>
       </section>
 
