@@ -577,7 +577,7 @@ export interface StatCalloutPart {
 export const founderStatCallout = {
   headline: {
     lead: 'Founders. ',
-    emphasis: 'Deep Experience.',
+    emphasis: 'Track Record.',
     trail: '',
   },
   sentence: [
