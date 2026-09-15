@@ -12,7 +12,7 @@ const navLinks = [
   { key: '/about', label: 'About Us', to: '/about' },
   { key: '/programs', label: 'Our Programs', to: '/programs' },
   { key: '/services', label: 'Our Services', to: '/services' },
-  { key: '/trainers', label: 'Footprints', to: '/trainers' },
+  { key: '/footprints', label: 'Footprints', to: '/footprints' },
 ]
 
 export default function Header() {

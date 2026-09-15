@@ -12,7 +12,7 @@ import Container from './Container'
 const programLinks = [
   { to: '/programs', label: 'All Programs' },
   { to: '/services', label: 'Our Services' },
-  { to: '/trainers', label: 'Footprints' },
+  { to: '/footprints', label: 'Footprints' },
   { to: '/career-guides', label: 'Career Guides' },
   { to: '/student-handbook', label: 'Student Handbook' },
   { to: '/faq', label: 'FAQ' },
