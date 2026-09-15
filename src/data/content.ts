@@ -1,3 +1,5 @@
+import allianceUniversityIcon from '../assets/front-page/Alliance_University_Icon.svg'
+import gitamUniversityLogo from '../assets/college-logos/Gitam_University_Logo.png'
 import dayanandSagarLogo from '../assets/college-logos/Dayanand Sagar University, Bangalore/Dayananda_Sagar_University.webp'
 import dhanalakshmiSrinivasanLogo from '../assets/college-logos/Dhanalakshmi Srinivasan University, Trichy/Dhanalakshmi_Srinivasan_University.webp'
 import ganadipathyTulsisJainLogo from '../assets/college-logos/Ganadipathy Tulsi’s Jain Engineering College, Vellore/images.jpeg'
@@ -504,22 +506,34 @@ export const ourModel = {
   ] satisfies ModelPillar[],
 }
 
-export interface Recognition {
-  trainerName: string
+export interface AwardBadge {
   title: string
-  organization: string
-  period: string
+  subtitle: string
+  date: string
+  logo: string
 }
 
-// CLAUDE.md's Awards section does NOT name the recipient — it explicitly says "once the
-// recipient's name is confirmed," so the name itself, not just its placement, is still open.
-// Placeholder until the client confirms who this is; do not replace with a guessed name.
-export const recognitions: Recognition[] = [
+// Recognitions row — 3 badge cards, matching psiog.com's reference "Recognitions" pattern.
+// Each card renders 3 stacked lines: title, subtitle (college/organization), date — kept as
+// separate fields (not one combined string) so the date always renders on its own line.
+export const awardBadges: AwardBadge[] = [
   {
-    trainerName: '[Trainer name pending confirmation]',
     title: 'Best Trainer of the Year',
-    organization: 'Alliance University, Bangalore',
-    period: '2024–25',
+    subtitle: 'Alliance University, Bangalore',
+    date: '2024–25',
+    logo: allianceUniversityIcon,
+  },
+  {
+    title: 'Client Appreciation',
+    subtitle: 'GITAM University, Vizag',
+    date: '2024–2025',
+    logo: gitamUniversityLogo,
+  },
+  {
+    title: 'Best Trainer of the Program',
+    subtitle: 'PSG, Coimbatore',
+    date: 'Nov 26 – Nov 30, 2024',
+    logo: psgLogo,
   },
 ]
 

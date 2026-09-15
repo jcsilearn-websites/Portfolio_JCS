@@ -13,9 +13,9 @@ import {
 import { BadgeCheck, Headset } from 'lucide-react'
 import indiaMap from '@svg-maps/india'
 import {
+  awardBadges,
   bentoTiles,
   homeStats,
-  recognitions,
   whyChooseUsHighlights,
   type BentoIcon,
   type StatItem,
@@ -23,7 +23,6 @@ import {
 } from '../data/content'
 import { useCountUp } from '../hooks/useCountUp'
 import Container from '../components/Container'
-import allianceUniversityIcon from '../assets/front-page/Alliance_University_Icon.svg'
 
 const container: Variants = {
   hidden: {},
@@ -187,7 +186,6 @@ export default function Recognitions() {
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   const statsById = Object.fromEntries(homeStats.map((stat) => [stat.id, stat]))
-  const award = recognitions[0]
 
   return (
     <section ref={ref} className="bg-white pt-20 pb-20 sm:pb-24">
@@ -201,26 +199,30 @@ export default function Recognitions() {
           Recognized for <em className="font-normal italic">Excellence</em>.
         </h2>
 
-        {/* Award badge card */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-          whileHover={HOVER_LIFT}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          className={`relative mx-auto mt-12 mb-16 w-full max-w-[300px] rounded-tl-3xl rounded-br-3xl rounded-tr-none rounded-bl-none bg-gray-100 p-5 pl-14 text-left shadow-sm ${HOVER}`}
-        >
-          <span className="absolute -top-8 -left-8 flex h-20 w-20 items-center justify-center rounded-full shadow-md">
-            <img
-              src={allianceUniversityIcon}
-              alt="Alliance University"
-              className="h-full w-full rounded-full object-contain"
-            />
-          </span>
-          <p className="mt-3 text-base font-semibold text-navy">{award.title}</p>
-          <p className="mt-1 text-sm text-pale-blue-text">
-            {award.organization} · {award.period}
-          </p>
-        </motion.div>
+        {/* Award badge cards */}
+        <div className="mx-auto mt-12 mb-16 flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:justify-center">
+          {awardBadges.map((badge) => (
+            <motion.div
+              key={badge.title}
+              initial={{ opacity: 0, y: 24 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
+              whileHover={HOVER_LIFT}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className={`relative w-full max-w-[300px] rounded-tl-3xl rounded-br-3xl rounded-tr-none rounded-bl-none bg-gray-100 p-5 pl-14 text-left shadow-sm ${HOVER}`}
+            >
+              <span className="absolute -top-8 -left-8 flex h-20 w-20 items-center justify-center rounded-full shadow-md">
+                <img
+                  src={badge.logo}
+                  alt={badge.title}
+                  className="h-full w-full rounded-full object-contain"
+                />
+              </span>
+              <p className="mt-3 text-base font-semibold text-navy">{badge.title}</p>
+              <p className="mt-1 text-sm text-pale-blue-text">{badge.subtitle}</p>
+              <p className="text-sm text-pale-blue-text">{badge.date}</p>
+            </motion.div>
+          ))}
+        </div>
 
         {/* Stats bento grid */}
         <motion.div
