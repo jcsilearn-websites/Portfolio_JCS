@@ -1,5 +1,4 @@
 import { useRef, useState, type FormEvent } from 'react'
-import emailjs from '@emailjs/browser'
 import Button from '../components/Button'
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
@@ -15,19 +14,25 @@ export default function ContactForm() {
     event.preventDefault()
     if (!formRef.current) return
 
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    const sheetUrl = import.meta.env.VITE_GOOGLE_SHEET_URL
 
-    if (!serviceId || !templateId || !publicKey) {
+    if (!sheetUrl) {
       setStatus('error')
       return
     }
 
     setStatus('sending')
     try {
-      await emailjs.sendForm(serviceId, templateId, formRef.current, {
-        publicKey,
+      const formData = new FormData(formRef.current)
+      await fetch(sheetUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          message: formData.get('message'),
+        }),
       })
       setStatus('success')
       formRef.current.reset()

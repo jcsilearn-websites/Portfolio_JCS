@@ -154,8 +154,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-3 border-t border-white/10 pt-6 text-sm text-pale-blue-bg/60 justify-center sm:flex-row">
+        <div className="mt-12 flex flex-col items-center gap-3 border-t border-white/10 pt-6 text-sm text-pale-blue-bg/60 sm:flex-row sm:justify-between">
           <p>&copy; 2025 JCS iLearn. All rights reserved.</p>
+          <p>
+            Developed by <span className="text-base font-bold">ャ</span>
+          </p>
         </div>
       </Container>
     </footer>
