@@ -61,7 +61,7 @@ import infantAshilPhoto from '../assets/About-page/Tech-Support-Team/Infant-Ashi
 import testimonialRajarubanPhoto from '../assets/testimonials/Rajaruban.jpeg'
 import testimonialVaishnaviPhoto from '../assets/testimonials/VAISHNAVI S.jpeg'
 import testimonialEdupathPhoto from '../assets/testimonials/edupath.png'
-import testimonialSnehaPhoto from '../assets/testimonials/Arun-Kumar.jpg'
+import testimonialHarshneePhoto from '../assets/testimonials/Harshnee-K-T.jpeg'
 import testimonialGnanaprakasamPhoto from '../assets/testimonials/gnanaprakasham.jpeg'
 import testimonialHarithaPhoto from '../assets/testimonials/haritha.jpeg'
 import testimonialDayaaniPhoto from '../assets/testimonials/Dayaani-Vijay.jpeg'
@@ -1032,12 +1032,12 @@ export const testimonials: Testimonial[] = [
   {
     id: 't3',
     quote:
-      'JCS iLearn helped me bridge the gap between academics and the industry. The training and guidance gave me the confidence to start my career with clarity.',
-    name: 'Mr. Arun Kumar',
-    role: 'B.E',
-    organization: 'PSG College of Technology, Coimbatore.',
+      'JCS iLEARN played an important role in broadening students understanding of career opportunities. Their guidance helped us identify our potential, improve our approach to problem-solving and critical thinking, and understand how our skills can be applied in different career fields. The experience encouraged us to plan our future with greater confidence and purpose.',
+    name: 'Ms. Harshnee K T',
+    role: 'B.Com Finance & Accounting Final Year Student',
+    organization: 'SRM University Kattankulathur',
     rating: 5,
-    photo: testimonialSnehaPhoto,
+    photo: testimonialHarshneePhoto,
   },
   {
     id: 't4',
