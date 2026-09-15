@@ -1244,3 +1244,131 @@ export const trainingFootprints: TrainingFootprint[] = [
     ),
   },
 ]
+
+export interface AccentCardItem {
+  title: string
+  description: string
+}
+
+// Career Guides page — /career-guides. Card copy is client-provided (see the Career
+// Guides / Support Center handoff); accent color per card is assigned by index in
+// AccentCardGrid, not stored here.
+export const careerGuides: AccentCardItem[] = [
+  {
+    title: 'Resume & Cover Letter Guide',
+    description:
+      'Learn how to craft a professional resume and cover letter that get noticed by recruiters.',
+  },
+  {
+    title: 'Interview Preparation Guide',
+    description:
+      'Master common questions, body language, and communication skills to crack your interviews.',
+  },
+  {
+    title: 'LinkedIn Optimization Guide',
+    description:
+      'Build a strong personal brand, grow your network, and attract career opportunities.',
+  },
+  {
+    title: 'Workplace Skills Guide',
+    description:
+      'Adapt to professional environments with essential skills like communication, teamwork and time management.',
+  },
+  {
+    title: 'Placement Readiness Guide',
+    description:
+      'A complete roadmap for students preparing for campus placements and corporate hiring.',
+  },
+]
+
+// Support Center page — /support-center. Same AccentCardGrid treatment as careerGuides.
+export const supportHighlights: AccentCardItem[] = [
+  {
+    title: 'General Queries',
+    description: 'Questions about our programs, workshops or training sessions.',
+  },
+  {
+    title: 'Technical Support',
+    description: 'Issues with accessing online sessions, study materials or forms.',
+  },
+  {
+    title: 'Enrollment & Payments',
+    description: 'Help with registrations, fees or refund-related queries.',
+  },
+  {
+    title: 'Career Support',
+    description: 'Guidance on resume building, LinkedIn optimization and placements.',
+  },
+  {
+    title: 'Trainer Support',
+    description: 'Assistance for trainers/interns working with JCS iLEARN.',
+  },
+]
+
+export interface FaqItem {
+  question: string
+  intro?: string
+  bullets?: string[]
+  answer?: string
+}
+
+// FAQ page (/faq) content. Plain data only (no JSX) per this file's convention — the
+// handful of answers needing a mailto:/route link (currently Q7, Q8, Q9, Q10) are
+// special-cased by index in FAQ.tsx rather than embedding markup here.
+export const faqItems: FaqItem[] = [
+  {
+    question: 'What is JCS iLEARN?',
+    answer:
+      'JCS iLEARN is a training and career development platform offering soft skills, technical skills, aptitude training and recruitment readiness programs for students, graduates and professionals.',
+  },
+  {
+    question: 'Who can join your programs?',
+    intro: 'Our programs are designed for:',
+    bullets: [
+      'College students preparing for placements.',
+      'Graduates seeking career opportunities.',
+      'Professionals looking to upskill.',
+      'Institutions and corporates that want tailored workshops.',
+    ],
+  },
+  {
+    question: 'How are the training sessions conducted?',
+    answer:
+      'We conduct both offline workshops at colleges/companies and online sessions for individuals. Training is interactive, with activities, mock interviews, role plays and real-world practice.',
+  },
+  {
+    question: 'Will I receive a certificate after training?',
+    answer:
+      'Yes. Students who meet the attendance and participation criteria will receive a certificate of completion from JCS iLEARN.',
+  },
+  {
+    question: 'Do you provide placement support?',
+    answer:
+      'Yes. We guide students through resume building, LinkedIn optimization, aptitude preparation, mock interviews and connect eligible learners with corporate partnerships and hiring opportunities.',
+  },
+  {
+    question: 'What if I miss a session?',
+    answer:
+      'We recommend maintaining 95% attendance. In case of emergencies, students may request for makeup sessions or additional resources, subject to trainer availability.',
+  },
+  {
+    question: 'How can I register for a program?',
+    answer:
+      'You can register by contacting us directly via 📧 support@jcsilearn.com or through our online inquiry form on the website.',
+  },
+  {
+    question: 'Do you offer refunds?',
+    answer:
+      'Refunds are subject to our Refund Policy, available on the website. Please review it before registering for a program.',
+  },
+  {
+    question: 'Can colleges/companies collaborate with you?',
+    answer:
+      'Yes. We conduct customized workshops for institutions and corporates. Placement officers, HR teams or management can reach us at jcsilearn@gmail.com.',
+  },
+  {
+    question: 'How can I contact support?',
+    answer:
+      "For any queries or issues, you can reach us at 📧 support@jcsilearn.com. We'll get back to you within 24–48 hours.",
+  },
+]

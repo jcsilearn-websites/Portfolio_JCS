@@ -13,6 +13,10 @@ import Careers from './pages/Careers'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsConditions from './pages/TermsConditions'
 import CookiePolicy from './pages/CookiePolicy'
+import CareerGuides from './pages/CareerGuides'
+import StudentHandbook from './pages/StudentHandbook'
+import FAQ from './pages/FAQ'
+import SupportCenter from './pages/SupportCenter'
 
 function App() {
   return (
@@ -31,6 +35,10 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-conditions" element={<TermsConditions />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />
+        <Route path="/career-guides" element={<CareerGuides />} />
+        <Route path="/student-handbook" element={<StudentHandbook />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/support-center" element={<SupportCenter />} />
       </Routes>
       <Footer />
       <BackToTopButton />

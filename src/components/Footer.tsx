@@ -13,7 +13,10 @@ const programLinks = [
   { to: '/programs', label: 'All Programs' },
   { to: '/services', label: 'Our Services' },
   { to: '/trainers', label: 'Footprints' },
-  { to: '/about', label: 'About Us' },
+  { to: '/career-guides', label: 'Career Guides' },
+  { to: '/student-handbook', label: 'Student Handbook' },
+  { to: '/faq', label: 'FAQ' },
+  { to: '/support-center', label: 'Support Center' },
 ]
 
 const companyLinks = [
