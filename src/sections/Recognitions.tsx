@@ -210,7 +210,7 @@ export default function Recognitions() {
               transition={{ duration: 0.5, ease: 'easeOut' }}
               className={`relative w-full max-w-[300px] rounded-tl-3xl rounded-br-3xl rounded-tr-none rounded-bl-none bg-gray-100 p-5 pl-14 text-left shadow-sm ${HOVER}`}
             >
-              <span className="absolute -top-8 -left-8 flex h-20 w-20 items-center justify-center rounded-full shadow-md">
+              <span className="absolute -top-8 -left-8 flex h-20 w-20 items-center justify-center rounded-full bg-white p-2 shadow-md">
                 <img
                   src={badge.logo}
                   alt={badge.title}

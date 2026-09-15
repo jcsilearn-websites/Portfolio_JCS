@@ -64,6 +64,7 @@ import testimonialEdupathPhoto from '../assets/testimonials/edupath.png'
 import testimonialSnehaPhoto from '../assets/testimonials/Arun-Kumar.jpg'
 import testimonialGnanaprakasamPhoto from '../assets/testimonials/gnanaprakasham.jpeg'
 import testimonialHarithaPhoto from '../assets/testimonials/haritha.jpeg'
+import testimonialDayaaniPhoto from '../assets/testimonials/Dayaani-Vijay.jpeg'
 
 export const homeHero = {
   taglineLine1: 'I Learn,',
@@ -1076,7 +1077,7 @@ export const testimonials: Testimonial[] = [
     role: 'B.Tech Aerospace Engineering Student',
     organization: 'Alliance University, Bengaluru, Karnataka',
     rating: 5,
-    // No real photo available yet — renders as a generic icon avatar (see Testimonials.tsx).
+    photo: testimonialDayaaniPhoto,
   },
 ]
 
@@ -1117,44 +1118,38 @@ function slideshowPhotos(folderName: string): string[] {
 // by passing each entry's own exact folder name — do not let these cross-match.
 export const trainingFootprints: TrainingFootprint[] = [
   {
-    dateRange: '1st Sept 2026 to 3rd Sept 2026',
+    dateRange: '1st Sept 2025 to 3rd Sept 2025',
     programName: 'Soft Skills Induction Program',
     collegeName: 'PARK Engineering College, Coimbatore',
     logo: parkCollegeLogo,
     photos: slideshowPhotos('PARK Engineering College, Coimbatore'),
   },
   {
-    dateRange: '1st Sept 2026 to 3rd Sept 2026',
+    dateRange: '1st Sept 2025 to 3rd Sept 2025',
     programName: 'Freshmen Induction Program',
     collegeName: 'Tamil Nadu College of Engineering, Coimbatore',
     logo: tamilNaduCollegeLogo,
     photos: slideshowPhotos('Tamil Nadu College of Engineering, Coimbatore'),
   },
   {
-    dateRange: '13th & 14th Oct 2026',
+    dateRange: '13th & 14th Oct 2025',
     programName: 'Pre Placement Preparation Program',
     collegeName: 'Idhaya Engineering College for Women, Chinnasalem',
     logo: idhayaEngineeringLogo,
     photos: slideshowPhotos('Idhaya Engineering College for Women, Chinnasalem'),
   },
   {
-    dateRange: '4th Nov to 10th Nov 2026',
+    dateRange: '4th Nov to 10th Nov 2025',
     programName: 'Placement Readiness Program',
     collegeName: 'Dhanalakshmi Srinivasan University, Trichy',
     logo: dhanalakshmiSrinivasanLogo,
     photos: slideshowPhotos('Dhanalakshmi Srinivasan University, Trichy'),
   },
+  
   {
-    dateRange: '3rd Nov to 27th Nov 2026',
-    programName: 'Communication Skills Training',
-    collegeName: 'VSB Engineering College, Coimbatore',
-    logo: vsbCollegeLogo,
-    photos: slideshowPhotos('VSB Engineering College, Coimbatore'),
-  },
-  {
-    dateRange: '27th Nov to 30th Nov 2026',
+    dateRange: '27th Nov to 30th Nov 2025',
     programName: 'Block Training',
-    collegeName: 'PSG College of Arts and Science, Coimbatore',
+    collegeName: 'Tier 1 Arts & Science College, Coimbatore',
     logo: psgLogo,
     photos: slideshowPhotos(
       'PSG College of Arts and Science, Coimbatore , 27th November 2026 to 30th November 2026',
@@ -1168,15 +1163,22 @@ export const trainingFootprints: TrainingFootprint[] = [
     photos: slideshowPhotos('Ganadipathy Tulsi’s Jain Engineering College, Vellore'),
   },
   {
+    dateRange: '19th Jan to 30th Jan 2026',
+    programName: 'Communication Skills Training',
+    collegeName: 'Sree Saraswati Thiyagaraja College, Pollachi',
+    logo: sreeSaraswathiLogo,
+    photos: slideshowPhotos('VSB Engineering College, Coimbatore'),
+  },
+  {
     dateRange: '20th Jan to 22nd Apr 2026',
-    programName: 'Technical - Capgemini Python',
+    programName: 'Capgemini - Company Specific Technical Training',
     collegeName: 'Dayanand Sagar University, Bangalore',
     logo: dayanandSagarLogo,
     photos: slideshowPhotos('Dayanand Sagar University, Bangalore'),
   },
   {
     dateRange: '2nd Feb to 26th Apr 2026',
-    programName: 'Continuous Aptitude Training',
+    programName: 'Semester wise Training Program - Aptitude',
     collegeName: 'Rathinam Technical Campus, Coimbatore',
     logo: rathinamCampusLogo,
     photos: slideshowPhotos('Rathinam Technical Campus'),
@@ -1191,7 +1193,7 @@ export const trainingFootprints: TrainingFootprint[] = [
   {
     dateRange: '19th Feb to 22nd Feb 2026',
     programName: 'Block Training',
-    collegeName: 'PSG College of Arts and Science, Coimbatore',
+    collegeName: 'Tier I Arts & Science College, Coimbatore',
     logo: psgLogo,
     photos: slideshowPhotos(
       'PSG College of Arts and Science, Coimbatore 19th February 2026 to 22nd February 2026',
@@ -1206,8 +1208,8 @@ export const trainingFootprints: TrainingFootprint[] = [
   },
   {
     dateRange: '8th June to 12th June 2026',
-    programName: 'Block Training',
-    collegeName: 'PSG College of Arts and Science, Coimbatore',
+    programName: 'Career Specific Training Program',
+    collegeName: 'Tier 1 Arts & Science College, Coimbatore',
     logo: psgLogo,
     photos: slideshowPhotos(
       'PSG College of Arts and Science, Coimbatore 8th June 2026 to 12th June 2026',
@@ -1215,14 +1217,14 @@ export const trainingFootprints: TrainingFootprint[] = [
   },
   {
     dateRange: '17th July to 24th July 2026',
-    programName: 'Soft Skills & Aptitude Training MBA',
+    programName: 'MBA Final Year Placement Readiness Program - Soft skills & Aptitude',
     collegeName: 'VELS University, Chennai',
     logo: velsUniversityLogo,
     photos: slideshowPhotos('VELS University, Chennai'),
   },
   {
     dateRange: '4th Aug to 8th Aug',
-    programName: 'Aptitude Training',
+    programName: 'Pre Placement Training Program',
     collegeName: 'PSNA College of Engineering and Technology, Dindugal',
     logo: psnaCollegeLogo,
     photos: slideshowPhotos('PSNA College of Engineering and Technology, Dindugal'),
@@ -1237,7 +1239,7 @@ export const trainingFootprints: TrainingFootprint[] = [
   {
     dateRange: '27th Aug to 30th Aug',
     programName: 'Block Training',
-    collegeName: 'PSG College of Arts and Science, Coimbatore',
+    collegeName: 'Tier 1 Arts & Science College, Coimbatore',
     logo: psgLogo,
     photos: slideshowPhotos(
       'PSG College of Arts and Science, Coimbatore 27th August to 30th August',
