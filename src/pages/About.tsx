@@ -191,9 +191,9 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="grid items-start gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-32"
+            className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr]"
           >
-            <div>
+            <div className="mx-auto w-full max-w-[540px] lg:mx-0">
               {ourStory.paragraphs.map((paragraph, index) => (
                 <p
                   key={paragraph}
@@ -204,7 +204,7 @@ export default function About() {
               ))}
             </div>
 
-            <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl">
+            <div className="mx-auto aspect-[4/3] w-full max-w-[620px] overflow-hidden rounded-2xl lg:mr-0 lg:ml-auto">
               <img
                 src={ourStoryImage}
                 alt={`Gear-and-checkmark graphic beside a quote card that reads: "${ourStory.quoteCardText}"`}
