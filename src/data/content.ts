@@ -1034,7 +1034,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'JCS iLEARN played an important role in broadening students understanding of career opportunities. Their guidance helped us identify our potential, improve our approach to problem-solving and critical thinking, and understand how our skills can be applied in different career fields. The experience encouraged us to plan our future with greater confidence and purpose.',
     name: 'Ms. Harshnee K T',
-    role: 'B.Com Finance & Accounting Final Year Student',
+    role: 'B.Com Accounting & Finance (Honours) Final Year Student',
     organization: 'SRM University Kattankulathur',
     rating: 5,
     photo: testimonialHarshneePhoto,
