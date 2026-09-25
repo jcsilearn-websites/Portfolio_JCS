@@ -157,7 +157,15 @@ export default function Footer() {
         <div className="mt-12 flex flex-col items-center gap-3 border-t border-white/10 pt-6 text-sm text-pale-blue-bg/60 sm:flex-row sm:justify-between">
           <p>&copy; 2025 JCS iLearn. All rights reserved.</p>
           <p>
-            Developed by <span className="text-base font-bold">ャ</span>
+            Developed by{" "}
+            <a
+              href="https://nezbara.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-base font-bold hover:text-gold transition-colors"
+            >
+              Nezbara
+            </a>
           </p>
         </div>
       </Container>
